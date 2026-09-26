@@ -1,0 +1,129 @@
+name: .NET
+
+on:
+  push:
+    branches: [main, deploy]
+    paths-ignore:
+      - site/**
+      - .github/workflows/pages.yml
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dotnet-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-test:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore Tedd.RTree.sln
+
+      - name: Build
+        run: dotnet build Tedd.RTree.sln --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet run --project tests/Tedd.RTree.Tests/Tedd.RTree.Tests.csproj --no-build --configuration Release
+
+      - name: Verify package
+        run: dotnet pack src/Tedd.RTree/Tedd.RTree.csproj --no-build --configuration Release --output artifacts/packages
+
+  publish:
+    needs: build-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/deploy'
+    runs-on: windows-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Set automatic package version
+        id: version
+        shell: pwsh
+        run: |
+          $projectPath = 'src/Tedd.RTree/Tedd.RTree.csproj'
+          $project = [xml](Get-Content -LiteralPath $projectPath)
+          $versionNode = $project.SelectSingleNode('/Project/PropertyGroup/Version')
+          if ($null -eq $versionNode) {
+            throw "No Version element found in $projectPath."
+          }
+          $baseVersion = [version]$versionNode.InnerText
+          # A workflow rerun retains its version; every new run advances the patch.
+          $packageVersion = '{0}.{1}.{2}' -f $baseVersion.Major, $baseVersion.Minor, ($baseVersion.Build + [int]$env:GITHUB_RUN_NUMBER)
+          $versionNode.InnerText = $packageVersion
+          $project.Save((Resolve-Path -LiteralPath $projectPath))
+          "version=$packageVersion" >> $env:GITHUB_OUTPUT
+          Write-Host "Publishing Tedd.RTree $packageVersion"
+
+      - name: Restore
+        run: dotnet restore src/Tedd.RTree/Tedd.RTree.csproj
+
+      - name: Build
+        run: dotnet build src/Tedd.RTree/Tedd.RTree.csproj --no-restore --configuration Release
+
+      - name: Log in to NuGet.org with OIDC
+        id: nuget_login
+        uses: NuGet/login@v1
+        with:
+          user: tedd
+
+      # publish-nuget-neo has no v2 tag yet. Pin the current v2 implementation.
+      - name: Publish on version change
+        id: publish_nuget
+        continue-on-error: true
+        uses: tedd/publish-nuget-neo@1a65ed85a859c9f4905b61c58afe6b1dcbb74ae4
+        with:
+          NUGET_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
+          PROJECT_FILE_PATH: src/Tedd.RTree/Tedd.RTree.csproj
+          PACKAGE_NAME: Tedd.RTree
+          NUGET_SOURCE: https://api.nuget.org
+          INCLUDE_SYMBOLS: true
+          TAG_COMMIT: true
+          TAG_FORMAT: v*
+          REBUILD_PROJECT: false
+          LOG_LEVEL: INFO
+
+      # Retry with dotnet to retain the server response if the action suppresses it.
+      - name: Retry failed publish
+        if: steps.publish_nuget.outcome == 'failure'
+        shell: pwsh
+        env:
+          NUGET_KEY: ${{ steps.nuget_login.outputs.NUGET_API_KEY }}
+          PACKAGE_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          $package = Get-Item -LiteralPath "src/Tedd.RTree/Tedd.RTree.$env:PACKAGE_VERSION.nupkg"
+          dotnet nuget push $package.FullName --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_KEY --skip-duplicate
+          if ($LASTEXITCODE -ne 0) {
+            throw "NuGet publish failed with exit code $LASTEXITCODE."
+          }
+
+          $tag = "v$env:PACKAGE_VERSION"
+          git tag $tag
+          if ($LASTEXITCODE -ne 0) {
+            throw "Creating tag $tag failed."
+          }
+          git push origin $tag
+          if ($LASTEXITCODE -ne 0) {
+            throw "Pushing tag $tag failed."
+          }

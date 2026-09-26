@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7faf9">
-  <meta name="description" content="Tedd.RTree is a two-dimensional R-tree for .NET 10 with incremental insertion, STR bulk loading, and rectangle intersection queries.">
-  <meta property="og:title" content="Tedd.RTree — a two-dimensional index for .NET 10">
-  <meta property="og:description" content="A small R-tree API, examples, and measured comparisons with RBush and NetTopologySuite.">
+  <meta name="description" content="Tedd.RTree is a highly optimised R-tree library for .NET 10. It supports bulk loading, moving entries, and rectangle intersection queries, with measured comparisons against RBush and NetTopologySuite.">
+  <meta property="og:title" content="Tedd.RTree — an R-tree library for .NET 10">
+  <meta property="og:description" content="A highly optimised spatial index with examples and measured comparisons against RBush and NetTopologySuite.">
   <meta property="og:type" content="website">
-  <title>Tedd.RTree — a two-dimensional index for .NET 10</title>
+  <title>Tedd.RTree — an R-tree library for .NET 10</title>
   <link rel="icon" href="assets/rtree-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -33,9 +33,16 @@
     <section class="hero" id="top">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> Two-dimensional spatial index · .NET 10</p>
-        <h1>Rectangles in.<br><em>Matches out.</em></h1>
-        <p class="lede">Tedd.RTree stores values against axis-aligned rectangles. Insert entries individually or bulk load a packed tree, then search for rectangles that intersect a query. Boundary contact counts as an intersection.</p>
+        <p class="eyebrow"><span></span> Highly optimised spatial indexing</p>
+        <h1>R-tree library<br><em>for .NET 10.</em></h1>
+        <p class="lede">Tedd.RTree indexes axis-aligned rectangles for intersection queries. It supports individual updates, packed bulk loading, and two concurrent update models.</p>
+        <p class="hero-evidence">In our measured 10,000-entry uniform fixture, bulk build took <strong>2.30 ms</strong> versus 4.73 ms for RBush and 3.83 ms for NTS STRtree. A batch of 64 queries took <strong>14.41 µs</strong> versus 33.89 µs and 64.38 µs. <a href="#benchmarks">See the benchmark conditions</a>.</p>
+        <div class="hero-badges" aria-label="Package and repository status">
+          <a href="https://www.nuget.org/packages/Tedd.RTree" aria-label="Tedd.RTree on NuGet"><img src="https://img.shields.io/nuget/v/Tedd.RTree?logo=nuget&amp;label=NuGet" alt="NuGet package version" height="20"></a>
+          <a href="https://github.com/tedd/Tedd.RTree/actions/workflows/dotnet.yml" aria-label="GitHub Actions build and test status"><img src="https://github.com/tedd/Tedd.RTree/actions/workflows/dotnet.yml/badge.svg?branch=main" alt="Build and test status" height="20"></a>
+          <a href="https://github.com/tedd/Tedd.RTree/actions/workflows/pages.yml" aria-label="GitHub Pages deployment status"><img src="https://github.com/tedd/Tedd.RTree/actions/workflows/pages.yml/badge.svg?branch=deploy" alt="Pages deployment status" height="20"></a>
+          <a href="https://github.com/tedd/Tedd.RTree" aria-label="GitHub source repository"><img src="https://img.shields.io/badge/GitHub-source-24292f?logo=github" alt="GitHub source" width="121" height="20"></a>
+        </div>
         <div class="hero-actions">
           <a class="button primary" href="#examples">See the API <span aria-hidden="true">↓</span></a>
           <a class="button secondary" href="https://github.com/tedd/Tedd.RTree">Browse source <span aria-hidden="true">↗</span></a>
@@ -140,7 +147,38 @@ int added = tree.Search(new Rectangle(3, 3, 6, 6), results);
 // added == 2</code></pre>
         </article>
       </div>
-      <div class="source-note"><div><strong>Use from source</strong><p>The repository currently provides a .NET 10 project. Clone it and add a project reference to <code>src/Tedd.RTree/Tedd.RTree.csproj</code>.</p></div><a href="https://github.com/tedd/Tedd.RTree#build-and-validation">Build instructions <span aria-hidden="true">↗</span></a></div>
+      <div class="source-note"><div><strong>Install from NuGet</strong><p>Run <code>dotnet add package Tedd.RTree</code> in a .NET 10 project.</p></div><a href="https://www.nuget.org/packages/Tedd.RTree">Package details <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="section-shell examples-section" id="moving">
+      <div class="section-intro">
+        <div><p class="eyebrow">Moving entries</p><h2>Choose when moves become visible.</h2></div>
+        <p>Publish a complete batch when most entries move together. Use individual moves when each change must be visible before the next search. At 10,000 entries, rebuilding took 1.75 ms; moving all entries individually took 14.77 ms in the local update benchmark.</p>
+      </div>
+      <div class="example-grid">
+        <article class="code-window">
+          <div class="window-bar"><span></span><span></span><span></span><b>PublishedBatch.cs</b><button type="button" data-copy-target="snapshot-code" aria-label="Copy published batch example">Copy</button></div>
+          <pre><code id="snapshot-code">using Tedd.RTree;
+
+var index = new SnapshotRTree&lt;int&gt;();
+index.ReplaceAll(new[]
+{
+    new SpatialEntry&lt;int&gt;(new Rectangle(0, 0, 10, 10), 42)
+});
+
+List&lt;int&gt; matches = index.Search(new Rectangle(5, 5, 6, 6));</code></pre>
+        </article>
+        <article class="code-window">
+          <div class="window-bar"><span></span><span></span><span></span><b>ImmediateMove.cs</b><button type="button" data-copy-target="move-code" aria-label="Copy immediate move example">Copy</button></div>
+          <pre><code id="move-code">using Tedd.RTree;
+
+using var index = new ConcurrentRTree&lt;int&gt;();
+index.Add(new Rectangle(0, 0, 10, 10), 42);
+index.Move(42, new Rectangle(20, 20, 30, 30));
+
+List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></pre>
+        </article>
+      </div>
     </section>
 
     <section class="section-shell benchmark-section" id="benchmarks">
@@ -187,9 +225,9 @@ int added = tree.Search(new Rectangle(3, 3, 6, 6), results);
       <div><p class="eyebrow">API boundaries</p><h2>Use the tree for the work it supports.</h2></div>
       <div class="boundary-list">
         <p><strong>Geometry.</strong> Coordinates must be finite and ordered. Rectangles are two-dimensional and axis-aligned. Search includes boundary contact.</p>
-        <p><strong>Updates.</strong> <code>BulkLoad</code> requires an empty tree. Individual inserts can follow. Deletion is not implemented.</p>
-        <p><strong>Concurrency.</strong> The tree does not synchronize access. Do not mutate it concurrently or during a search.</p>
-        <p><strong>Source availability.</strong> The repository is licensed under LGPL-2.1. The current repository does not provide a Tedd.RTree NuGet package.</p>
+        <p><strong>Updates.</strong> <code>BulkLoad</code> requires an empty tree. Individual inserts, removals, and moves can follow. When most entries move together, rebuilding a packed tree is faster than moving each entry in place on the measured 10,000-entry fixture.</p>
+        <p><strong>Concurrency.</strong> The basic tree permits simultaneous searches while it remains unchanged, with a separate result list per caller. <code>SnapshotRTree</code> publishes complete batches for lock-free searches. <code>ConcurrentRTree</code> makes individual moves immediately visible under a reader/writer lock. <a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/CONCURRENCY.md">Measured costs</a>.</p>
+        <p><strong>Licence and package.</strong> The repository and NuGet package use LGPL-2.1. The package targets .NET 10.</p>
       </div>
     </section>
   </main>

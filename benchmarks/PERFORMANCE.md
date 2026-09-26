@@ -1,5 +1,8 @@
 # R-tree performance record
 
+For later tests of caller-owned scratch, query caching, SIMD scans, and bitmap compaction, see [the hypothesis record](HYPOTHESES.md).
+For parallel searches and moving-entry concurrency, see [the concurrency record](CONCURRENCY.md).
+
 ## Reproduce
 
 ```powershell
@@ -8,7 +11,7 @@ dotnet run --project tests/Tedd.RTree.Tests/Tedd.RTree.Tests.csproj -c Release -
 dotnet run --project benchmarks/Tedd.RTree.Benchmarks/Tedd.RTree.Benchmarks.csproj -c Release --no-build -- --filter '*SpatialBenchmarks*'
 ```
 
-The focused final comparison used the same command with these filters: `*Build_Tedd_Bulk*`, `*Build_RBush_Bulk*`, `*Build_Nts*`, `*Query_Tedd_Bulk*`, `*Query_RBush_Bulk*`, `*Query_Nts*`. Raw BenchmarkDotNet exports are in [results](results/); [final-comparison.csv](results/final-comparison.csv) contains the current bulk build and query comparisons. Earlier experiments retain their own CSV files and source snapshots. The uncommitted baseline is rooted at Git commit `e10fd47`. SHA-256 of the final `RTree.cs` is `8257D94C6B795CCC14854F79319298132DAC17E5EF7977E6D31C297ED07E56CA`; the benchmark fixture is `D79F6D7C5B0A3D21F16840CA722BE7E363A33BBC182695DF03D639128CB1C78B`.
+The focused final comparison used the same command with these filters: `*Build_Tedd_Bulk*`, `*Build_RBush_Bulk*`, `*Build_Nts*`, `*Query_Tedd_Bulk*`, `*Query_RBush_Bulk*`, `*Query_Nts*`. Raw BenchmarkDotNet exports are in [results](results/); [final-comparison.csv](results/final-comparison.csv) contains the bulk build and query comparisons. Earlier experiments retain their own CSV files and source snapshots. The starting repository commit was `e10fd47`. SHA-256 of `RTree.cs` when this comparison was recorded was `8257D94C6B795CCC14854F79319298132DAC17E5EF7977E6D31C297ED07E56CA`; the benchmark fixture was `D79F6D7C5B0A3D21F16840CA722BE7E363A33BBC182695DF03D639128CB1C78B`.
 
 Measured on Windows 10.0.26200, AMD Ryzen 9 5950X, x64, .NET 10.0.12 RyuJIT, Concurrent Workstation GC. SDK 10.0.401 and BenchmarkDotNet 0.15.8. Default tiering and dynamic PGO were left enabled. Each ShortRun job used one launch, three warmups, and three measured iterations. No affinity or power-policy control was imposed. Results are local estimates, not cross-machine guarantees.
 

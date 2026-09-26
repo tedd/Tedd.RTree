@@ -44,6 +44,12 @@ nav .nav-cta:hover, nav .nav-cta:focus-visible { color: #fff; background: var(--
 h1 { margin: 0; font: 700 clamp(3.3rem,5vw,6rem)/.99 var(--display); letter-spacing: -.065em; }
 h1 em { color: var(--aqua); font-style: normal; }
 .lede { max-width: 570px; margin: 2rem 0 0; color: #536970; font-size: clamp(1rem,1.25vw,1.15rem); }
+.hero-evidence { max-width: 570px; margin: 1.2rem 0 0; color: #536970; font-size: .85rem; }
+.hero-evidence strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+.hero-evidence a { color: var(--aqua-dark); text-decoration: underline; text-underline-offset: 3px; }
+.hero-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin-top: 1.4rem; }
+.hero-badges a { display: inline-flex; min-height: 24px; align-items: center; }
+.hero-badges img { max-width: none; height: 20px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
 .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; min-width: 160px; padding: .85rem 1.1rem; font: 600 .84rem var(--display); border: 1px solid var(--aqua); }
 .button.primary { color: #fff; background: var(--aqua); }
