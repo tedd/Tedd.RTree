@@ -19,9 +19,31 @@ concurrency:
 jobs:
   build-test:
     runs-on: windows-latest
+    outputs:
+      package_changed: ${{ steps.package_changes.outputs.changed }}
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Detect package changes
+        id: package_changes
+        if: github.event_name == 'push'
+        shell: pwsh
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          if ($env:BEFORE_SHA -eq ('0' * 40)) {
+            "changed=true" >> $env:GITHUB_OUTPUT
+            exit 0
+          }
+          $paths = git diff --name-only $env:BEFORE_SHA $env:GITHUB_SHA -- src/Tedd.RTree README.md LICENSE
+          if ($LASTEXITCODE -ne 0) {
+            throw "Could not determine package changes."
+          }
+          $changed = if ($paths) { 'true' } else { 'false' }
+          "changed=$changed" >> $env:GITHUB_OUTPUT
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
@@ -42,7 +64,7 @@ jobs:
 
   publish:
     needs: build-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/deploy'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/deploy' && needs.build-test.outputs.package_changed == 'true'
     runs-on: windows-latest
     permissions:
       contents: write

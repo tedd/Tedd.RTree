@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Tedd.RTree;
 
 /// <summary>Reusable scratch arrays for bulk loading one tree at a time.</summary>
@@ -7,6 +9,10 @@ public sealed class BulkLoadWorkspace
     internal int[] Order;
     internal double[] XCenters;
     internal double[] YCenters;
+    internal BigInteger[]? XIntegerCenters;
+    internal BigInteger[]? YIntegerCenters;
+    internal BigInteger[]? ZIntegerCenters;
+    internal double[]? ZCenters;
 
     /// <param name="capacity">Initial number of entries the workspace can accommodate.</param>
     public BulkLoadWorkspace(int capacity = 0)
@@ -29,5 +35,21 @@ public sealed class BulkLoadWorkspace
         Order = order;
         XCenters = xCenters;
         YCenters = yCenters;
+    }
+
+    internal void EnsureIntegerCapacity(int count, bool threeDimensional)
+    {
+        if (XIntegerCenters is null || XIntegerCenters.Length < count)
+            XIntegerCenters = new BigInteger[count];
+        if (YIntegerCenters is null || YIntegerCenters.Length < count)
+            YIntegerCenters = new BigInteger[count];
+        if (threeDimensional && (ZIntegerCenters is null || ZIntegerCenters.Length < count))
+            ZIntegerCenters = new BigInteger[count];
+    }
+
+    internal void EnsureZCapacity(int count)
+    {
+        if (ZCenters is null || ZCenters.Length < count)
+            ZCenters = new double[count];
     }
 }

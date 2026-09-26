@@ -1,6 +1,6 @@
 # Tedd.RTree
 
-A mutable, two-dimensional R-tree for .NET 10. It indexes axis-aligned rectangles and returns items whose bounds intersect a query rectangle. Boundary contact counts as intersection.
+A mutable 2D and 3D R-tree library for .NET 10. It indexes axis-aligned rectangles or boxes and returns items whose bounds intersect a query. Boundary contact counts as intersection.
 
 [Documentation, examples, and benchmark comparison](https://tedd.no/Tedd.RTree/).
 
@@ -29,6 +29,22 @@ packed.BulkLoad(new[]
 
 `Search` appends to the supplied list and returns the number appended. `Search(bounds)` creates and returns a list. Result order is unspecified. Entries may have duplicate bounds or values. Coordinates must be finite and ordered. `Clear` discards the index. `BulkLoad` uses Sort-Tile-Recursive packing on an empty tree; later individual inserts, removals, and moves are supported. `Remove(bounds, item)` removes one matching entry; `Update(oldBounds, item, newBounds)` moves one matching entry. Concurrent searches on an unchanged tree are safe when each search uses its own result list. Mutation during a search is not safe.
 
+## Coordinate types and 3D bounds
+
+The original `Rectangle`, `RTree<T>`, `SnapshotRTree<T>`, and `ConcurrentRTree<T>` APIs remain available for two-dimensional `double` coordinates. The coordinate-generic 2D APIs use `Rectangle2D<TCoordinate>`, `RTree2D<TCoordinate, T>`, `SnapshotRTree2D<TCoordinate, T>`, and `ConcurrentRTree2D<TCoordinate, T>`. The corresponding 3D APIs use `Box<TCoordinate>`, `RTree3D<TCoordinate, T>`, `SnapshotRTree3D<TCoordinate, T>`, and `ConcurrentRTree3D<TCoordinate, T>`. Bulk loading accepts `SpatialEntry2D<TCoordinate, T>` in 2D and `SpatialEntry3D<TCoordinate, T>` in 3D. Both dimensions accept a `BulkLoadWorkspace` for reusable sorting scratch.
+
+```csharp
+var voxels = new RTree3D<int, int>();
+voxels.Insert(new Box<int>(10, 20, 30, 10, 20, 30), item: 42);
+List<int> atVoxel = voxels.Search(new Box<int>(10, 20, 30, 10, 20, 30));
+
+var largeWorld = new RTree3D<long, string>();
+largeWorld.Insert(new Box<long>(9_007_199_254_740_993, 0, 0,
+                               9_007_199_254_740_993, 0, 0), "origin");
+```
+
+Bounds include their edges and faces. Represent a single voxel position with equal minimum and maximum coordinates, as above. Unit boxes specified as `[x, x + 1]` touch their neighbors and therefore intersect under this API. `int` and `long` searches, node metrics, and bulk-load sort keys use exact integer arithmetic; integer bounds are never converted to floating point. `float` and `double` use floating-point metrics. Integer node construction uses `BigInteger` for overflow-safe area and volume calculations, so smaller bounds can improve query memory use while making bulk construction costlier. Measure the intended build-to-query ratio before selecting a coordinate type for speed alone.
+
 For repeated bulk builds from a `SpatialEntry<int>[] entries` batch, a caller can reuse sorting scratch without changing result semantics:
 
 ```csharp
@@ -37,7 +53,7 @@ var tree = new RTree<int>();
 tree.BulkLoad(entries, workspace);
 ```
 
-The workspace retains approximately 20 bytes per reserved entry in three primitive arrays. Do not use one workspace concurrently for multiple builds. It reduces repeated allocation; the measured build time did not materially change. A caller-owned result list can likewise be reused across searches with `Search(bounds, results)`.
+For the original 2D `double` tree, the workspace retains approximately 20 bytes per reserved entry in three primitive arrays. Generic integer builds retain additional exact sort keys; 3D builds retain a third coordinate axis. Do not use one workspace concurrently for multiple builds. It reduces repeated allocation; the measured build time of the original tree did not materially change. A caller-owned result list can likewise be reused across searches with `Search(bounds, results)`.
 
 ## Concurrent access
 
