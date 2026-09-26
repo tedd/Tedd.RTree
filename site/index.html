@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7faf9">
+  <meta name="description" content="Tedd.RTree is a two-dimensional R-tree for .NET 10 with incremental insertion, STR bulk loading, and rectangle intersection queries.">
+  <meta property="og:title" content="Tedd.RTree — a two-dimensional index for .NET 10">
+  <meta property="og:description" content="A small R-tree API, examples, and measured comparisons with RBush and NetTopologySuite.">
+  <meta property="og:type" content="website">
+  <title>Tedd.RTree — a two-dimensional index for .NET 10</title>
+  <link rel="icon" href="assets/rtree-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Tedd.RTree home">
+      <img src="assets/rtree-icon.svg" width="34" height="34" alt="">
+      <span>TEDD<span class="brand-slash">/</span>RTREE</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#model">Model</a>
+      <a href="#examples">Examples</a>
+      <a href="#benchmarks">Benchmarks</a>
+      <a class="nav-cta" href="https://github.com/tedd/Tedd.RTree">Source <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Two-dimensional spatial index · .NET 10</p>
+        <h1>Rectangles in.<br><em>Matches out.</em></h1>
+        <p class="lede">Tedd.RTree stores values against axis-aligned rectangles. Insert entries individually or bulk load a packed tree, then search for rectangles that intersect a query. Boundary contact counts as an intersection.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#examples">See the API <span aria-hidden="true">↓</span></a>
+          <a class="button secondary" href="https://github.com/tedd/Tedd.RTree">Browse source <span aria-hidden="true">↗</span></a>
+        </div>
+        <ul class="hero-checks" aria-label="Library characteristics">
+          <li>.NET 10</li>
+          <li>Double precision bounds</li>
+          <li>LGPL-2.1</li>
+        </ul>
+      </div>
+
+      <figure class="index-figure">
+        <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span><b>Rectangle index · intersection query</b><i>2D</i></div>
+        <div class="diagram-panel">
+          <div class="diagram-heading"><span>SPATIAL VIEW</span><strong>One query, four matches</strong></div>
+          <svg class="spatial-diagram" viewBox="0 0 520 325" role="img" aria-labelledby="diagram-title diagram-desc">
+            <title id="diagram-title">R-tree rectangle intersection diagram</title>
+            <desc id="diagram-desc">A root bounding rectangle contains two leaf groups and six numbered item rectangles. The amber query intersects items 1, 2, 4, and 5. It touches item 1 at its edge.</desc>
+            <defs>
+              <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M 25 0 L 0 0 0 25" fill="none" stroke="#294249" stroke-width="1" opacity=".42"/></pattern>
+            </defs>
+            <rect x="0" y="0" width="520" height="325" fill="url(#grid)"/>
+            <rect class="root-box" x="45" y="32" width="425" height="258" rx="7"/>
+            <text class="svg-note" x="54" y="26">ROOT BOUNDS</text>
+            <rect class="group-box group-a" x="75" y="55" width="180" height="160" rx="5"/>
+            <rect class="group-box group-b" x="250" y="75" width="190" height="200" rx="5"/>
+            <text class="svg-note group-label" x="84" y="72">LEAF A</text>
+            <text class="svg-note group-label" x="259" y="92">LEAF B</text>
+            <g class="item hit"><rect x="95" y="80" width="85" height="55" rx="3"/><text x="104" y="113">01</text></g>
+            <g class="item hit"><rect x="145" y="150" width="80" height="40" rx="3"/><text x="154" y="176">02</text></g>
+            <g class="item"><rect x="95" y="170" width="40" height="35" rx="3"/><text x="101" y="193">03</text></g>
+            <g class="item hit"><rect x="275" y="105" width="90" height="45" rx="3"/><text x="284" y="134">04</text></g>
+            <g class="item hit"><rect x="320" y="185" width="70" height="60" rx="3"/><text x="329" y="220">05</text></g>
+            <g class="item"><rect x="390" y="155" width="40" height="35" rx="3"/><text x="396" y="179">06</text></g>
+            <rect class="query-box" x="180" y="100" width="160" height="130" rx="4"/>
+            <text class="query-label" x="188" y="224">QUERY</text>
+          </svg>
+          <div class="diagram-legend" aria-hidden="true">
+            <span><i class="legend-group"></i>Node bounds</span>
+            <span><i class="legend-item"></i>Entry</span>
+            <span><i class="legend-query"></i>Query area</span>
+          </div>
+          <div class="diagram-result"><span>INTERSECTING ENTRIES</span><strong>01 · 02 · 04 · 05</strong></div>
+        </div>
+        <figcaption>Node bounds prune the search. Entries are returned when their rectangles intersect the query, including edge contact.</figcaption>
+      </figure>
+    </section>
+
+    <section class="fact-strip" aria-label="Technical characteristics">
+      <p><strong>Incremental insertion</strong><span>Least enlargement selection and quadratic node splits</span></p>
+      <p><strong>Bulk loading</strong><span>Sort-Tile-Recursive packing on an empty tree</span></p>
+      <p><strong>Inclusive search</strong><span>Rectangles touching at an edge are included</span></p>
+      <p><strong>Result ownership</strong><span>Return a list or append to a caller-owned list</span></p>
+    </section>
+
+    <section class="section-shell model-section" id="model">
+      <div class="section-intro">
+        <div><p class="eyebrow">Index model</p><h2>Two ways to build one tree.</h2></div>
+        <p>The public API keeps geometry and storage separate. A <code>Rectangle</code> carries finite, ordered coordinates; a <code>SpatialEntry&lt;T&gt;</code> pairs bounds with a value.</p>
+      </div>
+      <div class="model-grid">
+        <article class="model-card"><span class="step">01 / Incremental</span><h3><code>Insert(bounds, item)</code></h3><p>Use individual insertion when entries arrive over time. The tree selects a leaf by bounding-box enlargement and splits full nodes.</p></article>
+        <article class="model-card"><span class="step">02 / Batch</span><h3><code>BulkLoad(entries)</code></h3><p>Pack a complete batch with Sort-Tile-Recursive ordering. Bulk loading requires an empty tree. Individual inserts remain available afterwards.</p></article>
+        <article class="model-card"><span class="step">03 / Query</span><h3><code>Search(bounds)</code></h3><p>Return the values whose rectangles intersect the query. Supply a list to reuse its storage across repeated searches.</p></article>
+      </div>
+      <p class="model-note">Node capacity is configurable from 4 to 128 entries; the default is 16. Result order is unspecified.</p>
+    </section>
+
+    <section class="section-shell examples-section" id="examples">
+      <div class="section-intro">
+        <div><p class="eyebrow">C# examples</p><h2>Store, search, reuse.</h2></div>
+        <p>Both examples use the current .NET 10 API. The first returns a new result list; the second appends to a list owned by the caller.</p>
+      </div>
+      <div class="example-grid">
+        <article class="code-window">
+          <div class="window-bar"><span></span><span></span><span></span><b>Incremental.cs</b><button type="button" data-copy-target="insert-code" aria-label="Copy incremental insertion example">Copy</button></div>
+          <pre><code id="insert-code">using Tedd.RTree;
+
+var tree = new RTree&lt;string&gt;(maxEntries: 16);
+tree.Insert(new Rectangle(0, 0, 10, 10), "A");
+tree.Insert(new Rectangle(20, 20, 30, 30), "B");
+
+List&lt;string&gt; matches = tree.Search(
+    new Rectangle(8, 8, 12, 12));
+// matches contains "A"</code></pre>
+        </article>
+        <article class="code-window">
+          <div class="window-bar"><span></span><span></span><span></span><b>BulkLoad.cs</b><button type="button" data-copy-target="bulk-code" aria-label="Copy bulk loading example">Copy</button></div>
+          <pre><code id="bulk-code">using Tedd.RTree;
+
+var entries = new[]
+{
+    new SpatialEntry&lt;int&gt;(new Rectangle(0, 0, 4, 4), 1),
+    new SpatialEntry&lt;int&gt;(new Rectangle(5, 5, 9, 9), 2)
+};
+
+var tree = new RTree&lt;int&gt;();
+tree.BulkLoad(entries);
+
+var results = new List&lt;int&gt;();
+int added = tree.Search(new Rectangle(3, 3, 6, 6), results);
+// added == 2</code></pre>
+        </article>
+      </div>
+      <div class="source-note"><div><strong>Use from source</strong><p>The repository currently provides a .NET 10 project. Clone it and add a project reference to <code>src/Tedd.RTree/Tedd.RTree.csproj</code>.</p></div><a href="https://github.com/tedd/Tedd.RTree#build-and-validation">Build instructions <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="section-shell benchmark-section" id="benchmarks">
+      <div class="section-intro">
+        <div><p class="eyebrow">Local benchmark · lower is better</p><h2>Bulk build and query cost.</h2></div>
+        <p>These are measured results for this fixture, not a general ranking. The comparison uses Tedd.RTree bulk loading, RBush bulk loading, and NetTopologySuite STRtree.</p>
+      </div>
+
+      <div class="chart-grid" aria-label="10,000 uniform rectangle benchmark comparison">
+        <figure class="bar-chart"><figcaption><span>10,000 uniform rectangles</span><strong>Build time</strong><small>Milliseconds · lower is better</small></figcaption>
+          <div class="bar-row"><span>Tedd.RTree</span><div class="bar-track"><i class="bar ours" style="width:49%"></i></div><b>2.30</b></div>
+          <div class="bar-row"><span>RBush bulk</span><div class="bar-track"><i class="bar rbush" style="width:100%"></i></div><b>4.73</b></div>
+          <div class="bar-row"><span>NTS STRtree</span><div class="bar-track"><i class="bar nts" style="width:81%"></i></div><b>3.83</b></div>
+        </figure>
+        <figure class="bar-chart"><figcaption><span>Same index · 64 windows</span><strong>Query time</strong><small>Microseconds · lower is better</small></figcaption>
+          <div class="bar-row"><span>Tedd.RTree</span><div class="bar-track"><i class="bar ours" style="width:22%"></i></div><b>14.41</b></div>
+          <div class="bar-row"><span>RBush bulk</span><div class="bar-track"><i class="bar rbush" style="width:53%"></i></div><b>33.89</b></div>
+          <div class="bar-row"><span>NTS STRtree</span><div class="bar-track"><i class="bar nts" style="width:100%"></i></div><b>64.38</b></div>
+        </figure>
+      </div>
+
+      <div class="results-panel">
+        <div class="results-heading"><h3>All measured fixtures</h3><p>Mean per build or per batch of 64 queries. The Tedd.RTree query creates a result list.</p></div>
+        <div class="table-scroll"><table>
+          <caption>Bulk construction and intersection query times against RBush 4.0.0 and NetTopologySuite 2.6.0</caption>
+          <thead><tr><th scope="col">Entries</th><th scope="col">Distribution</th><th scope="col">Operation</th><th scope="col">Tedd.RTree</th><th scope="col">RBush</th><th scope="col">NTS</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1,000</th><td>Clustered</td><td>Build</td><td class="best">0.102 ms</td><td>0.216 ms</td><td>0.221 ms</td></tr>
+            <tr><th scope="row">1,000</th><td>Uniform</td><td>Build</td><td class="best">0.085 ms</td><td>0.288 ms</td><td>0.270 ms</td></tr>
+            <tr><th scope="row">10,000</th><td>Clustered</td><td>Build</td><td class="best">2.564 ms</td><td>4.469 ms</td><td>3.657 ms</td></tr>
+            <tr><th scope="row">10,000</th><td>Uniform</td><td>Build</td><td class="best">2.299 ms</td><td>4.725 ms</td><td>3.832 ms</td></tr>
+            <tr class="table-divider"><th scope="row">1,000</th><td>Clustered</td><td>64 queries</td><td class="best">1.74 µs</td><td>4.10 µs</td><td>2.62 µs</td></tr>
+            <tr><th scope="row">1,000</th><td>Uniform</td><td>64 queries</td><td class="best">5.67 µs</td><td>11.63 µs</td><td>16.33 µs</td></tr>
+            <tr><th scope="row">10,000</th><td>Clustered</td><td>64 queries</td><td class="best">4.81 µs</td><td>10.93 µs</td><td>14.91 µs</td></tr>
+            <tr><th scope="row">10,000</th><td>Uniform</td><td>64 queries</td><td class="best">14.41 µs</td><td>33.89 µs</td><td>64.38 µs</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <p class="benchmark-method">AMD Ryzen 9 5950X · Windows · .NET 10.0.12 · BenchmarkDotNet 0.15.8 · three measured iterations. Rectangles and package adapter objects were prepared outside the timed operations. Query results were counted. STRtree is built once and does not accept later inserts; Tedd.RTree and RBush do. These figures do not include input creation, deletion, concurrent use, or larger data sets.</p>
+      <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PERFORMANCE.md">Method and interpretation <span aria-hidden="true">↗</span></a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/final-comparison.csv">Raw BenchmarkDotNet CSV <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="section-shell boundaries-section" id="limits">
+      <div><p class="eyebrow">API boundaries</p><h2>Use the tree for the work it supports.</h2></div>
+      <div class="boundary-list">
+        <p><strong>Geometry.</strong> Coordinates must be finite and ordered. Rectangles are two-dimensional and axis-aligned. Search includes boundary contact.</p>
+        <p><strong>Updates.</strong> <code>BulkLoad</code> requires an empty tree. Individual inserts can follow. Deletion is not implemented.</p>
+        <p><strong>Concurrency.</strong> The tree does not synchronize access. Do not mutate it concurrently or during a search.</p>
+        <p><strong>Source availability.</strong> The repository is licensed under LGPL-2.1. The current repository does not provide a Tedd.RTree NuGet package.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#top"><img src="assets/rtree-icon.svg" width="28" height="28" alt=""><span>TEDD<span class="brand-slash">/</span>RTREE</span></a>
+    <p>A two-dimensional R-tree for .NET 10.</p>
+    <div><a href="https://github.com/tedd/Tedd.RTree">Source</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PERFORMANCE.md">Benchmarks</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/LICENSE">LGPL-2.1</a></div>
+  </footer>
+</body>
+</html>
