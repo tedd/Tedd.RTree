@@ -2,7 +2,7 @@
 
 A mutable, two-dimensional R-tree for .NET 10. It indexes axis-aligned rectangles and returns items whose bounds intersect a query rectangle. Boundary contact counts as intersection.
 
-[Documentation, examples, and benchmark comparison](https://tedd.github.io/Tedd.RTree/).
+[Documentation, examples, and benchmark comparison](https://tedd.no/Tedd.RTree/).
 
 ```csharp
 using Tedd.RTree;
