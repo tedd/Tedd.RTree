@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7faf9">
-  <meta name="description" content="Tedd.RTree is a highly optimised R-tree library for .NET 10. It supports bulk loading, moving entries, and rectangle intersection queries, with measured comparisons against RBush and NetTopologySuite.">
+  <meta name="description" content="Tedd.RTree indexes 2D rectangles and 3D boxes with int, long, float, or double coordinates in .NET 10. It supports bulk loading, moving entries, and concurrent search options.">
   <meta property="og:title" content="Tedd.RTree — an R-tree library for .NET 10">
-  <meta property="og:description" content="A highly optimised spatial index with examples and measured comparisons against RBush and NetTopologySuite.">
+  <meta property="og:description" content="2D and 3D spatial indexes with generic numeric coordinates, bulk loading, and concurrent search options.">
   <meta property="og:type" content="website">
   <title>Tedd.RTree — an R-tree library for .NET 10</title>
   <link rel="icon" href="assets/rtree-icon.svg" type="image/svg+xml">
@@ -35,8 +35,8 @@
       <div class="hero-copy">
         <p class="eyebrow"><span></span> Highly optimised spatial indexing</p>
         <h1>R-tree library<br><em>for .NET 10.</em></h1>
-        <p class="lede">Tedd.RTree indexes axis-aligned rectangles for intersection queries. It supports individual updates, packed bulk loading, and two concurrent update models.</p>
-        <p class="hero-evidence">In our measured 10,000-entry uniform fixture, bulk build took <strong>2.30 ms</strong> versus 4.73 ms for RBush and 3.83 ms for NTS STRtree. A batch of 64 queries took <strong>14.41 µs</strong> versus 33.89 µs and 64.38 µs. <a href="#benchmarks">See the benchmark conditions</a>.</p>
+        <p class="lede">Tedd.RTree indexes axis-aligned 2D rectangles and 3D boxes for intersection queries. Choose <code>int</code>, <code>long</code>, <code>float</code>, or <code>double</code> coordinates, with individual updates, packed bulk loading, and two concurrent update models.</p>
+        <p class="hero-evidence">In our measured 10,000-entry 2D <code>double</code> fixture, bulk build took <strong>2.30 ms</strong> versus 4.73 ms for RBush and 3.83 ms for NTS STRtree. A batch of 64 queries took <strong>14.41 µs</strong> versus 33.89 µs and 64.38 µs. <a href="#benchmarks">See the benchmark conditions</a>.</p>
         <div class="hero-badges" aria-label="Package and repository status">
           <a href="https://www.nuget.org/packages/Tedd.RTree" aria-label="Tedd.RTree on NuGet"><img src="https://img.shields.io/nuget/v/Tedd.RTree?logo=nuget&amp;label=NuGet" alt="NuGet package version" height="20"></a>
           <a href="https://github.com/tedd/Tedd.RTree/actions/workflows/dotnet.yml" aria-label="GitHub Actions build and test status"><img src="https://github.com/tedd/Tedd.RTree/actions/workflows/dotnet.yml/badge.svg?branch=main" alt="Build and test status" height="20"></a>
@@ -49,7 +49,7 @@
         </div>
         <ul class="hero-checks" aria-label="Library characteristics">
           <li>.NET 10</li>
-          <li>Double precision bounds</li>
+          <li>2D and 3D bounds</li>
           <li>LGPL-2.1</li>
         </ul>
       </div>
@@ -94,18 +94,18 @@
     <section class="fact-strip" aria-label="Technical characteristics">
       <p><strong>Incremental insertion</strong><span>Least enlargement selection and quadratic node splits</span></p>
       <p><strong>Bulk loading</strong><span>Sort-Tile-Recursive packing on an empty tree</span></p>
-      <p><strong>Inclusive search</strong><span>Rectangles touching at an edge are included</span></p>
+      <p><strong>Inclusive search</strong><span>Boundary contact is included in 2D and 3D</span></p>
       <p><strong>Result ownership</strong><span>Return a list or append to a caller-owned list</span></p>
     </section>
 
     <section class="section-shell model-section" id="model">
       <div class="section-intro">
         <div><p class="eyebrow">Choose an index</p><h2>Three APIs. Three update contracts.</h2></div>
-        <p>The difference is when a search can see a change. All three index two-dimensional rectangles and return values whose bounds intersect a query.</p>
+        <p>The difference is when a search can see a change. Each update model supports coordinate-generic 2D and 3D bounds.</p>
       </div>
       <div class="api-table-wrap">
         <table class="api-table">
-          <caption>How the three two-dimensional index types handle changes and searches</caption>
+          <caption>How the three index types handle changes and searches</caption>
           <thead><tr><th scope="col">Type</th><th scope="col">How to change it</th><th scope="col">What a search sees</th><th scope="col">Use when</th></tr></thead>
           <tbody>
             <tr><th scope="row"><code>RTree&lt;T&gt;</code><span>Plain tree</span></th><td>Insert, remove, or move entries directly. Bulk load an empty tree.</td><td>Current contents. Do not change the tree while any search is running.</td><td>One caller controls changes, or your application provides its own synchronisation.</td></tr>
@@ -119,13 +119,13 @@
         <article class="api-detail"><span class="step">02 / Concurrent</span><h3><code>ConcurrentRTree&lt;T&gt;</code></h3><p>Call <code>Add</code>, <code>Move(item, newBounds)</code>, or <code>Remove(item)</code>; an empty index also accepts an initial <code>BulkLoad</code>. Values are unique, stable keys. A write holds the lock until it completes; later searches see the new position. Dispose the index after callers stop using it.</p></article>
         <article class="api-detail"><span class="step">03 / Snapshot</span><h3><code>SnapshotRTree&lt;T&gt;</code></h3><p>Call <code>ReplaceAll(entries)</code> with every current position. The next tree is built separately, then published. Searches remain lock-free and never traverse a partly built tree. Old versions may remain while searches finish; the GC reclaims them later.</p></article>
       </div>
-      <p class="model-note"><strong>Shared types.</strong> <code>Rectangle</code> stores finite, ordered 2D bounds; <code>SpatialEntry&lt;T&gt;</code> pairs bounds with a value. <code>Search(bounds)</code> returns a new list, while <code>Search(bounds, results)</code> appends to a caller-owned list. Each simultaneous search needs its own list. <code>BulkLoadWorkspace</code> is optional reusable sorting storage for repeated plain-tree bulk loads. Result order is unspecified.</p>
+      <p class="model-note"><strong>Coordinate variants.</strong> Use <code>RTree2D&lt;TCoordinate, T&gt;</code> with <code>Rectangle2D&lt;TCoordinate&gt;</code>, or <code>RTree3D&lt;TCoordinate, T&gt;</code> with <code>Box&lt;TCoordinate&gt;</code>. The snapshot and concurrent variants follow the same 2D/3D names. A voxel at (x, y, z) is a point query with <code>new Box&lt;int&gt;(x, y, z, x, y, z)</code>. The original unsuffixed types remain available for 2D <code>double</code> coordinates. <code>Search(bounds)</code> returns a list; <code>Search(bounds, results)</code> appends to a caller-owned list. Each simultaneous search needs its own list. Result order is unspecified.</p>
     </section>
 
     <section class="section-shell examples-section" id="examples">
       <div class="section-intro">
         <div><p class="eyebrow">C# examples</p><h2>Store, search, reuse.</h2></div>
-        <p>Both examples use the current .NET 10 API. The first returns a new result list; the second appends to a list owned by the caller.</p>
+        <p>These examples use the original 2D <code>double</code> API. The first returns a new result list; the second appends to a list owned by the caller.</p>
       </div>
       <div class="example-grid">
         <article class="code-window">
@@ -232,12 +232,55 @@ List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></p
       </div>
       <p class="benchmark-method">AMD Ryzen 9 5950X · Windows · .NET 10.0.12 · BenchmarkDotNet 0.15.8 · three measured iterations. Rectangles and package adapter objects were prepared outside the timed operations. Query results were counted. STRtree is built once and does not accept later inserts; Tedd.RTree and RBush do. These figures do not include input creation, deletion, concurrent use, or larger data sets.</p>
       <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PERFORMANCE.md">Method and interpretation <span aria-hidden="true">↗</span></a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/final-comparison.csv">Raw BenchmarkDotNet CSV <span aria-hidden="true">↗</span></a></div>
+
+      <div class="coordinate-benchmark">
+        <h3>Coordinate type comparison</h3>
+        <p>Each index holds 10,000 unit bounds at the same integer-valued positions. The generic variants use <code>int</code>, <code>long</code>, <code>float</code>, or <code>double</code> coordinates. Times are means ± sample standard deviation; lower is better within the same dimension and query kind.</p>
+        <div class="results-panel">
+          <div class="results-heading"><h3>Intersection queries</h3><p>64 windows per operation · reused result list · zero measured allocation</p></div>
+          <div class="table-scroll"><table>
+            <caption>Query time by coordinate type for 10,000 unit bounds</caption>
+            <thead><tr><th scope="col">Dimension</th><th scope="col">Coordinates</th><th scope="col">64 point queries</th><th scope="col">64 region queries</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">2D</th><td>Original double API</td><td>8.34 ± 0.32 µs</td><td>47.27 ± 3.30 µs</td></tr>
+              <tr><th scope="row">2D</th><td><code>int</code></td><td>7.85 ± 0.25 µs</td><td>40.26 ± 2.61 µs</td></tr>
+              <tr><th scope="row">2D</th><td><code>long</code></td><td>7.64 ± 0.57 µs</td><td>49.07 ± 14.98 µs</td></tr>
+              <tr><th scope="row">2D</th><td><code>float</code></td><td>7.69 ± 0.77 µs</td><td>38.27 ± 1.32 µs</td></tr>
+              <tr><th scope="row">2D</th><td>Generic <code>double</code></td><td>6.65 ± 0.44 µs</td><td>52.48 ± 3.19 µs</td></tr>
+              <tr class="table-divider"><th scope="row">3D</th><td><code>int</code></td><td>7.82 ± 0.36 µs</td><td>20.90 ± 1.67 µs</td></tr>
+              <tr><th scope="row">3D</th><td><code>long</code></td><td>9.21 ± 1.42 µs</td><td>24.32 ± 3.29 µs</td></tr>
+              <tr><th scope="row">3D</th><td><code>float</code></td><td>11.43 ± 0.32 µs</td><td>28.98 ± 5.12 µs</td></tr>
+              <tr><th scope="row">3D</th><td><code>double</code></td><td>12.57 ± 0.31 µs</td><td>22.99 ± 1.12 µs</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div class="results-panel">
+          <div class="results-heading"><h3>Bulk construction</h3><p>10,000 prepared entries · one packed tree per operation</p></div>
+          <div class="table-scroll"><table>
+            <caption>Build time and managed allocation by coordinate type</caption>
+            <thead><tr><th scope="col">Dimension</th><th scope="col">Coordinates</th><th scope="col">Build time</th><th scope="col">Allocated</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">2D</th><td>Original double API</td><td>1.99 ± 0.07 ms</td><td>1,309 KB</td></tr>
+              <tr><th scope="row">2D</th><td><code>int</code></td><td>2.37 ± 0.07 ms</td><td>1,120 KB</td></tr>
+              <tr><th scope="row">2D</th><td><code>long</code></td><td>2.38 ± 0.04 ms</td><td>1,475 KB</td></tr>
+              <tr><th scope="row">2D</th><td><code>float</code></td><td>1.97 ± 0.10 ms</td><td>953 KB</td></tr>
+              <tr><th scope="row">2D</th><td>Generic <code>double</code></td><td>2.06 ± 0.04 ms</td><td>1,309 KB</td></tr>
+              <tr class="table-divider"><th scope="row">3D</th><td><code>int</code></td><td>3.47 ± 0.09 ms</td><td>1,469 KB</td></tr>
+              <tr><th scope="row">3D</th><td><code>long</code></td><td>3.68 ± 0.05 ms</td><td>2,002 KB</td></tr>
+              <tr><th scope="row">3D</th><td><code>float</code></td><td>2.70 ± 0.07 ms</td><td>1,219 KB</td></tr>
+              <tr><th scope="row">3D</th><td><code>double</code></td><td>2.82 ± 0.07 ms</td><td>1,752 KB</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <p class="benchmark-method">AMD Ryzen 9 5950X · Windows 11 · .NET 10.0.12 · BenchmarkDotNet 0.15.8. Query results use ten measured iterations; builds use five. Geometry creation and tree construction are outside query timing. Integer coordinates remain exact, including <code>long</code> positions above 2<sup>53</sup>. The results describe this fixture; close differences and high-variance cases require measurement in the target application.</p>
+        <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/GENERIC-COORDINATES.md">Fixture and interpretation <span aria-hidden="true">↗</span></a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/generic-coordinates/query-release.csv">Query CSV <span aria-hidden="true">↗</span></a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/generic-coordinates/build-release.csv">Build CSV <span aria-hidden="true">↗</span></a></div>
+      </div>
     </section>
 
     <section class="section-shell boundaries-section" id="limits">
       <div><p class="eyebrow">API boundaries</p><h2>Use the tree for the work it supports.</h2></div>
       <div class="boundary-list">
-        <p><strong>Geometry.</strong> Coordinates must be finite and ordered. Rectangles are two-dimensional and axis-aligned. Search includes boundary contact.</p>
+        <p><strong>Geometry.</strong> Coordinates must be finite and ordered. Rectangles are 2D; boxes are 3D. Both are axis-aligned, and search includes boundary contact. Represent a single voxel position with equal minimum and maximum coordinates.</p>
         <p><strong>Updates.</strong> <code>BulkLoad</code> requires an empty tree. Individual inserts, removals, and moves can follow. When most entries move together, rebuilding a packed tree is faster than moving each entry in place on the measured 10,000-entry fixture.</p>
         <p><strong>Concurrency.</strong> The <a href="#model">API comparison</a> describes the three visibility contracts. <code>SnapshotRTree</code> publishes complete batches for lock-free searches. <code>ConcurrentRTree</code> makes individual moves visible under a reader/writer lock. <a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/CONCURRENCY.md">Measured costs</a>.</p>
         <p><strong>Licence and package.</strong> The repository and NuGet package use LGPL-2.1. The package targets .NET 10.</p>
@@ -247,7 +290,7 @@ List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></p
 
   <footer>
     <a class="brand" href="#top"><img src="assets/rtree-icon.svg" width="28" height="28" alt=""><span>TEDD<span class="brand-slash">/</span>RTREE</span></a>
-    <p>A two-dimensional R-tree for .NET 10.</p>
+    <p>2D and 3D R-trees for .NET 10.</p>
     <div><a href="https://github.com/tedd/Tedd.RTree">Source</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PERFORMANCE.md">Benchmarks</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/LICENSE">LGPL-2.1</a></div>
   </footer>
 </body>
