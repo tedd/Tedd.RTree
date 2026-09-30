@@ -38,7 +38,7 @@ jobs:
             "changed=true" >> $env:GITHUB_OUTPUT
             exit 0
           }
-          $paths = git diff --name-only $env:BEFORE_SHA $env:GITHUB_SHA -- src/Tedd.RTree README.md LICENSE
+          $paths = git diff --name-only $env:BEFORE_SHA $env:GITHUB_SHA -- src/Tedd.RTree README.md LICENSE .github/workflows/nuget-publish.yml
           if ($LASTEXITCODE -ne 0) {
             throw "Could not determine package changes."
           }
