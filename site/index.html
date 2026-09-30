@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7faf9">
-  <meta name="description" content="Tedd.RTree indexes 2D rectangles and 3D boxes with int, long, float, or double coordinates in .NET 10. It supports bulk loading, moving entries, and concurrent search options.">
-  <meta property="og:title" content="Tedd.RTree — an R-tree library for .NET 10">
-  <meta property="og:description" content="2D and 3D spatial indexes with generic numeric coordinates, bulk loading, and concurrent search options.">
+  <meta name="description" content="A high-performance .NET 10 R-tree for 2D and 3D spatial search. Fastest build and aggregate query times among five validated packages in four published fixtures; STR bulk loading and quadratic splits.">
+  <meta property="og:title" content="Tedd.RTree — high-performance spatial indexing for .NET 10">
+  <meta property="og:description" content="Fastest in the published five-package build and query comparison across four fixtures. 2D and 3D R-trees with STR packing, quadratic splits, and concurrent options.">
   <meta property="og:type" content="website">
-  <title>Tedd.RTree — an R-tree library for .NET 10</title>
+  <title>Tedd.RTree — high-performance spatial indexing for .NET 10</title>
   <link rel="icon" href="assets/rtree-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -23,6 +23,7 @@
     </a>
     <nav aria-label="Primary navigation">
       <a href="#model">Choose an API</a>
+      <a href="#algorithms">Algorithms</a>
       <a href="#examples">Examples</a>
       <a href="#benchmarks">Benchmarks</a>
       <a class="nav-cta" href="https://github.com/tedd/Tedd.RTree">Source <span aria-hidden="true">↗</span></a>
@@ -34,8 +35,9 @@
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="eyebrow"><span></span> Highly optimised spatial indexing</p>
-        <h1>R-tree library<br><em>for .NET 10.</em></h1>
+        <h1>Fast spatial search<br><em>for .NET 10.</em></h1>
         <p class="lede">Tedd.RTree indexes axis-aligned 2D rectangles and 3D boxes for intersection queries. Choose <code>int</code>, <code>long</code>, <code>float</code>, or <code>double</code> coordinates, with individual updates, packed bulk loading, and two concurrent update models.</p>
+        <p class="hero-evidence"><strong>Fastest in the published five-package comparison:</strong> lowest measured mean for both bulk construction and aggregate intersection queries in all four 1,000- and 10,000-entry uniform and clustered fixtures. This ranking applies to the tested 2D <code>double</code> workload.</p>
         <p class="hero-evidence">In the measured 10,000-entry uniform fixture, bulk build took <strong>2.15 ms</strong> versus 5.81 ms for RBush and 4.96 ms for NTS STRtree. A batch of 64 queries took <strong>253.94 µs</strong> versus 1148.05 µs and 1777.96 µs. <a href="#benchmarks">See all five packages and benchmark conditions</a>.</p>
         <div class="hero-badges" aria-label="Package and repository status">
           <a href="https://www.nuget.org/packages/Tedd.RTree" aria-label="Tedd.RTree on NuGet"><img src="https://img.shields.io/nuget/v/Tedd.RTree?logo=nuget&amp;label=NuGet" alt="NuGet package version" height="20"></a>
@@ -96,6 +98,19 @@
       <p><strong>Bulk loading</strong><span>Sort-Tile-Recursive packing on an empty tree</span></p>
       <p><strong>Inclusive search</strong><span>Boundary contact is included in 2D and 3D</span></p>
       <p><strong>Result ownership</strong><span>Return a list or append to a caller-owned list</span></p>
+    </section>
+
+    <section class="section-shell algorithms-section" id="algorithms">
+      <div class="section-intro">
+        <div><p class="eyebrow">Under the hood</p><h2>Algorithms built for fast spatial search.</h2></div>
+        <p>The index prunes nonintersecting branches before testing entries. Packed construction and incremental updates use different algorithms for their respective workloads.</p>
+      </div>
+      <div class="algorithm-grid">
+        <article><h3>Sort-Tile-Recursive packing</h3><p><code>BulkLoad</code> sorts entry centers by axis, tiles them into capacity-bounded nodes, then packs parent levels. Use it to build an empty tree from a batch.</p></article>
+        <article><h3>Least enlargement insertion</h3><p>Individual inserts descend through the child whose bounds need the smallest enlargement, breaking ties by current area. Overflow uses quadratic seed selection and distribution.</p></article>
+        <article><h3>Bounded intersection traversal</h3><p>Search skips nodes whose bounds do not intersect the query. Reuse a caller-owned result list to avoid a fresh result collection; <code>SearchBatch</code> processes several queries with caller-owned outputs.</p></article>
+      </div>
+      <p class="algorithm-note">The benchmark ranking measures the original 2D <code>double</code> tree. Coordinate-generic 2D and 3D variants, concurrent updates, and individual query widths have separate performance characteristics. <a href="#benchmarks">Review the measured fixtures and limitations.</a></p>
     </section>
 
     <section class="section-shell model-section" id="model">

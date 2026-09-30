@@ -98,6 +98,14 @@ h1 em { color: var(--aqua); font-style: normal; }
 
 .section-shell { padding: clamp(5rem,8vw,8rem) clamp(1.25rem,7vw,8.5rem); }
 .section-intro { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(280px,.75fr); gap: clamp(2rem,7vw,8rem); align-items: end; max-width: 1450px; margin: 0 auto 3rem; }
+.algorithms-section { background: #eef5f3; }
+.algorithm-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; max-width: 1450px; margin: 0 auto; }
+.algorithm-grid article { padding: 1.5rem; background: #fff; border: 1px solid var(--line); }
+.algorithm-grid h3 { margin: 0 0 .75rem; font: 600 1.1rem var(--display); }
+.algorithm-grid p { margin: 0; color: var(--muted); }
+.algorithm-note { max-width: 1450px; margin: 1.5rem auto 0; color: var(--muted); font-size: .9rem; }
+.algorithm-note a { color: var(--aqua-dark); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 800px) { .algorithm-grid { grid-template-columns: 1fr; } }
 .section-intro h2, .boundaries-section h2 { margin: 0; font: 700 clamp(2.4rem,4.7vw,5rem)/1.05 var(--display); letter-spacing: -.055em; }
 .section-intro > p { margin: 0 0 .25rem; color: var(--muted); }
 .section-intro code, .boundary-list code, .source-note code { color: #24665f; font-size: .85em; }

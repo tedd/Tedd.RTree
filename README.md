@@ -2,6 +2,8 @@
 
 A mutable 2D and 3D R-tree library for .NET 10. It indexes axis-aligned rectangles or boxes and returns items whose bounds intersect a query. Boundary contact counts as intersection.
 
+In the [published five-package comparison](benchmarks/PACKAGE-COMPARISON.md), Tedd.RTree had the fastest measured mean for both bulk construction and aggregate intersection queries in all four tested 2D `double` fixtures (1,000 and 10,000 entries, uniform and clustered). These results describe that workload, not every query size or API variant. The tree uses Sort-Tile-Recursive bulk packing, least-enlargement insertion with quadratic node splits, and bounding-box pruning during search. Caller-owned result lists and reusable bulk-load workspaces reduce repeated allocation.
+
 [Documentation, examples, and benchmark comparison](https://tedd.no/Tedd.RTree/).
 
 Install from [NuGet](https://www.nuget.org/packages/Tedd.RTree) in a .NET 10 project:
