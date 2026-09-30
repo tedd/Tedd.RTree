@@ -1,0 +1,372 @@
+{
+  "date": "2026-09-30",
+  "libraries": {
+    "Tedd.RTree": "local source",
+    "RBush": "4.0.0",
+    "NetTopologySuite": "2.6.0",
+    "RTree": "1.1.0",
+    "Enyim.Collections.RTree": "1.0.5"
+  },
+  "results": [
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Build",
+      "meanNs": 377097.7376302083,
+      "stdDevNs": 3723.8125147869646,
+      "allocatedBytes": 69744
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Query64",
+      "meanNs": 1076541.3411458333,
+      "stdDevNs": 18530.415707399472,
+      "allocatedBytes": 132352
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "NetTopologySuite",
+      "operation": "Build",
+      "meanNs": 363685.6038411458,
+      "stdDevNs": 4640.045331742594,
+      "allocatedBytes": 132976
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "NetTopologySuite",
+      "operation": "Query64",
+      "meanNs": 84798.85864257812,
+      "stdDevNs": 1431.1156261735634,
+      "allocatedBytes": 56344
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "RBush",
+      "operation": "Build",
+      "meanNs": 325253.9957682292,
+      "stdDevNs": 5231.655357254839,
+      "allocatedBytes": 160760
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "RBush",
+      "operation": "Query64",
+      "meanNs": 75434.77274576823,
+      "stdDevNs": 1330.9871318118226,
+      "allocatedBytes": 120256
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "RTree",
+      "operation": "Build",
+      "meanNs": 618138.96484375,
+      "stdDevNs": 19084.673464527365,
+      "allocatedBytes": 320600
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "RTree",
+      "operation": "Query64",
+      "meanNs": 114663.10221354167,
+      "stdDevNs": 3931.9471526164216,
+      "allocatedBytes": 62488
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "Tedd.RTree",
+      "operation": "Build",
+      "meanNs": 113772.76204427083,
+      "stdDevNs": 2693.8703395692182,
+      "allocatedBytes": 136928
+    },
+    {
+      "size": 1000,
+      "distribution": "Clustered",
+      "library": "Tedd.RTree",
+      "operation": "Query64",
+      "meanNs": 25580.463155110676,
+      "stdDevNs": 1622.4670305149527,
+      "allocatedBytes": 56344
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Build",
+      "meanNs": 400936.3444010417,
+      "stdDevNs": 10556.461111268627,
+      "allocatedBytes": 69744
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Query64",
+      "meanNs": 793257.6822916666,
+      "stdDevNs": 61230.28904294904,
+      "allocatedBytes": 119416
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "NetTopologySuite",
+      "operation": "Build",
+      "meanNs": 234411.7919921875,
+      "stdDevNs": 48943.07645154156,
+      "allocatedBytes": 132976
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "NetTopologySuite",
+      "operation": "Query64",
+      "meanNs": 68639.53043619792,
+      "stdDevNs": 4009.453044016813,
+      "allocatedBytes": 51888
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "RBush",
+      "operation": "Build",
+      "meanNs": 229768.896484375,
+      "stdDevNs": 1137.0693526043956,
+      "allocatedBytes": 160760
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "RBush",
+      "operation": "Query64",
+      "meanNs": 81346.69799804688,
+      "stdDevNs": 1327.0189088315828,
+      "allocatedBytes": 110632
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "RTree",
+      "operation": "Build",
+      "meanNs": 883261.6536458334,
+      "stdDevNs": 24930.861569242283,
+      "allocatedBytes": 321976
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "RTree",
+      "operation": "Query64",
+      "meanNs": 120742.93619791667,
+      "stdDevNs": 2025.3704620480905,
+      "allocatedBytes": 58032
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "Tedd.RTree",
+      "operation": "Build",
+      "meanNs": 123024.17805989583,
+      "stdDevNs": 3539.505566812378,
+      "allocatedBytes": 136928
+    },
+    {
+      "size": 1000,
+      "distribution": "Uniform",
+      "library": "Tedd.RTree",
+      "operation": "Query64",
+      "meanNs": 29289.84883626302,
+      "stdDevNs": 3099.3247045626695,
+      "allocatedBytes": 51888
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Build",
+      "meanNs": 5657368.098958333,
+      "stdDevNs": 255513.02847395084,
+      "allocatedBytes": 883488
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Query64",
+      "meanNs": 11627599.21875,
+      "stdDevNs": 604619.6043706984,
+      "allocatedBytes": 1328903
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "NetTopologySuite",
+      "operation": "Build",
+      "meanNs": 4390025.9765625,
+      "stdDevNs": 10931.599496583789,
+      "allocatedBytes": 1433202
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "NetTopologySuite",
+      "operation": "Query64",
+      "meanNs": 1352807.3567708333,
+      "stdDevNs": 84770.30509661023,
+      "allocatedBytes": 650032
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "RBush",
+      "operation": "Build",
+      "meanNs": 5802582.03125,
+      "stdDevNs": 308618.40319641324,
+      "allocatedBytes": 2217488
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "RBush",
+      "operation": "Query64",
+      "meanNs": 959355.7291666666,
+      "stdDevNs": 21792.988718920213,
+      "allocatedBytes": 1410265
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "RTree",
+      "operation": "Build",
+      "meanNs": 11538891.666666666,
+      "stdDevNs": 246732.3189217838,
+      "allocatedBytes": 3091254
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "RTree",
+      "operation": "Query64",
+      "meanNs": 1731322.265625,
+      "stdDevNs": 49235.3021255603,
+      "allocatedBytes": 656176
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "Tedd.RTree",
+      "operation": "Build",
+      "meanNs": 2225669.0755208335,
+      "stdDevNs": 46205.8327107227,
+      "allocatedBytes": 1340224
+    },
+    {
+      "size": 10000,
+      "distribution": "Clustered",
+      "library": "Tedd.RTree",
+      "operation": "Query64",
+      "meanNs": 197635.13997395834,
+      "stdDevNs": 5934.005368747019,
+      "allocatedBytes": 650032
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Build",
+      "meanNs": 6500654.427083333,
+      "stdDevNs": 376326.59652135795,
+      "allocatedBytes": 883488
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "Enyim.Collections.RTree",
+      "operation": "Query64",
+      "meanNs": 11443148.4375,
+      "stdDevNs": 210573.64500502698,
+      "allocatedBytes": 1470343
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "NetTopologySuite",
+      "operation": "Build",
+      "meanNs": 4958543.880208333,
+      "stdDevNs": 291265.47538130695,
+      "allocatedBytes": 1433202
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "NetTopologySuite",
+      "operation": "Query64",
+      "meanNs": 1777963.4765625,
+      "stdDevNs": 19345.56139524055,
+      "allocatedBytes": 719176
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "RBush",
+      "operation": "Build",
+      "meanNs": 5811384.895833333,
+      "stdDevNs": 125685.97302364618,
+      "allocatedBytes": 2217488
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "RBush",
+      "operation": "Query64",
+      "meanNs": 1148045.5403645833,
+      "stdDevNs": 34030.54717688832,
+      "allocatedBytes": 1545852
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "RTree",
+      "operation": "Build",
+      "meanNs": 11937402.083333334,
+      "stdDevNs": 627072.0802596348,
+      "allocatedBytes": 3095894
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "RTree",
+      "operation": "Query64",
+      "meanNs": 2001054.8828125,
+      "stdDevNs": 104506.94642976452,
+      "allocatedBytes": 725320
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "Tedd.RTree",
+      "operation": "Build",
+      "meanNs": 2153221.7447916665,
+      "stdDevNs": 81408.313785998,
+      "allocatedBytes": 1340226
+    },
+    {
+      "size": 10000,
+      "distribution": "Uniform",
+      "library": "Tedd.RTree",
+      "operation": "Query64",
+      "meanNs": 253936.1328125,
+      "stdDevNs": 3108.3422423666298,
+      "allocatedBytes": 719176
+    }
+  ]
+}

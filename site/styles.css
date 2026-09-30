@@ -147,6 +147,19 @@ h1 em { color: var(--aqua); font-style: normal; }
 .bar.ours { background: var(--aqua); }
 .bar.rbush { background: #8fa8ac; }
 .bar.nts { background: #bb947b; }
+.bar.other { background: #99a6ab; }
+.package-chart .bar-row { grid-template-columns: minmax(100px,145px) minmax(0,1fr) 60px; }
+.comparison-ours { color: var(--aqua-dark); font-weight: 700; }
+.benchmark-controls { max-width: 1450px; margin: 0 auto 1.3rem; display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; font-size: .8rem; }
+.benchmark-controls label { font-weight: 700; }
+.benchmark-controls select { padding: .6rem .9rem; border: 1px solid var(--line); border-radius: 0; color: var(--ink); background: #fff; font: inherit; }
+.benchmark-controls span { color: var(--muted); }
+.package-results { min-width: 1250px; }
+.package-results td { white-space: nowrap; }
+.package-results td small { display: block; margin-top: .3rem; color: var(--muted); font-size: .68rem; font-weight: 400; }
+.package-results .comparison-ours { background: #e8f6f1; }
+.comparison-exclusion { max-width: 1450px; margin: 1.5rem auto 0; padding: 1rem 1.2rem; background: #fff8ef; border-left: 3px solid #bb947b; font-size: .8rem; }
+.comparison-exclusion p { margin: .5rem 0 0; color: var(--muted); }
 .results-panel { max-width: 1450px; margin: 1.2rem auto 0; background: #fff; border: 1px solid var(--line); }
 .results-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1.4rem 1.6rem; }
 .results-heading h3 { margin: 0; font: 600 1.2rem var(--display); }

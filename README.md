@@ -103,10 +103,13 @@ The differential test compares searches with a linear scan across several node c
 ## Benchmarks
 
 ```powershell
-dotnet run --project benchmarks/Tedd.RTree.Benchmarks/Tedd.RTree.Benchmarks.csproj -c Release -- --filter '*SpatialBenchmarks*'
+dotnet run --project benchmarks/Tedd.RTree.Benchmarks/Tedd.RTree.Benchmarks.csproj -c Release -- --validate-packages
+dotnet run --project benchmarks/Tedd.RTree.Benchmarks/Tedd.RTree.Benchmarks.csproj -c Release -- --filter '*PackageComparisonBenchmarks*'
 ```
 
-The BenchmarkDotNet project compares sequential construction, bulk loading, and 64 intersection queries with [RBush 4.0.0](https://www.nuget.org/packages/RBush/4.0.0) and [NetTopologySuite STRtree 2.6.0](https://www.nuget.org/packages/NetTopologySuite/2.6.0). Fixtures use fixed seeds, 1,000 and 10,000 entries, and uniform and clustered placements. Query windows range from point searches to broad regions. Fixture and adapter objects are prepared outside timing. Construction includes all insertions or bulk loading, and STRtree's explicit `Build`. Queries run against prepared indexes and consume every match. Both reused-list and allocating query paths are measured for Tedd.RTree. `GlobalSetup` verifies each adapter's result count against a linear scan before measuring.
+The package comparison measures construction and 64 intersection queries with [RBush 4.0.0](https://www.nuget.org/packages/RBush/4.0.0), [NetTopologySuite STRtree 2.6.0](https://www.nuget.org/packages/NetTopologySuite/2.6.0), [RTree 1.1.0](https://www.nuget.org/packages/RTree/1.1.0), and [Enyim.Collections.RTree 1.0.5](https://www.nuget.org/packages/Enyim.Collections.RTree/1.0.5). Fixed-seed fixtures contain 1,000 or 10,000 rectangles, in uniform or clustered placements. Integer-valued geometry remains exact across the packages' integer, float, and double APIs. Query widths are 0, 20, 200, and 1,000 units. Each package uses its allocating result API. Setup verifies every result ID against a brute-force scan; CI also validates empty indexes, duplicate bounds, edge contacts, negative coordinates, and insertion order. Geometry and adapter preparation are outside timing. Builds include native bulk loading or incremental insertion and STRtree's explicit `Build`.
+
+The [package comparison record](https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PACKAGE-COMPARISON.md) includes timings, allocation, package limitations, and a reproducible result-set failure in SharpTrees 1.0.6. Enyim and SharpTrees target .NET Framework and produce compatibility warnings; the runtime checks establish only the tested behavior on .NET 10. Enyim's published binary has optimizations disabled and is measured as distributed. `SpatialBenchmarks` provides separate incremental, bulk, and reused-list measurements for Tedd.RTree, RBush, and STRtree.
 
 STRtree is a packed, query-focused index that stops accepting inserts after build. Its construction and query results should be interpreted together for read-heavy use; it is not interchangeable with a mutable tree.
 

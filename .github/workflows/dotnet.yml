@@ -59,7 +59,10 @@ jobs:
       - name: Test
         run: dotnet run --project tests/Tedd.RTree.Tests/Tedd.RTree.Tests.csproj --no-build --configuration Release
 
-      - name: Verify package
+      - name: Validate benchmark competitors
+        run: dotnet run --project benchmarks/Tedd.RTree.Benchmarks/Tedd.RTree.Benchmarks.csproj --no-build --configuration Release -- --validate-packages
+
+      - name: Verify NuGet package
         run: dotnet pack src/Tedd.RTree/Tedd.RTree.csproj --no-build --configuration Release --output artifacts/packages
 
   publish:

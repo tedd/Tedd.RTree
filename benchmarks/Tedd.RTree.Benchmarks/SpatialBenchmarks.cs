@@ -66,7 +66,7 @@ public class SpatialBenchmarks
         {
             double x = random.NextDouble() * 1000;
             double y = random.NextDouble() * 1000;
-            double width = i % 4 switch { 0 => 0, 1 => 20, 2 => 200, _ => 1000 };
+            double width = (i % 4) switch { 0 => 0, 1 => 20, 2 => 200, _ => 1000 };
             Rectangle query = new(x, y, x + width, y + width);
             _queries[i] = query;
             _rbushQueries[i] = new BEnvelope(query.MinX, query.MinY, query.MaxX, query.MaxY);

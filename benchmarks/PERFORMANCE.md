@@ -1,5 +1,7 @@
 # R-tree performance record
 
+The [five-package comparison](PACKAGE-COMPARISON.md) is the current website dataset. It uses identical integer-valued geometry across double, float, and integer APIs and validates result IDs before timing. The historical records below use a different fixture. Their original query-width selector produced widths 0 through 63, rather than the intended repeating 0/20/200/1,000-unit windows; interpret those archived query timings accordingly.
+
 For later tests of caller-owned scratch, query caching, SIMD scans, and bitmap compaction, see [the hypothesis record](HYPOTHESES.md).
 For parallel searches and moving-entry concurrency, see [the concurrency record](CONCURRENCY.md).
 
