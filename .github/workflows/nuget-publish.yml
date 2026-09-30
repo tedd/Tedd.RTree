@@ -94,8 +94,23 @@ jobs:
             throw "No Version element found in $projectPath."
           }
           $baseVersion = [version]$versionNode.InnerText
-          # A workflow rerun retains its version; every new run advances the patch.
-          $packageVersion = '{0}.{1}.{2}' -f $baseVersion.Major, $baseVersion.Minor, ($baseVersion.Build + [int]$env:GITHUB_RUN_NUMBER)
+          $tagPattern = 'v{0}.{1}.*' -f $baseVersion.Major, $baseVersion.Minor
+          $versionPattern = '^v\d+\.\d+\.\d+$'
+          $headTag = git tag --points-at HEAD --list $tagPattern --sort=-version:refname |
+            Where-Object { $_ -match $versionPattern } | Select-Object -First 1
+          if ($LASTEXITCODE -ne 0) { throw "Could not read release tags for HEAD." }
+          if ($headTag) {
+            # A rerun after successful publication retains the release version.
+            $packageVersion = $headTag.Substring(1)
+          } else {
+            $latestTag = git tag --list $tagPattern --sort=-version:refname |
+              Where-Object { $_ -match $versionPattern } | Select-Object -First 1
+            if ($LASTEXITCODE -ne 0) { throw "Could not read release tags." }
+            $patch = $baseVersion.Build + [int]$env:GITHUB_RUN_NUMBER
+            # Workflow counters may restart after a rename. Existing tags set the floor.
+            if ($latestTag) { $patch = [Math]::Max($patch, ([version]$latestTag.Substring(1)).Build + 1) }
+            $packageVersion = '{0}.{1}.{2}' -f $baseVersion.Major, $baseVersion.Minor, $patch
+          }
           $versionNode.InnerText = $packageVersion
           $project.Save((Resolve-Path -LiteralPath $projectPath))
           "version=$packageVersion" >> $env:GITHUB_OUTPUT
