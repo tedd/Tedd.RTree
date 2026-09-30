@@ -1,0 +1,168 @@
+{
+  "unit": "sampled inclusive/exclusive frame time fraction",
+  "duration": 12155.239257812498,
+  "inclusive": [
+    {
+      "name": "Process64 dotnet (316224) Args:  \"D:\\SourceCode\\Tedd.RTree\\Research\\2026-09-30 batch-search-1\\bin\\Release\\net10.0\\Investigation.dll\" --profile-after ",
+      "percent": 100.0
+    },
+    {
+      "name": "(Non-Activities)",
+      "percent": 100.0
+    },
+    {
+      "name": "Threads",
+      "percent": 100.0
+    },
+    {
+      "name": "Thread (326068)",
+      "percent": 100.0
+    },
+    {
+      "name": "Investigation!Program.<Main>$(class System.String[])",
+      "percent": 99.66737272901469
+    },
+    {
+      "name": "CPU_TIME",
+      "percent": 99.47279943969252
+    },
+    {
+      "name": "Investigation!Tedd.RTree.RTree`1[System.Int32].Search(class Node<!0>,value class Tedd.RTree.Rectangle&,class System.Collections.Generic.List`1<!0>)",
+      "percent": 93.7533683879197
+    },
+    {
+      "name": "Investigation!Fixture.Query(class System.Func`3<value class Tedd.RTree.Rectangle,class System.Collections.Generic.List`1<int32>,int32>)",
+      "percent": 37.58158884213787
+    },
+    {
+      "name": "Investigation!Tedd.RTree.RTree`1[System.Int32].CollectValues(class Node<!0>,class System.Collections.Generic.List`1<!0>)",
+      "percent": 35.83810613128308
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Threading.Thread.<PollGC>g__PollGCWorker|70_0()",
+      "percent": 3.939417223349906
+    },
+    {
+      "name": "Investigation!Tedd.RTree.RTree`1[System.Int32].Search(value class Tedd.RTree.Rectangle,class System.Collections.Generic.List`1<!0>)",
+      "percent": 3.1470282613306115
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Diagnostics.Stopwatch.get_Elapsed()",
+      "percent": 1.7717031332600095
+    },
+    {
+      "name": "Investigation!Fixture..ctor(class System.String,bool,int32)",
+      "percent": 0.7510637989094506
+    },
+    {
+      "name": "Investigation!Fixture.Validate(class System.Func`3<value class Tedd.RTree.Rectangle,class System.Collections.Generic.List`1<int32>,int32>)",
+      "percent": 0.6891357570399692
+    },
+    {
+      "name": "Investigation!Tedd.RTree.Rectangle.Intersects(value class Tedd.RTree.Rectangle&)",
+      "percent": 0.6559566283985949
+    },
+    {
+      "name": "UNMANAGED_CODE_TIME",
+      "percent": 0.5268559185976777
+    },
+    {
+      "name": "System.Linq.il!System.Linq.Enumerable.SequenceEqual(class System.Collections.Generic.IEnumerable`1<!!0>,class System.Collections.Generic.IEnumerable`1<!!0>)",
+      "percent": 0.4767475152012459
+    },
+    {
+      "name": "System.Linq.il!System.Linq.Enumerable.SequenceEqual(class System.Collections.Generic.IEnumerable`1<!!0>,class System.Collections.Generic.IEnumerable`1<!!0>,class System.Collections.Generic.IEqualityComparer`1<!!0>)",
+      "percent": 0.4767475152012459
+    },
+    {
+      "name": "System.Linq.il!System.Linq.Enumerable+ImplicitlyStableOrderedIterator`1[System.Int32].MoveNext()",
+      "percent": 0.3688829066761333
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Collections.Generic.List`1[System.Int32].Add(!0)",
+      "percent": 0.32715192003821414
+    }
+  ],
+  "exclusive": [
+    {
+      "name": "Investigation!Tedd.RTree.RTree`1[System.Int32].Search(class Node<!0>,value class Tedd.RTree.Rectangle&,class System.Collections.Generic.List`1<!0>)",
+      "percent": 57.19004332349398
+    },
+    {
+      "name": "Investigation!Tedd.RTree.RTree`1[System.Int32].CollectValues(class Node<!0>,class System.Collections.Generic.List`1<!0>)",
+      "percent": 35.5204423011612
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Threading.Thread.<PollGC>g__PollGCWorker|70_0()",
+      "percent": 3.939417223349906
+    },
+    {
+      "name": "Investigation!Tedd.RTree.Rectangle.Intersects(value class Tedd.RTree.Rectangle&)",
+      "percent": 0.6559566283985949
+    },
+    {
+      "name": "Investigation!Program.<Main>$(class System.String[])",
+      "percent": 0.5881990948132354
+    },
+    {
+      "name": "Investigation!Fixture.Query(class System.Func`3<value class Tedd.RTree.Rectangle,class System.Collections.Generic.List`1<int32>,int32>)",
+      "percent": 0.37466800094597563
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Collections.Generic.List`1[System.Int32].Add(!0)",
+      "percent": 0.32715192003821414
+    },
+    {
+      "name": "System.Linq.il!System.Linq.Enumerable+ArrayWhereSelectIterator`2[Tedd.RTree.SpatialEntry`1[System.Int32],System.Int32].ToArray(value class System.ReadOnlySpan`1<!0>,class System.Func`2<!0,bool>,class System.Func`2<!0,!1>)",
+      "percent": 0.17568473272149074
+    },
+    {
+      "name": "System.Linq.il!System.Linq.Enumerable.SequenceEqual(class System.Collections.Generic.IEnumerable`1<!!0>,class System.Collections.Generic.IEnumerable`1<!!0>,class System.Collections.Generic.IEqualityComparer`1<!!0>)",
+      "percent": 0.10786460852511259
+    },
+    {
+      "name": "Investigation!Fixture..ctor(class System.String,bool,int32)",
+      "percent": 0.08630352533792883
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Collections.Generic.GenericArraySortHelper`1[System.Int32].PickPivotAndPartition(value class System.Span`1<!0>)",
+      "percent": 0.08611759685556385
+    },
+    {
+      "name": "Investigation!Tedd.RTree.Rectangle.Contains(value class Tedd.RTree.Rectangle&)",
+      "percent": 0.07903176415332445
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Buffer.MemmoveInternal(unsigned int8&,unsigned int8&,unsigned int)",
+      "percent": 0.07269375374589329
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Diagnostics.Stopwatch.get_Elapsed()",
+      "percent": 0.06711755628499562
+    },
+    {
+      "name": "Investigation!LinearIndex.OneBitmap(value class Tedd.RTree.Rectangle,class System.Collections.Generic.List`1<int32>)",
+      "percent": 0.04666712035197938
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Buffers.SearchValues.Create(value class System.ReadOnlySpan`1<wchar>)",
+      "percent": 0.03775326941522492
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Diagnostics.Stopwatch.get_ElapsedTicks()",
+      "percent": 0.029188198901235918
+    },
+    {
+      "name": "Investigation!Tedd.RTree.BaselineRTree`1[System.Int32].Search(class Node<!0>,value class Tedd.RTree.Rectangle&,class System.Collections.Generic.List`1<!0>)",
+      "percent": 0.02613029594777223
+    },
+    {
+      "name": "Investigation!Fixture.Validate(class System.Func`3<value class Tedd.RTree.Rectangle,class System.Collections.Generic.List`1<int32>,int32>)",
+      "percent": 0.02607435298515818
+    },
+    {
+      "name": "System.Private.CoreLib.il!System.Runtime.CompilerServices.InitHelpers.InitClassSlow(value class System.Runtime.CompilerServices.MethodTable*)",
+      "percent": 0.02492752178003338
+    }
+  ]
+}

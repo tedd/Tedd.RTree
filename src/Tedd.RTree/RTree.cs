@@ -150,6 +150,33 @@ public sealed class RTree<T>
         return Search(_root, bounds, results);
     }
 
+    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+    /// <returns>The total number of matches appended across all queries.</returns>
+    /// <remarks>
+    /// Results must have one non-null list per query; counts must have at least one slot per query.
+    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
+    /// The tree must not be mutated while the batch runs.
+    /// </remarks>
+    public long SearchBatch(ReadOnlySpan<Rectangle> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
+    {
+        if (results.Length != queries.Length)
+            throw new ArgumentException("Provide one result list per query.", nameof(results));
+        if (counts.Length < queries.Length)
+            throw new ArgumentException("Provide at least one count slot per query.", nameof(counts));
+        // Validate the entire batch before appending, including lists belonging to empty queries.
+        for (int i = 0; i < results.Length; i++)
+            if (results[i] is null)
+                throw new ArgumentException("Result lists must not be null.", nameof(results));
+        long total = 0;
+        for (int i = 0; i < queries.Length; i++)
+        {
+            int found = Search(queries[i], results[i]);
+            counts[i] = found;
+            total += found;
+        }
+        return total;
+    }
+
     /// <summary>Returns a new list containing items whose bounds intersect <paramref name="bounds"/>.</summary>
     public List<T> Search(Rectangle bounds)
     {
@@ -166,14 +193,28 @@ public sealed class RTree<T>
         _reinsertScratch = null;
     }
 
+    private static int CollectValues(Node node, List<T> results)
+    {
+        if (node.Leaf)
+        {
+            for (int i = 0; i < node.Count; i++) results.Add(node.Entries[i].Value);
+            return node.Count;
+        }
+        int found = 0;
+        for (int i = 0; i < node.Count; i++) found += CollectValues(node.Entries[i].Child!, results);
+        return found;
+    }
+
     private static int Search(Node node, in Rectangle bounds, List<T> results)
     {
+        // Validate the active prefix once; mutations cannot overlap a search (H-004/H-014).
+        Span<Entry> entries = node.Entries.AsSpan(0, node.Count);
         int found = 0;
         if (node.Leaf)
         {
-            for (int i = 0; i < node.Count; i++)
+            for (int i = 0; i < entries.Length; i++)
             {
-                ref Entry entry = ref node.Entries[i];
+                ref Entry entry = ref entries[i];
                 if (entry.Bounds.Intersects(bounds))
                 {
                     results.Add(entry.Value);
@@ -183,11 +224,18 @@ public sealed class RTree<T>
         }
         else
         {
-            for (int i = 0; i < node.Count; i++)
+            for (int i = 0; i < entries.Length; i++)
             {
-                ref Entry entry = ref node.Entries[i];
+                ref Entry entry = ref entries[i];
                 if (entry.Bounds.Intersects(bounds))
-                    found += Search(entry.Child!, bounds, results);
+                {
+                    // Every descendant lies within this entry. Containment therefore permits
+                    // collecting values without further geometry tests, preserving duplicates.
+                    // Check only intersecting children to limit selective-query overhead (H-013/H-014).
+                    found += bounds.Contains(entry.Bounds)
+                        ? CollectValues(entry.Child!, results)
+                        : Search(entry.Child!, bounds, results);
+                }
             }
         }
         return found;

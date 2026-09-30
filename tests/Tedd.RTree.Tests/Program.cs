@@ -247,4 +247,5 @@ for (int frame = 0; frame < 3; frame++)
 }
 
 GenericTests.Run();
+BatchTests.Run();
 Console.WriteLine("All R-tree differential and boundary checks passed.");

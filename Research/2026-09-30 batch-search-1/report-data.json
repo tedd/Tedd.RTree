@@ -1,0 +1,3918 @@
+{
+  "title": "R-tree traversal, alternative algorithms, and batch queries",
+  "generatedAt": "2026-09-30T09:58:32.055009+02:00",
+  "status": "complete",
+  "scope": "Local .NET 10 library query/build experiments on 10,000 entries; no application workload was supplied. Traversal changes retained only in the original 2D double tree; batch APIs span all coordinate variants.",
+  "question": "Can contained-subtree collection and batched synchronization reduce complete query latency without selective regressions?",
+  "primaryMetric": "µs / 64 queries",
+  "summary": {
+    "baseline": 754.1475,
+    "final": 486.5467,
+    "unit": "µs / 64 queries",
+    "changePercent": -35.48388080581054,
+    "headline": "Broad double queries: 754.15 → 486.55 µs per batch. Results are local fixture measurements."
+  },
+  "scorecards": [
+    {
+      "title": "Double Point",
+      "value": 7.5026,
+      "unit": "µs / 64 queries",
+      "wallChangePercent": -4.1617699657656715,
+      "baseline": 7.8284,
+      "secondaryMetric": "allocations",
+      "secondaryChangePercent": 0,
+      "progression": "7.828 → 7.503; three BDN iterations each; zero timed allocation"
+    },
+    {
+      "title": "Double Broad",
+      "value": 486.5467,
+      "unit": "µs / 64 queries",
+      "wallChangePercent": -35.48388080581054,
+      "baseline": 754.1475,
+      "secondaryMetric": "allocations",
+      "secondaryChangePercent": 0,
+      "progression": "754.148 → 486.547; three BDN iterations each; zero timed allocation"
+    },
+    {
+      "title": "Double All",
+      "value": 1280.8999999999999,
+      "unit": "µs / 64 queries",
+      "wallChangePercent": -46.26421110039016,
+      "baseline": 2383.7000000000003,
+      "secondaryMetric": "allocations",
+      "secondaryChangePercent": 0,
+      "progression": "2383.700 → 1280.900; three BDN iterations each; zero timed allocation"
+    },
+    {
+      "title": "Concurrent batch point",
+      "value": 7.6792,
+      "unit": "µs / 64 queries",
+      "wallChangePercent": -16.366804617730345,
+      "baseline": 9.182
+    },
+    {
+      "title": "Snapshot batch point",
+      "value": 5.5512,
+      "unit": "µs / 64 queries",
+      "wallChangePercent": -24.227078527456637,
+      "baseline": 7.3261
+    }
+  ],
+  "series": [
+    {
+      "title": "Integrated double-coordinate traversal: paired confirmation",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Clustered-All",
+          "measurements": [
+            {
+              "median": 1893.4727272727273,
+              "min": 1841.2454545454545,
+              "max": 3805.9,
+              "n": 9
+            },
+            {
+              "median": 1147.7885714285715,
+              "min": 1100.8351351351353,
+              "max": 1631.908,
+              "n": 9,
+              "changePercent": -39.38182711077152
+            }
+          ]
+        },
+        {
+          "label": "Clustered-Broad",
+          "measurements": [
+            {
+              "median": 547.4148648648649,
+              "min": 536.1453333333334,
+              "max": 627.740625,
+              "n": 9
+            },
+            {
+              "median": 322.69112903225806,
+              "min": 316.9251968503937,
+              "max": 339.39322033898304,
+              "n": 9,
+              "changePercent": -41.051814675891606
+            }
+          ]
+        },
+        {
+          "label": "Clustered-Medium",
+          "measurements": [
+            {
+              "median": 61.907109737248845,
+              "min": 61.67057010785824,
+              "max": 72.75581818181817,
+              "n": 9
+            },
+            {
+              "median": 40.52580971659919,
+              "min": 40.25110663983903,
+              "max": 54.43006802721088,
+              "n": 9,
+              "changePercent": -34.53771321484381
+            }
+          ]
+        },
+        {
+          "label": "Clustered-Miss",
+          "measurements": [
+            {
+              "median": 0.31450080983756074,
+              "min": 0.3021254418562494,
+              "max": 0.3937686423909512,
+              "n": 9
+            },
+            {
+              "median": 0.32410183279586446,
+              "min": 0.32200674604132956,
+              "max": 0.334897856664434,
+              "n": 9,
+              "changePercent": 3.0527816329829705
+            }
+          ]
+        },
+        {
+          "label": "Clustered-Point",
+          "measurements": [
+            {
+              "median": 1.2491412154144026,
+              "min": 1.246017506152073,
+              "max": 1.2609545425887396,
+              "n": 9
+            },
+            {
+              "median": 1.1114476243400944,
+              "min": 1.108144721167964,
+              "max": 1.1166601529786164,
+              "n": 9,
+              "changePercent": -11.023060433453747
+            }
+          ]
+        },
+        {
+          "label": "Clustered-Small",
+          "measurements": [
+            {
+              "median": 2.8674982078853044,
+              "min": 2.834020545518951,
+              "max": 2.899325940421831,
+              "n": 9
+            },
+            {
+              "median": 2.4623207140658665,
+              "min": 2.445790278202385,
+              "max": 2.855653912050257,
+              "n": 9,
+              "changePercent": -14.129999896957024
+            }
+          ]
+        },
+        {
+          "label": "Uniform-All",
+          "measurements": [
+            {
+              "median": 1878.45,
+              "min": 1871.5772727272727,
+              "max": 1921.290476190476,
+              "n": 9
+            },
+            {
+              "median": 1141.5083333333334,
+              "min": 1134.65,
+              "max": 1160.0657142857144,
+              "n": 9,
+              "changePercent": -39.23136983505904
+            }
+          ]
+        },
+        {
+          "label": "Uniform-Broad",
+          "measurements": [
+            {
+              "median": 549.0027397260274,
+              "min": 543.0378378378379,
+              "max": 563.4267605633803,
+              "n": 9
+            },
+            {
+              "median": 377.46915887850463,
+              "min": 371.2092592592592,
+              "max": 393.40294117647056,
+              "n": 9,
+              "changePercent": -31.244576472081786
+            }
+          ]
+        },
+        {
+          "label": "Uniform-Medium",
+          "measurements": [
+            {
+              "median": 120.28588588588588,
+              "min": 113.11779661016948,
+              "max": 125.66833855799372,
+              "n": 9
+            },
+            {
+              "median": 94.30258823529411,
+              "min": 92.03586206896551,
+              "max": 96.32740384615384,
+              "n": 9,
+              "changePercent": -21.60128552009991
+            }
+          ]
+        },
+        {
+          "label": "Uniform-Miss",
+          "measurements": [
+            {
+              "median": 0.30244450157270747,
+              "min": 0.30149692474674383,
+              "max": 0.3741378504017285,
+              "n": 9
+            },
+            {
+              "median": 0.31888263524609767,
+              "min": 0.317502222504445,
+              "max": 0.33342030024422975,
+              "n": 9,
+              "changePercent": 5.435090930042419
+            }
+          ]
+        },
+        {
+          "label": "Uniform-Point",
+          "measurements": [
+            {
+              "median": 5.865909090909091,
+              "min": 5.855298594847776,
+              "max": 5.9743130227001195,
+              "n": 9
+            },
+            {
+              "median": 5.6552021487136,
+              "min": 5.574428651059086,
+              "max": 40.2821752265861,
+              "n": 9,
+              "changePercent": -3.59205945625789
+            }
+          ]
+        },
+        {
+          "label": "Uniform-Small",
+          "measurements": [
+            {
+              "median": 9.218713989398479,
+              "min": 9.143657142857142,
+              "max": 9.336476079346559,
+              "n": 9
+            },
+            {
+              "median": 8.893241440640285,
+              "min": 8.878450954283178,
+              "max": 8.934710743801652,
+              "n": 9,
+              "changePercent": -3.530563472654513
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Independent BenchmarkDotNet traversal confirmation",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Point",
+          "measurements": [
+            {
+              "median": 7.8284,
+              "min": 7.8266,
+              "max": 8.0608,
+              "n": 3
+            },
+            {
+              "median": 7.5026,
+              "min": 7.3459,
+              "max": 7.9207,
+              "n": 3,
+              "changePercent": -4.1617699657656715
+            }
+          ]
+        },
+        {
+          "label": "Broad",
+          "measurements": [
+            {
+              "median": 754.1475,
+              "min": 745.2684,
+              "max": 755.4421,
+              "n": 3
+            },
+            {
+              "median": 486.5467,
+              "min": 468.4188,
+              "max": 496.8383,
+              "n": 3,
+              "changePercent": -35.48388080581054
+            }
+          ]
+        },
+        {
+          "label": "All",
+          "measurements": [
+            {
+              "median": 2383.7000000000003,
+              "min": 1896.0,
+              "max": 2808.7,
+              "n": 3
+            },
+            {
+              "median": 1280.8999999999999,
+              "min": 1262.8999999999999,
+              "max": 1401.6,
+              "n": 3,
+              "changePercent": -46.26421110039016
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Concurrent batch: BenchmarkDotNet",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Point",
+          "measurements": [
+            {
+              "median": 9.182,
+              "min": 8.5279,
+              "max": 9.758,
+              "n": 3
+            },
+            {
+              "median": 7.6792,
+              "min": 7.1174,
+              "max": 7.9454,
+              "n": 3,
+              "changePercent": -16.366804617730345
+            }
+          ]
+        },
+        {
+          "label": "Miss",
+          "measurements": [
+            {
+              "median": 1.0689,
+              "min": 1.0665,
+              "max": 1.0711,
+              "n": 3
+            },
+            {
+              "median": 0.21477500000000002,
+              "min": 0.1792892,
+              "max": 0.23035390000000003,
+              "n": 3,
+              "changePercent": -79.90691364954627
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Snapshot batch: BenchmarkDotNet",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Point",
+          "measurements": [
+            {
+              "median": 7.3261,
+              "min": 7.0613,
+              "max": 7.353,
+              "n": 3
+            },
+            {
+              "median": 5.5512,
+              "min": 5.5469,
+              "max": 5.5645,
+              "n": 3,
+              "changePercent": -24.227078527456637
+            }
+          ]
+        },
+        {
+          "label": "Miss",
+          "measurements": [
+            {
+              "median": 0.2543083,
+              "min": 0.2542157,
+              "max": 0.2549163,
+              "n": 3
+            },
+            {
+              "median": 0.1525439,
+              "min": 0.1523578,
+              "max": 0.1536072,
+              "n": 3,
+              "changePercent": -40.01615362141149
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Experimental generic transplant (excluded): paired samples",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Double-2D-All",
+          "measurements": [
+            {
+              "median": 1905.271875,
+              "min": 1896.665625,
+              "max": 1986.0709677419354,
+              "n": 9
+            },
+            {
+              "median": 1145.1000000000001,
+              "min": 1136.0056603773585,
+              "max": 1151.8226415094339,
+              "n": 9,
+              "changePercent": -39.89834128003385
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Broad",
+          "measurements": [
+            {
+              "median": 499.18595041322317,
+              "min": 495.6803278688525,
+              "max": 503.8258333333333,
+              "n": 9
+            },
+            {
+              "median": 325.14378378378376,
+              "min": 323.039247311828,
+              "max": 331.0543956043956,
+              "n": 9,
+              "changePercent": -34.865197324838235
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Point",
+          "measurements": [
+            {
+              "median": 5.452103589277601,
+              "min": 5.383123990669299,
+              "max": 5.815448730374103,
+              "n": 9
+            },
+            {
+              "median": 5.4024669127577205,
+              "min": 5.3866594846934195,
+              "max": 5.7954795711388005,
+              "n": 9,
+              "changePercent": -0.9104133057467712
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Small",
+          "measurements": [
+            {
+              "median": 8.668679572377926,
+              "min": 8.62956996979721,
+              "max": 8.757122008172797,
+              "n": 9
+            },
+            {
+              "median": 8.974214777146276,
+              "min": 8.948784489187174,
+              "max": 9.123247681313668,
+              "n": 9,
+              "changePercent": 3.524587593961992
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-All",
+          "measurements": [
+            {
+              "median": 2533.4500000000003,
+              "min": 2486.924,
+              "max": 2588.2166666666667,
+              "n": 9
+            },
+            {
+              "median": 1405.5837209302326,
+              "min": 1386.484090909091,
+              "max": 1429.852380952381,
+              "n": 9,
+              "changePercent": -44.51898711518947
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Broad",
+          "measurements": [
+            {
+              "median": 502.2241666666667,
+              "min": 493.0155737704918,
+              "max": 514.8871794871795,
+              "n": 9
+            },
+            {
+              "median": 416.6979166666667,
+              "min": 411.70205479452056,
+              "max": 427.6085106382979,
+              "n": 9,
+              "changePercent": -17.029497120309824
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Point",
+          "measurements": [
+            {
+              "median": 7.614289340101522,
+              "min": 7.514902943018159,
+              "max": 7.721927679835285,
+              "n": 9
+            },
+            {
+              "median": 7.32316329021235,
+              "min": 7.290546780072904,
+              "max": 7.439789212647241,
+              "n": 9,
+              "changePercent": -3.823417221038916
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Small",
+          "measurements": [
+            {
+              "median": 9.502549485352336,
+              "min": 9.423461055276382,
+              "max": 9.692182199967695,
+              "n": 9
+            },
+            {
+              "median": 9.424909690592116,
+              "min": 9.32662418402238,
+              "max": 9.718480725623582,
+              "n": 9,
+              "changePercent": -0.8170417305366051
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-All",
+          "measurements": [
+            {
+              "median": 1893.025,
+              "min": 1850.7515151515152,
+              "max": 2337.6153846153848,
+              "n": 9
+            },
+            {
+              "median": 1075.2642857142857,
+              "min": 1051.396551724138,
+              "max": 1252.0604166666667,
+              "n": 9,
+              "changePercent": -43.19862200899166
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Broad",
+          "measurements": [
+            {
+              "median": 465.15581395348835,
+              "min": 459.163358778626,
+              "max": 484.73629032258066,
+              "n": 9
+            },
+            {
+              "median": 290.38357487922707,
+              "min": 286.33142857142855,
+              "max": 325.5178378378379,
+              "n": 9,
+              "changePercent": -37.57283770976084
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Point",
+          "measurements": [
+            {
+              "median": 5.2228934540389975,
+              "min": 5.161915003441156,
+              "max": 5.464056096894637,
+              "n": 9
+            },
+            {
+              "median": 5.0826937738246505,
+              "min": 4.955901544560998,
+              "max": 40.574509803921565,
+              "n": 9,
+              "changePercent": -2.6843297005403555
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Small",
+          "measurements": [
+            {
+              "median": 8.310249307479225,
+              "min": 8.244421544380325,
+              "max": 9.330539573938735,
+              "n": 9
+            },
+            {
+              "median": 8.476140697838678,
+              "min": 8.279550158686353,
+              "max": 8.905120213713268,
+              "n": 9,
+              "changePercent": 1.996226397325418
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-All",
+          "measurements": [
+            {
+              "median": 2351.1423076923074,
+              "min": 2258.0074074074073,
+              "max": 2657.091304347826,
+              "n": 9
+            },
+            {
+              "median": 1175.6115384615384,
+              "min": 1115.088888888889,
+              "max": 1362.7377777777776,
+              "n": 9,
+              "changePercent": -49.998282340662556
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Broad",
+          "measurements": [
+            {
+              "median": 410.191156462585,
+              "min": 407.21486486486486,
+              "max": 441.9198529411765,
+              "n": 9
+            },
+            {
+              "median": 333.16685082872925,
+              "min": 324.6108108108108,
+              "max": 362.1269461077844,
+              "n": 9,
+              "changePercent": -18.77766120023151
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Point",
+          "measurements": [
+            {
+              "median": 7.240967780861591,
+              "min": 7.1633595988538685,
+              "max": 7.845051640737352,
+              "n": 9
+            },
+            {
+              "median": 6.9153048288579,
+              "min": 6.7432231962238705,
+              "max": 50.07723102585488,
+              "n": 9,
+              "changePercent": -4.4975058840123765
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Small",
+          "measurements": [
+            {
+              "median": 9.201717527986505,
+              "min": 9.058242753623189,
+              "max": 9.562492033142128,
+              "n": 9
+            },
+            {
+              "median": 8.665742345465048,
+              "min": 8.541665480427046,
+              "max": 9.164248625534514,
+              "n": 9,
+              "changePercent": -5.824729795185712
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-All",
+          "measurements": [
+            {
+              "median": 2483.38,
+              "min": 2221.3928571428573,
+              "max": 2660.6652173913044,
+              "n": 9
+            },
+            {
+              "median": 1852.621212121212,
+              "min": 1749.7571428571428,
+              "max": 1960.0451612903225,
+              "n": 9,
+              "changePercent": -25.399205432869245
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Broad",
+          "measurements": [
+            {
+              "median": 639.8861702127659,
+              "min": 561.7383177570093,
+              "max": 790.5896103896104,
+              "n": 9
+            },
+            {
+              "median": 448.71268656716416,
+              "min": 356.9733727810651,
+              "max": 593.7941176470588,
+              "n": 9,
+              "changePercent": -29.87617056671743
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Point",
+          "measurements": [
+            {
+              "median": 5.24138714185884,
+              "min": 5.109025885558583,
+              "max": 6.394597186700768,
+              "n": 9
+            },
+            {
+              "median": 5.85184318314804,
+              "min": 5.593763400764426,
+              "max": 6.628745028722935,
+              "n": 9,
+              "changePercent": 11.646841280125408
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Small",
+          "measurements": [
+            {
+              "median": 8.274872431388774,
+              "min": 8.23182878309782,
+              "max": 8.892885726989773,
+              "n": 9
+            },
+            {
+              "median": 9.683395191221559,
+              "min": 9.542318702290077,
+              "max": 10.697611408199643,
+              "n": 9,
+              "changePercent": 17.021685488345263
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-All",
+          "measurements": [
+            {
+              "median": 4056.8733333333334,
+              "min": 3468.8888888888887,
+              "max": 4713.442857142857,
+              "n": 9
+            },
+            {
+              "median": 2273.151851851852,
+              "min": 1827.8,
+              "max": 2743.9636363636364,
+              "n": 9,
+              "changePercent": -43.96788696421747
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Broad",
+          "measurements": [
+            {
+              "median": 620.9340206185567,
+              "min": 459.5885496183206,
+              "max": 719.2678571428571,
+              "n": 9
+            },
+            {
+              "median": 524.6173913043478,
+              "min": 430.8128571428572,
+              "max": 595.9475247524753,
+              "n": 9,
+              "changePercent": -15.511572263066043
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Point",
+          "measurements": [
+            {
+              "median": 7.645502038735984,
+              "min": 7.4268350043322195,
+              "max": 8.788823787900983,
+              "n": 9
+            },
+            {
+              "median": 7.485765968063872,
+              "min": 7.237076347847063,
+              "max": 8.090413913981394,
+              "n": 9,
+              "changePercent": -2.0892816438058293
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Small",
+          "measurements": [
+            {
+              "median": 9.447504330026767,
+              "min": 9.230226119058607,
+              "max": 10.286833533344762,
+              "n": 9
+            },
+            {
+              "median": 9.198466963053809,
+              "min": 9.1102793805041,
+              "max": 10.848689206291809,
+              "n": 9,
+              "changePercent": -2.6360122025183785
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-All",
+          "measurements": [
+            {
+              "median": 2003.4133333333334,
+              "min": 1986.0225806451613,
+              "max": 2010.4666666666667,
+              "n": 9
+            },
+            {
+              "median": 1023.5576271186441,
+              "min": 1017.2305084745763,
+              "max": 1128.9185185185186,
+              "n": 9,
+              "changePercent": -48.909313415838106
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Broad",
+          "measurements": [
+            {
+              "median": 706.7847058823529,
+              "min": 654.3478260869565,
+              "max": 782.3333333333334,
+              "n": 9
+            },
+            {
+              "median": 413.3109589041096,
+              "min": 366.0310975609756,
+              "max": 432.5690647482014,
+              "n": 9,
+              "changePercent": -41.52236806141263
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Point",
+          "measurements": [
+            {
+              "median": 8.030206102783726,
+              "min": 6.93008778008778,
+              "max": 11.2445381300356,
+              "n": 9
+            },
+            {
+              "median": 7.990664535890265,
+              "min": 6.775395212285456,
+              "max": 9.160693023965806,
+              "n": 9,
+              "changePercent": -0.49241036141965955
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Small",
+          "measurements": [
+            {
+              "median": 13.13827457849792,
+              "min": 8.679129302863755,
+              "max": 15.786477242830834,
+              "n": 9
+            },
+            {
+              "median": 11.409792736261647,
+              "min": 8.57462132037725,
+              "max": 14.526555313483417,
+              "n": 9,
+              "changePercent": -13.15607945251125
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-All",
+          "measurements": [
+            {
+              "median": 2392.5384615384614,
+              "min": 2297.9666666666667,
+              "max": 2861.0857142857144,
+              "n": 9
+            },
+            {
+              "median": 1117.9611111111112,
+              "min": 1098.5290909090909,
+              "max": 1150.7188679245282,
+              "n": 9,
+              "changePercent": -53.27301403580218
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Broad",
+          "measurements": [
+            {
+              "median": 661.6857142857143,
+              "min": 562.3175925925926,
+              "max": 762.5784810126582,
+              "n": 9
+            },
+            {
+              "median": 532.3477876106195,
+              "min": 425.11267605633805,
+              "max": 592.6833333333333,
+              "n": 9,
+              "changePercent": -19.546731005778817
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Point",
+          "measurements": [
+            {
+              "median": 10.884055867948486,
+              "min": 8.995131086142322,
+              "max": 13.148378615249781,
+              "n": 9
+            },
+            {
+              "median": 10.366275051831375,
+              "min": 8.656405077899596,
+              "max": 11.703939925882581,
+              "n": 9,
+              "changePercent": -4.757241440131521
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Small",
+          "measurements": [
+            {
+              "median": 12.15225571515274,
+              "min": 9.38144152595372,
+              "max": 15.878830378406986,
+              "n": 9
+            },
+            {
+              "median": 11.46233046800382,
+              "min": 8.650036038633415,
+              "max": 13.646577211735273,
+              "n": 9,
+              "changePercent": -5.67734306552361
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Independent generic repeat",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Double-2D-All",
+          "measurements": [
+            {
+              "median": 1877.2875,
+              "min": 1863.9060606060607,
+              "max": 1972.7129032258065,
+              "n": 9
+            },
+            {
+              "median": 1146.2867924528302,
+              "min": 1143.4679245283019,
+              "max": 1169.6711538461539,
+              "n": 9,
+              "changePercent": -38.93919858024781
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Broad",
+          "measurements": [
+            {
+              "median": 491.89344262295083,
+              "min": 486.06048387096774,
+              "max": 516.0247863247863,
+              "n": 9
+            },
+            {
+              "median": 320.3659574468085,
+              "min": 317.32473684210527,
+              "max": 328.9273224043716,
+              "n": 9,
+              "changePercent": -34.870862327722186
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Point",
+          "measurements": [
+            {
+              "median": 5.332346929707634,
+              "min": 5.310310646959907,
+              "max": 5.359830281375614,
+              "n": 9
+            },
+            {
+              "median": 5.275496746966766,
+              "min": 5.25496584340515,
+              "max": 5.387268809481056,
+              "n": 9,
+              "changePercent": -1.0661381093593714
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Small",
+          "measurements": [
+            {
+              "median": 8.559942938659058,
+              "min": 8.531210009953078,
+              "max": 8.629263733103251,
+              "n": 9
+            },
+            {
+              "median": 8.85905802450908,
+              "min": 8.826757869961753,
+              "max": 8.97279796620308,
+              "n": 9,
+              "changePercent": 3.494358408619025
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-All",
+          "measurements": [
+            {
+              "median": 2517.4333333333334,
+              "min": 2473.06,
+              "max": 2835.2999999999997,
+              "n": 9
+            },
+            {
+              "median": 1396.632558139535,
+              "min": 1391.293181818182,
+              "max": 1429.0,
+              "n": 9,
+              "changePercent": -44.52156727859587
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Broad",
+          "measurements": [
+            {
+              "median": 502.65333333333336,
+              "min": 498.2074380165289,
+              "max": 533.4654867256637,
+              "n": 9
+            },
+            {
+              "median": 407.69864864864866,
+              "min": 405.602027027027,
+              "max": 412.077397260274,
+              "n": 9,
+              "changePercent": -18.89069034019829
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Point",
+          "measurements": [
+            {
+              "median": 7.516497557309282,
+              "min": 7.434679717507125,
+              "max": 7.688364941055869,
+              "n": 9
+            },
+            {
+              "median": 6.9450462962962956,
+              "min": 6.894392738136275,
+              "max": 6.984134559422651,
+              "n": 9,
+              "changePercent": -7.602626843898708
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Small",
+          "measurements": [
+            {
+              "median": 9.515604186489059,
+              "min": 9.455310431768043,
+              "max": 9.71651554404145,
+              "n": 9
+            },
+            {
+              "median": 8.979482190960791,
+              "min": 8.91351752822341,
+              "max": 9.137475255063196,
+              "n": 9,
+              "changePercent": -5.634135100843018
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-All",
+          "measurements": [
+            {
+              "median": 1829.009090909091,
+              "min": 1824.881818181818,
+              "max": 1911.340625,
+              "n": 9
+            },
+            {
+              "median": 1037.996551724138,
+              "min": 1032.9033898305086,
+              "max": 1044.8155172413794,
+              "n": 9,
+              "changePercent": -43.24814694014385
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Broad",
+          "measurements": [
+            {
+              "median": 461.29236641221377,
+              "min": 456.964393939394,
+              "max": 478.50079365079364,
+              "n": 9
+            },
+            {
+              "median": 286.19619047619045,
+              "min": 283.6665094339623,
+              "max": 289.3783653846154,
+              "n": 9,
+              "changePercent": -37.95774408708864
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Point",
+          "measurements": [
+            {
+              "median": 5.261662574535251,
+              "min": 5.21153478676279,
+              "max": 5.471904067116542,
+              "n": 9
+            },
+            {
+              "median": 4.895194582687444,
+              "min": 4.861411326257798,
+              "max": 5.507462138595686,
+              "n": 9,
+              "changePercent": -6.964870640344623
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Small",
+          "measurements": [
+            {
+              "median": 8.27592388306674,
+              "min": 8.233781558726674,
+              "max": 8.369898172687963,
+              "n": 9
+            },
+            {
+              "median": 8.191972696245733,
+              "min": 8.11939106901218,
+              "max": 8.669513076145066,
+              "n": 9,
+              "changePercent": -1.01440259730734
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-All",
+          "measurements": [
+            {
+              "median": 2246.6444444444446,
+              "min": 2207.467857142857,
+              "max": 2283.8037037037034,
+              "n": 9
+            },
+            {
+              "median": 1122.0537037037038,
+              "min": 1114.6444444444444,
+              "max": 1131.525925925926,
+              "n": 9,
+              "changePercent": -50.05646280708349
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Broad",
+          "measurements": [
+            {
+              "median": 398.07814569536424,
+              "min": 394.3666666666667,
+              "max": 405.23221476510065,
+              "n": 9
+            },
+            {
+              "median": 319.9244680851064,
+              "min": 315.8121052631579,
+              "max": 326.9891304347826,
+              "n": 9,
+              "changePercent": -19.632747603799938
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Point",
+          "measurements": [
+            {
+              "median": 7.327170594700207,
+              "min": 7.235475702399614,
+              "max": 40.41010101010101,
+              "n": 9
+            },
+            {
+              "median": 6.973317838466008,
+              "min": 6.8912713908349605,
+              "max": 7.598961499493415,
+              "n": 9,
+              "changePercent": -4.82932329281569
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Small",
+          "measurements": [
+            {
+              "median": 9.34242565779231,
+              "min": 9.270766378244748,
+              "max": 10.748996775349337,
+              "n": 9
+            },
+            {
+              "median": 8.81722263041881,
+              "min": 8.795133391967166,
+              "max": 10.481257641921397,
+              "n": 9,
+              "changePercent": -5.621698760165572
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-All",
+          "measurements": [
+            {
+              "median": 1823.4727272727273,
+              "min": 1819.769696969697,
+              "max": 1893.09375,
+              "n": 9
+            },
+            {
+              "median": 1141.1094339622641,
+              "min": 1134.2433962264151,
+              "max": 1214.08,
+              "n": 9,
+              "changePercent": -37.42108577247757
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Broad",
+          "measurements": [
+            {
+              "median": 470.1859375,
+              "min": 465.80852713178297,
+              "max": 476.7309523809524,
+              "n": 9
+            },
+            {
+              "median": 307.86974358974356,
+              "min": 302.41507537688443,
+              "max": 312.62604166666665,
+              "n": 9,
+              "changePercent": -34.52170321666765
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Point",
+          "measurements": [
+            {
+              "median": 5.121329805394333,
+              "min": 5.065043052507176,
+              "max": 5.328505461326703,
+              "n": 9
+            },
+            {
+              "median": 5.631118618618618,
+              "min": 5.56565253687042,
+              "max": 5.687970423736847,
+              "n": 9,
+              "changePercent": 9.954227370541947
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Small",
+          "measurements": [
+            {
+              "median": 8.285556476111571,
+              "min": 8.212428141253763,
+              "max": 8.443948775682522,
+              "n": 9
+            },
+            {
+              "median": 9.665125644329896,
+              "min": 9.61930105803142,
+              "max": 9.856537450722733,
+              "n": 9,
+              "changePercent": 16.650289841072443
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-All",
+          "measurements": [
+            {
+              "median": 2523.0666666666666,
+              "min": 2508.5625,
+              "max": 2562.3541666666665,
+              "n": 9
+            },
+            {
+              "median": 1391.9704545454545,
+              "min": 1381.390909090909,
+              "max": 1411.846511627907,
+              "n": 9,
+              "changePercent": -44.830215034133545
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Broad",
+          "measurements": [
+            {
+              "median": 438.5080291970803,
+              "min": 430.765,
+              "max": 445.6703703703704,
+              "n": 9
+            },
+            {
+              "median": 344.28342857142854,
+              "min": 340.23559322033896,
+              "max": 352.4456140350877,
+              "n": 9,
+              "changePercent": -21.48754283888016
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Point",
+          "measurements": [
+            {
+              "median": 7.4786114919606135,
+              "min": 7.331647116324535,
+              "max": 8.092272420768712,
+              "n": 9
+            },
+            {
+              "median": 7.259745916515427,
+              "min": 7.1997600191984645,
+              "max": 7.604004562159422,
+              "n": 9,
+              "changePercent": -2.9265536213568977
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Small",
+          "measurements": [
+            {
+              "median": 9.347165109034268,
+              "min": 9.285267718972454,
+              "max": 9.42417150934506,
+              "n": 9
+            },
+            {
+              "median": 9.142032297379647,
+              "min": 9.101380251782194,
+              "max": 9.291669247445029,
+              "n": 9,
+              "changePercent": -2.194599210153625
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-All",
+          "measurements": [
+            {
+              "median": 1980.7806451612903,
+              "min": 1973.5516129032258,
+              "max": 1992.2806451612903,
+              "n": 9
+            },
+            {
+              "median": 1058.9140350877192,
+              "min": 1053.8333333333333,
+              "max": 1088.1464285714285,
+              "n": 9,
+              "changePercent": -46.540570371864966
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Broad",
+          "measurements": [
+            {
+              "median": 509.49830508474577,
+              "min": 507.035294117647,
+              "max": 520.9939655172413,
+              "n": 9
+            },
+            {
+              "median": 305.4761421319797,
+              "min": 303.1186868686869,
+              "max": 309.71907216494844,
+              "n": 9,
+              "changePercent": -40.043737322900554
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Point",
+          "measurements": [
+            {
+              "median": 5.397373392102185,
+              "min": 5.362350312779267,
+              "max": 5.538659651066187,
+              "n": 9
+            },
+            {
+              "median": 5.35709311668601,
+              "min": 5.33512047657153,
+              "max": 5.4583189302283275,
+              "n": 9,
+              "changePercent": -0.7462940302613852
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Small",
+          "measurements": [
+            {
+              "median": 8.586390955924442,
+              "min": 8.562894248608535,
+              "max": 8.738051550895587,
+              "n": 9
+            },
+            {
+              "median": 9.138440450807188,
+              "min": 9.029571106094808,
+              "max": 9.319167053723486,
+              "n": 9,
+              "changePercent": 6.429354285362976
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-All",
+          "measurements": [
+            {
+              "median": 2364.3076923076924,
+              "min": 2339.734615384615,
+              "max": 2589.0,
+              "n": 9
+            },
+            {
+              "median": 1153.6584905660377,
+              "min": 1145.8358490566038,
+              "max": 1157.0384615384614,
+              "n": 9,
+              "changePercent": -51.20523042244114
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Broad",
+          "measurements": [
+            {
+              "median": 482.96959999999996,
+              "min": 469.4171875,
+              "max": 488.8016260162602,
+              "n": 9
+            },
+            {
+              "median": 379.8430379746835,
+              "min": 375.5075,
+              "max": 383.9140127388535,
+              "n": 9,
+              "changePercent": -21.352599009402763
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Point",
+          "measurements": [
+            {
+              "median": 7.460064652492851,
+              "min": 7.396339208677431,
+              "max": 7.7910932225396,
+              "n": 9
+            },
+            {
+              "median": 6.700089325591782,
+              "min": 6.6748247858493714,
+              "max": 6.75901103852219,
+              "n": 9,
+              "changePercent": -10.187248533390603
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Small",
+          "measurements": [
+            {
+              "median": 9.44029263687854,
+              "min": 9.34748403178065,
+              "max": 9.55546178343949,
+              "n": 9
+            },
+            {
+              "median": 8.658556998557,
+              "min": 8.612343906990096,
+              "max": 8.724294853154987,
+              "n": 9,
+              "changePercent": -8.28084116023785
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Generic captured-array experiment",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Double-2D-All",
+          "measurements": [
+            {
+              "median": 1878.459375,
+              "min": 1867.978787878788,
+              "max": 1889.221875,
+              "n": 9
+            },
+            {
+              "median": 1180.3921568627452,
+              "min": 1171.4173076923075,
+              "max": 1202.4360000000001,
+              "n": 9,
+              "changePercent": -37.1616883190383
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Broad",
+          "measurements": [
+            {
+              "median": 504.44117647058823,
+              "min": 494.22131147540983,
+              "max": 522.2426086956522,
+              "n": 9
+            },
+            {
+              "median": 345.2005747126437,
+              "min": 339.33107344632765,
+              "max": 377.691875,
+              "n": 9,
+              "changePercent": -31.56772467943627
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Point",
+          "measurements": [
+            {
+              "median": 5.506800660792951,
+              "min": 5.399298119319716,
+              "max": 9.457100078802206,
+              "n": 9
+            },
+            {
+              "median": 5.433777053336955,
+              "min": 5.315120914164231,
+              "max": 8.536577037985488,
+              "n": 9,
+              "changePercent": -1.3260622992204096
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Small",
+          "measurements": [
+            {
+              "median": 8.814086368977673,
+              "min": 8.708170076911914,
+              "max": 9.320720720720722,
+              "n": 9
+            },
+            {
+              "median": 8.751232317339944,
+              "min": 8.643546528377989,
+              "max": 9.020429945880938,
+              "n": 9,
+              "changePercent": -0.713109096127662
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-All",
+          "measurements": [
+            {
+              "median": 2548.3250000000003,
+              "min": 2519.0375,
+              "max": 2904.019047619048,
+              "n": 9
+            },
+            {
+              "median": 1384.956818181818,
+              "min": 1359.491111111111,
+              "max": 1425.3813953488373,
+              "n": 9,
+              "changePercent": -45.65226891460791
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Broad",
+          "measurements": [
+            {
+              "median": 502.8816666666667,
+              "min": 495.82377049180326,
+              "max": 525.1547826086957,
+              "n": 9
+            },
+            {
+              "median": 414.8696551724138,
+              "min": 406.87432432432433,
+              "max": 435.8050724637681,
+              "n": 9,
+              "changePercent": -17.501535118119815
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Point",
+          "measurements": [
+            {
+              "median": 7.693115384615385,
+              "min": 7.561991178323882,
+              "max": 11.167783361250699,
+              "n": 9
+            },
+            {
+              "median": 7.688161434977578,
+              "min": 7.442954601835773,
+              "max": 10.562242562929061,
+              "n": 9,
+              "changePercent": -0.06439458386017227
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Small",
+          "measurements": [
+            {
+              "median": 9.830652031454784,
+              "min": 9.47338174928955,
+              "max": 10.678946431749422,
+              "n": 9
+            },
+            {
+              "median": 9.704852013585638,
+              "min": 9.496170280107613,
+              "max": 10.806951197550873,
+              "n": 9,
+              "changePercent": -1.2796711496513957
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-All",
+          "measurements": [
+            {
+              "median": 1819.6393939393938,
+              "min": 1794.4705882352941,
+              "max": 2077.7655172413793,
+              "n": 9
+            },
+            {
+              "median": 1025.464406779661,
+              "min": 1018.5220338983052,
+              "max": 1074.4321428571427,
+              "n": 9,
+              "changePercent": -43.64463584405033
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Broad",
+          "measurements": [
+            {
+              "median": 454.5398496240602,
+              "min": 452.2187969924812,
+              "max": 489.5813008130081,
+              "n": 9
+            },
+            {
+              "median": 298.02821782178216,
+              "min": 295.2622549019608,
+              "max": 319.9335106382979,
+              "n": 9,
+              "changePercent": -34.43298358366715
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Point",
+          "measurements": [
+            {
+              "median": 5.201092138337523,
+              "min": 5.169716550357543,
+              "max": 5.2490858192634064,
+              "n": 9
+            },
+            {
+              "median": 5.020525479039411,
+              "min": 4.978096739400979,
+              "max": 5.263970523730152,
+              "n": 9,
+              "changePercent": -3.4717066049867795
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Small",
+          "measurements": [
+            {
+              "median": 8.136013559322034,
+              "min": 8.066662185777659,
+              "max": 8.182831037774443,
+              "n": 9
+            },
+            {
+              "median": 8.755785787246461,
+              "min": 8.685091909104068,
+              "max": 8.999370125974805,
+              "n": 9,
+              "changePercent": 7.617640056834807
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-All",
+          "measurements": [
+            {
+              "median": 2286.5185185185187,
+              "min": 2193.5392857142856,
+              "max": 2409.636,
+              "n": 9
+            },
+            {
+              "median": 1114.5611111111111,
+              "min": 1090.2660714285714,
+              "max": 1172.5788461538461,
+              "n": 9,
+              "changePercent": -51.25510237138785
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Broad",
+          "measurements": [
+            {
+              "median": 406.7371621621622,
+              "min": 402.8845637583893,
+              "max": 439.1102189781022,
+              "n": 9
+            },
+            {
+              "median": 332.93149171270716,
+              "min": 328.53879781420767,
+              "max": 392.49542483660133,
+              "n": 9,
+              "changePercent": -18.145789791400823
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Point",
+          "measurements": [
+            {
+              "median": 7.141549631040228,
+              "min": 7.0986868567372525,
+              "max": 37.74761006289308,
+              "n": 9
+            },
+            {
+              "median": 6.900782058654399,
+              "min": 6.8922696990581205,
+              "max": 6.998763560013997,
+              "n": 9,
+              "changePercent": -3.371363147003148
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Small",
+          "measurements": [
+            {
+              "median": 9.123110840808879,
+              "min": 9.079770010591616,
+              "max": 9.478878357030016,
+              "n": 9
+            },
+            {
+              "median": 8.983380745620602,
+              "min": 8.957142857142857,
+              "max": 9.20601411475913,
+              "n": 9,
+              "changePercent": -1.531605804494296
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-All",
+          "measurements": [
+            {
+              "median": 1853.0484848484848,
+              "min": 1833.6545454545453,
+              "max": 2749.3045454545454,
+              "n": 9
+            },
+            {
+              "median": 1187.672549019608,
+              "min": 1173.5942307692308,
+              "max": 1677.5222222222224,
+              "n": 9,
+              "changePercent": -35.90709802087459
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Broad",
+          "measurements": [
+            {
+              "median": 465.5751937984496,
+              "min": 460.6152671755725,
+              "max": 496.54793388429755,
+              "n": 9
+            },
+            {
+              "median": 312.5984455958549,
+              "min": 311.5901554404145,
+              "max": 324.42054054054057,
+              "n": 9,
+              "changePercent": -32.85758138325971
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Point",
+          "measurements": [
+            {
+              "median": 5.292528887712799,
+              "min": 5.2334234627126035,
+              "max": 5.370258659267878,
+              "n": 9
+            },
+            {
+              "median": 5.237147595356551,
+              "min": 5.20395490026019,
+              "max": 5.352296851306752,
+              "n": 9,
+              "changePercent": -1.0464051029522414
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Small",
+          "measurements": [
+            {
+              "median": 8.334166666666667,
+              "min": 8.24030486130184,
+              "max": 11.621595971334497,
+              "n": 9
+            },
+            {
+              "median": 8.49157939428248,
+              "min": 8.410667227361929,
+              "max": 15.160384032339566,
+              "n": 9,
+              "changePercent": 1.8887638550042718
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-All",
+          "measurements": [
+            {
+              "median": 2565.4708333333333,
+              "min": 2546.5291666666667,
+              "max": 3463.6388888888887,
+              "n": 9
+            },
+            {
+              "median": 1350.5,
+              "min": 1330.9891304347825,
+              "max": 1800.379411764706,
+              "n": 9,
+              "changePercent": -47.35859077199929
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Broad",
+          "measurements": [
+            {
+              "median": 445.07703703703703,
+              "min": 435.04927536231884,
+              "max": 485.2015748031496,
+              "n": 9
+            },
+            {
+              "median": 355.51952662721897,
+              "min": 352.36023391812864,
+              "max": 360.5413173652695,
+              "n": 9,
+              "changePercent": -20.121799813807417
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Point",
+          "measurements": [
+            {
+              "median": 7.3532230392156865,
+              "min": 7.298260763804428,
+              "max": 7.724034500514933,
+              "n": 9
+            },
+            {
+              "median": 6.861383647798743,
+              "min": 6.7994560906515575,
+              "max": 7.152926451305281,
+              "n": 9,
+              "changePercent": -6.688759320829806
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Small",
+          "measurements": [
+            {
+              "median": 9.499366788032294,
+              "min": 9.337394957983193,
+              "max": 13.950709137409905,
+              "n": 9
+            },
+            {
+              "median": 8.97165071770335,
+              "min": 8.896693847294292,
+              "max": 16.65470914127424,
+              "n": 9,
+              "changePercent": -5.55527628424437
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-All",
+          "measurements": [
+            {
+              "median": 2507.5958333333333,
+              "min": 2255.625925925926,
+              "max": 2729.65,
+              "n": 9
+            },
+            {
+              "median": 1413.2558139534883,
+              "min": 1198.3098039215686,
+              "max": 1438.8333333333333,
+              "n": 9,
+              "changePercent": -43.641004855441345
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Broad",
+          "measurements": [
+            {
+              "median": 779.1782051282051,
+              "min": 555.4715596330275,
+              "max": 848.5239436619718,
+              "n": 9
+            },
+            {
+              "median": 460.0206106870229,
+              "min": 392.9045751633987,
+              "max": 481.8304,
+              "n": 9,
+              "changePercent": -40.960795918138956
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Point",
+          "measurements": [
+            {
+              "median": 8.836730486008836,
+              "min": 6.4775043177892915,
+              "max": 9.31098696461825,
+              "n": 9
+            },
+            {
+              "median": 8.216322059427632,
+              "min": 6.391180230080955,
+              "max": 10.607742619763126,
+              "n": 9,
+              "changePercent": -7.020791542341298
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Small",
+          "measurements": [
+            {
+              "median": 12.152268124746861,
+              "min": 9.318605373505203,
+              "max": 14.46639344262295,
+              "n": 9
+            },
+            {
+              "median": 13.47574668762632,
+              "min": 10.255426422833704,
+              "max": 13.75561668959193,
+              "n": 9,
+              "changePercent": 10.890794617873256
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-All",
+          "measurements": [
+            {
+              "median": 3108.62,
+              "min": 2821.8136363636363,
+              "max": 3678.5588235294117,
+              "n": 9
+            },
+            {
+              "median": 1463.4512195121952,
+              "min": 1314.486956521739,
+              "max": 1727.48,
+              "n": 9,
+              "changePercent": -52.92280113001283
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Broad",
+          "measurements": [
+            {
+              "median": 635.7715789473684,
+              "min": 516.4880341880341,
+              "max": 698.756976744186,
+              "n": 9
+            },
+            {
+              "median": 515.0717948717949,
+              "min": 448.1611940298507,
+              "max": 526.9745614035088,
+              "n": 9,
+              "changePercent": -18.984771901161935
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Point",
+          "measurements": [
+            {
+              "median": 11.189725899683014,
+              "min": 8.959683440346424,
+              "max": 13.048053924766254,
+              "n": 9
+            },
+            {
+              "median": 11.255580566497843,
+              "min": 8.13832903838329,
+              "max": 13.011253252385083,
+              "n": 9,
+              "changePercent": 0.5885279711515867
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Small",
+          "measurements": [
+            {
+              "median": 13.042490762877636,
+              "min": 11.366035233945823,
+              "max": 14.426953594614089,
+              "n": 9
+            },
+            {
+              "median": 12.500520833333333,
+              "min": 10.574797321113852,
+              "max": 14.179631379962192,
+              "n": 9,
+              "changePercent": -4.15541739225832
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Experimental specialization final acceptance (excluded)",
+      "unit": "µs / 64 queries",
+      "lowerIsBetter": true,
+      "description": "Bars show medians; whiskers span recorded runs. Compare only within each panel epoch.",
+      "rounds": [
+        "Before",
+        "After"
+      ],
+      "rows": [
+        {
+          "label": "Double-2D-All",
+          "measurements": [
+            {
+              "median": 2455.964,
+              "min": 2171.825,
+              "max": 3245.7473684210527,
+              "n": 9
+            },
+            {
+              "median": 1371.4068181818182,
+              "min": 1310.4413043478262,
+              "max": 1496.4560975609756,
+              "n": 9,
+              "changePercent": -44.16014167219804
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Broad",
+          "measurements": [
+            {
+              "median": 735.1939024390244,
+              "min": 636.0978947368421,
+              "max": 782.1987012987013,
+              "n": 9
+            },
+            {
+              "median": 457.9886363636364,
+              "min": 409.4551020408163,
+              "max": 499.2834710743802,
+              "n": 9,
+              "changePercent": -37.70505510937353
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Point",
+          "measurements": [
+            {
+              "median": 7.237619105053673,
+              "min": 5.98339648982848,
+              "max": 8.532390160671122,
+              "n": 9
+            },
+            {
+              "median": 8.138396853383968,
+              "min": 6.9523461939520335,
+              "max": 8.88553235598993,
+              "n": 9,
+              "changePercent": 12.44577443570256
+            }
+          ]
+        },
+        {
+          "label": "Double-2D-Small",
+          "measurements": [
+            {
+              "median": 12.769759523302831,
+              "min": 11.731436950146628,
+              "max": 13.765863730213352,
+              "n": 9
+            },
+            {
+              "median": 13.342472759617522,
+              "min": 12.451919485370409,
+              "max": 14.678033268101762,
+              "n": 9,
+              "changePercent": 4.484917944379285
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-All",
+          "measurements": [
+            {
+              "median": 3191.563157894737,
+              "min": 2740.490909090909,
+              "max": 3935.4375,
+              "n": 9
+            },
+            {
+              "median": 1756.28,
+              "min": 1479.3878048780489,
+              "max": 1983.2322580645161,
+              "n": 9,
+              "changePercent": -44.971165754447995
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Broad",
+          "measurements": [
+            {
+              "median": 650.2494623655914,
+              "min": 613.2755102040817,
+              "max": 673.5044444444445,
+              "n": 9
+            },
+            {
+              "median": 529.1798245614035,
+              "min": 496.26694214876034,
+              "max": 557.1157407407408,
+              "n": 9,
+              "changePercent": -18.61895238847866
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Point",
+          "measurements": [
+            {
+              "median": 10.08636974789916,
+              "min": 8.421263157894737,
+              "max": 12.049678714859438,
+              "n": 9
+            },
+            {
+              "median": 8.759970802919709,
+              "min": 8.151800027170221,
+              "max": 10.98390993959363,
+              "n": 9,
+              "changePercent": -13.150409692800736
+            }
+          ]
+        },
+        {
+          "label": "Double-3D-Small",
+          "measurements": [
+            {
+              "median": 13.930849582172701,
+              "min": 13.32945357618836,
+              "max": 14.430319788410674,
+              "n": 9
+            },
+            {
+              "median": 12.490820149875104,
+              "min": 11.778661170003927,
+              "max": 13.962145183806422,
+              "n": 9,
+              "changePercent": -10.336982133095473
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-All",
+          "measurements": [
+            {
+              "median": 2353.846153846154,
+              "min": 2042.7466666666667,
+              "max": 3037.7400000000002,
+              "n": 9
+            },
+            {
+              "median": 1255.51875,
+              "min": 1098.330909090909,
+              "max": 1694.5777777777778,
+              "n": 9,
+              "changePercent": -46.6609681372549
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Broad",
+          "measurements": [
+            {
+              "median": 679.2573033707865,
+              "min": 526.4347826086956,
+              "max": 751.8162500000001,
+              "n": 9
+            },
+            {
+              "median": 396.3414473684211,
+              "min": 329.87857142857143,
+              "max": 461.23740458015266,
+              "n": 9,
+              "changePercent": -41.65076394444448
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Point",
+          "measurements": [
+            {
+              "median": 5.261592423710979,
+              "min": 5.209202187689904,
+              "max": 5.335319224613196,
+              "n": 9
+            },
+            {
+              "median": 5.06920672467686,
+              "min": 5.054704742650156,
+              "max": 6.389213076349696,
+              "n": 9,
+              "changePercent": -3.656415844130123
+            }
+          ]
+        },
+        {
+          "label": "Int32-2D-Small",
+          "measurements": [
+            {
+              "median": 11.47762050497322,
+              "min": 9.048160434258143,
+              "max": 12.793944562899787,
+              "n": 9
+            },
+            {
+              "median": 12.081739480571773,
+              "min": 9.89813592873639,
+              "max": 13.22327016306743,
+              "n": 9,
+              "changePercent": 5.263451386433182
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-All",
+          "measurements": [
+            {
+              "median": 2689.3521739130433,
+              "min": 2393.8884615384613,
+              "max": 3683.3705882352942,
+              "n": 9
+            },
+            {
+              "median": 1365.1522727272727,
+              "min": 1239.7244897959183,
+              "max": 1761.8257142857144,
+              "n": 9,
+              "changePercent": -49.23862014170655
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Broad",
+          "measurements": [
+            {
+              "median": 532.0380530973451,
+              "min": 445.8925925925926,
+              "max": 567.1745283018868,
+              "n": 9
+            },
+            {
+              "median": 397.9205298013245,
+              "min": 355.5059171597633,
+              "max": 434.94347826086954,
+              "n": 9,
+              "changePercent": -25.20825766413396
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Point",
+          "measurements": [
+            {
+              "median": 7.258158945203822,
+              "min": 7.223426026242928,
+              "max": 37.00561035758323,
+              "n": 9
+            },
+            {
+              "median": 6.962392666511952,
+              "min": 6.928752886836028,
+              "max": 7.490873907615481,
+              "n": 9,
+              "changePercent": -4.074949045960363
+            }
+          ]
+        },
+        {
+          "label": "Int32-3D-Small",
+          "measurements": [
+            {
+              "median": 12.640636191278702,
+              "min": 10.700909577314071,
+              "max": 14.18933554031686,
+              "n": 9
+            },
+            {
+              "median": 11.513392171910976,
+              "min": 10.55411537108688,
+              "max": 11.90281690140845,
+              "n": 9,
+              "changePercent": -8.917620935451476
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-All",
+          "measurements": [
+            {
+              "median": 2440.1639999999998,
+              "min": 2174.048275862069,
+              "max": 2561.0625,
+              "n": 9
+            },
+            {
+              "median": 1400.9581395348837,
+              "min": 1272.6333333333334,
+              "max": 1601.8,
+              "n": 9,
+              "changePercent": -42.58754167609702
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Broad",
+          "measurements": [
+            {
+              "median": 656.8728260869566,
+              "min": 533.9725663716814,
+              "max": 758.2262499999999,
+              "n": 9
+            },
+            {
+              "median": 406.86081081081085,
+              "min": 393.5607843137255,
+              "max": 465.2279069767442,
+              "n": 9,
+              "changePercent": -38.06094655574156
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Point",
+          "measurements": [
+            {
+              "median": 7.522617853560682,
+              "min": 6.72835837631756,
+              "max": 7.737382333978079,
+              "n": 9
+            },
+            {
+              "median": 7.277152558816396,
+              "min": 6.729034428619491,
+              "max": 7.946338233346577,
+              "n": 9,
+              "changePercent": -3.26303023126584
+            }
+          ]
+        },
+        {
+          "label": "Int64-2D-Small",
+          "measurements": [
+            {
+              "median": 11.72951524628616,
+              "min": 10.330991735537191,
+              "max": 12.926260232658336,
+              "n": 9
+            },
+            {
+              "median": 11.973897425663539,
+              "min": 10.8442617025122,
+              "max": 12.892758917060593,
+              "n": 9,
+              "changePercent": 2.083480640470259
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-All",
+          "measurements": [
+            {
+              "median": 3030.445,
+              "min": 2869.480952380952,
+              "max": 3774.7375,
+              "n": 9
+            },
+            {
+              "median": 1631.228947368421,
+              "min": 1559.2256410256412,
+              "max": 1805.2029411764706,
+              "n": 9,
+              "changePercent": -46.17196658020784
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Broad",
+          "measurements": [
+            {
+              "median": 586.9757281553398,
+              "min": 506.6630252100841,
+              "max": 651.9526881720429,
+              "n": 9
+            },
+            {
+              "median": 461.3473282442748,
+              "min": 389.75324675324674,
+              "max": 503.3858333333334,
+              "n": 9,
+              "changePercent": -21.402656683245024
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Point",
+          "measurements": [
+            {
+              "median": 10.225251320497529,
+              "min": 9.736443290605225,
+              "max": 10.550835238262705,
+              "n": 9
+            },
+            {
+              "median": 9.670668815471394,
+              "min": 9.00053997300135,
+              "max": 10.086686838124054,
+              "n": 9,
+              "changePercent": -5.423656472036232
+            }
+          ]
+        },
+        {
+          "label": "Int64-3D-Small",
+          "measurements": [
+            {
+              "median": 12.635123183828174,
+              "min": 10.844514729803,
+              "max": 13.655211652253072,
+              "n": 9
+            },
+            {
+              "median": 12.255351307189542,
+              "min": 11.620178156467855,
+              "max": 12.787958226768968,
+              "n": 9,
+              "changePercent": -3.0056840057143708
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-All",
+          "measurements": [
+            {
+              "median": 2890.390476190476,
+              "min": 2368.8,
+              "max": 3397.211111111111,
+              "n": 9
+            },
+            {
+              "median": 1239.7285714285713,
+              "min": 1159.875,
+              "max": 1544.4641025641026,
+              "n": 9,
+              "changePercent": -57.10861277599666
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Broad",
+          "measurements": [
+            {
+              "median": 664.3000000000001,
+              "min": 567.5830188679246,
+              "max": 821.4635135135136,
+              "n": 9
+            },
+            {
+              "median": 409.55850340136055,
+              "min": 338.28932584269666,
+              "max": 525.7652173913043,
+              "n": 9,
+              "changePercent": -38.34735760930897
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Point",
+          "measurements": [
+            {
+              "median": 7.282560679611651,
+              "min": 6.057056329497274,
+              "max": 9.192860425923088,
+              "n": 9
+            },
+            {
+              "median": 6.725397892849137,
+              "min": 6.351317878691648,
+              "max": 8.665597920277296,
+              "n": 9,
+              "changePercent": -7.650643932461199
+            }
+          ]
+        },
+        {
+          "label": "Single-2D-Small",
+          "measurements": [
+            {
+              "median": 10.85596164284422,
+              "min": 9.396492326965236,
+              "max": 12.012492492492493,
+              "n": 9
+            },
+            {
+              "median": 9.915432914738929,
+              "min": 9.151105688577093,
+              "max": 10.77624349075238,
+              "n": 9,
+              "changePercent": -8.663707178122227
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-All",
+          "measurements": [
+            {
+              "median": 3512.9444444444443,
+              "min": 2714.7565217391307,
+              "max": 4060.5333333333333,
+              "n": 9
+            },
+            {
+              "median": 1418.7325581395348,
+              "min": 1200.8784313725491,
+              "max": 1649.045945945946,
+              "n": 9,
+              "changePercent": -59.61414760249928
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Broad",
+          "measurements": [
+            {
+              "median": 576.6504761904762,
+              "min": 545.7063636363636,
+              "max": 752.3512499999999,
+              "n": 9
+            },
+            {
+              "median": 459.22442748091606,
+              "min": 431.71438848920866,
+              "max": 531.9256637168141,
+              "n": 9,
+              "changePercent": -20.36347034434297
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Point",
+          "measurements": [
+            {
+              "median": 9.26295152824946,
+              "min": 8.185716234652116,
+              "max": 12.067303438568269,
+              "n": 9
+            },
+            {
+              "median": 10.01345126835781,
+              "min": 7.963755806237558,
+              "max": 10.57346255506608,
+              "n": 9,
+              "changePercent": 8.102166332399907
+            }
+          ]
+        },
+        {
+          "label": "Single-3D-Small",
+          "measurements": [
+            {
+              "median": 10.61975221238938,
+              "min": 10.18191074155778,
+              "max": 11.81261811023622,
+              "n": 9
+            },
+            {
+              "median": 11.53642829680892,
+              "min": 10.195497026338147,
+              "max": 13.602357742008614,
+              "n": 9,
+              "changePercent": 8.63180294687207
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectGroups": [
+    {
+      "name": "Uniform-Point",
+      "control": "Before 5.945 µs/64 queries",
+      "items": [
+        {
+          "hypothesisId": "H-001",
+          "label": "Contained",
+          "effect": -0.0025524253395728946,
+          "range": [
+            -0.012655345333308365,
+            4.810230720108127
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-002",
+          "label": "RootContained",
+          "effect": 0.004100668079809688,
+          "range": [
+            -0.0048849742411808394,
+            0.05817182814608257
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-003",
+          "label": "InternalContained",
+          "effect": 0.00870435895418642,
+          "range": [
+            -0.0032902218220931534,
+            0.12028903574133731
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-004",
+          "label": "SpanTraversal",
+          "effect": -0.0715567660420311,
+          "range": [
+            -0.07971818419388299,
+            -0.059267921903765175
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-013",
+          "label": "MatchedContained",
+          "effect": 0.049259173457225636,
+          "range": [
+            0.036734950957624246,
+            0.1826242003982903
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-014",
+          "label": "MatchedContainedSpan",
+          "effect": -0.03376429649986823,
+          "range": [
+            -0.048977153415056596,
+            0.0322352059919051
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-015",
+          "label": "InternalContainedSpan",
+          "effect": -0.000802447650021687,
+          "range": [
+            -0.009677703513138125,
+            0.13922701592868347
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-016",
+          "label": "MatchedContainedPoint",
+          "effect": 0.01781341983907203,
+          "range": [
+            0.00528792441759296,
+            0.04837673564550182
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-017",
+          "label": "MatchedContainedSpanPoint",
+          "effect": 0.019684661218546395,
+          "range": [
+            0.0038158755480517392,
+            0.0674067492167636
+          ],
+          "note": "Nine alternating samples"
+        }
+      ]
+    },
+    {
+      "name": "Uniform-Broad",
+      "control": "Before 552.558 µs/64 queries",
+      "items": [
+        {
+          "hypothesisId": "H-001",
+          "label": "Contained",
+          "effect": -0.2998484058514378,
+          "range": [
+            -0.33574430781154085,
+            -0.13973108181229865
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-002",
+          "label": "RootContained",
+          "effect": 0.00011156093582265214,
+          "range": [
+            -0.04908451978021933,
+            0.0865550029828428
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-003",
+          "label": "InternalContained",
+          "effect": -0.18645514861796897,
+          "range": [
+            -0.22474391314322606,
+            -0.10997829387958591
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-004",
+          "label": "SpanTraversal",
+          "effect": -0.01790341958724595,
+          "range": [
+            -0.0634601862845462,
+            0.2739837737444788
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-013",
+          "label": "MatchedContained",
+          "effect": -0.2799602906887708,
+          "range": [
+            -0.33007963957031095,
+            -0.2584033973184473
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-014",
+          "label": "MatchedContainedSpan",
+          "effect": -0.3296139697797493,
+          "range": [
+            -0.3581372276110011,
+            -0.21968966094788078
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-015",
+          "label": "InternalContainedSpan",
+          "effect": -0.2351375194041001,
+          "range": [
+            -0.26908465985416996,
+            -0.20541923928603378
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-016",
+          "label": "MatchedContainedPoint",
+          "effect": -0.3130622279415848,
+          "range": [
+            -0.3566378592764634,
+            -0.28682933782675235
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-017",
+          "label": "MatchedContainedSpanPoint",
+          "effect": -0.3342102257913736,
+          "range": [
+            -0.3741216013563591,
+            -0.3105366278406666
+          ],
+          "note": "Nine alternating samples"
+        }
+      ]
+    },
+    {
+      "name": "Uniform-All",
+      "control": "Before 1870.950 µs/64 queries",
+      "items": [
+        {
+          "hypothesisId": "H-001",
+          "label": "Contained",
+          "effect": -0.392697114656547,
+          "range": [
+            -0.397444784315938,
+            -0.38682142454874724
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-002",
+          "label": "RootContained",
+          "effect": -0.421588830071152,
+          "range": [
+            -0.42741950571075316,
+            -0.4138351891713642
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-003",
+          "label": "InternalContained",
+          "effect": -0.3886604589723327,
+          "range": [
+            -0.3931003400058303,
+            -0.3833233473904235
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-004",
+          "label": "SpanTraversal",
+          "effect": -0.026245781797774148,
+          "range": [
+            -0.033016900648827896,
+            -0.012196343295430956
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-013",
+          "label": "MatchedContained",
+          "effect": -0.3918107556767062,
+          "range": [
+            -0.3979797124928969,
+            -0.3397901730644748
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-014",
+          "label": "MatchedContainedSpan",
+          "effect": -0.38718527256970303,
+          "range": [
+            -0.3957498599541376,
+            -0.34766865745773134
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-015",
+          "label": "InternalContainedSpan",
+          "effect": -0.38360114991238214,
+          "range": [
+            -0.3902740868808261,
+            -0.3578804361492022
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-016",
+          "label": "MatchedContainedPoint",
+          "effect": -0.3865118179076329,
+          "range": [
+            -0.3939441079313647,
+            -0.3753008606987136
+          ],
+          "note": "Nine alternating samples"
+        },
+        {
+          "hypothesisId": "H-017",
+          "label": "MatchedContainedSpanPoint",
+          "effect": -0.3739742605933579,
+          "range": [
+            -0.3794704798290778,
+            -0.35677088085499853
+          ],
+          "note": "Nine alternating samples"
+        }
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-001",
+      "claim": "Whole-node containment",
+      "mechanism": "Contains before every recursive traversal",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Contains before every recursive traversal",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Selective overhead; integrated matched-child checks avoid leaf checks. Uniform-Point: 7.286 → 7.936 µs/batch (8.9%); Uniform-Small: 12.392 → 12.872 µs/batch (3.9%); Uniform-Broad: 729.856 → 524.373 µs/batch (-28.2%); Uniform-All: 3180.762 → 1651.956 µs/batch (-48.1%); Clustered-Point: 1.258 → 1.327 µs/batch (5.5%); Clustered-Small: 2.847 → 2.812 µs/batch (-1.2%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Selective overhead; integrated matched-child checks avoid leaf checks.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-002",
+      "claim": "Root-only containment",
+      "mechanism": "Collect entire index only when root is contained",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Collect entire index only when root is contained",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Does not improve partial broad queries; integrated traversal covers full-index queries. Uniform-Point: 7.286 → 7.396 µs/batch (1.5%); Uniform-Small: 12.392 → 11.988 µs/batch (-3.3%); Uniform-Broad: 729.856 → 767.928 µs/batch (5.2%); Uniform-All: 3180.762 → 1486.633 µs/batch (-53.3%); Clustered-Point: 1.258 → 1.326 µs/batch (5.4%); Clustered-Small: 2.847 → 2.927 µs/batch (2.8%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Does not improve partial broad queries; integrated traversal covers full-index queries.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-003",
+      "claim": "Internal-node containment",
+      "mechanism": "Skip checks at leaves",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Skip checks at leaves",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Broad benefit with inconsistent selective overhead; matched-child combined path preferred. Uniform-Point: 7.286 → 7.104 µs/batch (-2.5%); Uniform-Small: 12.392 → 12.404 µs/batch (0.1%); Uniform-Broad: 729.856 → 603.972 µs/batch (-17.2%); Uniform-All: 3180.762 → 1643.276 µs/batch (-48.3%); Clustered-Point: 1.258 → 1.336 µs/batch (6.2%); Clustered-Small: 2.847 → 3.087 µs/batch (8.5%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Broad benefit with inconsistent selective overhead; matched-child combined path preferred.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-004",
+      "claim": "Bounded active-prefix traversal",
+      "mechanism": "One span validation instead of repeated node-array indexing",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "One span validation instead of repeated node-array indexing",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "Adjacent node-prefix and containment invariant comments reference H-004/H-013/H-014.",
+      "result": "Integrated with matched-child containment; optimized code checked separately. Uniform-Point: 7.286 → 6.560 µs/batch (-10.0%); Uniform-Small: 12.392 → 12.619 µs/batch (1.8%); Uniform-Broad: 729.856 → 812.298 µs/batch (11.3%); Uniform-All: 3180.762 → 3200.346 µs/batch (0.6%); Clustered-Point: 1.258 → 1.154 µs/batch (-8.2%); Clustered-Small: 2.847 → 2.643 µs/batch (-7.1%)",
+      "state": "retained",
+      "decision": "Adopted",
+      "decisionRationale": "Integrated with matched-child containment; optimized code checked separately.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-005",
+      "claim": "Cached quadratic seed areas",
+      "mechanism": "Precompute each entry area in stack storage",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Precompute each entry area in stack storage",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "No reliable build gain; small uniform build regressed. Clustered-1000: 513.83 → 516.70 µs/build (0.6%); Clustered-10000: 7318.68 → 7146.82 µs/build (-2.3%); Uniform-1000: 460.92 → 481.66 µs/build (4.5%); Uniform-10000: 7269.56 → 7788.96 µs/build (7.1%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "No reliable build gain; small uniform build regressed.",
+      "evidence": [
+        "raw/construction-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-006",
+      "claim": "Stack-assigned flags",
+      "mechanism": "Initialized stack span replacing bool allocation",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Initialized stack span replacing bool allocation",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Reduced allocation but construction regressed in screening; not retained. Clustered-1000: 513.83 → 605.41 µs/build (17.8%); Clustered-10000: 7318.68 → 7142.32 µs/build (-2.4%); Uniform-1000: 460.92 → 556.86 µs/build (20.8%); Uniform-10000: 7269.56 → 7823.11 µs/build (7.6%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Reduced allocation but construction regressed in screening; not retained.",
+      "evidence": [
+        "raw/construction-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-007",
+      "claim": "Linear R-tree splitting",
+      "mechanism": "Normalized-separation seeds and one-pass assignment",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Normalized-separation seeds and one-pass assignment",
+      "changeScope": "moderate",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Faster construction; worse medium queries. Default remains quadratic. Clustered-1000: 513.83 → 293.25 µs/build (-42.9%); Clustered-10000: 7318.68 → 4050.18 µs/build (-44.7%); Uniform-1000: 460.92 → 232.70 µs/build (-49.5%); Uniform-10000: 7269.56 → 4339.75 µs/build (-40.3%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Faster construction; worse medium queries. Default remains quadratic.",
+      "evidence": [
+        "raw/construction-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-008",
+      "claim": "Concurrent batch queries",
+      "mechanism": "One read lock per batch",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "One read lock per batch",
+      "changeScope": "moderate",
+      "maintainability": "Additive public API with documented ownership",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Confirmed query benefit; explicit writer exclusion for the whole batch.",
+      "state": "retained",
+      "decision": "Adopted",
+      "decisionRationale": "Confirmed query benefit; explicit writer exclusion for the whole batch.",
+      "evidence": [
+        "raw/bdn/results/BatchBenchmarks-report.csv",
+        "../../tests/Tedd.RTree.Tests/BatchTests.cs"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance.",
+        "Longer writer waits on large concurrent query batches."
+      ]
+    },
+    {
+      "id": "H-009",
+      "claim": "Snapshot batch queries",
+      "mechanism": "One published tree captured per batch",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "One published tree captured per batch",
+      "changeScope": "moderate",
+      "maintainability": "Additive public API with documented ownership",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Confirmed benefit plus one-version consistency; explicit output ownership.",
+      "state": "retained",
+      "decision": "Adopted",
+      "decisionRationale": "Confirmed benefit plus one-version consistency; explicit output ownership.",
+      "evidence": [
+        "raw/bdn/results/BatchBenchmarks-report.csv",
+        "../../tests/Tedd.RTree.Tests/BatchTests.cs"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-010",
+      "claim": "Existing STR batch construction",
+      "mechanism": "Avoid incremental splits with packed construction",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Avoid incremental splits with packed construction",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Existing public BulkLoad already supplies this algorithm; confirmed construction advantage. Clustered-1000: 513.83 → 87.65 µs/build (-82.9%); Clustered-10000: 7318.68 → 1894.85 µs/build (-74.1%); Uniform-1000: 460.92 → 89.96 µs/build (-80.5%); Uniform-10000: 7269.56 → 1967.43 µs/build (-72.9%)",
+      "state": "not-applicable",
+      "decision": "Existing capability",
+      "decisionRationale": "Existing public BulkLoad already supplies this algorithm; confirmed construction advantage.",
+      "evidence": [
+        "raw/construction-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-011",
+      "claim": "Node capacity sweep",
+      "mechanism": "Vary scan width and tree depth",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Vary scan width and tree depth",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Smaller capacities improve selective cases and hurt broad cases; default retained. Uniform-Point: 7.286 → 6.077 µs/batch (-16.6%); Uniform-Small: 12.392 → 12.091 µs/batch (-2.4%); Uniform-Broad: 729.856 → 988.712 µs/batch (35.5%); Uniform-All: 3180.762 → 3736.745 µs/batch (17.5%); Clustered-Point: 1.258 → 1.121 µs/batch (-10.9%); Clustered-Small: 2.847 → 2.869 µs/batch (0.8%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Smaller capacities improve selective cases and hurt broad cases; default retained.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-012",
+      "claim": "Flat SIMD index alternative",
+      "mechanism": "Replace hierarchy with columnar vector scans",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Replace hierarchy with columnar vector scans",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Selective query cost is orders of magnitude higher; no general index replacement justified. Uniform-Point: 7.286 → 244.338 µs/batch (3253.4%); Uniform-Small: 12.392 → 253.382 µs/batch (1944.7%); Uniform-Broad: 729.856 → 861.847 µs/batch (18.1%); Uniform-All: 3180.762 → 2165.911 µs/batch (-31.9%); Clustered-Point: 1.258 → 195.996 µs/batch (15483.2%); Clustered-Small: 2.847 → 197.741 µs/batch (6846.2%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Selective query cost is orders of magnitude higher; no general index replacement justified.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ]
+    },
+    {
+      "id": "H-013",
+      "claim": "Matched-child containment",
+      "mechanism": "Check containment after intersecting internal entries",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Check containment after intersecting internal entries",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Isolated array version has selective overhead; combined span path confirmed. Uniform-Point: 7.286 → 7.359 µs/batch (1.0%); Uniform-Small: 12.392 → 13.509 µs/batch (9.0%); Uniform-Broad: 729.856 → 512.990 µs/batch (-29.7%); Uniform-All: 3180.762 → 1501.185 µs/batch (-52.8%); Clustered-Point: 1.258 → 1.328 µs/batch (5.6%); Clustered-Small: 2.847 → 2.830 µs/batch (-0.6%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Isolated array version has selective overhead; combined span path confirmed.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-001"
+    },
+    {
+      "id": "H-014",
+      "claim": "Matched-child containment with bounded spans",
+      "mechanism": "Combine isolated H-004/H-013 mechanisms",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Combine isolated H-004/H-013 mechanisms",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "Adjacent node-prefix and containment invariant comments reference H-004/H-013/H-014.",
+      "result": "Large repeated broad benefit; small-query limits verified independently. Retained only in the original 2D double tree. Generic traversal transplants did not pass final regression acceptance.",
+      "state": "retained",
+      "decision": "Adopted",
+      "decisionRationale": "Large repeated broad benefit; small-query limits verified independently.",
+      "evidence": [
+        "raw/confirmation-screen.csv",
+        "raw/bdn/results/TraversalBenchmarks-report.csv",
+        "raw/generic-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-013"
+    },
+    {
+      "id": "H-015",
+      "claim": "Internal containment with bounded spans",
+      "mechanism": "Combine H-003/H-004",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Combine H-003/H-004",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "No compelling advantage over matched-child path. Uniform-Point: 7.286 → 6.999 µs/batch (-3.9%); Uniform-Small: 12.392 → 12.240 µs/batch (-1.2%); Uniform-Broad: 729.856 → 607.726 µs/batch (-16.7%); Uniform-All: 3180.762 → 1612.072 µs/batch (-49.3%); Clustered-Point: 1.258 → 1.222 µs/batch (-2.9%); Clustered-Small: 2.847 → 2.739 µs/batch (-3.8%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "No compelling advantage over matched-child path.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-003"
+    },
+    {
+      "id": "H-016",
+      "claim": "Point routing",
+      "mechanism": "Route zero-width/height queries to original recursive helper",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Route zero-width/height queries to original recursive helper",
+      "changeScope": "moderate",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Specialization adds maintenance and did not improve selective results. Uniform-Point: 7.286 → 7.098 µs/batch (-2.6%); Uniform-Small: 12.392 → 13.138 µs/batch (6.0%); Uniform-Broad: 729.856 → 536.141 µs/batch (-26.5%); Uniform-All: 3180.762 → 1637.284 µs/batch (-48.5%); Clustered-Point: 1.258 → 1.315 µs/batch (4.5%); Clustered-Small: 2.847 → 2.870 µs/batch (0.8%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Specialization adds maintenance and did not improve selective results.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-013"
+    },
+    {
+      "id": "H-017",
+      "claim": "Point routing with spans",
+      "mechanism": "Combine H-014/H-016",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Combine H-014/H-016",
+      "changeScope": "moderate",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Extra dispatcher and traversal duplication without repeatable advantage. Uniform-Point: 7.286 → 7.471 µs/batch (2.5%); Uniform-Small: 12.392 → 11.752 µs/batch (-5.2%); Uniform-Broad: 729.856 → 522.936 µs/batch (-28.4%); Uniform-All: 3180.762 → 1633.072 µs/batch (-48.7%); Clustered-Point: 1.258 → 1.316 µs/batch (4.6%); Clustered-Small: 2.847 → 2.622 µs/batch (-7.9%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Extra dispatcher and traversal duplication without repeatable advantage.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-016"
+    },
+    {
+      "id": "H-018",
+      "claim": "List-derived leaf counts",
+      "mechanism": "Subtract appended list prefix instead of incrementing matches",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Subtract appended list prefix instead of incrementing matches",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Focused confirmation found no consistent broad gain and slower selective cases than the integrated control. Uniform-Point: 7.286 → 6.744 µs/batch (-7.4%); Uniform-Small: 12.392 → 11.949 µs/batch (-3.6%); Uniform-Broad: 729.856 → 516.715 µs/batch (-29.2%); Uniform-All: 3180.762 → 1609.144 µs/batch (-49.4%); Clustered-Point: 1.258 → 1.093 µs/batch (-13.1%); Clustered-Small: 2.847 → 2.341 µs/batch (-17.8%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Focused confirmation found no consistent broad gain and slower selective cases than the integrated control.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-014"
+    },
+    {
+      "id": "H-019",
+      "claim": "Span-bounded value collector",
+      "mechanism": "Validate active prefix once in containment collector",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Validate active prefix once in containment collector",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Full-index throughput improved further, but point queries lost 6–15% versus the integrated control. Selective-query priority excludes this additional tradeoff. Uniform-Point: 7.286 → 7.813 µs/batch (7.2%); Uniform-Small: 12.392 → 12.449 µs/batch (0.5%); Uniform-Broad: 729.856 → 439.053 µs/batch (-39.8%); Uniform-All: 3180.762 → 1254.734 µs/batch (-60.6%); Clustered-Point: 1.258 → 1.189 µs/batch (-5.4%); Clustered-Small: 2.847 → 2.458 µs/batch (-13.6%)",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Full-index throughput improved further, but point queries lost 6–15% versus the integrated control. Selective-query priority excludes this additional tradeoff.",
+      "evidence": [
+        "raw/refinement-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-014"
+    },
+    {
+      "id": "H-020",
+      "claim": "Captured arrays for generic traversal",
+      "mechanism": "Hoist entry-array reference and node count; retain safe indexing",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Hoist entry-array reference and node count; retain safe indexing",
+      "changeScope": "local",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Corrects the 2D-long selective regression, but blanket generic adoption regresses small int/float 2D queries by 8–11% in screening.",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Corrects the 2D-long selective regression, but blanket generic adoption regresses small int/float 2D queries by 8–11% in screening.",
+      "evidence": [
+        "raw/local-array-screen.csv"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-014"
+    },
+    {
+      "id": "H-021",
+      "claim": "Coordinate-specialized generic indexing",
+      "mechanism": "Use arrays for 2D long and spans for other coordinates",
+      "sourceLocation": "src/Tedd.RTree/RTree*.cs; concurrent and snapshot wrappers for H-008/H-009",
+      "observation": "Inspected traversal, split, and synchronization paths; broad CPU profile and controlled fixture results.",
+      "prediction": "Repeatable query/build reduction beyond observed dispersion; zero extra timed allocation.",
+      "falsification": "Correctness failure, selective regression above 5%, or no repeatable proportional benefit.",
+      "change": "Use arrays for 2D long and spans for other coordinates",
+      "changeScope": "moderate",
+      "maintainability": "Local traversal change or isolated research-only candidate.",
+      "codeComments": "API XML documents batch synchronization; rejected candidates remain only in the research rig.",
+      "result": "Long point/small cases passed after specialization. Final generic acceptance remained mixed (several selective cases exceed 5%), so all generic traversal changes were excluded; batch APIs remain.",
+      "state": "rejected",
+      "decision": "Rejected",
+      "decisionRationale": "Long point/small cases passed after specialization. Final generic acceptance remained mixed (several selective cases exceed 5%), so all generic traversal changes were excluded; batch APIs remain.",
+      "evidence": [
+        "raw/generic-final-screen.csv",
+        "experimental-2D-final.txt",
+        "experimental-3D-final.txt"
+      ],
+      "risks": [
+        "Uncoordinated host load; local fixture relevance."
+      ],
+      "parentId": "H-020"
+    }
+  ],
+  "areas": [
+    {
+      "name": "M1",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Batch reuses caller lists; existing workspace controls bulk scratch; no new allocation in acceptance timing.",
+      "catalogue": "optimize-code M1",
+      "hypothesisIds": [],
+      "disposition": "Batch reuses caller lists; existing workspace controls bulk scratch; no new allocation in acceptance timing."
+    },
+    {
+      "name": "M2",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "H-005/H-006 stack storage tested, not adopted.",
+      "catalogue": "optimize-code M2",
+      "hypothesisIds": [],
+      "disposition": "H-005/H-006 stack storage tested, not adopted."
+    },
+    {
+      "name": "M3",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "H-004/H-014/H-019/H-020 active-prefix, span, and captured-array experiments.",
+      "catalogue": "optimize-code M3",
+      "hypothesisIds": [],
+      "disposition": "H-004/H-014/H-019/H-020 active-prefix, span, and captured-array experiments."
+    },
+    {
+      "name": "M4",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Safe span loop removes relevant range checks; unsafe indexing has no remaining justification.",
+      "catalogue": "optimize-code M4",
+      "hypothesisIds": [],
+      "disposition": "Safe span loop removes relevant range checks; unsafe indexing has no remaining justification."
+    },
+    {
+      "name": "M5",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Existing flat SIMD alternative tested H-012; node-layout redesign adds mutation/layout burden without measured need.",
+      "catalogue": "optimize-code M5",
+      "hypothesisIds": [],
+      "disposition": "Existing flat SIMD alternative tested H-012; node-layout redesign adds mutation/layout burden without measured need."
+    },
+    {
+      "name": "M6",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "No sampled cache-miss or indirect-memory-latency evidence warrants prefetch/pinning; node-capacity sweep H-011.",
+      "catalogue": "optimize-code M6",
+      "hypothesisIds": [],
+      "disposition": "No sampled cache-miss or indirect-memory-latency evidence warrants prefetch/pinning; node-capacity sweep H-011."
+    },
+    {
+      "name": "M7",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Batch passes spans without copying input/output storage; cached areas H-005; no codec/copy kernel.",
+      "catalogue": "optimize-code M7",
+      "hypothesisIds": [],
+      "disposition": "Batch passes spans without copying input/output storage; cached areas H-005; no codec/copy kernel."
+    },
+    {
+      "name": "C1",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "H-018 output-count dependency; split area reuse H-005.",
+      "catalogue": "optimize-code C1",
+      "hypothesisIds": [],
+      "disposition": "H-018 output-count dependency; split area reuse H-005."
+    },
+    {
+      "name": "C2",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "H-001/H-002/H-003/H-013 containment placement; point routing H-016/H-017.",
+      "catalogue": "optimize-code C2",
+      "hypothesisIds": [],
+      "disposition": "H-001/H-002/H-003/H-013 containment placement; point routing H-016/H-017."
+    },
+    {
+      "name": "C3",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Existing exact four-lane flat scan H-012; generic tree AoS not a vectorized column layout.",
+      "catalogue": "optimize-code C3",
+      "hypothesisIds": [],
+      "disposition": "Existing exact four-lane flat scan H-012; generic tree AoS not a vectorized column layout."
+    },
+    {
+      "name": "C4",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Existing scan uses bit extraction/TZCNT; no relevant division/codec hot path.",
+      "catalogue": "optimize-code C4",
+      "hypothesisIds": [],
+      "disposition": "Existing scan uses bit extraction/TZCNT; no relevant division/codec hot path."
+    },
+    {
+      "name": "C5",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "No stencil or neighborhood update kernel.",
+      "catalogue": "optimize-code C5",
+      "hypothesisIds": [],
+      "disposition": "No stencil or neighborhood update kernel."
+    },
+    {
+      "name": "S1",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Existing one-word SIMD bitmap alternative H-012; bool split flags H-006.",
+      "catalogue": "optimize-code S1",
+      "hypothesisIds": [],
+      "disposition": "Existing one-word SIMD bitmap alternative H-012; bool split flags H-006."
+    },
+    {
+      "name": "S2",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Location-map mutation not in measured query hot path; no dictionary lookup in queries.",
+      "catalogue": "optimize-code S2",
+      "hypothesisIds": [],
+      "disposition": "Location-map mutation not in measured query hot path; no dictionary lookup in queries."
+    },
+    {
+      "name": "S3",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "No immutable query-key dictionary; concurrent location map must support mutation.",
+      "catalogue": "optimize-code S3",
+      "hypothesisIds": [],
+      "disposition": "No immutable query-key dictionary; concurrent location map must support mutation."
+    },
+    {
+      "name": "S4",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Prior exact-query cache work remains fixture-dependent; query preparation here is already primitive bounds.",
+      "catalogue": "optimize-code S4",
+      "hypothesisIds": [],
+      "disposition": "Prior exact-query cache work remains fixture-dependent; query preparation here is already primitive bounds."
+    },
+    {
+      "name": "S5",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Arbitrary generic values and duplicate rectangles do not establish compressible ordered result runs.",
+      "catalogue": "optimize-code S5",
+      "hypothesisIds": [],
+      "disposition": "Arbitrary generic values and duplicate rectangles do not establish compressible ordered result runs."
+    },
+    {
+      "name": "R1",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "No opcode dispatch/reflection in measured query traversal; no dispatch table candidate.",
+      "catalogue": "optimize-code R1",
+      "hypothesisIds": [],
+      "disposition": "No opcode dispatch/reflection in measured query traversal; no dispatch table candidate."
+    },
+    {
+      "name": "R2",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "Readonly geometry and byref entries already present; optimized Search inspected for inlining and bounds checks.",
+      "catalogue": "optimize-code R2",
+      "hypothesisIds": [],
+      "disposition": "Readonly geometry and byref entries already present; optimized Search inspected for inlining and bounds checks."
+    },
+    {
+      "name": "R3",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "No runtime configuration lookup in hot search.",
+      "catalogue": "optimize-code R3",
+      "hypothesisIds": [],
+      "disposition": "No runtime configuration lookup in hot search."
+    },
+    {
+      "name": "T1",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "No per-worker shared counters; batches are sequential with caller-owned outputs.",
+      "catalogue": "optimize-code T1",
+      "hypothesisIds": [],
+      "disposition": "No per-worker shared counters; batches are sequential with caller-owned outputs."
+    },
+    {
+      "name": "T2",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "H-009 one-version snapshot batch; existing ReplaceAll/BulkLoad handle update batches.",
+      "catalogue": "optimize-code T2",
+      "hypothesisIds": [],
+      "disposition": "H-009 one-version snapshot batch; existing ReplaceAll/BulkLoad handle update batches."
+    },
+    {
+      "name": "T3",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "H-008 amortizes existing read lock; do not substitute mutex and remove concurrent readers.",
+      "catalogue": "optimize-code T3",
+      "hypothesisIds": [],
+      "disposition": "H-008 amortizes existing read lock; do not substitute mutex and remove concurrent readers."
+    },
+    {
+      "name": "T4",
+      "boundary": "Library query/build paths and wrappers",
+      "evidence": "H-008/H-009 batches remove repeated coordination; parallel execution is not needed for this bounded API and has no supplied host-sharing policy.",
+      "catalogue": "optimize-code T4",
+      "hypothesisIds": [],
+      "disposition": "H-008/H-009 batches remove repeated coordination; parallel execution is not needed for this bounded API and has no supplied host-sharing policy."
+    }
+  ],
+  "environment": [
+    {
+      "label": "Revision",
+      "value": "e37bbdca4d3781279a55af911efd40664866524c; baseline initially clean; delivered source and preserved baseline classes define candidates."
+    },
+    {
+      "label": "Runtime",
+      "value": ".NET 10.0.12 x64 RyuJIT x86-64-v3; SDK 10.0.401; BenchmarkDotNet 0.15.8"
+    },
+    {
+      "label": "CPU",
+      "value": "AMD Ryzen 9 5950X; 16 physical / 32 logical cores"
+    },
+    {
+      "label": "OS",
+      "value": "Windows 11 10.0.26200.9457"
+    },
+    {
+      "label": "Execution",
+      "value": "High-performance power plan; no pinned affinity; default tiering/dynamic PGO; BDN concurrent workstation GC."
+    },
+    {
+      "label": "Epochs",
+      "value": "Initial screening allocated bound-method delegates; confirmation caches them. Never compare absolute values across those epochs."
+    },
+    {
+      "label": "Lock",
+      "value": "OS-backed cooperative C:/Users/tedd/.codex/locks/performance-measurement.lock. All restores/builds/tests/traces/timing serialized."
+    },
+    {
+      "label": "Fixtures",
+      "value": "Seed 73211; capacity 16; 64 point/small/medium/broad/all/miss queries; uniform and clustered geometry."
+    }
+  ],
+  "hotspots": [
+    {
+      "name": "Baseline recursive Search",
+      "location": "src/Tedd.RTree/RTree.cs",
+      "inclusivePercent": 95.59175222833426,
+      "evidence": "12-second EventPipe sample profile; broad caller. Inclusive samples collapse repeated recursive frames.",
+      "limit": "Repeated descendant geometry comparisons and active-prefix traversal"
+    },
+    {
+      "name": "Integrated value collection",
+      "location": "src/Tedd.RTree/RTree.cs",
+      "inclusivePercent": 35.8,
+      "evidence": "Final 12-second broad-query sample profile; nested under Search (93.8% inclusive). Percentages overlap and are not summed.",
+      "limit": "Output emission and active-entry traversal; further span collection was excluded for selective-query regressions."
+    }
+  ],
+  "retainedChanges": [
+    "SearchBatch across all nine mutable/concurrent/snapshot coordinate variants.",
+    "Matched-child containment and bounded active-prefix traversal in RTree<T> (original 2D double coordinates). Generic tree traversal remains unchanged."
+  ],
+  "decisions": [
+    "R*-tree overlap-aware splitting/reinsertion is a separate design alternative; no implementation or speed claim tested here.",
+    "Linear splitting is a construction/query tradeoff, not adopted as the default.",
+    "Flat SIMD scans remain research alternatives; no automatic tree-to-scan switching policy adopted."
+  ],
+  "correctness": [
+    "Original differential/boundary/mutation/concurrency checks passed before and after integration.",
+    "Batch tests cover append semantics, duplicates, inclusive contact, null lists, buffer prevalidation, empty input/tree, mutation, count tails, four coordinate types, all nine API variants, and concurrent version coherence.",
+    "Every measured tree/scan query validated complete sorted value multisets against an independent linear intersection scan.",
+    "Final shipped code after excluding generic candidates built in Release with zero warnings/errors and passed all R-tree differential/boundary checks, including BatchTests."
+  ],
+  "generatedCode": [
+    {
+      "hypothesisId": "H-004",
+      "summary": "The Tier 1 search leaf loop uses the validated span length without the baseline per-entry node-array length guard. Checks still remain in inlined collection/output paths.",
+      "before": "Baseline loop reloads the node entry array and performs CMP/JAE against its array length per entry.",
+      "after": "Candidate validates array length against node.Count before traversing the active prefix. Do not interpret the remaining RNGCHKFAIL helper as a surviving check in that span loop.",
+      "artifact": "raw/tiered-search.txt"
+    },
+    {
+      "hypothesisId": "H-014",
+      "summary": "Containment collection reduces geometric work but increases optimized recursive Search code size from 655 to 1,383 bytes in this diagnostic PGO compilation.",
+      "before": "Baseline Search: 655 bytes; scalar inclusive intersection predicates for descendants.",
+      "after": "Candidate Search: 1,383 bytes; inlined contained-leaf collection and recursive collection fallback. Code-size and register-pressure costs motivate selective regression coverage.",
+      "artifact": "raw/tiered-search.txt"
+    },
+    {
+      "hypothesisId": "H-021",
+      "summary": "The rejected long-coordinate specialization folds the type condition in Tier 1; no runtime Type/reflection helper reference appears in its optimized search body.",
+      "before": "Universal generic span version regressed 2D-long point/small timings in two runs.",
+      "after": "Captured-array specialized loop restored those cases; broader generic acceptance still failed. This code was excluded from the library.",
+      "artifact": "raw/generic-tiered-search.txt"
+    }
+  ],
+  "validityThreats": [
+    "No application-level speedup is claimed; build/update/query proportions were unspecified.",
+    "Uncoordinated external host activity created substantial run drift. Nine interleaved screening samples and independent BDN runs establish large effects; small differences remain uncertain.",
+    "BDN ShortRun has three measured iterations and one launch; report ranges and standard deviations, not overly precise universal estimates.",
+    "Generic transplants produced large broad-query gains but mixed selective-query acceptance. They were excluded; experimental source and all positive/negative evidence remain available.",
+    "Batch lock savings were measured without competing writers. Larger batches can increase writer wait time."
+  ],
+  "reproduction": [
+    "python C:/Users/tedd/.codex/skills/scientific-method-performance/scripts/run_with_performance_lock.py --cwd D:/SourceCode/Tedd.RTree -- python \"Research/2026-09-30 batch-search-1/measure.py\" confirmation",
+    "Invoke followup.py with the same shared-lock wrapper for follow-up screening, diagnostic Tier 1 disassembly, and final tracing.",
+    "Replay excluded generic experiments by invoking dotnet run --project Investigation.csproj -c Release -p:ExperimentalGenericTraversal=true -- --generic-screen raw/reproduced-generic-screen.csv under the shared-lock wrapper. Snapshot sources preserve the excluded implementation without changing shipped library files.",
+    "python make_report.py; render report-data.json using the skill scripts/render_report.py. All paths are relative to this run directory unless specified.",
+    "Stopping condition: 21 source-supported hypotheses have dispositions; no pending measurement hypothesis remains within the declared traversal/batch scope. New index families require a representative workload and constitute separate design experiments."
+  ],
+  "artifacts": [
+    {
+      "label": "Protocol / adaptive ledger",
+      "path": "protocol.md"
+    },
+    {
+      "label": "Investigation project",
+      "path": "Investigation.csproj"
+    },
+    {
+      "label": "Raw measurements and traces",
+      "path": "raw/"
+    },
+    {
+      "label": "BenchmarkDotNet exports",
+      "path": "raw/bdn/results/"
+    },
+    {
+      "label": "Independent tests",
+      "path": "../../tests/Tedd.RTree.Tests/BatchTests.cs"
+    },
+    {
+      "label": "Algorithm references",
+      "path": "https://donar.umiacs.umd.edu/quadtree/docs/rtree_split_rules.html"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "suite": "BatchBenchmarks",
+    "method": "ConcurrentSingles",
+    "shape": "Miss",
+    "microseconds": [
+      1.0689,
+      1.0711,
+      1.0665
+    ]
+  },
+  {
+    "suite": "BatchBenchmarks",
+    "method": "ConcurrentBatch",
+    "shape": "Miss",
+    "microseconds": [
+      0.23035390000000003,
+      0.21477500000000002,
+      0.1792892
+    ]
+  },
+  {
+    "suite": "BatchBenchmarks",
+    "method": "SnapshotSingles",
+    "shape": "Miss",
+    "microseconds": [
+      0.2543083,
+      0.2542157,
+      0.2549163
+    ]
+  },
+  {
+    "suite": "BatchBenchmarks",
+    "method": "SnapshotBatch",
+    "shape": "Miss",
+    "microseconds": [
+      0.1523578,
+      0.1536072,
+      0.1525439
+    ]
+  },
+  {
+    "suite": "BatchBenchmarks",
+    "method": "ConcurrentSingles",
+    "shape": "Point",
+    "microseconds": [
+      9.182,
+      8.5279,
+      9.758
+    ]
+  },
+  {
+    "suite": "BatchBenchmarks",
+    "method": "ConcurrentBatch",
+    "shape": "Point",
+    "microseconds": [
+      7.1174,
+      7.9454,
+      7.6792
+    ]
+  },
+  {
+    "suite": "BatchBenchmarks",
+    "method": "SnapshotSingles",
+    "shape": "Point",
+    "microseconds": [
+      7.353,
+      7.3261,
+      7.0613
+    ]
+  },
+  {
+    "suite": "BatchBenchmarks",
+    "method": "SnapshotBatch",
+    "shape": "Point",
+    "microseconds": [
+      5.5645,
+      5.5469,
+      5.5512
+    ]
+  },
+  {
+    "suite": "TraversalBenchmarks",
+    "method": "Before",
+    "shape": "All",
+    "microseconds": [
+      1896.0,
+      2383.7000000000003,
+      2808.7
+    ]
+  },
+  {
+    "suite": "TraversalBenchmarks",
+    "method": "After",
+    "shape": "All",
+    "microseconds": [
+      1280.8999999999999,
+      1262.8999999999999,
+      1401.6
+    ]
+  },
+  {
+    "suite": "TraversalBenchmarks",
+    "method": "Before",
+    "shape": "Broad",
+    "microseconds": [
+      754.1475,
+      755.4421,
+      745.2684
+    ]
+  },
+  {
+    "suite": "TraversalBenchmarks",
+    "method": "After",
+    "shape": "Broad",
+    "microseconds": [
+      468.4188,
+      486.5467,
+      496.8383
+    ]
+  },
+  {
+    "suite": "TraversalBenchmarks",
+    "method": "Before",
+    "shape": "Point",
+    "microseconds": [
+      7.8284,
+      8.0608,
+      7.8266
+    ]
+  },
+  {
+    "suite": "TraversalBenchmarks",
+    "method": "After",
+    "shape": "Point",
+    "microseconds": [
+      7.5026,
+      7.9207,
+      7.3459
+    ]
+  }
+]

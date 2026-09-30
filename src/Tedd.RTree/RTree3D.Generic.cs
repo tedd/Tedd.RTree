@@ -158,6 +158,33 @@ public sealed class RTree3D<TCoordinate, T>
         return Search(_root, bounds, results);
     }
 
+    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+    /// <returns>The total number of matches appended across all queries.</returns>
+    /// <remarks>
+    /// Results must have one non-null list per query; counts must have at least one slot per query.
+    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
+    /// The tree must not be mutated while the batch runs.
+    /// </remarks>
+    public long SearchBatch(ReadOnlySpan<Box<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
+    {
+        if (results.Length != queries.Length)
+            throw new ArgumentException("Provide one result list per query.", nameof(results));
+        if (counts.Length < queries.Length)
+            throw new ArgumentException("Provide at least one count slot per query.", nameof(counts));
+        // Validate the entire batch before appending, including lists belonging to empty queries.
+        for (int i = 0; i < results.Length; i++)
+            if (results[i] is null)
+                throw new ArgumentException("Result lists must not be null.", nameof(results));
+        long total = 0;
+        for (int i = 0; i < queries.Length; i++)
+        {
+            int found = Search(queries[i], results[i]);
+            counts[i] = found;
+            total += found;
+        }
+        return total;
+    }
+
     /// <summary>Returns a new list containing items whose bounds intersect <paramref name="bounds"/>.</summary>
     public List<T> Search(Box<TCoordinate> bounds)
     {

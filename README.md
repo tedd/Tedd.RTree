@@ -29,6 +29,19 @@ packed.BulkLoad(new[]
 
 `Search` appends to the supplied list and returns the number appended. `Search(bounds)` creates and returns a list. Result order is unspecified. Entries may have duplicate bounds or values. Coordinates must be finite and ordered. `Clear` discards the index. `BulkLoad` uses Sort-Tile-Recursive packing on an empty tree; later individual inserts, removals, and moves are supported. `Remove(bounds, item)` removes one matching entry; `Update(oldBounds, item, newBounds)` moves one matching entry. Concurrent searches on an unchanged tree are safe when each search uses its own result list. Mutation during a search is not safe.
 
+## Batch searches
+
+`SearchBatch` accepts query bounds, one caller-owned result list per query, and a count buffer with at least one slot per query. It appends matches to each list, writes the number appended for each query, and returns the total as a `long`. Existing list contents and unused count slots are preserved. Empty batches return zero. Invalid buffer lengths or null result lists are rejected before output is changed.
+
+```csharp
+Rectangle[] queries = [new(0, 0, 10, 10), new(20, 20, 30, 30)];
+List<string>[] matches = [new(), new()];
+int[] counts = new int[queries.Length];
+long total = packed.SearchBatch(queries, matches, counts);
+```
+
+The same method is available on the coordinate-generic 2D and 3D trees and their concurrent and snapshot variants. A concurrent batch holds one read lock for its entire duration; writers wait until it completes. A snapshot batch uses one published tree for every query, even during replacement. Batches run sequentially. Clear the result lists before reusing them when only the latest matches are needed. Concurrent batches must own separate output storage, and query inputs must remain unchanged while a batch runs. `BulkLoad` handles initial batch construction; `ReplaceAll` handles complete batch replacement on snapshot indexes.
+
 ## Coordinate types and 3D bounds
 
 The original `Rectangle`, `RTree<T>`, `SnapshotRTree<T>`, and `ConcurrentRTree<T>` APIs remain available for two-dimensional `double` coordinates. The coordinate-generic 2D APIs use `Rectangle2D<TCoordinate>`, `RTree2D<TCoordinate, T>`, `SnapshotRTree2D<TCoordinate, T>`, and `ConcurrentRTree2D<TCoordinate, T>`. The corresponding 3D APIs use `Box<TCoordinate>`, `RTree3D<TCoordinate, T>`, `SnapshotRTree3D<TCoordinate, T>`, and `ConcurrentRTree3D<TCoordinate, T>`. Bulk loading accepts `SpatialEntry2D<TCoordinate, T>` in 2D and `SpatialEntry3D<TCoordinate, T>` in 3D. Both dimensions accept a `BulkLoadWorkspace` for reusable sorting scratch.

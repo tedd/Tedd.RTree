@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ExcludedGenericSources Condition="'$(ExperimentalGenericTraversal)' == 'true'">../../src/Tedd.RTree/RTree2D.Generic.cs;../../src/Tedd.RTree/RTree3D.Generic.cs</ExcludedGenericSources>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/Tedd.RTree/*.cs" Exclude="$(ExcludedGenericSources)" Link="Library/%(Filename)%(Extension)" />
+    <Compile Include="experimental-2D-final.txt;experimental-3D-final.txt" Condition="'$(ExperimentalGenericTraversal)' == 'true'" />
+    <Compile Include="../../benchmarks/Tedd.RTree.Benchmarks/HypothesisBenchmarks.cs" Link="ExistingScanExperiments.cs" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+  </ItemGroup>
+</Project>

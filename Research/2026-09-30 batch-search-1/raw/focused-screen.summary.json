@@ -1,0 +1,482 @@
+[
+  {
+    "scenario": "Clustered-All",
+    "variant": "After",
+    "median": 1423.0137931034483,
+    "min": 1194.6764705882354,
+    "max": 1658.116,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-All",
+    "variant": "Before",
+    "median": 2400.8352941176468,
+    "min": 2163.205263157895,
+    "max": 3078.25,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-All",
+    "variant": "ListCount",
+    "median": 1286.3875,
+    "min": 1143.2485714285713,
+    "max": 1642.2320000000002,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-All",
+    "variant": "SIMD",
+    "median": 2062.855,
+    "min": 1959.0238095238096,
+    "max": 2340.3166666666666,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-All",
+    "variant": "SpanCollector",
+    "median": 1195.2058823529412,
+    "min": 940.5767441860465,
+    "max": 1377.8433333333335,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Broad",
+    "variant": "After",
+    "median": 415.09999999999997,
+    "min": 337.09159663865546,
+    "max": 452.238202247191,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Broad",
+    "variant": "Before",
+    "median": 627.9234375,
+    "min": 619.4323076923076,
+    "max": 963.3404761904762,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Broad",
+    "variant": "ListCount",
+    "median": 426.94893617021273,
+    "min": 340.3805084745763,
+    "max": 515.6564102564103,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Broad",
+    "variant": "SIMD",
+    "median": 795.2862745098039,
+    "min": 717.4160714285715,
+    "max": 899.3088888888889,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Broad",
+    "variant": "SpanCollector",
+    "median": 318.3563492063492,
+    "min": 283.06901408450705,
+    "max": 383.687619047619,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Medium",
+    "variant": "After",
+    "median": 50.798857868020306,
+    "min": 43.29329004329004,
+    "max": 61.496927803379414,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Medium",
+    "variant": "Before",
+    "median": 78.60353634577602,
+    "min": 68.91256454388984,
+    "max": 92.9445475638051,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Medium",
+    "variant": "ListCount",
+    "median": 56.25814606741574,
+    "min": 46.633876600698486,
+    "max": 62.05891472868217,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Medium",
+    "variant": "SIMD",
+    "median": 325.2268292682927,
+    "min": 284.68936170212766,
+    "max": 360.8125,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Medium",
+    "variant": "SpanCollector",
+    "median": 43.25254054054054,
+    "min": 38.5631021194605,
+    "max": 53.853566621803495,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Miss",
+    "variant": "After",
+    "median": 0.32735798872257366,
+    "min": 0.25757659664893684,
+    "max": 0.32799521126991543,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Miss",
+    "variant": "Before",
+    "median": 0.587085742800951,
+    "min": 0.4715761055374132,
+    "max": 0.6044152311876699,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Miss",
+    "variant": "ListCount",
+    "median": 0.47565044710806703,
+    "min": 0.42052144659377627,
+    "max": 0.567708880341759,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Miss",
+    "variant": "SIMD",
+    "median": 353.46315789473687,
+    "min": 238.31190476190477,
+    "max": 360.9018018018018,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Miss",
+    "variant": "SpanCollector",
+    "median": 0.535734758384228,
+    "min": 0.35407405440334244,
+    "max": 0.5669860664219195,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Point",
+    "variant": "After",
+    "median": 1.4721514794641544,
+    "min": 1.3356205549434037,
+    "max": 1.714893252164966,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Point",
+    "variant": "Before",
+    "median": 1.8862686848682038,
+    "min": 1.7814117123135158,
+    "max": 2.226353870985696,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Point",
+    "variant": "ListCount",
+    "median": 1.7529514877952583,
+    "min": 1.4882725006511144,
+    "max": 2.0521547301457006,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Point",
+    "variant": "SIMD",
+    "median": 307.92615384615385,
+    "min": 260.8285714285714,
+    "max": 340.71101694915257,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Point",
+    "variant": "SpanCollector",
+    "median": 1.6881536189069426,
+    "min": 1.5793540490385756,
+    "max": 1.913976745298818,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Small",
+    "variant": "After",
+    "median": 3.3660383709188824,
+    "min": 2.957130184076292,
+    "max": 3.851733102253033,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Small",
+    "variant": "Before",
+    "median": 3.7728284447797797,
+    "min": 3.1963324011186574,
+    "max": 4.687508788375908,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Small",
+    "variant": "ListCount",
+    "median": 3.596152117234559,
+    "min": 2.816171500985638,
+    "max": 4.071127620598412,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Small",
+    "variant": "SIMD",
+    "median": 290.99202898550726,
+    "min": 209.94921465968588,
+    "max": 357.75892857142856,
+    "n": 9
+  },
+  {
+    "scenario": "Clustered-Small",
+    "variant": "SpanCollector",
+    "median": 3.5566906730683736,
+    "min": 2.657620249800691,
+    "max": 4.208806818181818,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-All",
+    "variant": "After",
+    "median": 1471.1964285714287,
+    "min": 1263.15625,
+    "max": 1707.7166666666665,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-All",
+    "variant": "Before",
+    "median": 2297.7277777777776,
+    "min": 1981.2619047619048,
+    "max": 2878.0285714285715,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-All",
+    "variant": "ListCount",
+    "median": 1487.2296296296295,
+    "min": 1234.509090909091,
+    "max": 1568.6961538461537,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-All",
+    "variant": "SIMD",
+    "median": 2077.875,
+    "min": 1993.2142857142858,
+    "max": 2228.1666666666665,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-All",
+    "variant": "SpanCollector",
+    "median": 1040.6974358974358,
+    "min": 959.45,
+    "max": 1345.7933333333335,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Broad",
+    "variant": "After",
+    "median": 537.5013333333333,
+    "min": 513.0153846153846,
+    "max": 548.2178082191781,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Broad",
+    "variant": "Before",
+    "median": 802.972,
+    "min": 752.1166666666667,
+    "max": 911.4840909090909,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Broad",
+    "variant": "ListCount",
+    "median": 536.1706666666668,
+    "min": 500.97375,
+    "max": 690.3706896551724,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Broad",
+    "variant": "SIMD",
+    "median": 906.2133333333333,
+    "min": 888.7847826086957,
+    "max": 927.6954545454545,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Broad",
+    "variant": "SpanCollector",
+    "median": 473.99058823529407,
+    "min": 418.6770833333333,
+    "max": 496.3913580246913,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Medium",
+    "variant": "After",
+    "median": 135.46756756756758,
+    "min": 117.61378299120236,
+    "max": 146.97106227106227,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Medium",
+    "variant": "Before",
+    "median": 163.30569105691055,
+    "min": 150.69774436090225,
+    "max": 178.85669642857144,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Medium",
+    "variant": "ListCount",
+    "median": 127.33206349206348,
+    "min": 121.3069696969697,
+    "max": 135.51283783783785,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Medium",
+    "variant": "SIMD",
+    "median": 485.8216867469879,
+    "min": 445.93222222222226,
+    "max": 514.275641025641,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Medium",
+    "variant": "SpanCollector",
+    "median": 131.04640522875815,
+    "min": 119.91676646706586,
+    "max": 141.80141342756184,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Miss",
+    "variant": "After",
+    "median": 0.2594319736935979,
+    "min": 0.226120702325634,
+    "max": 0.27065566005819064,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Miss",
+    "variant": "Before",
+    "median": 0.4808443627009028,
+    "min": 0.44489428199624065,
+    "max": 0.5109064667339354,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Miss",
+    "variant": "ListCount",
+    "median": 0.4806749645577528,
+    "min": 0.4161386972940919,
+    "max": 0.514345047512505,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Miss",
+    "variant": "SIMD",
+    "median": 284.745390070922,
+    "min": 258.6283870967742,
+    "max": 310.3488372093023,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Miss",
+    "variant": "SpanCollector",
+    "median": 0.43683710466538533,
+    "min": 0.399277308072389,
+    "max": 0.4704688198348662,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Point",
+    "variant": "After",
+    "median": 5.344989310529129,
+    "min": 5.304999336957963,
+    "max": 68.49366438356165,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Point",
+    "variant": "Before",
+    "median": 6.056805450416351,
+    "min": 6.00562978531752,
+    "max": 62.41419656786272,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Point",
+    "variant": "ListCount",
+    "median": 6.019440264820944,
+    "min": 5.649399802287813,
+    "max": 69.17202072538859,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Point",
+    "variant": "SIMD",
+    "median": 198.58168316831683,
+    "min": 194.92038834951455,
+    "max": 587.0840579710145,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Point",
+    "variant": "SpanCollector",
+    "median": 5.677970191625267,
+    "min": 5.642242595204514,
+    "max": 69.459375,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Small",
+    "variant": "After",
+    "median": 13.70027397260274,
+    "min": 12.073989136994568,
+    "max": 14.909914275065226,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Small",
+    "variant": "Before",
+    "median": 15.45225955967555,
+    "min": 14.257733428367782,
+    "max": 16.23640422077922,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Small",
+    "variant": "ListCount",
+    "median": 13.894894060437652,
+    "min": 12.165510948905109,
+    "max": 14.562577357116854,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Small",
+    "variant": "SIMD",
+    "median": 337.5596638655462,
+    "min": 297.28666666666663,
+    "max": 346.7784482758621,
+    "n": 9
+  },
+  {
+    "scenario": "Uniform-Small",
+    "variant": "SpanCollector",
+    "median": 14.072282799859304,
+    "min": 13.36695623120615,
+    "max": 15.368267383787936,
+    "n": 9
+  }
+]

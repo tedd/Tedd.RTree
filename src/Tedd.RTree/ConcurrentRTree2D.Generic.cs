@@ -116,6 +116,20 @@ public sealed class ConcurrentRTree2D<TCoordinate, T> : IDisposable
         finally { _lock.ExitReadLock(); }
     }
 
+    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+    /// <returns>The total number of matches appended across all queries.</returns>
+    /// <remarks>
+    /// Results must have one non-null list per query; counts must have at least one slot per query.
+    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
+    /// The whole batch holds one read lock, so writers wait until the batch completes.
+    /// </remarks>
+    public long SearchBatch(ReadOnlySpan<Rectangle2D<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
+    {
+        _lock.EnterReadLock();
+        try { return _tree.SearchBatch(queries, results, counts); }
+        finally { _lock.ExitReadLock(); }
+    }
+
     /// <summary>Returns intersecting values in a new list.</summary>
     public List<T> Search(Rectangle2D<TCoordinate> bounds)
     {
