@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Tedd.RTree;
 
 /// <summary>An immutable, axis-aligned two-dimensional rectangle. Edges are inclusive.</summary>
@@ -36,11 +38,13 @@ public readonly struct Rectangle : IEquatable<Rectangle>
     }
 
     /// <summary>Whether this rectangle intersects or touches another.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool Intersects(in Rectangle other) =>
         MinX <= other.MaxX && MaxX >= other.MinX &&
         MinY <= other.MaxY && MaxY >= other.MinY;
 
     /// <summary>Whether this rectangle contains another, including its boundary.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool Contains(in Rectangle other) =>
         MinX <= other.MinX && MinY <= other.MinY &&
         MaxX >= other.MaxX && MaxY >= other.MaxY;

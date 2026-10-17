@@ -139,13 +139,17 @@ public sealed class RTree<T>
         // Halving before subtraction keeps the normalization finite even for [-MaxValue, MaxValue].
         double minX = extent.MinX * 0.5, minY = extent.MinY * 0.5;
         double width = extent.MaxX * 0.5 - minX, height = extent.MaxY * 0.5 - minY;
+        double scaleX = width > 0 ? 65535 / width : 0, scaleY = height > 0 ? 65535 / height : 0;
+        bool finiteScaleX = double.IsFinite(scaleX), finiteScaleY = double.IsFinite(scaleY);
         for (int i = 0; i < itemCount; i++)
         {
             Rectangle b = items[i].Bounds;
             double x = (b.MinX * 0.25 + b.MaxX * 0.25 - minX);
             double y = (b.MinY * 0.25 + b.MaxY * 0.25 - minY);
-            uint ix = width > 0 ? (uint)Math.Clamp(x / width * 65535, 0, 65535) : 0;
-            uint iy = height > 0 ? (uint)Math.Clamp(y / height * 65535, 0, 65535) : 0;
+            // Sort-key rounding cannot change stored bounds or intersection semantics. Retain
+            // division for subnormal extents whose reciprocal scale cannot be represented.
+            uint ix = width > 0 ? (uint)Math.Clamp(finiteScaleX ? x * scaleX : x / width * 65535, 0, 65535) : 0;
+            uint iy = height > 0 ? (uint)Math.Clamp(finiteScaleY ? y * scaleY : y / height * 65535, 0, 65535) : 0;
             keys[i] = HilbertOrder.Encode(ix, iy);
             order[i] = i;
         }

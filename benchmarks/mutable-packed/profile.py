@@ -1,6 +1,8 @@
 """Owned persistent DotNetLab MCP session; CLI call mode cannot retain asynchronous jobs."""
 import ctypes
 import json
+import hashlib
+import shutil
 import os
 from pathlib import Path
 import subprocess
@@ -12,6 +14,8 @@ host = Path('D:/Workspaces/AI/dotnetlab-installations/9c23369/Tedd.DotNetLab.Hos
 catalog = root / 'lab'
 destination = Path(sys.argv[2]).resolve()
 destination.mkdir(parents=True, exist_ok=True)
+stage = sys.argv[3] if len(sys.argv) > 3 else 'algorithm-worker'
+identity_tag = stage + '-' + hashlib.sha256((root / stage / 'Tedd.RTree.dll').read_bytes()).hexdigest()[:12]
 kernel = ctypes.WinDLL('kernel32', use_last_error=True)
 kernel.CreateMutexW.restype = ctypes.c_void_p
 kernel.WaitForSingleObject.argtypes = [ctypes.c_void_p, ctypes.c_uint]
@@ -24,10 +28,10 @@ try:
     for phase in ('query', 'build'):
         output = destination / phase
         output.mkdir(exist_ok=True)
-        env = dict(os.environ, DOTNET_TieredCompilation='0', DOTNET_JitDisasm='*Search* *BulkLoadCore* *CollectValues*',
+        env = dict(os.environ, DOTNET_TieredCompilation='0', DOTNET_JitDisasm='*Search* *BulkLoad* *CollectValues* *SortIndices* *Encode*',
                    DOTNET_JitDisasmAssemblies='Tedd.RTree', DOTNET_JitStdOutFile=str(output / 'jit.txt'))
         with (root / f'profile-{phase}-persistent.out').open('w') as stdout, (root / f'profile-{phase}-persistent.err').open('w') as stderr:
-            target = subprocess.Popen(['dotnet', str(root / 'algorithm-worker/Bench.dll'),
+            target = subprocess.Popen(['dotnet', 'exec', '--fx-version', '10.0.13', str(root / stage / 'Bench.dll'),
                                       str(root / '100000-uniform.txt'), 'profile-' + phase],
                                      env=env, cwd=root, stdout=stdout, stderr=stderr, creationflags=subprocess.CREATE_NO_WINDOW)
             server = None
@@ -71,7 +75,7 @@ try:
                 call('lab.discover', {'action':'capabilities','target_id':identity['target_id']}, 'capabilities.json')
                 call('lab.discover', {'action':'compatibility','target_id':identity['target_id']}, 'compatibility.json')
                 operation = call('lab.run', dict(action='start_capture', target_id=identity['target_id'], expected_target_epoch=identity['epoch'],
-                    profile='cpu-diagnostic', duration_seconds=5, grant_id=grant['id'], idempotency_key='persistent-' + phase + '-cpu-v1'), 'start.json')
+                    profile='cpu-diagnostic', duration_seconds=5, grant_id=grant['id'], idempotency_key=identity_tag + '-' + phase + '-cpu-v1'), 'start.json')
                 def completed(operation):
                     deadline = time.monotonic() + 60
                     while operation['state'] not in ('completed','failed','cancelled'):
@@ -83,8 +87,14 @@ try:
                 operation = completed(operation)
                 (output / 'capture-operation.json').write_text(json.dumps(operation, indent=2))
                 capture_id = operation['result_id']
-                call('lab.inspect', {'action':'record','id':capture_id}, 'capture-record.json')
-                analysis = call('lab.run', dict(action='analyze_stacks', capture_id=capture_id, idempotency_key='persistent-' + phase + '-stacks-v1'))
+                capture_record = call('lab.inspect', {'action':'record','id':capture_id}, 'capture-record.json')
+                capture = json.loads(capture_record['json'])
+                trace_hash = capture['artifact_id'][4:]
+                trace = next(catalog.rglob(trace_hash))
+                if not trace.resolve().is_relative_to(catalog.resolve()) or hashlib.sha256(trace.read_bytes()).hexdigest() != trace_hash:
+                    raise RuntimeError('Capture artifact provenance failed')
+                shutil.copyfile(trace, output / 'capture.nettrace')
+                analysis = call('lab.run', dict(action='analyze_stacks', capture_id=capture_id, idempotency_key=identity_tag + '-' + phase + '-stacks-v1'))
                 analysis = completed(analysis)
                 (output / 'analysis-operation.json').write_text(json.dumps(analysis, indent=2))
                 call('lab.query', dict(view='hotspots', result_id=analysis['result_id'], ranking='self', limit=15), 'hotspots.json')
@@ -98,6 +108,8 @@ try:
                     except subprocess.TimeoutExpired: server.terminate(); server.wait(timeout=10)
                 if target.poll() is None: target.terminate()
                 target.wait(timeout=10)
+                jit = output / 'jit.txt'
+                if jit.exists(): jit.write_text('\n'.join(line.rstrip() for line in jit.read_text(encoding='utf8').splitlines())+'\n',encoding='utf8')
 finally:
     kernel.ReleaseMutex(mutex)
     kernel.CloseHandle(mutex)

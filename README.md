@@ -29,7 +29,7 @@ packed.BulkLoad(new[]
 });
 ```
 
-`Search` appends to the supplied list and returns the number appended. `Search(bounds)` creates and returns a list. Result order is unspecified. Entries may have duplicate bounds or values. Coordinates must be finite and ordered. `Clear` discards the index. `BulkLoad` uses Sort-Tile-Recursive packing on an empty tree; later individual inserts, removals, and moves are supported. `Remove(bounds, item)` removes one matching entry; `Update(oldBounds, item, newBounds)` moves one matching entry. Concurrent searches on an unchanged tree are safe when each search uses its own result list. Mutation during a search is not safe.
+`Search` appends to the supplied list and returns the number appended. `Search(bounds)` creates and returns a list. Result order is unspecified. Entries may have duplicate bounds or values. Coordinates must be finite and ordered. `Clear` discards the index. `BulkLoad` uses Hilbert ordering and bottom-up packing on an empty tree; later individual inserts, removals, and moves are supported. `Remove(bounds, item)` removes one matching entry; `Update(oldBounds, item, newBounds)` moves one matching entry. Concurrent searches on an unchanged tree are safe when each search uses its own result list. Mutation during a search is not safe.
 
 ## Batch searches
 
@@ -68,7 +68,7 @@ var tree = new RTree<int>();
 tree.BulkLoad(entries, workspace);
 ```
 
-For the original 2D `double` tree, the workspace retains approximately 20 bytes per reserved entry in three primitive arrays. Generic integer builds retain additional exact sort keys; 3D builds retain a third coordinate axis. Do not use one workspace concurrently for multiple builds. It reduces repeated allocation; the measured build time of the original tree did not materially change. A caller-owned result list can likewise be reused across searches with `Search(bounds, results)`.
+For the original 2D `double` tree, the workspace retains approximately 20 bytes per reserved entry in three primitive arrays. Generic integer builds retain additional exact sort keys; 3D builds retain a third coordinate axis. Do not use one workspace concurrently for multiple builds. It reduces repeated allocation. A caller-owned result list can likewise be reused across searches with `Search(bounds, results)`.
 
 ## Concurrent access
 

@@ -30,7 +30,7 @@ try {
             if(-not (Test-Path "$r\layout-library\Tedd.RTree.dll")){Copy-Item "$r\candidate-worker\Tedd.RTree.dll" "$r\layout-library\Tedd.RTree.dll"}
             & 'C:\Program Files\dotnet\dotnet.exe' build "$PSScriptRoot\Bench.csproj" -t:Rebuild -c Release "-p:LibraryPath=$r\layout-library\Tedd.RTree.dll" --artifacts-path "$r\layout-reference-artifacts" -o "$r\layout-worker"
         }
-        {$_ -in 'build-copy-reference','build-input-reference','build-radix-reference','build-inline-reference'} {
+        {$_ -in 'build-copy-reference','build-input-reference','build-radix-reference','build-inline-reference','build-fill-reference','build-scale-reference','build-scratch-reference'} {
             $stageName=$Action.Substring(6,$Action.Length-16)
             New-Item -ItemType Directory "$r\$stageName-library" -Force | Out-Null
             if(-not (Test-Path "$r\$stageName-library\Tedd.RTree.dll")){Copy-Item "$r\candidate-worker\Tedd.RTree.dll" "$r\$stageName-library\Tedd.RTree.dll"}
@@ -41,7 +41,7 @@ try {
             if($LASTEXITCODE -ne 0){throw 'Test build failed'}
             & 'C:\Program Files\dotnet\dotnet.exe' "$r\tests\Tedd.RTree.Tests.dll"
         }
-        {$_ -in 'algorithm','layout','copy','input','radix','inline','span','confirmation'} {
+        {$_ -in 'algorithm','layout','copy','input','radix','inline','span','fill','scale','scratch','confirmation'} {
             $output="$PSScriptRoot\..\results\mutable-packed\$Action"
             & 'C:\Python314\python.exe' "$PSScriptRoot\run.py" $r $output $Action
         }

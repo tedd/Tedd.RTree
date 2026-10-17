@@ -1,0 +1,1442 @@
+[
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.2056446075439453,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.3231334686279297,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 2.913233947753906,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 6.312445068359375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.7812255859375,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.5577102661132812,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 9.40325927734375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 46.9276123046875,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 4.731436157226563,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 11.584417724609375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 168.67490234374998,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 773.8234375000001,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 2.4288146972656253,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 7.372540283203126,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 139.88632812499998,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 738.00859375,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 1.7320236206054689,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 1.7909774780273438,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 6.102703857421875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 12.963049316406249,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.4111515045166016,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.30859832763671874,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 8.027496337890625,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 44.00048828125,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.30828285217285156,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.5582469940185547,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 3.90755615234375,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 7.31141357421875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 2.4278671264648435,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 7.284222412109375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 140.35214843749998,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 726.94765625,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.8495109558105468,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.9008087158203125,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 3.651611328125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 9.94771728515625,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.2088235855102539,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.325654411315918,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 2.9130020141601562,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 6.340930175781249,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 4.69013671875,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 11.577508544921875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 170.5240234375,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 777.048046875,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 1.6616287231445312,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 2.2757965087890626,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 20.407177734375,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 53.848437499999996,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.6453784942626952,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.7131252288818359,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 156.69150390625,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 704.7761718749999,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.20915355682373046,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.3254384994506836,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 2.9177749633789065,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 6.30546875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 3.5686859130859374,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 4.3483642578125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 28.591845703125,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 65.25102539062499,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 4.685659790039063,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 11.593084716796875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 168.155859375,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 783.82421875,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.8537322998046876,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.8940132141113281,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 3.6559234619140626,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 9.671575927734375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.7820999145507812,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.5579090118408203,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 9.437054443359376,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 46.7671630859375,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 3.5749267578125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 4.343698120117188,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 28.21650390625,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 64.73520507812499,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.3098325729370117,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.5578041076660156,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 3.8985565185546873,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 7.27220458984375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 1.6631057739257813,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 2.277873229980469,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 20.59072265625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 54.316796874999994,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 2.4109786987304687,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 7.26153564453125,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 141.92314453125,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 738.666015625,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.4115467071533203,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.3077444076538086,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 8.037982177734374,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 43.953076171875004,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.849950408935547,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.896710205078125,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 3.6438446044921875,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 9.674938964843749,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.3335226058959961,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.38434677124023436,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 147.33310546875,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 694.08203125,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 1.69158935546875,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 2.2952178955078124,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 20.60257568359375,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 54.792724609375,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.4193546295166015,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.3152587890625,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 7.997827148437499,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 43.927050781249996,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.33268432617187504,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.3800872802734375,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 145.98652343749998,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 687.75078125,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 3.7548492431640623,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 4.33037109375,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 28.530664062499998,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 65.226513671875,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.7899986267089844,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.5565853118896484,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 9.48177490234375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 46.9601318359375,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 1.7318267822265625,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 1.7985885620117186,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 6.090847778320312,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 12.909167480468751,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.31604614257812497,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.5540496826171876,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 3.908599853515625,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 7.2520202636718745,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.658453369140625,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.708041000366211,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 156.025390625,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 696.5265625,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.33093414306640623,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.3793060302734375,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 146.27734375,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 689.29453125,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.6458625793457031,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.7179916381835937,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 157.81083984375,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 705.2125,
+    "iterations": 256,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 1.8457977294921875,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 1.8258743286132812,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 6.13690185546875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "radix",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 13.07396240234375,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  }
+]
