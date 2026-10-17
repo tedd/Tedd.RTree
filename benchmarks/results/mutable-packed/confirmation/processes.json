@@ -1,0 +1,2402 @@
+[
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 50148,
+    "launch_utc_ns": 1792271710172273900,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 78692,
+    "launch_utc_ns": 1792271713877134700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 79940,
+    "launch_utc_ns": 1792271715877842300,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 106632,
+    "launch_utc_ns": 1792271718206063300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 49064,
+    "launch_utc_ns": 1792271720401295000,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 65344,
+    "launch_utc_ns": 1792271723927492500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 53076,
+    "launch_utc_ns": 1792271726000015300,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 36676,
+    "launch_utc_ns": 1792271729537320700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 103572,
+    "launch_utc_ns": 1792271731790812200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 6868,
+    "launch_utc_ns": 1792271734115049900,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 118740,
+    "launch_utc_ns": 1792271736426639700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 84448,
+    "launch_utc_ns": 1792271738447468200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 113056,
+    "launch_utc_ns": 1792271740505443000,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 69552,
+    "launch_utc_ns": 1792271745050819100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 31768,
+    "launch_utc_ns": 1792271747201957500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 53168,
+    "launch_utc_ns": 1792271749434535400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 90940,
+    "launch_utc_ns": 1792271751376820200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 85476,
+    "launch_utc_ns": 1792271753379225200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 25556,
+    "launch_utc_ns": 1792271755804922400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 106000,
+    "launch_utc_ns": 1792271757809432700,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 58720,
+    "launch_utc_ns": 1792271760091295500,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 115964,
+    "launch_utc_ns": 1792271764767619700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 78052,
+    "launch_utc_ns": 1792271766990202800,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 83628,
+    "launch_utc_ns": 1792271771032655000,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 70124,
+    "launch_utc_ns": 1792271773228836100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 65356,
+    "launch_utc_ns": 1792271775338034100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 108788,
+    "launch_utc_ns": 1792271777739693500,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 33592,
+    "launch_utc_ns": 1792271782400823800,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 93224,
+    "launch_utc_ns": 1792271784988114300,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 55996,
+    "launch_utc_ns": 1792271787386642100,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 108044,
+    "launch_utc_ns": 1792271789570325700,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 83516,
+    "launch_utc_ns": 1792271793777385700,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 85388,
+    "launch_utc_ns": 1792271798618122700,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 35484,
+    "launch_utc_ns": 1792271801125458700,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 5076,
+    "launch_utc_ns": 1792271804988681200,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 108844,
+    "launch_utc_ns": 1792271807179739700,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 102676,
+    "launch_utc_ns": 1792271809391118800,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 24512,
+    "launch_utc_ns": 1792271814210363600,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 95128,
+    "launch_utc_ns": 1792271816642906600,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 37700,
+    "launch_utc_ns": 1792271820473320500,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 66468,
+    "launch_utc_ns": 1792271822824305700,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 25072,
+    "launch_utc_ns": 1792271826814380900,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 120452,
+    "launch_utc_ns": 1792271831662176800,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 102292,
+    "launch_utc_ns": 1792271835721513800,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 113960,
+    "launch_utc_ns": 1792271840042581400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 90916,
+    "launch_utc_ns": 1792271842104476800,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 119400,
+    "launch_utc_ns": 1792271844460898800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 120408,
+    "launch_utc_ns": 1792271846664801100,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 119956,
+    "launch_utc_ns": 1792271850819403500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 114840,
+    "launch_utc_ns": 1792271852593974900,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 71860,
+    "launch_utc_ns": 1792271855092924300,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 38080,
+    "launch_utc_ns": 1792271858647737800,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 66148,
+    "launch_utc_ns": 1792271860881364500,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 72508,
+    "launch_utc_ns": 1792271864639349600,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 111320,
+    "launch_utc_ns": 1792271869324020000,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 117696,
+    "launch_utc_ns": 1792271871643037500,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 116296,
+    "launch_utc_ns": 1792271873956743000,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 55548,
+    "launch_utc_ns": 1792271878534417800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 119572,
+    "launch_utc_ns": 1792271880925881800,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 113684,
+    "launch_utc_ns": 1792271883386408100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 123676,
+    "launch_utc_ns": 1792271885594625500,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 57536,
+    "launch_utc_ns": 1792271889825914300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 67592,
+    "launch_utc_ns": 1792271892377491900,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 24192,
+    "launch_utc_ns": 1792271894813717500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 46420,
+    "launch_utc_ns": 1792271896811842000,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 100116,
+    "launch_utc_ns": 1792271901190637900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 89360,
+    "launch_utc_ns": 1792271903496703400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 107848,
+    "launch_utc_ns": 1792271905907119800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 107196,
+    "launch_utc_ns": 1792271908146941600,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 22784,
+    "launch_utc_ns": 1792271910470563700,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 36024,
+    "launch_utc_ns": 1792271913033996500,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 98724,
+    "launch_utc_ns": 1792271915356816200,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 10388,
+    "launch_utc_ns": 1792271917671525500,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 102060,
+    "launch_utc_ns": 1792271920055997300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 73500,
+    "launch_utc_ns": 1792271922063216700,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 118448,
+    "launch_utc_ns": 1792271924439836300,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 70016,
+    "launch_utc_ns": 1792271926522724000,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 66676,
+    "launch_utc_ns": 1792271928666135800,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 73120,
+    "launch_utc_ns": 1792271930842492800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 117772,
+    "launch_utc_ns": 1792271932946885500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 38868,
+    "launch_utc_ns": 1792271934724800200,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 35124,
+    "launch_utc_ns": 1792271938725732300,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 90740,
+    "launch_utc_ns": 1792271940916052700,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 29312,
+    "launch_utc_ns": 1792271943277336000,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 116028,
+    "launch_utc_ns": 1792271945252929600,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 57012,
+    "launch_utc_ns": 1792271947639805500,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 123492,
+    "launch_utc_ns": 1792271949980067300,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 24740,
+    "launch_utc_ns": 1792271952209294400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 52056,
+    "launch_utc_ns": 1792271954315584100,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 40208,
+    "launch_utc_ns": 1792271956631700700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 63032,
+    "launch_utc_ns": 1792271958743197300,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 118724,
+    "launch_utc_ns": 1792271963068678700,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 64660,
+    "launch_utc_ns": 1792271967438449200,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 75352,
+    "launch_utc_ns": 1792271969749203800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 117000,
+    "launch_utc_ns": 1792271972166809300,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 121360,
+    "launch_utc_ns": 1792271974541702600,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 114128,
+    "launch_utc_ns": 1792271978232580300,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 55212,
+    "launch_utc_ns": 1792271982752363900,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 102360,
+    "launch_utc_ns": 1792271986839594900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 13404,
+    "launch_utc_ns": 1792271988843685700,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 90996,
+    "launch_utc_ns": 1792271992866719900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 113908,
+    "launch_utc_ns": 1792271994916063100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 62256,
+    "launch_utc_ns": 1792271996889498400,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 3992,
+    "launch_utc_ns": 1792271999265614600,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 82948,
+    "launch_utc_ns": 1792272002800539400,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 108456,
+    "launch_utc_ns": 1792272006823524800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 94416,
+    "launch_utc_ns": 1792272008583207800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 35156,
+    "launch_utc_ns": 1792272010742836800,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 15804,
+    "launch_utc_ns": 1792272013066572100,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 45712,
+    "launch_utc_ns": 1792272015377169700,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 110272,
+    "launch_utc_ns": 1792272019373269800,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 103936,
+    "launch_utc_ns": 1792272021615011800,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 103944,
+    "launch_utc_ns": 1792272026120931100,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 43568,
+    "launch_utc_ns": 1792272028475178500,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 103252,
+    "launch_utc_ns": 1792272033030913400,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 91568,
+    "launch_utc_ns": 1792272035410671800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 48616,
+    "launch_utc_ns": 1792272037425157300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 113012,
+    "launch_utc_ns": 1792272039522826700,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 85744,
+    "launch_utc_ns": 1792272041746402100,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 76824,
+    "launch_utc_ns": 1792272044049355500,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 120512,
+    "launch_utc_ns": 1792272046369219600,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 44696,
+    "launch_utc_ns": 1792272048386732000,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 5152,
+    "launch_utc_ns": 1792272050965402700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 23736,
+    "launch_utc_ns": 1792272053269667900,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 47972,
+    "launch_utc_ns": 1792272055473035300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 36100,
+    "launch_utc_ns": 1792272057721288500,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 23008,
+    "launch_utc_ns": 1792272059999017500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 114736,
+    "launch_utc_ns": 1792272062327866400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 107672,
+    "launch_utc_ns": 1792272064448534200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 33592,
+    "launch_utc_ns": 1792272066998543400,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 97420,
+    "launch_utc_ns": 1792272070766120700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 121340,
+    "launch_utc_ns": 1792272072841804200,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 66096,
+    "launch_utc_ns": 1792272075033607300,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 47308,
+    "launch_utc_ns": 1792272077297532800,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 49460,
+    "launch_utc_ns": 1792272079672279300,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 92864,
+    "launch_utc_ns": 1792272082257072900,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 6136,
+    "launch_utc_ns": 1792272085104992400,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 78080,
+    "launch_utc_ns": 1792272089297196300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 100112,
+    "launch_utc_ns": 1792272091623587500,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 117232,
+    "launch_utc_ns": 1792272093809072900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 115944,
+    "launch_utc_ns": 1792272095956981500,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 93344,
+    "launch_utc_ns": 1792272098200800000,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 42048,
+    "launch_utc_ns": 1792272102137244300,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 43368,
+    "launch_utc_ns": 1792272104472068600,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 30084,
+    "launch_utc_ns": 1792272106950788400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 95168,
+    "launch_utc_ns": 1792272109067969600,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 113932,
+    "launch_utc_ns": 1792272111257778800,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 49632,
+    "launch_utc_ns": 1792272113966373800,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 15332,
+    "launch_utc_ns": 1792272116212310100,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 28684,
+    "launch_utc_ns": 1792272120460217400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 93516,
+    "launch_utc_ns": 1792272122458854700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 103364,
+    "launch_utc_ns": 1792272124459566500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 113392,
+    "launch_utc_ns": 1792272126495476100,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 81956,
+    "launch_utc_ns": 1792272130589229400,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 113472,
+    "launch_utc_ns": 1792272132920520800,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 92868,
+    "launch_utc_ns": 1792272135326853900,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 60860,
+    "launch_utc_ns": 1792272137546708900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 115916,
+    "launch_utc_ns": 1792272139874348800,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 86472,
+    "launch_utc_ns": 1792272142271787800,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 85268,
+    "launch_utc_ns": 1792272146384449600,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 25864,
+    "launch_utc_ns": 1792272150742763100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 75556,
+    "launch_utc_ns": 1792272152985993000,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 98060,
+    "launch_utc_ns": 1792272155117985600,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 35872,
+    "launch_utc_ns": 1792272157481583000,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 55912,
+    "launch_utc_ns": 1792272159674306300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 68980,
+    "launch_utc_ns": 1792272161673210800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 90944,
+    "launch_utc_ns": 1792272163675186900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 103828,
+    "launch_utc_ns": 1792272165793527900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 114028,
+    "launch_utc_ns": 1792272167957334200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 25668,
+    "launch_utc_ns": 1792272170165984300,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 54228,
+    "launch_utc_ns": 1792272172676677000,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 89680,
+    "launch_utc_ns": 1792272175182367300,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 8780,
+    "launch_utc_ns": 1792272178723228900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 79852,
+    "launch_utc_ns": 1792272180972763700,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 94584,
+    "launch_utc_ns": 1792272185131018000,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 54104,
+    "launch_utc_ns": 1792272189352473000,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 117588,
+    "launch_utc_ns": 1792272193314919600,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 90940,
+    "launch_utc_ns": 1792272195697412200,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 78976,
+    "launch_utc_ns": 1792272197871928400,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 97796,
+    "launch_utc_ns": 1792272202256807500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 99760,
+    "launch_utc_ns": 1792272204671090400,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 65264,
+    "launch_utc_ns": 1792272208979392600,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 88424,
+    "launch_utc_ns": 1792272211188631400,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 43024,
+    "launch_utc_ns": 1792272213693342400,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 102352,
+    "launch_utc_ns": 1792272215865784400,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 115776,
+    "launch_utc_ns": 1792272218101749700,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 122420,
+    "launch_utc_ns": 1792272220667179000,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 53460,
+    "launch_utc_ns": 1792272225270932700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 117240,
+    "launch_utc_ns": 1792272227414488500,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 85632,
+    "launch_utc_ns": 1792272229907451600,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 75724,
+    "launch_utc_ns": 1792272234179606300,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 35340,
+    "launch_utc_ns": 1792272236504901100,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 90060,
+    "launch_utc_ns": 1792272238855507600,
+    "validation": "validated=128;sink=157885",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 81064,
+    "launch_utc_ns": 1792272243224537300,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 92280,
+    "launch_utc_ns": 1792272247256631200,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 50796,
+    "launch_utc_ns": 1792272249676426700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 34020,
+    "launch_utc_ns": 1792272251857820700,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 102360,
+    "launch_utc_ns": 1792272254194391400,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 77156,
+    "launch_utc_ns": 1792272258216582600,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 44616,
+    "launch_utc_ns": 1792272260430685800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 90092,
+    "launch_utc_ns": 1792272262554854200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 33968,
+    "launch_utc_ns": 1792272264887701400,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 84732,
+    "launch_utc_ns": 1792272267307974100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 4724,
+    "launch_utc_ns": 1792272269154661400,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "pid": 77992,
+    "launch_utc_ns": 1792272271549577600,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 96828,
+    "launch_utc_ns": 1792272273637965500,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 100844,
+    "launch_utc_ns": 1792272277474734500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 63872,
+    "launch_utc_ns": 1792272279705209900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 17692,
+    "launch_utc_ns": 1792272281802467300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 94068,
+    "launch_utc_ns": 1792272284338000700,
+    "validation": "validated=128;sink=14050",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 118376,
+    "launch_utc_ns": 1792272288040564800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 95772,
+    "launch_utc_ns": 1792272290036846300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "control",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 91368,
+    "launch_utc_ns": 1792272292207344800,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 74696,
+    "launch_utc_ns": 1792272295953281400,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 69372,
+    "launch_utc_ns": 1792272298115069100,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 113884,
+    "launch_utc_ns": 1792272300546446800,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 105236,
+    "launch_utc_ns": 1792272303082127300,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 90200,
+    "launch_utc_ns": 1792272305477905400,
+    "validation": "validated=64;sink=188633216",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 52872,
+    "launch_utc_ns": 1792272307813562500,
+    "validation": "validated=128;sink=32608",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 102944,
+    "launch_utc_ns": 1792272311890914800,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 3204,
+    "launch_utc_ns": 1792272314108202500,
+    "validation": "validated=128;sink=28142",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 45924,
+    "launch_utc_ns": 1792272318006498900,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 98320,
+    "launch_utc_ns": 1792272320173370700,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 105584,
+    "launch_utc_ns": 1792272322684116700,
+    "validation": "validated=64;sink=2724143",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 55360,
+    "launch_utc_ns": 1792272325090757300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-str",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 115508,
+    "launch_utc_ns": 1792272327488793800,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 110940,
+    "launch_utc_ns": 1792272329795302400,
+    "validation": "validated=128;sink=109185",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "pid": 96772,
+    "launch_utc_ns": 1792272334179968100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 84260,
+    "launch_utc_ns": 1792272336286077400,
+    "validation": "validated=64;sink=20455734566",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 123264,
+    "launch_utc_ns": 1792272338538334500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "pid": 55232,
+    "launch_utc_ns": 1792272340694364200,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "pid": 119764,
+    "launch_utc_ns": 1792272342883074100,
+    "validation": "validated=128;sink=9534",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-hilbert",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 3,
+    "pid": 112112,
+    "launch_utc_ns": 1792272346993465100,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "pid": 78140,
+    "launch_utc_ns": 1792272348823506500,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 4,
+    "pid": 80832,
+    "launch_utc_ns": 1792272350908891300,
+    "validation": "validated=64",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 7136,
+    "launch_utc_ns": 1792272353061210500,
+    "validation": "validated=64;sink=145919598",
+    "returncode": 0
+  },
+  {
+    "library": "interop-static",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 4,
+    "pid": 13136,
+    "launch_utc_ns": 1792272355393584900,
+    "validation": "validated=64;sink=25256503735",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 120096,
+    "launch_utc_ns": 1792272357943999200,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "interop-geo-hilbert",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "pid": 113780,
+    "launch_utc_ns": 1792272360269047600,
+    "validation": "validated=64;sink=2092999",
+    "returncode": 0
+  },
+  {
+    "library": "native-geo-str",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 3,
+    "pid": 78948,
+    "launch_utc_ns": 1792272362593630000,
+    "validation": "validated=64",
+    "returncode": 0
+  }
+]

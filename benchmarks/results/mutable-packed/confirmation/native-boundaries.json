@@ -1,0 +1,78 @@
+{
+  "native_sha256": "731B62EF35BA8253B88AC36AF4E8A757B5A61016B86B681CD92B951618E5A07E",
+  "checks": [
+    {
+      "exit_code": 0,
+      "mode": "static",
+      "validated_queries": 8,
+      "count": 0
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-hilbert",
+      "validated_queries": 8,
+      "count": 0
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-str",
+      "validated_queries": 8,
+      "count": 0
+    },
+    {
+      "exit_code": 0,
+      "mode": "static",
+      "validated_queries": 8,
+      "count": 1
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-hilbert",
+      "validated_queries": 8,
+      "count": 1
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-str",
+      "validated_queries": 8,
+      "count": 1
+    },
+    {
+      "exit_code": 0,
+      "mode": "static",
+      "validated_queries": 8,
+      "count": 16
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-hilbert",
+      "validated_queries": 8,
+      "count": 16
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-str",
+      "validated_queries": 8,
+      "count": 16
+    },
+    {
+      "exit_code": 0,
+      "mode": "static",
+      "validated_queries": 8,
+      "count": 17
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-hilbert",
+      "validated_queries": 8,
+      "count": 17
+    },
+    {
+      "exit_code": 0,
+      "mode": "geo-str",
+      "validated_queries": 8,
+      "count": 17
+    }
+  ],
+  "scope": "Empty, duplicate bounds, inclusive contacts, negative coordinates, short-leaf boundary 16/17. Supplemental correctness only; timings excluded."
+}

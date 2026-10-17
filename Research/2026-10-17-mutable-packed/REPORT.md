@@ -10,7 +10,7 @@ Exploration: three matched process blocks per variant/fixture, 100 ms calibratio
 
 Competitors: pinned `static_aabb2d_index` and `geo-index` source revisions from the preceding comparison. Release, native CPU, thin LTO, one codegen unit, preallocated output/scratch where the public API permits, no managed callbacks or marshalling. Short, allocation-free result-access and small-leaf interop calls use suppressed transitions. Long builds/searches use ordinary transitions. Also retain direct-native timings, which eliminate interop entirely and give competitors their maximum measured benefit. All result IDs must match brute force before timing. Native build/destruction and managed GC lifecycle differences remain explicit.
 
-No database or external service is used. Downloaded indexing paths, Rust dependency build scripts, managed worker startup, and benchmark callbacks are inspected before execution. Scratch/builds/catalogs under `D:\Workspaces\AI\rtree-mutable-optimization`.
+Indexing workloads use no database or external service. DotNetLab writes only its verified task-owned local SQLite diagnostic catalog under the designated scratch directory. Downloaded indexing paths, Rust dependency build scripts, managed worker startup, and benchmark callbacks are inspected before execution. Scratch/builds/catalogs under `D:\Workspaces\AI\rtree-mutable-optimization`.
 
 ## Source findings
 
@@ -23,11 +23,11 @@ No database or external service is used. Downloaded indexing paths, Rust depende
 | ID | Catalogue / registry | Mechanism | State |
 |---|---|---|---|
 | A1 | A01/A03; M7, R2 | Hilbert keys, primitive sorting, direct leaf construction, sequential parent packing | Tested; integrated algorithm stage, final confirmation pending |
-| M5-1 | M5; M01/M02 | Separate per-node bounds, leaf values, and branch children; maintain all arrays during mutation | Pending DotNetLab profile |
-| M7-1 | M7/M3 | Bulk copy fully contained leaf values into result list; preserve append semantics | Pending profile |
-| M3-1 | M3/M4, R2 | Span/byref access versus surviving bounds checks and 32-byte rectangle copies | Pending generated-code evidence |
-| C3-1 | C3/V01/V03/V17 | SIMD rectangle rejection with scalar fallback | Pending applicability evidence |
-| M1-1 | M1/M2 | Uninitialized primitive scratch or bounded stack scratch, avoiding reads before initialization | Pending allocation/code evidence |
+| M5-1 | M5; M01/M02 | Separate per-node bounds, leaf values, and branch children; maintain all arrays during mutation | Tested alone and rejected; adopted only with M7 bulk copy |
+| M7-1 | M7/M3 | Bulk copy fully contained leaf values into result list; preserve append semantics | Retained with M5 after three-arm comparison and reprofile |
+| M3-1 | M3/M4, R2 | Span/byref access versus surviving bounds checks and 32-byte rectangle copies | Existing byref span retained; further access variants deferred |
+| C3-1 | C3/V01/V03/V17 | SIMD rectangle rejection with scalar fallback | Deferred; no measured instruction bottleneck justifies added ISA path |
+| M1-1 | M1/M2 | Uninitialized primitive scratch or bounded stack scratch, avoiding reads before initialization | Tested skipped initialization; rejected for immaterial 100k gain |
 
 Catalogue coverage: M1–M7 and R2 are applicable above; C1/C2/C3/C4 require emitted-code/profile discrimination. C5 (stencils), S1–S3 (bitmaps/hash/frozen maps), S4 (query caching), S5 (compression), R1 (opcode dispatch), R3 (configuration branches), T1–T4 (coordination) are outside this single-thread mutable-tree mechanism: there are no such structures or waits in this path; query caching would introduce invalidation/memory costs rather than improve first-use traversal. Parallelism/GPU are excluded by the single-core comparison objective. Software prefetch requires unavailable PMU/locality evidence rather than a source-level assumption.
 
@@ -60,3 +60,15 @@ Catalogue coverage: M1–M7 and R2 are applicable above; C1/C2/C3/C4 require emi
 - M1 skipped scratch initialization rejected: 100k uniform 6.809/6.822 ms, clustered 6.327/6.221 ms, with unchanged allocated bytes. No material large-build benefit. Restore initialized primitive arrays.
 - Residual M3 span/byref and C3 SIMD candidates deferred: current traversal already uses byref rectangle spans, while dense matches use bulk copy. A vector path would add ISA dispatch and another traversal implementation without measured instruction or branch evidence establishing benefit. No SIMD gain is claimed. Further speculative variants are outside this experiment budget.
 - Final source freeze: retained A1, combined M5/M7, typed input, radix, predicate inlining, and reciprocal grouping-key scaling. Five fresh blocks per eight workers and six fixtures; seed 99183. No diagnostic observer during timing. Source and binary identities retained in the confirmation protocol. Final confirmation is a manual external-rig adoption gate, not a DotNetLab-qualified promotion.
+
+## Review and inference limits
+
+The competitor bridge and indexing code use only in-memory geometry. The inspected Rust manifests contain no top-level custom build scripts; registry build scripts (num-traits/autocfg, libm, serde/core, proc-macro2, quote, thiserror) perform compiler/configuration probes and generated output under the task Cargo directory. Versions/checksums are pinned in the retained Cargo.lock; feature selection and release flags are explicit. The enabled static-index unsafe optimization is bounded by the public builder/query contracts. The FFI bridge owns Context until destruction, reserves output before the bounded leaf call, and consumes each borrowed view before the next query. This limited review supports execution of these fixtures; it is not an audit of arbitrary input or all dependency code.
+
+The final rig records every process launch, exact result validation, source-stage identities, and binary hashes. Native allocations are unavailable, not zero. DotNetLab sample counts include waiting threads; no CPU fractions, cache miss claims, per-call latency, or independent-sample significance are inferred. The full normal-exit JIT listing establishes call removal; terminated diagnostic JIT text is partial.
+
+## Final disposition
+
+The separate five-block confirmation completed all 240 prospective processes without failure or exclusion. At 100k uniform/clustered, original/candidate build medians: 29.918/6.802 ms and 26.256/6.289 ms. Aggregate query medians: 1490.87/865.46 us and 1627.16/809.63 us. Best measured static-index aggregates: 1222.33 and 1276.31 us. Build allocations approximately halved. All post-mutation query aggregates improved. The single first-use Update batches regressed up to 14.2% on smaller fixtures and 9.3% at 100k uniform; accept this explicit tradeoff for the primary build/query gains, without claiming steady-state update improvement. No mutability capability is removed.
+
+The full differential/boundary suite passed after adding isolated subnormal-extent cases. Supplemental native interop validation passed all twelve mode/size combinations (0/1/16/17 entries, eight edge/duplicate/negative queries each), covering the suppressed-call boundary. Final full normal-exit JIT listing is retained; predicates are inlined, normalization has multiply plus rare division fallback. No native-promotion claim is made. Final comparison and complete ranges: benchmarks/MUTABLE-PACKED.md and benchmarks/results/mutable-packed/confirmation/.

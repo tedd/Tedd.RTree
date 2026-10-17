@@ -70,6 +70,21 @@ internal static class MutablePackedChecks
             indexed.BulkLoad(new IndexedOnly(entries));
             foreach (var q in edge) Check(indexed, entries, q);
         }
+        // Isolate tiny extents: mixing these with MaxValue would never exercise the
+        // reciprocal-overflow fallback or normalization that collapses to zero.
+        foreach (double unit in new[] { double.Epsilon, 1e-310, 1e-200, 1e200 })
+        {
+            var entries = Enumerable.Range(0, 33).Select(i => new SpatialEntry<string>(
+                new Rectangle((i - 16) * unit, -unit, (i - 15) * unit, unit), $"tiny-{i}")).ToArray();
+            var tree = new RTree<string>(4);
+            tree.BulkLoad(entries);
+            foreach (var entry in entries) Check(tree, entries, entry.Bounds);
+            var old = entries[16];
+            var moved = new Rectangle(-2 * unit, -2 * unit, 2 * unit, 2 * unit);
+            if (!tree.Update(old.Bounds, old.Item, moved)) throw new Exception("Tiny-extent update failed.");
+            entries[16] = new(moved, old.Item);
+            foreach (var entry in entries) Check(tree, entries, entry.Bounds);
+        }
         var shared = new BulkLoadWorkspace();
         for (int pass = 0; pass < 4; pass++)
         {
