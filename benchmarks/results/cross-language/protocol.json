@@ -1,0 +1,75 @@
+{
+  "rounds": 5,
+  "calibration_ms": 100,
+  "query_group_size": 16,
+  "query_widths": [
+    0,
+    20,
+    200,
+    1000
+  ],
+  "seed": 73211,
+  "job_shuffle_seed": 91823,
+  "windows_affinity_mask": 4,
+  "workers": {
+    "Tedd bulk reused": [
+      "dotnet",
+      "D:\\Workspaces\\AI\\rtree-cross-language\\dotnet\\Worker.dll",
+      "{fixture}",
+      "tedd-reuse"
+    ],
+    "Tedd bulk allocating": [
+      "dotnet",
+      "D:\\Workspaces\\AI\\rtree-cross-language\\dotnet\\Worker.dll",
+      "{fixture}",
+      "tedd-alloc"
+    ],
+    "Tedd incremental": [
+      "dotnet",
+      "D:\\Workspaces\\AI\\rtree-cross-language\\dotnet\\Worker.dll",
+      "{fixture}",
+      "tedd-insert"
+    ],
+    "Tidwall C": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\tidwall.exe",
+      "{fixture}"
+    ],
+    "Superliminal C++": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\superliminal.exe",
+      "{fixture}"
+    ],
+    "Boost.Geometry packed": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\boost.exe",
+      "{fixture}"
+    ],
+    "Tidwall Go": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\go-worker.exe",
+      "{fixture}"
+    ],
+    "rstar bulk": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\rust\\target\\release\\spatial-comparison.exe",
+      "{fixture}",
+      "rstar"
+    ],
+    "geo-index Hilbert": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\rust\\target\\release\\spatial-comparison.exe",
+      "{fixture}",
+      "geo-hilbert"
+    ],
+    "geo-index STR": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\rust\\target\\release\\spatial-comparison.exe",
+      "{fixture}",
+      "geo-str"
+    ],
+    "Flatbush": [
+      "node",
+      "D:\\Workspaces\\AI\\rtree-cross-language\\worker.mjs",
+      "{fixture}"
+    ]
+  },
+  "environment_overrides": {
+    "DOTNET_TieredCompilation": "0",
+    "GOMAXPROCS": "1"
+  },
+  "elapsed_seconds": 744.5295517444611
+}

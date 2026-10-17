@@ -1,0 +1,10 @@
+[package]
+name = "spatial-comparison"
+version = "0.1.0"
+edition = "2021"
+[dependencies]
+rstar = { path = "../rstar/rstar" }
+geo-index = { path = "../geo-index" }
+[profile.release]
+lto = "thin"
+codegen-units = 1

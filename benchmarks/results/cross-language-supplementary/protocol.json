@@ -1,0 +1,29 @@
+{
+  "rounds": 5,
+  "calibration_ms": 100,
+  "query_group_size": 16,
+  "query_widths": [
+    0,
+    20,
+    200,
+    1000
+  ],
+  "seed": 73211,
+  "job_shuffle_seed": 91823,
+  "windows_affinity_mask": 4,
+  "workers": {
+    "Boost.Geometry visitor": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\boost-query.exe",
+      "{fixture}"
+    ],
+    "static_aabb2d_index": [
+      "D:\\Workspaces\\AI\\rtree-cross-language\\static-rust\\target\\release\\static-spatial-comparison.exe",
+      "{fixture}"
+    ]
+  },
+  "environment_overrides": {
+    "DOTNET_TieredCompilation": "0",
+    "GOMAXPROCS": "1"
+  },
+  "elapsed_seconds": 135.72702860832214
+}

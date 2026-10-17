@@ -1,0 +1,137 @@
+{
+  "teddCommit": "9d8fb597932bca550ab7d7092af6b35c5a15a09b",
+  "branch": "main",
+  "sources": [
+    {
+      "name": "rtree-c",
+      "url": "https://github.com/tidwall/rtree.c.git",
+      "commit": "b064910b9fd36fc2a5ce37e7ff1fb807079981ea"
+    },
+    {
+      "name": "rtree-go",
+      "url": "https://github.com/tidwall/rtree.git",
+      "commit": "5a3893f505b04bd5b54f57c7d04263687f3bac14"
+    },
+    {
+      "name": "rstar",
+      "url": "https://github.com/georust/rstar.git",
+      "commit": "3b1aee6087f36937603b6ccc33240d664c314a19"
+    },
+    {
+      "name": "geo-index",
+      "url": "https://github.com/georust/geo-index.git",
+      "commit": "e6efbb01d3c298e8963c8b7d1aab40c1bd540715"
+    },
+    {
+      "name": "flatbush",
+      "url": "https://github.com/mourner/flatbush.git",
+      "commit": "c5af0778aa6f04c532b7dc9ca72d1697c85368b9"
+    },
+    {
+      "name": "flatqueue",
+      "url": "https://github.com/mourner/flatqueue.git",
+      "commit": "eee96a6df7705e57f8dbb3702aa3efc40bb6e4b5"
+    },
+    {
+      "name": "superliminal",
+      "url": "https://github.com/nushoin/RTree.git",
+      "commit": "0dd1103b1110a156ec0e0f17da6bd28b20d6fcce"
+    },
+    {
+      "name": "geoindex",
+      "url": "https://github.com/tidwall/geoindex.git",
+      "commit": "63355af83f730166f8fd4b0d93c54067cdddf0c9"
+    },
+    {
+      "name": "boost",
+      "url": "https://github.com/boostorg/boost.git",
+      "commit": "945583a4c5e9f1bd02ec8f4a965204514ca1805d"
+    },
+    {
+      "name": "static-aabb",
+      "url": "https://github.com/jbuckmccready/static_aabb2d_index.git",
+      "commit": "a511a6327e14a0f0418cea01c401bf147e0e835c"
+    }
+  ],
+  "boostSubmodules": [
+    " fd1cf19c0f84c483b3310c34fd600fe8b2725ccc libs/algorithm (fd1cf19)",
+    " 440281d63d1c0b7c7fde63ded67b4860b57d5756 libs/align (boost-1.91.0)",
+    " a39414c3e0cb1f4e7b14aea59fafad668ea194cb libs/any (a39414c)",
+    " 3df3aafd1924084d46988590bd94cf4c1b362859 libs/array (boost-1.91.0)",
+    " 612d35df55376c6412f0477ed62d4d241f8861b7 libs/assert (heads/develop)",
+    " 8903e3ab03ab2f08c287608f204770f70cd1d6e9 libs/atomic (heads/develop)",
+    " 8cc29fc19db49e791743c821821e201b46ab9c66 libs/bind (boost-1.91.0)",
+    " 1207f5b403459f3fa2900252edcde9051f904d22 libs/chrono (boost-1.91.0)",
+    " 235e54ebf23be678045e0eeae90f47ca0e2c95ce libs/concept_check (boost-1.91.0)",
+    " ded994425cd2885715c638bcaf5483d1f85ceb33 libs/config (ded9944)",
+    " 5aef136bb5479238d1eb0dc21c73d5fc828f6474 libs/container (5aef136)",
+    " 9f302c9a7b7f1779c06c1cfc3a506cd79675b9fe libs/container_hash (heads/develop)",
+    " 2cbe691097d37907c9cc98bed69a5a4617c991e4 libs/conversion (heads/develop)",
+    " 177a1c61748a61a03aaa1d4ec696f81625e66cff libs/core (heads/develop)",
+    " 6248d64ed94916e446c83a038e8c8208ebb262ee libs/date_time (boost-1.92.0)",
+    " ae199a79f7a75790b368613208e95270dae48755 libs/describe (heads/develop)",
+    " be38ccb0c1f8d321877170df22dcf0d41af1d3cc libs/detail (heads/develop)",
+    " 4bffdf3defc2836409e72622066a40d8396088ae libs/endian (boost-1.91.0)",
+    " afcb28d8f2517eda7b6b2cba1cd8b6dc3bbaf0d9 libs/exception (afcb28d)",
+    " 18650af5175ea247aebc60ff12db1b477123d5dc libs/function (boost-1.91.0)",
+    " e454e797fbd2e1df704306e8ef70836e8bcb71ae libs/function_types (e454e79)",
+    " 3c468dd0246577c20c3d6f88b2d42be92adaafa6 libs/functional (heads/develop)",
+    " 017a8399fd62e81cf11ecea8c4063d055088458e libs/fusion (boost-1.92.0)",
+    " 90c27ef0bf9d1700f553b85f890f43461eced529 libs/geometry (90c27ef)",
+    " 2b892563f8515d6acb2db4a0e8ac0fe9ee76f0bc libs/integer (heads/develop)",
+    " 4f41b4ab1f7fd86c434fe30fe004d76a987ee330 libs/intrusive (heads/develop)",
+    " 5c738076aa9aafc7392b2004c6b6f268b076a9f0 libs/io (heads/develop)",
+    " 9340e6ebdf17e487faf990b9d2ec7abd6cbac180 libs/iterator (heads/develop)",
+    " e4aed0be65036eb7802bdc09d7e04e61b01a43bd libs/lexical_cast (heads/develop)",
+    " 7ff2d2b4dec5a01243c215ba875bae3ba6d9aece libs/math (7ff2d2b)",
+    " d1f11d6e512bb261ac72ebc620772551e6ae3203 libs/move (d1f11d6)",
+    " 0daffd6401724ddf473fd39d28f68e138d9a1303 libs/mp11 (heads/develop)",
+    " 9d1f81ffeb055ea1ce0d96370bf07c40a2843878 libs/mpl (boost-1.92.0)",
+    " ce3db86f748eb78f01cd4893295c1aed6520b381 libs/multiprecision (ce3db86)",
+    " d1b479f7a4aa54d8ffb93d8dc4ee0c24670210d8 libs/numeric/conversion (boost-1.89.0)",
+    " 39f1d56d446bea50f88fb537e203490ea16426ac libs/numeric/interval (heads/develop)",
+    " 212d9b43ad02080bb5a5d8729fcbc2e281516708 libs/numeric/ublas (212d9b4)",
+    " c0648f5f2d7b7d8e59c6e2c1d203f34c7aec129e libs/optional (c0648f5)",
+    " e1211a4ca467bb6512e99025772ca25afa8d6159 libs/predef (e1211a4)",
+    " cd1b1bd03900b68505822cfa25cb16851bd6caf1 libs/preprocessor (boost-1.89.0)",
+    " 2e574dd16f812b99423ad20fa72b3738ff053390 libs/qvm (boost-1.91.0)",
+    " 08e70454559a1a58beed788dafa1631cdf9473ba libs/random (08e7045)",
+    " 7481e429b023655a6e77799d5f2cf4788145d494 libs/range (boost-1.91.0)",
+    " 6eceadad2eb04f00b8cae5e400f7bee34c2d501f libs/ratio (boost-1.88.0)",
+    " 421b19c3eaa3fc8019b435faeb02666ad929493b libs/rational (boost-1.91.0)",
+    " a640597d6e118bf76ca2067b629fa1336f58409a libs/regex (heads/develop)",
+    " 02cf83009bb55304371fc5c434da13d874a5b4d8 libs/scope (heads/develop)",
+    " 9778f4594b8cc458f31052f28caedea26aa04cc1 libs/serialization (heads/develop)",
+    " 6e945160d788b8efdfc49ba4af1f8797cacd7c97 libs/smart_ptr (boost-1.91.0)",
+    " 858097c08ebb53faaf1fba3201c0a76a96e49584 libs/static_assert (boost-1.91.0)",
+    " bafdff78bb25b45e9e474b677d84d854733ac8a1 libs/system (heads/develop)",
+    " 0924b53b40d1da33301f94fb97518f5a7df31e9b libs/throw_exception (boost-1.91.0)",
+    " b7f65f09a0975f26cb294eebd8b17e91a5beff3f libs/timer (boost-1.88.0)",
+    " 743082f58e964e7cef353a9678edaae055691ca0 libs/tokenizer (boost-1.92.0)",
+    " da15e744519fd54fb0641e23042dd69bee75d12c libs/tti (heads/develop)",
+    " 704830d883825357a83e49a2aed2a07e734a74bb libs/tuple (boost-1.91.0)",
+    " 5dfbd62f265eb01e77f78cd9675946f0afec2f89 libs/type_index (heads/develop)",
+    " e6275ccf01c9cf8775ef0cb6188bd58f3b167a0f libs/type_traits (boost-1.91.0)",
+    " 06748a1d65182a2dacfb9e0aa5dfc6230353b66d libs/typeof (boost-1.91.0)",
+    " 636164f1357cf217374313820a457c31b50fcfc7 libs/unordered (boost-1.92.0)",
+    " c3f5f523dead32e1a1bbc92b1c1864d713ec16ea libs/utility (heads/develop)",
+    " 4a3a0bff020e7002c9b4b1e53a1acacb323a3944 libs/uuid (heads/develop)",
+    " d3e821cbf49589124f0fb77ff87b757d3c47d303 libs/variant (heads/develop)",
+    " fa7d53b5cd1bda93e93e11d7974881ccabdb945a libs/variant2 (heads/develop)",
+    " 094612ee33a8dce960cd075537266fdb4788d059 libs/winapi (boost-1.90.0)"
+  ],
+  "goArchiveSha256": "1314008898bd40df77af4b014f777f08873dbdfbcd3d92308728ee03304fe04f",
+  "goVersion": "go version go1.27.2 windows/amd64",
+  "rustVersion": "rustc 1.93.1 (01f6ddf75 2026-02-11)",
+  "clangVersion": [
+    "clang version 22.1.3 (https://github.com/llvm/llvm-project e9846648fd6183ee6d8cbdb4502213fcf902a211)",
+    "Target: x86_64-pc-windows-msvc",
+    "Thread model: posix",
+    "InstalledDir: C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\VC\\Tools\\Llvm\\x64\\bin"
+  ],
+  "dotnetSdk": "10.0.402",
+  "nodeVersion": "v24.11.1",
+  "processor": "AMD Ryzen 9 5950X 16-Core Processor",
+  "os": "Microsoft Windows NT 10.0.26200.0",
+  "dotnetRuntime": "10.0.13"
+}

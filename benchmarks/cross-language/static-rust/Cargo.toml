@@ -1,0 +1,9 @@
+[package]
+name = "static-spatial-comparison"
+version = "0.1.0"
+edition = "2024"
+[dependencies]
+static_aabb2d_index = { path = "../static-aabb" }
+[profile.release]
+lto = "thin"
+codegen-units = 1
