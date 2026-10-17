@@ -6,7 +6,10 @@ public sealed class RTree<T>
 {
     private sealed class Node(bool leaf, int capacity)
     {
-        internal readonly Entry[] Entries = new Entry[capacity + 1];
+        // Leaves never carry child references; branches never carry user values.
+        internal readonly Rectangle[] Boxes = new Rectangle[capacity + 1];
+        internal readonly T[]? Values = leaf ? new T[capacity + 1] : null;
+        internal readonly Node?[]? Children = leaf ? null : new Node?[capacity + 1];
         internal readonly bool Leaf = leaf;
         internal int Count;
         internal Rectangle Bounds;
@@ -69,7 +72,7 @@ public sealed class RTree<T>
             if (!Remove(_root, bounds, item, reinserts)) return false;
             Count--;
             while (!_root.Leaf && _root.Count == 1)
-                _root = _root.Entries[0].Child!;
+                _root = _root.Children![0]!;
             if (_root.Count == 0)
                 _root = new Node(true, _capacity);
             foreach (Entry entry in reinserts)
@@ -111,9 +114,25 @@ public sealed class RTree<T>
         if (itemCount == 0)
             return;
 
+        if (items is SpatialEntry<T>[] array)
+        {
+            BulkLoadPacked(array, workspace);
+        }
+        else
+        {
+            // Retain IReadOnlyList's indexed contract, including custom lists without enumeration.
+            SpatialEntry<T>[] copy = new SpatialEntry<T>[itemCount];
+            for (int i = 0; i < copy.Length; i++) copy[i] = items[i];
+            BulkLoadPacked(copy, workspace);
+        }
+    }
+
+    private void BulkLoadPacked(ReadOnlySpan<SpatialEntry<T>> items, BulkLoadWorkspace? workspace)
+    {
+        int itemCount = items.Length;
         workspace?.EnsureCapacity(itemCount);
-        int[] order = workspace?.Order ?? new int[itemCount];
-        double[] keys = workspace?.XCenters ?? new double[itemCount];
+        Span<int> order = workspace is null ? new int[itemCount] : workspace.Order.AsSpan(0, itemCount);
+        Span<uint> keys = workspace is null ? new uint[itemCount] : workspace.HilbertKeys(itemCount);
         Rectangle extent = items[0].Bounds;
         for (int i = 0; i < itemCount; i++)
             extent = Rectangle.Union(extent, items[i].Bounds);
@@ -131,7 +150,13 @@ public sealed class RTree<T>
             order[i] = i;
         }
         // Primitive keys avoid virtual comparisons through an indirect coordinate lookup.
-        Array.Sort(keys, order, 0, itemCount);
+        if (itemCount < 2048)
+            keys.Sort(order);
+        else
+        {
+            Span<int> scatter = workspace is null ? new int[itemCount] : workspace.HilbertScatter(itemCount);
+            HilbertOrder.SortIndices(keys, order, scatter);
+        }
         Node[] level = new Node[(itemCount - 1) / _capacity + 1];
         for (int n = 0, start = 0; n < level.Length; n++, start += _capacity)
         {
@@ -217,27 +242,27 @@ public sealed class RTree<T>
     {
         if (node.Leaf)
         {
-            for (int i = 0; i < node.Count; i++) results.Add(node.Entries[i].Value);
+            results.AddRange(node.Values!.AsSpan(0, node.Count));
             return node.Count;
         }
         int found = 0;
-        for (int i = 0; i < node.Count; i++) found += CollectValues(node.Entries[i].Child!, results);
+        for (int i = 0; i < node.Count; i++) found += CollectValues(node.Children![i]!, results);
         return found;
     }
 
     private static int Search(Node node, in Rectangle bounds, List<T> results)
     {
         // Validate the active prefix once; mutations cannot overlap a search (H-004/H-014).
-        Span<Entry> entries = node.Entries.AsSpan(0, node.Count);
+        ReadOnlySpan<Rectangle> entries = node.Boxes.AsSpan(0, node.Count);
         int found = 0;
         if (node.Leaf)
         {
             for (int i = 0; i < entries.Length; i++)
             {
-                ref Entry entry = ref entries[i];
-                if (entry.Bounds.Intersects(bounds))
+                ref readonly Rectangle entry = ref entries[i];
+                if (entry.Intersects(bounds))
                 {
-                    results.Add(entry.Value);
+                    results.Add(node.Values![i]);
                     found++;
                 }
             }
@@ -246,15 +271,15 @@ public sealed class RTree<T>
         {
             for (int i = 0; i < entries.Length; i++)
             {
-                ref Entry entry = ref entries[i];
-                if (entry.Bounds.Intersects(bounds))
+                ref readonly Rectangle entry = ref entries[i];
+                if (entry.Intersects(bounds))
                 {
                     // Every descendant lies within this entry. Containment therefore permits
                     // collecting values without further geometry tests, preserving duplicates.
                     // Check only intersecting children to limit selective-query overhead (H-013/H-014).
-                    found += bounds.Contains(entry.Bounds)
-                        ? CollectValues(entry.Child!, results)
-                        : Search(entry.Child!, bounds, results);
+                    found += bounds.Contains(entry)
+                        ? CollectValues(node.Children![i]!, results)
+                        : Search(node.Children![i]!, bounds, results);
                 }
             }
         }
@@ -267,7 +292,7 @@ public sealed class RTree<T>
         {
             for (int i = 0; i < node.Count; i++)
             {
-                Entry entry = node.Entries[i];
+                Entry entry = ReadEntry(node, i);
                 if (entry.Bounds != bounds || !EqualityComparer<T>.Default.Equals(entry.Value, item)) continue;
                 RemoveAt(node, i);
                 RecomputeBounds(node);
@@ -278,9 +303,8 @@ public sealed class RTree<T>
 
         for (int i = 0; i < node.Count; i++)
         {
-            ref Entry entry = ref node.Entries[i];
-            if (!entry.Bounds.Contains(bounds)) continue;
-            Node child = entry.Child!;
+            if (!node.Boxes[i].Contains(bounds)) continue;
+            Node child = node.Children![i]!;
             if (!Remove(child, bounds, item, reinserts)) continue;
             if (child.Count < _minimum)
             {
@@ -288,7 +312,7 @@ public sealed class RTree<T>
                 RemoveAt(node, i);
             }
             else
-                entry.Bounds = child.Bounds;
+                node.Boxes[i] = child.Bounds;
             RecomputeBounds(node);
             return true;
         }
@@ -298,8 +322,15 @@ public sealed class RTree<T>
     private static void RemoveAt(Node node, int index)
     {
         int last = --node.Count;
-        if (index != last) node.Entries[index] = node.Entries[last];
-        node.Entries[last] = default;
+        if (index != last)
+        {
+            node.Boxes[index] = node.Boxes[last];
+            if (node.Leaf) node.Values![index] = node.Values[last];
+            else node.Children![index] = node.Children[last];
+        }
+        node.Boxes[last] = default;
+        if (node.Leaf) node.Values![last] = default!;
+        else node.Children![last] = null;
     }
 
     private static void RecomputeBounds(Node node)
@@ -309,9 +340,9 @@ public sealed class RTree<T>
             node.Bounds = default;
             return;
         }
-        Rectangle bounds = node.Entries[0].Bounds;
+        Rectangle bounds = node.Boxes[0];
         for (int i = 1; i < node.Count; i++)
-            bounds = Rectangle.Union(bounds, node.Entries[i].Bounds);
+            bounds = Rectangle.Union(bounds, node.Boxes[i]);
         node.Bounds = bounds;
     }
 
@@ -319,11 +350,11 @@ public sealed class RTree<T>
     {
         if (node.Leaf)
         {
-            for (int i = 0; i < node.Count; i++) entries.Add(node.Entries[i]);
+            for (int i = 0; i < node.Count; i++) entries.Add(ReadEntry(node, i));
         }
         else
         {
-            for (int i = 0; i < node.Count; i++) CollectLeafEntries(node.Entries[i].Child!, entries);
+            for (int i = 0; i < node.Count; i++) CollectLeafEntries(node.Children![i]!, entries);
         }
     }
 
@@ -336,9 +367,9 @@ public sealed class RTree<T>
         else
         {
             int selected = ChooseSubtree(node, entry.Bounds);
-            Node child = node.Entries[selected].Child!;
+            Node child = node.Children![selected]!;
             Insert(child, entry, out Node? childSibling);
-            node.Entries[selected].Bounds = child.Bounds;
+            node.Boxes[selected] = child.Bounds;
             node.Bounds = Rectangle.Union(node.Bounds, child.Bounds);
             if (childSibling is not null)
                 Add(node, new Entry(childSibling.Bounds, childSibling, default!));
@@ -354,7 +385,7 @@ public sealed class RTree<T>
         double bestArea = double.MaxValue;
         for (int i = 0; i < node.Count; i++)
         {
-            Rectangle current = node.Entries[i].Bounds;
+            Rectangle current = node.Boxes[i];
             double area = current.Area;
             double enlargement = Enlargement(current, bounds);
             if (enlargement < bestEnlargement ||
@@ -372,7 +403,7 @@ public sealed class RTree<T>
     {
         int length = node.Count;
         Entry[] entries = new Entry[length];
-        Array.Copy(node.Entries, entries, length);
+        for (int i = 0; i < length; i++) entries[i] = ReadEntry(node, i);
         int seedA = 0, seedB = 1;
         double worstWaste = double.NegativeInfinity;
         for (int i = 0; i < length - 1; i++)
@@ -437,7 +468,9 @@ public sealed class RTree<T>
             remaining--;
         }
         // The vacated slots otherwise retain values and child nodes after a split.
-        Array.Clear(node.Entries, node.Count, length - node.Count);
+        Array.Clear(node.Boxes, node.Count, length - node.Count);
+        if (node.Leaf) Array.Clear(node.Values!, node.Count, length - node.Count);
+        else Array.Clear(node.Children!, node.Count, length - node.Count);
         return other;
     }
 
@@ -450,8 +483,14 @@ public sealed class RTree<T>
 
     private static void Add(Node node, Entry entry)
     {
-        node.Entries[node.Count++] = entry;
+        int index = node.Count++;
+        node.Boxes[index] = entry.Bounds;
+        if (node.Leaf) node.Values![index] = entry.Value;
+        else node.Children![index] = entry.Child;
         node.Bounds = node.Count == 1 ? entry.Bounds : Rectangle.Union(node.Bounds, entry.Bounds);
     }
+
+    private static Entry ReadEntry(Node node, int index) =>
+        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![index] : default!);
 
 }

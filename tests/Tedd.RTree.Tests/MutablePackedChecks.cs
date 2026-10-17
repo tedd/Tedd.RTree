@@ -66,6 +66,19 @@ internal static class MutablePackedChecks
             var tree = new RTree<string>(4);
             tree.BulkLoad(entries);
             foreach (var q in edge) Check(tree, entries, q);
+            var indexed = new RTree<string>(4);
+            indexed.BulkLoad(new IndexedOnly(entries));
+            foreach (var q in edge) Check(indexed, entries, q);
+        }
+        var shared = new BulkLoadWorkspace();
+        for (int pass = 0; pass < 4; pass++)
+        {
+            var batch = Enumerable.Range(0, 4097).Select(i => new SpatialEntry<int>(new Rectangle(i % 997, i % 997, i % 997 + 1, i % 997 + 1), i)).ToArray();
+            var original = new RTree<int>(); original.BulkLoad(batch, shared);
+            if (original.Search(new Rectangle(-1, -1, 1000, 1000)).Count != batch.Length) throw new Exception("Shared workspace original failure.");
+            var generic = new RTree2D<double, int>();
+            generic.BulkLoad(batch.Select(e => new SpatialEntry2D<double, int>(new Rectangle2D<double>(e.Bounds.MinX, e.Bounds.MinY, e.Bounds.MaxX, e.Bounds.MaxY), e.Item)).ToArray(), shared);
+            if (generic.Search(new Rectangle2D<double>(-1, -1, 1000, 1000)).Count != batch.Length) throw new Exception("Shared workspace generic failure.");
         }
     }
 
@@ -77,5 +90,13 @@ internal static class MutablePackedChecks
         int found = tree.Search(q, actual);
         if (actual[0] != "prefix" || found != expected.Length || !actual.Skip(1).Order().SequenceEqual(expected))
             throw new Exception("Mutable packed differential/append failure.");
+    }
+
+    private sealed class IndexedOnly(SpatialEntry<string>[] items) : IReadOnlyList<SpatialEntry<string>>
+    {
+        public int Count => items.Length;
+        public SpatialEntry<string> this[int index] => items[index];
+        public IEnumerator<SpatialEntry<string>> GetEnumerator() => throw new Exception("Bulk load must use the indexed contract.");
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

@@ -1,0 +1,17 @@
+[package]
+name = "packed-native"
+version = "0.1.0"
+edition = "2021"
+[lib]
+name = "packed_native"
+crate-type = ["cdylib", "rlib"]
+[[bin]]
+name = "packed-worker"
+path = "src/main.rs"
+[dependencies]
+geo-index = { path = "../geo-index" }
+static_aabb2d_index = { path = "../static-aabb", features = ["unsafe_optimizations"] }
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "abort"

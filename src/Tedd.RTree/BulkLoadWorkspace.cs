@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace Tedd.RTree;
 
@@ -36,6 +37,12 @@ public sealed class BulkLoadWorkspace
         XCenters = xCenters;
         YCenters = yCenters;
     }
+
+    // The buffers hold temporary numbers, not persistent geometry. Generic packers overwrite
+    // their complete active center ranges before reading them; the double-only packer uses
+    // typed views for 32-bit keys and scatter indices without increasing retained capacity.
+    internal Span<uint> HilbertKeys(int count) => MemoryMarshal.Cast<double, uint>(XCenters.AsSpan()).Slice(0, count);
+    internal Span<int> HilbertScatter(int count) => MemoryMarshal.Cast<double, int>(YCenters.AsSpan()).Slice(0, count);
 
     internal void EnsureIntegerCapacity(int count, bool threeDimensional)
     {

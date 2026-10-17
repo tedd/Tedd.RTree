@@ -1,0 +1,3602 @@
+[
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 1115.36328125,
+    "iterations": 128,
+    "allocation_bytes": 626840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 3.4128448486328122,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 4.187066650390625,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 33.3973876953125,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 96.38916015625,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 15146.699999999999,
+    "iterations": 1,
+    "allocation_bytes": 602328.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 3.1681396484374997,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 4.539764404296875,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 36.544482421875,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 110.35673828125,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 56.040185546875,
+    "iterations": 2048,
+    "allocation_bytes": 64368.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.3238668441772461,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.5857387542724609,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 5.1695098876953125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 11.257794189453126,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 12897.7,
+    "iterations": 1,
+    "allocation_bytes": 250648.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 0.2760044097900391,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 0.3658714294433594,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 4.0020294189453125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 11.000012207031249,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 13701.325,
+    "iterations": 8,
+    "allocation_bytes": 6242864.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.5686065673828126,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.6551586151123047,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 256.4498046875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 1286.5,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 17338.899999999998,
+    "iterations": 1,
+    "allocation_bytes": 1183064.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 0.4281425476074219,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 0.48969726562499993,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 308.7203125,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 1583.58125,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 1072.9125,
+    "iterations": 128,
+    "allocation_bytes": 626840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 3.2941131591796875,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 4.0331054687500005,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 32.0654052734375,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 91.337353515625,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 14209.8,
+    "iterations": 1,
+    "allocation_bytes": 602328.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 3.060322570800781,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 4.346035766601562,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 34.832177734374994,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 110.39287109375,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 1095.0789062499998,
+    "iterations": 128,
+    "allocation_bytes": 731224.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 3.7003570556640626,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 4.475054931640625,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 33.0895751953125,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 93.46015625,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 12927.9,
+    "iterations": 1,
+    "allocation_bytes": 657432.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 3.3404357910156253,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 4.756640625,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 36.87412109375,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 125.334375,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 13691.4125,
+    "iterations": 8,
+    "allocation_bytes": 6242864.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.6452754974365235,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.7169898986816406,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 255.46718750000002,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 1288.02421875,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 17226.600000000002,
+    "iterations": 1,
+    "allocation_bytes": 1183064.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 0.48648681640625,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 0.5324432373046875,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 309.6642578125,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 1542.4984375,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 1027.71796875,
+    "iterations": 128,
+    "allocation_bytes": 731224.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.7863143920898438,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.5742687225341797,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 14.042138671875,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 84.623583984375,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 13296.900000000001,
+    "iterations": 1,
+    "allocation_bytes": 596504.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 0.6097385406494141,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 0.6043376922607422,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 15.81043701171875,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 99.07177734375,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 55.875146484375,
+    "iterations": 2048,
+    "allocation_bytes": 64368.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 1.7432479858398438,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 1.80955810546875,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 6.263958740234375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 15.67969970703125,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 12684.2,
+    "iterations": 1,
+    "allocation_bytes": 208472.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 1.1034675598144532,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 1.843316650390625,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 6.196368408203125,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 16.24014892578125,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 53.761083984375,
+    "iterations": 2048,
+    "allocation_bytes": 75088.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 1.9449188232421875,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 2.0450546264648435,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 6.804333496093751,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 16.429064941406253,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 11492.900000000001,
+    "iterations": 1,
+    "allocation_bytes": 227352.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 1.2490867614746095,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 2.121246337890625,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 6.54742431640625,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 18.20279541015625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 1195.653125,
+    "iterations": 128,
+    "allocation_bytes": 626840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.7676139831542969,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.5155326843261718,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 13.5896728515625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 81.67812500000001,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 14249.4,
+    "iterations": 1,
+    "allocation_bytes": 546840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 0.5833484649658203,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 0.5548152923583984,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 14.48575439453125,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 90.055224609375,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 1014.0343750000001,
+    "iterations": 128,
+    "allocation_bytes": 731224.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.8861099243164062,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.7014007568359375,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 14.2126220703125,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 84.22001953124999,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 12785.7,
+    "iterations": 1,
+    "allocation_bytes": 596504.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 0.6987422943115235,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 0.7415996551513672,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 15.55966796875,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 126.22822265625,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 1119.86484375,
+    "iterations": 128,
+    "allocation_bytes": 626840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.7146198272705079,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.5623973846435547,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 14.49263916015625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 87.7294921875,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 14906.0,
+    "iterations": 1,
+    "allocation_bytes": 546840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 0.5418876647949219,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 0.5556819915771485,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 15.17618408203125,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 88.27001953125,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 1082.86015625,
+    "iterations": 128,
+    "allocation_bytes": 731224.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 3.5927764892578122,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 4.477520751953125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 33.7041015625,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 94.688720703125,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 13071.6,
+    "iterations": 1,
+    "allocation_bytes": 657432.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 3.3620697021484376,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 4.721334838867187,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 37.087158203125,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 116.4341796875,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 53.075634765625,
+    "iterations": 2048,
+    "allocation_bytes": 75088.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.3033395767211914,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.5139488220214844,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 4.909222412109375,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 11.95892333984375,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 12711.0,
+    "iterations": 1,
+    "allocation_bytes": 274872.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 0.2580091476440429,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 0.33560638427734374,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 4.068020629882813,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 11.53372802734375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 13803.1375,
+    "iterations": 8,
+    "allocation_bytes": 6242864.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.5708263397216797,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.6598148345947266,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 258.1291015625,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 1303.83828125,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 17403.199999999997,
+    "iterations": 1,
+    "allocation_bytes": 1183064.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 0.43829765319824215,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 0.5343662261962892,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 315.0611328125,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 1548.0203125,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 52.318896484375,
+    "iterations": 2048,
+    "allocation_bytes": 75088.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 1.9559051513671875,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 2.0349151611328122,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 6.616815185546875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 15.839697265625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 11457.4,
+    "iterations": 1,
+    "allocation_bytes": 227352.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 1.232701873779297,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 2.06522216796875,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 6.704742431640625,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 16.580090332031247,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 14575.300000000001,
+    "iterations": 8,
+    "allocation_bytes": 7283248.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 4.435488891601562,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 11.271502685546876,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 207.33613281249998,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 1193.9656249999998,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 23730.399999999998,
+    "iterations": 1,
+    "allocation_bytes": 2642808.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 4.2322326660156255,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 11.39405517578125,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 267.75742187500003,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 1552.5828125,
+    "iterations": 64,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 1019.1851562500001,
+    "iterations": 128,
+    "allocation_bytes": 626840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.707894515991211,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.5160198211669922,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 13.66268310546875,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 80.201953125,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 14298.9,
+    "iterations": 1,
+    "allocation_bytes": 546840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 0.5368587493896484,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 0.5598037719726563,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 14.50318603515625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 87.942041015625,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 13670.475,
+    "iterations": 8,
+    "allocation_bytes": 7283248.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.5834091186523437,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.6689037322998047,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 246.871484375,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 1142.41171875,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 15392.5,
+    "iterations": 1,
+    "allocation_bytes": 1284632.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 0.4332622528076172,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 0.48641204833984375,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 275.9107421875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 1362.0257812500001,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 49.940478515624996,
+    "iterations": 2048,
+    "allocation_bytes": 75088.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.29198532104492186,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.5039813995361329,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 4.760699462890625,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 11.186138916015624,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 11525.0,
+    "iterations": 1,
+    "allocation_bytes": 274872.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 0.254278564453125,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 0.3306386947631836,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 3.9793243408203125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 11.3055419921875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 13846.9625,
+    "iterations": 8,
+    "allocation_bytes": 6242864.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 4.338778686523438,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 11.3224365234375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 222.673046875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 1276.1625000000001,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 19948.6,
+    "iterations": 1,
+    "allocation_bytes": 2447448.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 4.148861694335938,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 11.506250000000001,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 287.6263671875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 1658.1328125,
+    "iterations": 64,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 13768.5375,
+    "iterations": 8,
+    "allocation_bytes": 7283248.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 4.404318237304687,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 11.0522705078125,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 203.7095703125,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 1189.5859375,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 22353.6,
+    "iterations": 1,
+    "allocation_bytes": 2642808.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 4.209967041015625,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 11.324176025390626,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 265.019921875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 1554.9828125000001,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 14584.2875,
+    "iterations": 8,
+    "allocation_bytes": 7283248.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 4.4440551757812505,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 10.976605224609376,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 204.22890625000002,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 1219.07421875,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 22944.1,
+    "iterations": 1,
+    "allocation_bytes": 2642808.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 4.20806884765625,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 11.44439697265625,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 265.8427734375,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 1542.19296875,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 13160.225,
+    "iterations": 8,
+    "allocation_bytes": 7283248.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.5825096130371094,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.6535415649414062,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 229.963671875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 1138.77890625,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 15129.300000000001,
+    "iterations": 1,
+    "allocation_bytes": 1284632.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 0.4362640380859375,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 0.4861454010009766,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 271.008984375,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 1348.5390625,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 1005.99453125,
+    "iterations": 128,
+    "allocation_bytes": 731224.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.7731491088867187,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.5642677307128906,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 13.908154296874999,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 82.523095703125,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 12890.7,
+    "iterations": 1,
+    "allocation_bytes": 596504.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 0.5928554534912109,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 0.6015373229980469,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 15.00084228515625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 97.68564453125,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 13944.55,
+    "iterations": 8,
+    "allocation_bytes": 6242864.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 4.6980743408203125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 14.02943115234375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 229.2064453125,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 1298.07109375,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 20561.699999999997,
+    "iterations": 1,
+    "allocation_bytes": 2447448.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 4.5006774902343745,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 12.080615234375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 285.644921875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 1673.1890625,
+    "iterations": 64,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 52.791699218750004,
+    "iterations": 2048,
+    "allocation_bytes": 75088.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 1.9056411743164061,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 2.0146194458007813,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 6.537872314453125,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 15.74788818359375,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 11500.8,
+    "iterations": 1,
+    "allocation_bytes": 227352.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 1.2241546630859377,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 2.0507583618164062,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 6.4463562011718745,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 17.1827392578125,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 52.228173828125,
+    "iterations": 2048,
+    "allocation_bytes": 64368.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 1.7311767578125001,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 1.7896270751953125,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 6.1620361328125,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 15.508398437499999,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 12590.3,
+    "iterations": 1,
+    "allocation_bytes": 208472.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 1.1044212341308595,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 1.8381668090820311,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 6.1534057617187505,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 16.05511474609375,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 52.251513671875,
+    "iterations": 2048,
+    "allocation_bytes": 64368.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.308424186706543,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.5556217193603515,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 4.87449951171875,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 11.096484375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 12882.0,
+    "iterations": 1,
+    "allocation_bytes": 250648.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 0.2730995178222656,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 0.36220455169677734,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 3.9348999023437496,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 11.278411865234375,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 13586.35,
+    "iterations": 8,
+    "allocation_bytes": 7283248.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 0.5823234558105469,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 0.6548492431640626,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 228.64921875,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 1131.1898437500001,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 15266.3,
+    "iterations": 1,
+    "allocation_bytes": 1284632.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 0.43409385681152346,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 0.48265914916992186,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 273.2275390625,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 100000,
+    "distribution": "clustered",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 1343.03515625,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 1058.80859375,
+    "iterations": 128,
+    "allocation_bytes": 731224.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 3.5639556884765624,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 4.393502807617187,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 32.5509033203125,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 92.81279296875,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 13019.4,
+    "iterations": 1,
+    "allocation_bytes": 657432.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 3.3377258300781247,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 4.669027709960937,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 36.369677734375,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 116.14804687499999,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 52.261279296874996,
+    "iterations": 2048,
+    "allocation_bytes": 64368.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 0.3087175369262695,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 0.5490211486816405,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 4.8707763671875,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 11.067364501953124,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 12725.0,
+    "iterations": 1,
+    "allocation_bytes": 250648.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 0.27500438690185547,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 0.36157894134521484,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 3.9175292968749997,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 10.844866943359374,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 52.36259765625,
+    "iterations": 2048,
+    "allocation_bytes": 64368.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 1.72664794921875,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 1.7917098999023438,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 6.149273681640625,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 15.45166015625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 12564.6,
+    "iterations": 1,
+    "allocation_bytes": 208472.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 1.1006034851074218,
+    "iterations": 131072,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 1.8390975952148438,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 6.11568603515625,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 1000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 16.0099853515625,
+    "iterations": 8192,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "build",
+    "microseconds": 51.290234375,
+    "iterations": 2048,
+    "allocation_bytes": 75088.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query0",
+    "microseconds": 0.29169273376464844,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query1",
+    "microseconds": 0.5064556121826171,
+    "iterations": 262144,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query2",
+    "microseconds": 4.786907958984376,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "query3",
+    "microseconds": 11.1780029296875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutation",
+    "microseconds": 11450.6,
+    "iterations": 1,
+    "allocation_bytes": 274872.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated0",
+    "microseconds": 0.253734016418457,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated1",
+    "microseconds": 0.33006935119628905,
+    "iterations": 524288,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated2",
+    "microseconds": 3.9309417724609377,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "algorithm",
+    "size": 1000,
+    "distribution": "clustered",
+    "round": 2,
+    "operation": "mutated3",
+    "microseconds": 11.300128173828124,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "build",
+    "microseconds": 1054.78125,
+    "iterations": 128,
+    "allocation_bytes": 626840.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query0",
+    "microseconds": 3.2833068847656253,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query1",
+    "microseconds": 3.9994384765624997,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query2",
+    "microseconds": 31.8646728515625,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "query3",
+    "microseconds": 90.58354492187499,
+    "iterations": 2048,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutation",
+    "microseconds": 14104.1,
+    "iterations": 1,
+    "allocation_bytes": 602328.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated0",
+    "microseconds": 3.006103515625,
+    "iterations": 65536,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated1",
+    "microseconds": 4.284100341796876,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated2",
+    "microseconds": 34.580493164062496,
+    "iterations": 4096,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 10000,
+    "distribution": "uniform",
+    "round": 0,
+    "operation": "mutated3",
+    "microseconds": 104.74169921875,
+    "iterations": 1024,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "build",
+    "microseconds": 14451.425000000001,
+    "iterations": 8,
+    "allocation_bytes": 6242864.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query0",
+    "microseconds": 4.715161132812501,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query1",
+    "microseconds": 11.507366943359374,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query2",
+    "microseconds": 219.884765625,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "query3",
+    "microseconds": 1287.3382812500001,
+    "iterations": 128,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutation",
+    "microseconds": 20011.8,
+    "iterations": 1,
+    "allocation_bytes": 2447448.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated0",
+    "microseconds": 4.4649200439453125,
+    "iterations": 32768,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated1",
+    "microseconds": 11.77059326171875,
+    "iterations": 16384,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated2",
+    "microseconds": 283.6583984375,
+    "iterations": 512,
+    "allocation_bytes": 0.0
+  },
+  {
+    "library": "candidate",
+    "size": 100000,
+    "distribution": "uniform",
+    "round": 1,
+    "operation": "mutated3",
+    "microseconds": 1655.6953125,
+    "iterations": 64,
+    "allocation_bytes": 0.0
+  }
+]

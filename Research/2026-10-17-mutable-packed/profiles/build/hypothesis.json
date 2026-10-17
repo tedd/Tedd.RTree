@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "data": {
+    "id": "hyp-fc52ec6b31e94762a725573243f0d5dc",
+    "mechanism": "Leaf entries carry unused child references and contained-subtree collection performs per-value List.Add.",
+    "prediction": "Separate leaf bounds/values and bulk-copy contained leaves to reduce query work without changing mutable semantics.",
+    "state": "proposed",
+    "evidence_ids": [
+      "cap-3b918d2d34334bcea177a6cbab1f4774",
+      "stack-analysis-d50a51870f4c41e0ba91bf3ceb4dc493"
+    ]
+  },
+  "code": null,
+  "message": null,
+  "recovery": null
+}

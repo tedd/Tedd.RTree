@@ -4,6 +4,32 @@ namespace Tedd.RTree;
 // rawrunprotected/hilbert_curves (also used by Flatbush and the Rust packed indexes).
 internal static class HilbertOrder
 {
+    internal static void SortIndices(ReadOnlySpan<uint> keys, Span<int> order, Span<int> scratch)
+    {
+        Span<int> offsets = stackalloc int[256];
+        // Four stable byte passes leave the final permutation in the original order buffer.
+        // Every scratch position is written before it becomes a source in the next pass.
+        for (int shift = 0; shift < 32; shift += 8)
+        {
+            offsets.Clear();
+            for (int i = 0; i < order.Length; i++) offsets[(int)(keys[order[i]] >> shift) & 255]++;
+            int total = 0;
+            for (int bucket = 0; bucket < offsets.Length; bucket++)
+            {
+                int count = offsets[bucket];
+                offsets[bucket] = total;
+                total += count;
+            }
+            for (int i = 0; i < order.Length; i++)
+            {
+                int index = order[i];
+                int bucket = (int)(keys[index] >> shift) & 255;
+                scratch[offsets[bucket]++] = index;
+            }
+            Span<int> swap = order; order = scratch; scratch = swap;
+        }
+    }
+
     internal static uint Encode(uint x, uint y)
     {
         uint a = x ^ y, b = 0xFFFF ^ a, c = 0xFFFF ^ (x | y), d = x & (y ^ 0xFFFF);
