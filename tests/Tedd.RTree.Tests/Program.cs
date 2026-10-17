@@ -1,5 +1,7 @@
 using Tedd.RTree;
 
+MutablePackedChecks.Run();
+
 static void Check(bool condition, string message)
 {
     if (!condition) throw new Exception(message);

@@ -4,11 +4,6 @@ namespace Tedd.RTree;
 /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
 public sealed class RTree<T>
 {
-    private sealed class AxisComparer(double[] centers) : IComparer<int>
-    {
-        public int Compare(int a, int b) => centers[a].CompareTo(centers[b]);
-    }
-
     private sealed class Node(bool leaf, int capacity)
     {
         internal readonly Entry[] Entries = new Entry[capacity + 1];
@@ -95,7 +90,7 @@ public sealed class RTree<T>
     }
 
     /// <summary>Builds a packed tree from a batch. The tree must be empty; later individual updates are allowed.</summary>
-    /// <remarks>Uses Sort-Tile-Recursive packing. Input order is not modified.</remarks>
+    /// <remarks>Uses Hilbert ordering and bottom-up packing. Input order is not modified.</remarks>
     public void BulkLoad(IReadOnlyList<SpatialEntry<T>> items)
         => BulkLoadCore(items, null);
 
@@ -116,29 +111,54 @@ public sealed class RTree<T>
         if (itemCount == 0)
             return;
 
-        Entry[] level = new Entry[itemCount];
+        workspace?.EnsureCapacity(itemCount);
+        int[] order = workspace?.Order ?? new int[itemCount];
+        double[] keys = workspace?.XCenters ?? new double[itemCount];
+        Rectangle extent = items[0].Bounds;
+        for (int i = 0; i < itemCount; i++)
+            extent = Rectangle.Union(extent, items[i].Bounds);
+        // Halving before subtraction keeps the normalization finite even for [-MaxValue, MaxValue].
+        double minX = extent.MinX * 0.5, minY = extent.MinY * 0.5;
+        double width = extent.MaxX * 0.5 - minX, height = extent.MaxY * 0.5 - minY;
         for (int i = 0; i < itemCount; i++)
         {
-            SpatialEntry<T> item = items[i];
-            level[i] = new Entry(item.Bounds, null, item.Item);
+            Rectangle b = items[i].Bounds;
+            double x = (b.MinX * 0.25 + b.MaxX * 0.25 - minX);
+            double y = (b.MinY * 0.25 + b.MaxY * 0.25 - minY);
+            uint ix = width > 0 ? (uint)Math.Clamp(x / width * 65535, 0, 65535) : 0;
+            uint iy = height > 0 ? (uint)Math.Clamp(y / height * 65535, 0, 65535) : 0;
+            keys[i] = HilbertOrder.Encode(ix, iy);
+            order[i] = i;
         }
-
-        bool leaf = true;
-        while (true)
+        // Primitive keys avoid virtual comparisons through an indirect coordinate lookup.
+        Array.Sort(keys, order, 0, itemCount);
+        Node[] level = new Node[(itemCount - 1) / _capacity + 1];
+        for (int n = 0, start = 0; n < level.Length; n++, start += _capacity)
         {
-            Node[] nodes = PackLevel(level, leaf, workspace);
-            if (nodes.Length == 1)
+            Node node = new(true, _capacity);
+            int end = Math.Min(start + _capacity, itemCount);
+            for (int i = start; i < end; i++)
             {
-                _root = nodes[0];
-                Count = itemCount;
-                return;
+                SpatialEntry<T> item = items[order[i]];
+                Add(node, new Entry(item.Bounds, null, item.Item));
             }
-
-            level = new Entry[nodes.Length];
-            for (int i = 0; i < nodes.Length; i++)
-                level[i] = new Entry(nodes[i].Bounds, nodes[i], default!);
-            leaf = false;
+            level[n] = node;
         }
+        while (level.Length > 1)
+        {
+            Node[] parents = new Node[(level.Length - 1) / _capacity + 1];
+            for (int n = 0, start = 0; n < parents.Length; n++, start += _capacity)
+            {
+                Node parent = new(false, _capacity);
+                int end = Math.Min(start + _capacity, level.Length);
+                for (int i = start; i < end; i++)
+                    Add(parent, new Entry(level[i].Bounds, level[i], default!));
+                parents[n] = parent;
+            }
+            level = parents;
+        }
+        _root = level[0];
+        Count = itemCount;
     }
 
     /// <summary>Appends intersecting items to <paramref name="results"/> and returns the number appended.</summary>
@@ -305,42 +325,6 @@ public sealed class RTree<T>
         {
             for (int i = 0; i < node.Count; i++) CollectLeafEntries(node.Entries[i].Child!, entries);
         }
-    }
-
-    private Node[] PackLevel(Entry[] entries, bool leaf, BulkLoadWorkspace? workspace)
-    {
-        int nodeCount = (entries.Length + _capacity - 1) / _capacity;
-        Node[] nodes = new Node[nodeCount];
-        int slices = (int)Math.Ceiling(Math.Sqrt(nodeCount));
-        int sliceCapacity = ((nodeCount + slices - 1) / slices) * _capacity;
-        workspace?.EnsureCapacity(entries.Length);
-        int[] order = workspace?.Order ?? new int[entries.Length];
-        double[] xCenters = workspace?.XCenters ?? new double[entries.Length];
-        double[] yCenters = workspace?.YCenters ?? new double[entries.Length];
-        for (int i = 0; i < entries.Length; i++)
-        {
-            order[i] = i;
-            Rectangle bounds = entries[i].Bounds;
-            xCenters[i] = bounds.MinX * 0.5 + bounds.MaxX * 0.5;
-            yCenters[i] = bounds.MinY * 0.5 + bounds.MaxY * 0.5;
-        }
-        Array.Sort(order, 0, entries.Length, new AxisComparer(xCenters));
-        AxisComparer yComparer = new(yCenters);
-        int nextNode = 0;
-        for (int sliceStart = 0; sliceStart < entries.Length; sliceStart += sliceCapacity)
-        {
-            int sliceLength = Math.Min(sliceCapacity, entries.Length - sliceStart);
-            Array.Sort(order, sliceStart, sliceLength, yComparer);
-            for (int offset = 0; offset < sliceLength; offset += _capacity)
-            {
-                Node node = new(leaf, _capacity);
-                int end = Math.Min(offset + _capacity, sliceLength);
-                for (int i = offset; i < end; i++)
-                    Add(node, entries[order[sliceStart + i]]);
-                nodes[nextNode++] = node;
-            }
-        }
-        return nodes;
     }
 
     private void Insert(Node node, Entry entry, out Node? sibling)
