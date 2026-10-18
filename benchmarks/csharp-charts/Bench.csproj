@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Tedd.RTree/Tedd.RTree.csproj" />
+    <PackageReference Include="RBush" Version="4.0.0" />
+    <PackageReference Include="NetTopologySuite" Version="2.6.0" />
+    <PackageReference Include="RTree" Version="1.1.0" />
+    <PackageReference Include="Enyim.Collections.RTree" Version="1.0.5" />
+  </ItemGroup>
+</Project>

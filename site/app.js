@@ -21,7 +21,7 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
 
 const fixtureSelect = document.getElementById("comparison-fixture");
 if (fixtureSelect) {
-  const dataRequest = fetch("assets/mutable-packed.json", { cache: "no-cache" }).then((response) => {
+  const dataRequest = fetch("assets/spatial-comparison.json", { cache: "no-cache" }).then((response) => {
     if (!response.ok) throw new Error("Comparison data unavailable");
     return response.json();
   });
@@ -53,7 +53,7 @@ if (fixtureSelect) {
           bar.style.width = `${rate / peak * 100}%`;
           track.append(bar);
           const value = document.createElement("b");
-          value.textContent = rate.toFixed(3);
+          value.textContent = rate < 0.001 ? rate.toPrecision(3) : rate.toFixed(3);
           element.append(name, track, value);
           return element;
         }));

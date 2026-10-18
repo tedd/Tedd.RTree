@@ -1,6 +1,6 @@
 # R-tree NuGet package comparison
 
-The [website comparison](https://tedd.github.io/Tedd.RTree/#benchmarks) measures five packages that pass identical intersection-result checks. Build throughput is entries per second; query throughput is windows per second. The tables report elapsed time and allocation for the same operations. Lower elapsed time is better; higher throughput is better.
+This 30 September 2026 record measures five packages that pass identical intersection-result checks. The [current website comparison](https://tedd.no/Tedd.RTree/#benchmarks) uses the [shared 2D C#/Rust fixture](CSHARP-CHARTS.md). Its generator and query APIs differ from this historical BenchmarkDotNet study; these timings are not combined. Build throughput is entries per second; query throughput is windows per second. Lower elapsed time is better; higher throughput is better.
 
 ## Packages and construction
 
