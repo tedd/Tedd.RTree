@@ -36,8 +36,11 @@ jobs = [(r,*case,stage) for r,case,stage in itertools.product(range(rounds),case
 random.Random(seed).shuffle(jobs)
 env = dict(os.environ, DOTNET_TieredCompilation='0')
 hashes = {s:{name:hashlib.sha256((root/f'{s}-worker'/name).read_bytes()).hexdigest() for name in ('Bench.dll','Tedd.RTree.dll')} for s in stages}
+repository = Path(__file__).resolve().parents[2]
+source_revision = subprocess.check_output(['git','rev-parse','HEAD'],cwd=repository,text=True).strip()
+source_hashes = {str(p.relative_to(repository)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((repository/'src/Tedd.RTree').glob('*')) if p.suffix in ('.cs','.csproj')}
 (output/'protocol.json').write_text(json.dumps(dict(phase=phase,rounds=rounds,shuffle_seed=seed,jobs=jobs,
-    hashes=hashes,affinity=4,tiering=False,calibration_ms=100,runtime='10.0.13',observer='no diagnostic capture during timing'),indent=2))
+    hashes=hashes,source_revision=source_revision,source_hashes=source_hashes,affinity=4,tiering=False,calibration_ms=100,runtime='10.0.13',observer='no diagnostic capture during timing'),indent=2))
 samples, processes = [], []
 for i,(block,dim,coordinate,n,distribution,mode,stage) in enumerate(jobs):
     command = ['dotnet','exec','--fx-version','10.0.13',str(root/f'{stage}-worker/Bench.dll'),str(dim),coordinate,str(n),distribution,mode]

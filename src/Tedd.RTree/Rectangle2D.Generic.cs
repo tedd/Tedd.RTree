@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace Tedd.RTree;
 
@@ -39,11 +40,13 @@ public readonly struct Rectangle2D<TCoordinate> : IEquatable<Rectangle2D<TCoordi
     }
 
     /// <summary>Whether this rectangle intersects or touches another.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool Intersects(in Rectangle2D<TCoordinate> other) =>
         MinX <= other.MaxX && MaxX >= other.MinX &&
         MinY <= other.MaxY && MaxY >= other.MinY;
 
     /// <summary>Whether this rectangle contains another, including its boundary.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool Contains(in Rectangle2D<TCoordinate> other) =>
         MinX <= other.MinX && MinY <= other.MinY &&
         MaxX >= other.MaxX && MaxY >= other.MaxY;

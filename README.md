@@ -68,7 +68,7 @@ var tree = new RTree<int>();
 tree.BulkLoad(entries, workspace);
 ```
 
-For the original 2D `double` tree, the workspace retains approximately 20 bytes per reserved entry in three primitive arrays. Generic integer builds retain additional exact sort keys; 3D builds retain a third coordinate axis. Do not use one workspace concurrently for multiple builds. It reduces repeated allocation. A caller-owned result list can likewise be reused across searches with `Search(bounds, results)`.
+All coordinate types and both dimensions share three primitive workspace arrays, retaining approximately 12 bytes per reserved entry, excluding array headers. Do not use one workspace concurrently for multiple builds. It reduces repeated allocation. A caller-owned result list can likewise be reused across searches with `Search(bounds, results)`.
 
 ## Concurrent access
 

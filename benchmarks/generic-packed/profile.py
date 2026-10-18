@@ -25,6 +25,10 @@ mutex = kernel.CreateMutexW(None, False, 'Global\\Tedd.RTree.PerformanceHost')
 if kernel.WaitForSingleObject(mutex, 1000) not in (0, 0x80):
     raise RuntimeError('Benchmark host is busy')
 try:
+    # Explicit, task-owned local SQLite catalog; no external database/configuration target.
+    if not catalog.exists():
+        initialized = subprocess.run(['dotnet', str(host), 'init', str(catalog)], capture_output=True, text=True, check=True)
+        (destination / 'catalog-init.json').write_text(initialized.stdout)
     for phase in ('query', 'build'):
         output = destination / phase
         output.mkdir(exist_ok=True)

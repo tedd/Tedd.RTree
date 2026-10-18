@@ -20,6 +20,7 @@ internal static class GenericPackedChecks
         var zTree = new RTree3D<long,int>(); zTree.BulkLoad(zEntries,workspace);
         for(int i=0;i<zEntries.Length;i+=17)
             if(!zTree.Search(zEntries[i].Bounds).SequenceEqual(new[]{i}))throw new Exception("3D z-only large-integer precision");
+        CheckSnapshotPublication();
     }
 
     private static void RunFor<C>(BulkLoadWorkspace workspace) where C : struct, INumber<C>
@@ -86,6 +87,23 @@ internal static class GenericPackedChecks
     }
 
     private static Rectangle2D<C> Rect<C>(Box<C> b) where C:struct,INumber<C> => new(b.MinX,b.MinY,b.MaxX,b.MaxY);
+    private static void CheckSnapshotPublication()
+    {
+        var a=Enumerable.Range(0,257).Select(i=>new SpatialEntry3D<int,int>(new Box<int>(i,i,i,i+1,i+1,i+1),i)).ToArray();
+        var b=a.Select(e=>new SpatialEntry3D<int,int>(e.Bounds,e.Item+10000)).ToArray();
+        var snapshot=new SnapshotRTree3D<int,int>();snapshot.ReplaceAll(a);
+        var query=new Box<int>(-1,-1,-1,1000,1000,1000);
+        var writer=Task.Run(()=>{for(int i=0;i<100;i++)snapshot.ReplaceAll((i&1)==0?b:a);});
+        var readers=Enumerable.Range(0,3).Select(_=>Task.Run(()=>
+        {
+            for(int i=0;i<150;i++)
+            {
+                var found=snapshot.Search(query);found.Sort();
+                if(!found.SequenceEqual(Enumerable.Range(0,257))&&!found.SequenceEqual(Enumerable.Range(10000,257)))throw new Exception("3D snapshot exposed partial publication");
+            }
+        })).ToArray();
+        Task.WaitAll(readers.Append(writer).ToArray());
+    }
     private static void Verify<C>(RTree2D<C,string> two,RTree3D<C,string> three,IReadOnlyList<SpatialEntry3D<C,string>> entries,Box<C> query) where C:struct,INumber<C>
     {
         var rect=Rect(query);var a=new List<string>{"prefix"};var b=new List<string>{"prefix"};
