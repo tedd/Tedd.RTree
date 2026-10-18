@@ -58,7 +58,7 @@ largeWorld.Insert(new Box<long>(9_007_199_254_740_993, 0, 0,
                                9_007_199_254_740_993, 0, 0), "origin");
 ```
 
-Bounds include their edges and faces. Represent a single voxel position with equal minimum and maximum coordinates, as above. Unit boxes specified as `[x, x + 1]` touch their neighbors and therefore intersect under this API. `int` and `long` searches, node metrics, and bulk-load sort keys use exact integer arithmetic; integer bounds are never converted to floating point. `float` and `double` use floating-point metrics. Integer node construction uses `BigInteger` for overflow-safe area and volume calculations, so smaller bounds can improve query memory use while making bulk construction costlier. Measure the intended build-to-query ratio before selecting a coordinate type for speed alone.
+Bounds include their edges and faces. Represent a single voxel position with equal minimum and maximum coordinates, as above. Unit boxes specified as `[x, x + 1]` touch their neighbors and therefore intersect under this API. `int` and `long` bounds and search comparisons retain exact integer precision; insertion and split metrics use `BigInteger` for overflow-safe area and volume calculations. Bulk loading subtracts integer origins in `Int128`, then quantizes centers into spatial keys for grouping. Quantization does not alter stored bounds or match results. `float` and `double` use floating-point selection metrics. Measure the intended build-to-query ratio before selecting a coordinate type for speed alone.
 
 For repeated bulk builds from a `SpatialEntry<int>[] entries` batch, a caller can reuse sorting scratch without changing result semantics:
 
@@ -103,6 +103,8 @@ dotnet run --project tests/Tedd.RTree.Tests/Tedd.RTree.Tests.csproj -c Release
 The differential test compares searches with a linear scan across several node capacities, randomized insertion sequences, duplicate rectangles, edge contacts, and clearing/reuse.
 
 ## Benchmarks
+
+The [generic 2D/3D API comparison](https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/GENERIC-PACKED.md) reports construction, search, allocation, and mutation measurements for `int`, `long`, `float`, and `double`, including snapshot and concurrent APIs. The [cross-language comparison](https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/MUTABLE-PACKED.md) covers the original 2D `double` API and Rust competitors.
 
 ```powershell
 dotnet run --project benchmarks/Tedd.RTree.Benchmarks/Tedd.RTree.Benchmarks.csproj -c Release -- --validate-packages

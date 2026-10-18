@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7faf9">
-  <meta name="description" content="Highly optimized, mutable 2D and 3D R-trees for .NET 10. Hilbert packing, radix sorting, and published C# versus Rust build and query benchmarks.">
+  <meta name="description" content="Highly optimized, mutable 2D and 3D R-trees for .NET 10. Dimension-aware spatial ordering, radix sorting, and published build and query benchmarks across all coordinate types.">
   <meta property="og:title" content="Tedd.RTree — high-performance spatial indexing for .NET 10">
   <meta property="og:description" content="Highly optimized spatial indexing with mutability. Compare Tedd.RTree (C#), static_aabb2d_index (Rust), and geo-index (Rust) on six published fixtures.">
   <meta property="og:type" content="website">
   <title>Tedd.RTree — high-performance spatial indexing for .NET 10</title>
   <link rel="icon" href="assets/rtree-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=04028ea">
+  <script src="app.js?v=04028ea" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,7 +38,7 @@
         <h1>Fast spatial search<br><em>for .NET 10.</em></h1>
         <p class="lede">Tedd.RTree indexes axis-aligned 2D rectangles and 3D boxes for intersection queries. Choose <code>int</code>, <code>long</code>, <code>float</code>, or <code>double</code> coordinates, with individual updates, packed bulk loading, and two concurrent update models.</p>
         <p class="hero-evidence"><strong>Mutable indexing at packed-index speeds.</strong> At 100,000 uniform rectangles, bulk construction takes <strong>6.802 ms</strong> and 64 intersection queries take <strong>865.46 µs</strong>. Individual inserts, removals, and moves remain available after bulk loading.</p>
-        <p class="hero-evidence">In the same fixture, <code>static_aabb2d_index</code> (Rust) takes 7.765 ms to build and 1222.33 µs for 64 queries. Competitors receive the better measured result of direct Rust and optimized interop. <a href="#benchmarks">Compare all six fixtures and selective-query limits</a>.</p>
+        <p class="hero-evidence" id="generic-hero-evidence">For 100,000 uniform 3D boxes with <code>double</code> coordinates, bulk loading takes <strong>9.087 ms</strong> and 64 queries take <strong>695.62 µs</strong>, compared with 43.196 ms and 1255.57 µs in the previous release. <a href="#generic-benchmarks">Explore timings for every coordinate type and API</a>.</p>
         <div class="hero-badges" aria-label="Package and repository status">
           <a href="https://www.nuget.org/packages/Tedd.RTree" aria-label="Tedd.RTree on NuGet"><img src="https://img.shields.io/nuget/v/Tedd.RTree?logo=nuget&amp;label=NuGet" alt="NuGet package version" height="20"></a>
           <a href="https://github.com/tedd/Tedd.RTree/actions/workflows/nuget-publish.yml" aria-label="GitHub Actions build and test status"><img src="https://github.com/tedd/Tedd.RTree/actions/workflows/nuget-publish.yml/badge.svg?branch=main" alt="Build and test status" height="20"></a>
@@ -95,7 +95,7 @@
 
     <section class="fact-strip" aria-label="Technical characteristics">
       <p><strong>Incremental insertion</strong><span>Least enlargement selection and quadratic node splits</span></p>
-      <p><strong>Bulk loading</strong><span>Hilbert packing for 2D doubles; STR for generic trees</span></p>
+      <p><strong>Bulk loading</strong><span>Hilbert ordering in 2D; three-axis Morton ordering in 3D</span></p>
       <p><strong>Inclusive search</strong><span>Boundary contact is included in 2D and 3D</span></p>
       <p><strong>Result ownership</strong><span>Return a list or append to a caller-owned list</span></p>
     </section>
@@ -106,11 +106,11 @@
         <p>The index prunes nonintersecting branches before testing entries. Packed construction and incremental updates use different algorithms for their respective workloads.</p>
       </div>
       <div class="algorithm-grid">
-        <article><h3>Hilbert and STR packing</h3><p>The original 2D <code>double</code> tree orders centers by Hilbert key, uses radix sorting for large batches, and packs nodes bottom-up. Generic 2D and 3D trees use Sort-Tile-Recursive packing. Bulk load an empty tree, then update entries individually.</p></article>
+        <article><h3>Spatial ordering and radix sorting</h3><p>2D trees order entry centers by Hilbert key; 3D trees use Morton keys that include all three axes. Large batches use radix sorting and bottom-up node packing. Bulk load an empty tree, then update entries individually. Stored coordinates and search comparisons retain their original precision.</p></article>
         <article><h3>Least enlargement insertion</h3><p>Individual inserts descend through the child whose bounds need the smallest enlargement, breaking ties by current area. Overflow uses quadratic seed selection and distribution.</p></article>
         <article><h3>Bounded intersection traversal</h3><p>Search skips nodes whose bounds do not intersect the query. Reuse a caller-owned result list to avoid a fresh result collection; <code>SearchBatch</code> processes several queries with caller-owned outputs.</p></article>
       </div>
-      <p class="algorithm-note">The benchmark ranking measures the original 2D <code>double</code> tree. Coordinate-generic 2D and 3D variants, concurrent updates, and individual query widths have separate performance characteristics. <a href="#benchmarks">Review the measured fixtures and limitations.</a></p>
+      <p class="algorithm-note">The cross-language comparison covers the original 2D <code>double</code> API. Generic 2D and 3D trees, snapshots, and concurrent indexes have their own before-and-after measurements. <a href="#generic-benchmarks">Explore timings for each API and coordinate type.</a></p>
     </section>
 
     <section class="section-shell model-section" id="model">
@@ -182,7 +182,7 @@ int added = tree.Search(new Rectangle(3, 3, 6, 6), results);
     <section class="section-shell examples-section" id="moving">
       <div class="section-intro">
         <div><p class="eyebrow">Moving entries</p><h2>Choose when moves become visible.</h2></div>
-        <p>Use <code>SnapshotRTree&lt;T&gt;</code> when searches may use the latest published positions while the next batch is built. Use <code>ConcurrentRTree&lt;T&gt;</code> when each completed move must be visible to the next search. At 10,000 entries, rebuilding took 1.75 ms; moving all entries individually took 14.77 ms in the local update benchmark.</p>
+        <p>Use <code>SnapshotRTree&lt;T&gt;</code> when searches may use the latest published positions while the next batch is built. Use <code>ConcurrentRTree&lt;T&gt;</code> when each completed move must be visible to the next search. <a href="#generic-benchmarks">Compare construction and search costs for each API.</a></p>
       </div>
       <div class="example-grid">
         <article class="code-window">
@@ -249,45 +249,34 @@ List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></p
       <p class="benchmark-method">At 100,000 entries, bulk loading is 4.18–4.40× faster and aggregate queries 1.72–2.01× faster than the previous Tedd implementation. Tedd has the lowest aggregate query median in five of six fixtures; the 10,000-uniform margin is only about 1%. Static-index selective queries can be faster. Measured move batches regressed by up to 14%; post-move queries improved in every fixture. These fixtures do not establish a universal fastest index or steady-state update throughput.</p>
       <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/MUTABLE-PACKED.md">Method, ranges and pinned sources ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/mutable-packed/confirmation/summary.csv">Full timing CSV ↗</a><a href="assets/mutable-packed.json">Chart data ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/CROSS-LANGUAGE.md">Earlier C, C++, Go and JavaScript screening ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PACKAGE-COMPARISON.md">Earlier .NET package comparison ↗</a></div>
 
-      <div class="coordinate-benchmark">
-        <h3>Coordinate type comparison</h3>
-        <p>Each index holds 10,000 unit bounds at the same integer-valued positions. The generic variants use <code>int</code>, <code>long</code>, <code>float</code>, or <code>double</code> coordinates. Times are means ± sample standard deviation; lower is better within the same dimension and query kind.</p>
-        <div class="results-panel">
-          <div class="results-heading"><h3>Intersection queries</h3><p>64 windows per operation · reused result list · zero measured allocation</p></div>
-          <div class="table-scroll"><table>
-            <caption>Query time by coordinate type for 10,000 unit bounds</caption>
-            <thead><tr><th scope="col">Dimension</th><th scope="col">Coordinates</th><th scope="col">64 point queries</th><th scope="col">64 region queries</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">2D</th><td><code>int</code></td><td>7.85 ± 0.25 µs</td><td>40.26 ± 2.61 µs</td></tr>
-              <tr><th scope="row">2D</th><td><code>long</code></td><td>7.64 ± 0.57 µs</td><td>49.07 ± 14.98 µs</td></tr>
-              <tr><th scope="row">2D</th><td><code>float</code></td><td>7.69 ± 0.77 µs</td><td>38.27 ± 1.32 µs</td></tr>
-              <tr><th scope="row">2D</th><td>Generic <code>double</code></td><td>6.65 ± 0.44 µs</td><td>52.48 ± 3.19 µs</td></tr>
-              <tr class="table-divider"><th scope="row">3D</th><td><code>int</code></td><td>7.82 ± 0.36 µs</td><td>20.90 ± 1.67 µs</td></tr>
-              <tr><th scope="row">3D</th><td><code>long</code></td><td>9.21 ± 1.42 µs</td><td>24.32 ± 3.29 µs</td></tr>
-              <tr><th scope="row">3D</th><td><code>float</code></td><td>11.43 ± 0.32 µs</td><td>28.98 ± 5.12 µs</td></tr>
-              <tr><th scope="row">3D</th><td><code>double</code></td><td>12.57 ± 0.31 µs</td><td>22.99 ± 1.12 µs</td></tr>
-            </tbody>
-          </table></div>
+      <div class="coordinate-benchmark" id="generic-benchmarks">
+        <h3>2D and 3D API performance</h3>
+        <p>Compare the current implementation with the previous release on identical geometry. Plain trees, snapshots, and concurrent indexes support all four coordinate types. Select an API and workload to see its measured construction and search throughput.</p>
+        <div class="benchmark-controls generic-controls">
+          <div><label for="generic-dimension">Dimension</label><select id="generic-dimension"><option value="3">3D</option><option value="2">2D</option></select></div>
+          <div><label for="generic-coordinate">Coordinates</label><select id="generic-coordinate"><option>double</option><option>float</option><option>int</option><option>long</option></select></div>
+          <div><label for="generic-mode">API</label><select id="generic-mode"><option value="plain">Plain mutable</option><option value="snapshot">Snapshot</option><option value="concurrent">Concurrent</option></select></div>
+          <div><label for="generic-fixture">Workload</label><select id="generic-fixture"><option value="100000/uniform">100,000 · uniform</option><option value="100000/clustered">100,000 · clustered</option><option value="10000/uniform">10,000 · uniform</option><option value="10000/clustered">10,000 · clustered</option></select></div>
         </div>
-        <div class="results-panel">
-          <div class="results-heading"><h3>Bulk construction</h3><p>10,000 prepared entries · one packed tree per operation</p></div>
-          <div class="table-scroll"><table>
-            <caption>Build time and managed allocation by coordinate type</caption>
-            <thead><tr><th scope="col">Dimension</th><th scope="col">Coordinates</th><th scope="col">Build time</th><th scope="col">Allocated</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">2D</th><td><code>int</code></td><td>2.37 ± 0.07 ms</td><td>1,120 KB</td></tr>
-              <tr><th scope="row">2D</th><td><code>long</code></td><td>2.38 ± 0.04 ms</td><td>1,475 KB</td></tr>
-              <tr><th scope="row">2D</th><td><code>float</code></td><td>1.97 ± 0.10 ms</td><td>953 KB</td></tr>
-              <tr><th scope="row">2D</th><td>Generic <code>double</code></td><td>2.06 ± 0.04 ms</td><td>1,309 KB</td></tr>
-              <tr class="table-divider"><th scope="row">3D</th><td><code>int</code></td><td>3.47 ± 0.09 ms</td><td>1,469 KB</td></tr>
-              <tr><th scope="row">3D</th><td><code>long</code></td><td>3.68 ± 0.05 ms</td><td>2,002 KB</td></tr>
-              <tr><th scope="row">3D</th><td><code>float</code></td><td>2.70 ± 0.07 ms</td><td>1,219 KB</td></tr>
-              <tr><th scope="row">3D</th><td><code>double</code></td><td>2.82 ± 0.07 ms</td><td>1,752 KB</td></tr>
-            </tbody>
-          </table></div>
+        <p class="benchmark-method" id="generic-scope">Plain mutable APIs: 10,000 and 100,000 entries, uniform and clustered. Snapshot and concurrent measurements: 10,000 uniform entries.</p>
+        <div class="chart-grid" aria-live="polite">
+<figure class="bar-chart generic-chart" data-operation="build"><figcaption><span data-generic-fixture>3D double · 100,000 uniform entries · plain</span><strong>Build throughput</strong><small>M entries/s · higher is better</small></figcaption><div class="generic-chart-rows">
+<div class="bar-row comparison-ours"><span>Current (C#)</span><div class="bar-track"><i class="bar ours" style="width:100.00%"></i></div><b>11.005</b></div>
+<div class="bar-row"><span>Previous (C#)</span><div class="bar-track"><i class="bar other" style="width:21.04%"></i></div><b>2.315</b></div>
+</div></figure>
+<figure class="bar-chart generic-chart" data-operation="queries"><figcaption><span data-generic-fixture>3D double · 100,000 uniform entries · plain</span><strong>Query throughput</strong><small>M windows/s · higher is better</small></figcaption><div class="generic-chart-rows">
+<div class="bar-row comparison-ours"><span>Current (C#)</span><div class="bar-track"><i class="bar ours" style="width:100.00%"></i></div><b>0.092</b></div>
+<div class="bar-row"><span>Previous (C#)</span><div class="bar-track"><i class="bar other" style="width:55.40%"></i></div><b>0.051</b></div>
+</div></figure>
         </div>
-        <p class="benchmark-method">AMD Ryzen 9 5950X · Windows 11 · .NET 10.0.12 · BenchmarkDotNet 0.15.8. Query results use ten measured iterations; builds use five. Geometry creation and tree construction are outside query timing. Integer coordinates remain exact, including <code>long</code> positions above 2<sup>53</sup>. The results describe this fixture; close differences and high-variance cases require measurement in the target application.</p>
-        <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/GENERIC-COORDINATES.md">Fixture and interpretation <span aria-hidden="true">↗</span></a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/generic-coordinates/query-release.csv">Query CSV <span aria-hidden="true">↗</span></a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/generic-coordinates/build-release.csv">Build CSV <span aria-hidden="true">↗</span></a></div>
+        <div class="results-panel"><div class="results-heading"><h3>Selected workload timings</h3><p>Median of three fresh-process block averages · lower is better</p></div><div class="table-scroll"><table><caption id="generic-caption">3D double · 100,000 uniform entries · plain</caption><thead><tr><th scope="col">Operation</th><th scope="col">Previous release (C#)</th><th scope="col">Current (C#)</th><th scope="col">Speedup</th></tr></thead><tbody id="generic-timings">
+<tr><th scope="row">Bulk build</th><td>43.196 ms</td><td class="comparison-ours">9.087 ms</td><td>4.75×</td></tr>
+<tr><th scope="row">64 queries</th><td>1255.569 µs</td><td class="comparison-ours">695.616 µs</td><td>1.80×</td></tr>
+        </tbody></table></div></div>
+        <p class="benchmark-method">18 October 2026 · Ryzen 9 5950X · Windows 11 · .NET 10.0.13 · three fresh-process blocks per variant/workload, fixed shuffled order, one CPU affinity, node capacity 16. Builds use prepared entries; 64 query windows include points, edge contacts, and complete containment. Every returned ID is checked against brute force before timing, and again after moves in mutable APIs. Queries reuse a result list and consume all IDs.</p>
+        <p class="benchmark-method">The comparison uses the actual dimension selected; 3D queries test all three axes. Previous release: library source at 3d2d88f, matching NuGet 1.0.8. Snapshot construction includes full-batch publication; concurrent construction and queries include normal locking. These are before/after measurements of Tedd.RTree; the Rust comparison above covers the original 2D API. Precision at extreme coordinates and adjacent long values beyond 2⁵³ is tested separately from the timing fixtures.</p>
+        <p class="benchmark-method">Build and aggregate query medians improved in every measured configuration. Updates have a tradeoff: some 10,000-entry clustered move batches were up to 52% slower, while all post-move query aggregates improved. Medians describe these workloads, not universal rankings or tail latency. Mutation timings, allocations, process ranges, source identities, and the 3D ordering tradeoff are available in the full record.</p>
+        <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/GENERIC-PACKED.md">All APIs, timings and mutation guardrails ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/generic-packed/confirmation/summary.csv">Medians, ranges and allocation CSV ↗</a><a href="assets/generic-packed.json">Chart data ↗</a></div>
       </div>
     </section>
 
@@ -295,7 +284,7 @@ List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></p
       <div><p class="eyebrow">API boundaries</p><h2>Use the tree for the work it supports.</h2></div>
       <div class="boundary-list">
         <p><strong>Geometry.</strong> Coordinates must be finite and ordered. Rectangles are 2D; boxes are 3D. Both are axis-aligned, and search includes boundary contact. Represent a single voxel position with equal minimum and maximum coordinates.</p>
-        <p><strong>Updates.</strong> <code>BulkLoad</code> requires an empty tree. Individual inserts, removals, and moves can follow. When most entries move together, rebuilding a packed tree is faster than moving each entry in place on the measured 10,000-entry fixture.</p>
+        <p><strong>Updates.</strong> <code>BulkLoad</code> requires an empty tree. Individual inserts, removals, and moves can follow. Choose between individual updates and full-batch replacement according to how many entries move and how often searches run.</p>
         <p><strong>Concurrency.</strong> The <a href="#model">API comparison</a> describes the three visibility contracts. <code>SnapshotRTree</code> publishes complete batches for lock-free searches. <code>ConcurrentRTree</code> makes individual moves visible under a reader/writer lock. <a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/CONCURRENCY.md">Measured costs</a>.</p>
         <p><strong>Licence and package.</strong> The repository and NuGet package use LGPL-2.1. The package targets .NET 10.</p>
       </div>
@@ -305,7 +294,7 @@ List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></p
   <footer>
     <a class="brand" href="#top"><img src="assets/rtree-icon.svg" width="28" height="28" alt=""><span>TEDD<span class="brand-slash">/</span>RTREE</span></a>
     <p>2D and 3D R-trees for .NET 10.</p>
-    <div><a href="https://github.com/tedd/Tedd.RTree">Source</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PERFORMANCE.md">Benchmarks</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/LICENSE">LGPL-2.1</a></div>
+    <div><a href="https://github.com/tedd/Tedd.RTree">Source</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/GENERIC-PACKED.md">Benchmarks</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/LICENSE">LGPL-2.1</a></div>
   </footer>
 </body>
 </html>

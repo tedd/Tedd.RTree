@@ -188,6 +188,9 @@ tbody .table-divider > * { border-top: 2px solid #9fbbb4; }
 .coordinate-benchmark > h3 { margin: 0; font: 600 clamp(1.35rem,2vw,1.8rem) var(--display); }
 .coordinate-benchmark > p:first-of-type { max-width: 850px; margin: .7rem 0 0; color: var(--muted); font-size: .9rem; }
 .coordinate-benchmark .results-panel { margin-top: 1.4rem; }
+.generic-controls { margin-top: 1.4rem; }
+.generic-controls > div { display: flex; align-items: center; gap: .6rem; }
+.generic-chart .bar-row { grid-template-columns: minmax(90px,120px) minmax(0,1fr) 60px; }
 
 .boundaries-section { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(2rem,8vw,9rem); background: #fff8ef; border-bottom: 1px solid #efdfcd; }
 .boundary-list { border-top: 1px solid #dfcbb4; }
