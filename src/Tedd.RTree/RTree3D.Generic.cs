@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Numerics;
 
 namespace Tedd.RTree;
@@ -24,6 +25,11 @@ public sealed class RTree3D<TCoordinate, T>
         internal Node? Child = child;
         internal T Value = value;
     }
+
+    // At most capacity + 1 entries; exact integer metrics contain managed BigInteger storage.
+    // A bounded inline array keeps this split-local cache off the managed heap.
+    [InlineArray(129)]
+    private struct SplitAreaBuffer { private SpatialMeasure<TCoordinate> _element0; }
 
     private readonly int _capacity;
     private readonly int _minimum;
@@ -385,7 +391,7 @@ public sealed class RTree3D<TCoordinate, T>
         {
             Box<TCoordinate> current = node.Boxes[i];
             SpatialMeasure<TCoordinate> area = current.Area;
-            SpatialMeasure<TCoordinate> enlargement = Enlargement(current, bounds);
+            SpatialMeasure<TCoordinate> enlargement = Enlargement(current, bounds, area);
             if (enlargement < bestEnlargement ||
                 (enlargement == bestEnlargement && area < bestArea))
             {
@@ -401,7 +407,12 @@ public sealed class RTree3D<TCoordinate, T>
     {
         int length = node.Count;
         Entry[] entries = new Entry[length];
-        for (int i = 0; i < length; i++) entries[i] = ReadEntry(node, i);
+        SplitAreaBuffer entryAreas = default;
+        for (int i = 0; i < length; i++)
+        {
+            entries[i] = ReadEntry(node, i);
+            entryAreas[i] = entries[i].Bounds.Area;
+        }
         int seedA = 0, seedB = 1;
         SpatialMeasure<TCoordinate> worstWaste = SpatialMeasure<TCoordinate>.NegativeInfinity;
         for (int i = 0; i < length - 1; i++)
@@ -409,7 +420,7 @@ public sealed class RTree3D<TCoordinate, T>
             for (int j = i + 1; j < length; j++)
             {
                 SpatialMeasure<TCoordinate> waste = Box<TCoordinate>.Union(entries[i].Bounds, entries[j].Bounds).Area -
-                    entries[i].Bounds.Area - entries[j].Bounds.Area;
+                    entryAreas[i] - entryAreas[j];
                 if (waste > worstWaste)
                 {
                     worstWaste = waste;
@@ -440,12 +451,13 @@ public sealed class RTree3D<TCoordinate, T>
 
             int selected = -1;
             SpatialMeasure<TCoordinate> greatestDifference = SpatialMeasure<TCoordinate>.NegativeInfinity;
+            SpatialMeasure<TCoordinate> areaA = node.Bounds.Area, areaB = other.Bounds.Area;
             SpatialMeasure<TCoordinate> enlargementA = SpatialMeasure<TCoordinate>.Zero, enlargementB = SpatialMeasure<TCoordinate>.Zero;
             for (int i = 0; i < length; i++)
             {
                 if (assigned[i]) continue;
-                SpatialMeasure<TCoordinate> a = Enlargement(node.Bounds, entries[i].Bounds);
-                SpatialMeasure<TCoordinate> b = Enlargement(other.Bounds, entries[i].Bounds);
+                SpatialMeasure<TCoordinate> a = Enlargement(node.Bounds, entries[i].Bounds, areaA);
+                SpatialMeasure<TCoordinate> b = Enlargement(other.Bounds, entries[i].Bounds, areaB);
                 SpatialMeasure<TCoordinate> difference = SpatialMeasure<TCoordinate>.Abs(a - b);
                 if (difference > greatestDifference)
                 {
@@ -458,8 +470,8 @@ public sealed class RTree3D<TCoordinate, T>
 
             Node destination = enlargementA < enlargementB ? node :
                 enlargementB < enlargementA ? other :
-                node.Bounds.Area < other.Bounds.Area ? node :
-                other.Bounds.Area < node.Bounds.Area ? other :
+                areaA < areaB ? node :
+                areaB < areaA ? other :
                 node.Count <= other.Count ? node : other;
             Add(destination, entries[selected]);
             assigned[selected] = true;
@@ -472,9 +484,8 @@ public sealed class RTree3D<TCoordinate, T>
         return other;
     }
 
-    private static SpatialMeasure<TCoordinate> Enlargement(in Box<TCoordinate> current, in Box<TCoordinate> added)
+    private static SpatialMeasure<TCoordinate> Enlargement(in Box<TCoordinate> current, in Box<TCoordinate> added, SpatialMeasure<TCoordinate> before)
     {
-        SpatialMeasure<TCoordinate> before = current.Area;
         SpatialMeasure<TCoordinate> after = Box<TCoordinate>.Union(current, added).Area;
         return after > before ? after - before : SpatialMeasure<TCoordinate>.Zero;
     }

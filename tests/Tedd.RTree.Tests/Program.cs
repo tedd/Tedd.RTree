@@ -2,6 +2,7 @@ using Tedd.RTree;
 
 MutablePackedChecks.Run();
 GenericPackedChecks.Run();
+LocalUpdateChecks.Run();
 
 static void Check(bool condition, string message)
 {

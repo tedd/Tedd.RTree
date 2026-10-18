@@ -391,7 +391,7 @@ public sealed class RTree<T>
         {
             Rectangle current = node.Boxes[i];
             double area = current.Area;
-            double enlargement = Enlargement(current, bounds);
+            double enlargement = Enlargement(current, bounds, area);
             if (enlargement < bestEnlargement ||
                 (enlargement == bestEnlargement && area < bestArea))
             {
@@ -407,7 +407,12 @@ public sealed class RTree<T>
     {
         int length = node.Count;
         Entry[] entries = new Entry[length];
-        for (int i = 0; i < length; i++) entries[i] = ReadEntry(node, i);
+        Span<double> entryAreas = stackalloc double[length];
+        for (int i = 0; i < length; i++)
+        {
+            entries[i] = ReadEntry(node, i);
+            entryAreas[i] = entries[i].Bounds.Area;
+        }
         int seedA = 0, seedB = 1;
         double worstWaste = double.NegativeInfinity;
         for (int i = 0; i < length - 1; i++)
@@ -415,7 +420,7 @@ public sealed class RTree<T>
             for (int j = i + 1; j < length; j++)
             {
                 double waste = Rectangle.Union(entries[i].Bounds, entries[j].Bounds).Area -
-                    entries[i].Bounds.Area - entries[j].Bounds.Area;
+                    entryAreas[i] - entryAreas[j];
                 if (waste > worstWaste)
                 {
                     worstWaste = waste;
@@ -446,12 +451,13 @@ public sealed class RTree<T>
 
             int selected = -1;
             double greatestDifference = double.NegativeInfinity;
+            double areaA = node.Bounds.Area, areaB = other.Bounds.Area;
             double enlargementA = 0, enlargementB = 0;
             for (int i = 0; i < length; i++)
             {
                 if (assigned[i]) continue;
-                double a = Enlargement(node.Bounds, entries[i].Bounds);
-                double b = Enlargement(other.Bounds, entries[i].Bounds);
+                double a = Enlargement(node.Bounds, entries[i].Bounds, areaA);
+                double b = Enlargement(other.Bounds, entries[i].Bounds, areaB);
                 double difference = Math.Abs(a - b);
                 if (difference > greatestDifference)
                 {
@@ -464,8 +470,8 @@ public sealed class RTree<T>
 
             Node destination = enlargementA < enlargementB ? node :
                 enlargementB < enlargementA ? other :
-                node.Bounds.Area < other.Bounds.Area ? node :
-                other.Bounds.Area < node.Bounds.Area ? other :
+                areaA < areaB ? node :
+                areaB < areaA ? other :
                 node.Count <= other.Count ? node : other;
             Add(destination, entries[selected]);
             assigned[selected] = true;
@@ -478,9 +484,8 @@ public sealed class RTree<T>
         return other;
     }
 
-    private static double Enlargement(in Rectangle current, in Rectangle added)
+    private static double Enlargement(in Rectangle current, in Rectangle added, double before)
     {
-        double before = current.Area;
         double after = Rectangle.Union(current, added).Area;
         return after > before ? after - before : 0;
     }
