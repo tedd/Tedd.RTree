@@ -27,7 +27,7 @@ def subset(size, distribution, operation):
 section = '''    <section class="section-shell benchmark-section" id="benchmarks">
       <div class="section-intro">
         <div><p class="eyebrow">C# and Rust · identical geometry</p><h2>Mutable tree. Packed-index performance.</h2></div>
-        <p>Bulk construction and 64 intersection queries against two fast Rust indexes. Teal identifies Tedd.RTree. Higher bars mean greater throughput. Language appears after each library name.</p>
+        <p>Tedd.RTree is a C# spatial indexing library for .NET 10. It organizes 2D rectangles and 3D boxes so applications can quickly find objects that overlap a search region, while supporting individual inserts, removals, and moves.</p>
       </div>
       <div class="benchmark-controls"><label for="comparison-fixture">Chart fixture</label><select id="comparison-fixture">'''
 for size in (100000, 10000, 1000):
