@@ -1,6 +1,7 @@
 """Publish eight independently executed libraries; never merge different fixture generators."""
 import csv, html, json, re
 from pathlib import Path
+from capabilities import capabilities, render
 
 root=Path(__file__).resolve().parents[2]
 folder=root/'benchmarks/results/csharp-charts'
@@ -23,7 +24,7 @@ for size in (1000,10000,100000):
                     medianUs=float(selected['median_us']),minUs=float(selected['min_us']),maxUs=float(selected['max_us']),mode=selected['library'],
                     record='mutation-regressions/cross' if is_native else 'csharp-charts'))
 assert len(results)==96
-payload=dict(date='2026-10-18',libraries=versions,records=['csharp-charts','mutation-regressions/cross'],results=results)
+payload=dict(date='2026-10-18',libraries=versions,records=['csharp-charts','mutation-regressions/cross'],capabilities=capabilities,results=results)
 (root/'site/assets/spatial-comparison.json').write_text(json.dumps(payload,indent=2)+'\n',encoding='utf8',newline='\n')
 
 def subset(size,distribution,operation):
@@ -48,7 +49,8 @@ for operation,title,unit in (('build','Build throughput','M entries/s'),('querie
         value=f'{rate:.3g}' if rate < 0.001 else f'{rate:.3f}'
         section+=f'<div class="bar-row{" comparison-ours" if own else ""}"><span>{html.escape(r["label"])}</span><div class="bar-track"><i class="bar {"ours" if own else "other"}" style="width:{rate/peak*100:.2f}%"></i></div><b>{value}</b></div>\n'
     section+='</div></figure>\n'
-section+='''</div>
+section+='</div>\n'+render(results)
+section+='''
       <div class="results-panel"><div class="results-heading"><h3>All measured fixtures</h3><p>Median elapsed time · lower is better</p></div><div class="table-scroll"><table class="package-results"><caption>Eight-library 2D comparison, measured 18 October 2026</caption><thead><tr><th scope="col">Entries</th><th scope="col">Distribution</th><th scope="col">Operation</th>'''
 section+=''.join(f'<th scope="col">{html.escape(label)}</th>' for label in labels.values())+'</tr></thead><tbody>\n'
 for size in (1000,10000,100000):
@@ -80,6 +82,7 @@ query=next(r['medianUs'] for r in results if (r['size'],r['distribution'],r['ope
 hero=f'        <p class="hero-evidence">For 100,000 uniform 2D rectangles, Tedd.RTree bulk loading takes <strong>{build:.3f} ms</strong> and 64 queries take <strong>{query:.2f} µs</strong>. <a href="#benchmarks">Compare eight C# and Rust indexes</a>.</p>'
 source=re.sub(r'        <p class="hero-evidence"[^>]*>.*?</p>',lambda _:hero,source,count=1)
 source=source.replace('app.js?v=cf34a58','app.js?v=csharp-eight').replace('styles.css?v=cf34a58','styles.css?v=csharp-eight')
+source=source.replace('app.js?v=csharp-eight','app.js?v=capabilities-1').replace('styles.css?v=csharp-eight','styles.css?v=capabilities-1')
 source=source.replace('Compare Tedd.RTree (C#), static_aabb2d_index (Rust), and geo-index (Rust) on six published fixtures.','Compare eight C# and Rust spatial indexes on six published fixtures.')
 page.write_text(source,encoding='utf8',newline='\n')
 record=['# C# libraries in the shared 2D comparison','',

@@ -20,6 +20,19 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
 });
 
 const fixtureSelect = document.getElementById("comparison-fixture");
+function capabilityClaim(data, size, distribution) {
+  const selected = data.results.filter((row) => row.size === size && row.distribution === distribution);
+  const time = (library, operation) => selected.find((row) => row.library === library && row.operation === operation).medianUs;
+  const queryWinners = data.capabilities.indexes.filter((row) => !row.insertAfterBuild && time("candidate", "queries") < time(row.id, "queries"));
+  const bothWinners = queryWinners.filter((row) => time("candidate", "build") < time(row.id, "build"));
+  const winners = bothWinners.length ? bothWinners : queryWinners;
+  const fixture = `${size.toLocaleString("en-GB")} ${distribution} 2D rectangles`;
+  if (!winners.length) return `${fixture}: compare the measured times above. Tedd.RTree supports individual inserts, removals and moves after bulk loading.`;
+  const names = winners.map((row) => row.label.replace(/ \((Rust|C#)\)$/, ""));
+  const libraries = names.length === 1 ? names[0] : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+  const metric = bothWinners.length ? "construction and 64-query medians" : "64-query medians";
+  return `${fixture}: Tedd.RTree has lower measured ${metric} than ${libraries}, while supporting individual inserts, removals and moves after bulk loading. Those compared indexes do not accept new inserts after construction.`;
+}
 if (fixtureSelect) {
   const dataRequest = fetch("assets/spatial-comparison.json", { cache: "no-cache" }).then((response) => {
     if (!response.ok) throw new Error("Comparison data unavailable");
@@ -58,6 +71,7 @@ if (fixtureSelect) {
           return element;
         }));
       });
+      document.getElementById("comparison-capability-claim").textContent = capabilityClaim(data, size, distribution);
     } catch {
       fixtureSelect.disabled = true;
     }

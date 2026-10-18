@@ -10,8 +10,8 @@
   <meta property="og:type" content="website">
   <title>Tedd.RTree — high-performance spatial indexing for .NET 10</title>
   <link rel="icon" href="assets/rtree-icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=csharp-eight">
-  <script src="app.js?v=csharp-eight" defer></script>
+  <link rel="stylesheet" href="styles.css?v=capabilities-1">
+  <script src="app.js?v=capabilities-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -238,6 +238,27 @@ List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></p
 <div class="bar-row"><span>Enyim RTree (C#)</span><div class="bar-track"><i class="bar other" style="width:0.84%"></i></div><b>0.000619</b></div>
 </div></figure>
 </div>
+      <div class="comparison-capabilities" id="index-capabilities">
+        <div class="capability-summary">
+          <p class="eyebrow">Speed with individual updates</p>
+          <h3>Fast queries. Mutable data.</h3>
+          <p id="comparison-capability-claim" aria-live="polite">100,000 uniform 2D rectangles: Tedd.RTree has lower measured construction and 64-query medians than NTS STRtree, static_aabb2d_index, geo-index Hilbert and geo-index STR, while supporting individual inserts, removals and moves after bulk loading. Those compared indexes do not accept new inserts after construction.</p>
+        </div>
+        <div class="results-panel"><div class="results-heading"><h3>Capabilities beyond the timing charts</h3><p>Listed index versions · source links in each row</p></div><div class="table-scroll"><table class="capability-results"><caption>Construction, updates and geometry supported by the compared indexes</caption><thead><tr><th scope="col">Index / version</th><th scope="col">Changes after construction</th><th scope="col">Dimensions</th><th scope="col">Coordinates</th><th scope="col">Construction API</th></tr></thead><tbody>
+<tr class="comparison-ours"><th scope="row"><a href="https://github.com/tedd/Tedd.RTree/tree/af521dbfc18c00747ea4870e1fa8de2f8ae6e10d/src/Tedd.RTree">Tedd.RTree (C#)</a><small>1.0.14</small></th><td>Insert, remove and move</td><td>2D and 3D</td><td>int, long, float, double</td><td>Bulk or incremental</td></tr>
+<tr><th scope="row"><a href="https://github.com/viceroypenguin/RBush/tree/b8690322abac35d835baa2fdca4a3918ed77a910/RBush">RBush (C#)</a><small>4.0.0</small></th><td>Insert and remove</td><td>2D</td><td>double</td><td>Bulk or incremental</td></tr>
+<tr><th scope="row"><a href="https://github.com/NetTopologySuite/NetTopologySuite/blob/97d26b92586448b52d5a4f0c060217f94f882c75/src/NetTopologySuite/Index/Strtree/STRtree.cs">NTS STRtree (C#)</a><small>2.6.0</small></th><td>Remove only; no new inserts</td><td>2D</td><td>double</td><td>Packed bulk build</td></tr>
+<tr><th scope="row"><a href="https://github.com/drorgl/cspatialindexrt/tree/41e45bd56c55362cc1c5726063530a99c720838c/RTree">RTree (C#)</a><small>1.1.0</small></th><td>Insert and remove</td><td>3D; 2D via z = 0</td><td>float</td><td>Incremental insertion</td></tr>
+<tr><th scope="row"><a href="https://github.com/marchello2000/RTree/tree/5667d313a786f61eb5a977219c893947958f4630/src/RTree">Enyim RTree (C#)</a><small>1.0.5</small></th><td>Insert and remove</td><td>2D</td><td>int</td><td>Bulk or incremental</td></tr>
+<tr><th scope="row"><a href="https://github.com/jbuckmccready/static_aabb2d_index/blob/a511a6327e14a0f0418cea01c401bf147e0e835c/src/static_aabb2d_index.rs">static_aabb2d_index (Rust)</a><small>2.1.0</small></th><td>Rebuild for content changes</td><td>2D</td><td>Generic numeric types</td><td>Packed bulk build</td></tr>
+<tr><th scope="row"><a href="https://github.com/georust/geo-index/blob/e6efbb01d3c298e8963c8b7d1aab40c1bd540715/README.md">geo-index Hilbert (Rust)</a><small>0.4.0</small></th><td>Rebuild for content changes</td><td>2D</td><td>8–32 bit integers, float, double</td><td>Packed bulk build</td></tr>
+<tr><th scope="row"><a href="https://github.com/georust/geo-index/blob/e6efbb01d3c298e8963c8b7d1aab40c1bd540715/README.md">geo-index STR (Rust)</a><small>0.4.0</small></th><td>Rebuild for content changes</td><td>2D</td><td>8–32 bit integers, float, double</td><td>Packed bulk build</td></tr>
+</tbody></table></div></div>
+        <p class="capability-note">Tedd.RTree provides native 2D and 3D APIs for all four coordinate types, including exact <code>long</code> geometry. <a href="#model">ConcurrentRTree</a> supports immediate changes under a reader/writer lock; SnapshotRTree publishes complete replacement batches with lock-free readers. <a href="#generic-benchmarks">See the separate 3D measurements</a>.</p>
+        <p class="capability-note">The timing charts measure the original 2D <code>double</code> API. This table covers the named indexes, rather than every index in their wider libraries. Mutable competitors can implement moves through removal and reinsertion. NTS STRtree supports removals and concurrent read-only queries, but no inserts after construction. Capability differences do not establish performance for unmeasured workloads.</p>
+        <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/INDEX-CAPABILITIES.md">Capability sources and scope ↗</a></div>
+      </div>
+
       <div class="results-panel"><div class="results-heading"><h3>All measured fixtures</h3><p>Median elapsed time · lower is better</p></div><div class="table-scroll"><table class="package-results"><caption>Eight-library 2D comparison, measured 18 October 2026</caption><thead><tr><th scope="col">Entries</th><th scope="col">Distribution</th><th scope="col">Operation</th><th scope="col">Tedd.RTree (C#)</th><th scope="col">RBush (C#)</th><th scope="col">NTS STRtree (C#)</th><th scope="col">RTree (C#)</th><th scope="col">Enyim RTree (C#)</th><th scope="col">static_aabb2d_index (Rust)</th><th scope="col">geo-index Hilbert (Rust)</th><th scope="col">geo-index STR (Rust)</th></tr></thead><tbody>
 <tr><th scope="row">1,000</th><td>Uniform</td><td>Construction</td><td class="comparison-ours ">0.037 ms</td><td class="">0.304 ms</td><td class="">0.385 ms</td><td class="">0.768 ms</td><td class="">0.295 ms</td><td class="best">0.017 ms</td><td class="">0.042 ms</td><td class="">0.035 ms</td></tr>
 <tr><th scope="row">1,000</th><td>Uniform</td><td>64 queries</td><td class="comparison-ours ">15.43 µs</td><td class="">115.89 µs</td><td class="">133.02 µs</td><td class="">114.61 µs</td><td class="">818.88 µs</td><td class="best">11.66 µs</td><td class="">27.76 µs</td><td class="">28.09 µs</td></tr>

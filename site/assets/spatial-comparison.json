@@ -14,6 +14,108 @@
     "csharp-charts",
     "mutation-regressions/cross"
   ],
+  "capabilities": {
+    "reviewedDate": "2026-10-18",
+    "scope": "Named index implementations and versions; Tedd.RTree includes its 2D/3D API family.",
+    "indexes": [
+      {
+        "id": "candidate",
+        "label": "Tedd.RTree (C#)",
+        "version": "1.0.14",
+        "changes": "Insert, remove and move",
+        "dimensions": "2D and 3D",
+        "coordinates": "int, long, float, double",
+        "construction": "Bulk or incremental",
+        "immutable": false,
+        "insertAfterBuild": true,
+        "source": "https://github.com/tedd/Tedd.RTree/tree/af521dbfc18c00747ea4870e1fa8de2f8ae6e10d/src/Tedd.RTree"
+      },
+      {
+        "id": "rbush",
+        "label": "RBush (C#)",
+        "version": "4.0.0",
+        "changes": "Insert and remove",
+        "dimensions": "2D",
+        "coordinates": "double",
+        "construction": "Bulk or incremental",
+        "immutable": false,
+        "insertAfterBuild": true,
+        "source": "https://github.com/viceroypenguin/RBush/tree/b8690322abac35d835baa2fdca4a3918ed77a910/RBush"
+      },
+      {
+        "id": "nts",
+        "label": "NTS STRtree (C#)",
+        "version": "2.6.0",
+        "changes": "Remove only; no new inserts",
+        "dimensions": "2D",
+        "coordinates": "double",
+        "construction": "Packed bulk build",
+        "immutable": false,
+        "insertAfterBuild": false,
+        "source": "https://github.com/NetTopologySuite/NetTopologySuite/blob/97d26b92586448b52d5a4f0c060217f94f882c75/src/NetTopologySuite/Index/Strtree/STRtree.cs"
+      },
+      {
+        "id": "rtree",
+        "label": "RTree (C#)",
+        "version": "1.1.0",
+        "changes": "Insert and remove",
+        "dimensions": "3D; 2D via z = 0",
+        "coordinates": "float",
+        "construction": "Incremental insertion",
+        "immutable": false,
+        "insertAfterBuild": true,
+        "source": "https://github.com/drorgl/cspatialindexrt/tree/41e45bd56c55362cc1c5726063530a99c720838c/RTree"
+      },
+      {
+        "id": "enyim",
+        "label": "Enyim RTree (C#)",
+        "version": "1.0.5",
+        "changes": "Insert and remove",
+        "dimensions": "2D",
+        "coordinates": "int",
+        "construction": "Bulk or incremental",
+        "immutable": false,
+        "insertAfterBuild": true,
+        "source": "https://github.com/marchello2000/RTree/tree/5667d313a786f61eb5a977219c893947958f4630/src/RTree"
+      },
+      {
+        "id": "static",
+        "label": "static_aabb2d_index (Rust)",
+        "version": "2.1.0",
+        "changes": "Rebuild for content changes",
+        "dimensions": "2D",
+        "coordinates": "Generic numeric types",
+        "construction": "Packed bulk build",
+        "immutable": true,
+        "insertAfterBuild": false,
+        "source": "https://github.com/jbuckmccready/static_aabb2d_index/blob/a511a6327e14a0f0418cea01c401bf147e0e835c/src/static_aabb2d_index.rs"
+      },
+      {
+        "id": "geo-hilbert",
+        "label": "geo-index Hilbert (Rust)",
+        "version": "0.4.0",
+        "changes": "Rebuild for content changes",
+        "dimensions": "2D",
+        "coordinates": "8\u201332 bit integers, float, double",
+        "construction": "Packed bulk build",
+        "immutable": true,
+        "insertAfterBuild": false,
+        "source": "https://github.com/georust/geo-index/blob/e6efbb01d3c298e8963c8b7d1aab40c1bd540715/README.md"
+      },
+      {
+        "id": "geo-str",
+        "label": "geo-index STR (Rust)",
+        "version": "0.4.0",
+        "changes": "Rebuild for content changes",
+        "dimensions": "2D",
+        "coordinates": "8\u201332 bit integers, float, double",
+        "construction": "Packed bulk build",
+        "immutable": true,
+        "insertAfterBuild": false,
+        "source": "https://github.com/georust/geo-index/blob/e6efbb01d3c298e8963c8b7d1aab40c1bd540715/README.md"
+      }
+    ]
+  },
   "results": [
     {
       "size": 1000,
