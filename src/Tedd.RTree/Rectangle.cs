@@ -28,6 +28,7 @@ public readonly struct Rectangle : IEquatable<Rectangle>
         MaxY = maxY;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Rectangle(in Rectangle a, in Rectangle b)
     {
         // Both operands already have finite, ordered coordinates. Min/Max preserve that invariant.

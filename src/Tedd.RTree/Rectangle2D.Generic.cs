@@ -31,6 +31,7 @@ public readonly struct Rectangle2D<TCoordinate> : IEquatable<Rectangle2D<TCoordi
         MaxY = maxY;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Rectangle2D(in Rectangle2D<TCoordinate> a, in Rectangle2D<TCoordinate> b)
     {
         MinX = TCoordinate.Min(a.MinX, b.MinX);

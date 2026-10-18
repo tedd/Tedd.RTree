@@ -37,6 +37,7 @@ public readonly struct Box<TCoordinate> : IEquatable<Box<TCoordinate>>
         MaxZ = maxZ;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Box(in Box<TCoordinate> a, in Box<TCoordinate> b)
     {
         MinX = TCoordinate.Min(a.MinX, b.MinX);
