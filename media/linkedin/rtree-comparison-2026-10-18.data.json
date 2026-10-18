@@ -1,0 +1,155 @@
+{
+  "fixture": "10,000 rectangles, uniform, 64 mixed intersection queries",
+  "imageDate": "2026-10-18",
+  "current": {
+    "date": "2026-10-17",
+    "source": "site/assets/mutable-packed.json",
+    "sourceRevision": "a5d902c",
+    "statistic": "median of five fresh-process blocks",
+    "rows": [
+      {
+        "label": "Tedd.RTree (C#)",
+        "queryMs": 0.07737680206298829,
+        "buildMs": 0.422340234375,
+        "queryDisplay": "0.077",
+        "buildDisplay": "0.422",
+        "queryMode": "candidate",
+        "buildMode": "candidate"
+      },
+      {
+        "label": "static_aabb2d_index (Rust)",
+        "queryMs": 0.07840012817382812,
+        "buildMs": 0.561926953125,
+        "queryDisplay": "0.078",
+        "buildDisplay": "0.562",
+        "queryMode": "native-static",
+        "buildMode": "interop-static"
+      },
+      {
+        "label": "geo-index Hilbert (Rust)",
+        "queryMs": 0.1284669219970703,
+        "buildMs": 0.6272023437500001,
+        "queryDisplay": "0.128",
+        "buildDisplay": "0.627",
+        "queryMode": "native-geo-hilbert",
+        "buildMode": "native-geo-hilbert"
+      },
+      {
+        "label": "geo-index STR (Rust)",
+        "queryMs": 0.13731854553222655,
+        "buildMs": 0.5882449218749999,
+        "queryDisplay": "0.137",
+        "buildDisplay": "0.588",
+        "queryMode": "native-geo-str",
+        "buildMode": "native-geo-str"
+      }
+    ]
+  },
+  "screening": {
+    "date": "2026-10-17",
+    "source": "benchmarks/results/cross-language/aggregate.csv",
+    "teddRevision": "9d8fb59",
+    "statistic": "median of five fresh-process blocks",
+    "rows": [
+      {
+        "label": "Tedd.RTree (C#)",
+        "queryMs": 0.1357246612548828,
+        "buildMs": 3.614340625,
+        "queryDisplay": "0.136",
+        "buildDisplay": "3.614"
+      },
+      {
+        "label": "Boost.Geometry visitor (C++)",
+        "queryMs": 0.120886968994124,
+        "buildMs": 1.6346671875,
+        "queryDisplay": "0.121",
+        "buildDisplay": "1.635"
+      },
+      {
+        "label": "Tidwall rtree.c (C)",
+        "queryMs": 0.14099013824512,
+        "buildMs": 0.89490234375,
+        "queryDisplay": "0.141",
+        "buildDisplay": "0.895"
+      },
+      {
+        "label": "Superliminal RTree (C++)",
+        "queryMs": 0.23437600250194002,
+        "buildMs": 6.1505656250000005,
+        "queryDisplay": "0.234",
+        "buildDisplay": "6.151"
+      },
+      {
+        "label": "Tidwall rtree (Go)",
+        "queryMs": 0.24335386962912,
+        "buildMs": 1.8817703125,
+        "queryDisplay": "0.243",
+        "buildDisplay": "1.882"
+      },
+      {
+        "label": "rstar bulk (Rust)",
+        "queryMs": 0.26304729080200195,
+        "buildMs": 2.8607593749999998,
+        "queryDisplay": "0.263",
+        "buildDisplay": "2.861"
+      },
+      {
+        "label": "Boost.Geometry packed (C++)",
+        "queryMs": 0.29509798583986996,
+        "buildMs": 1.6556312499999999,
+        "queryDisplay": "0.295",
+        "buildDisplay": "1.656"
+      },
+      {
+        "label": "Flatbush (JavaScript)",
+        "queryMs": 0.2966294555664058,
+        "buildMs": 1.4244265624999999,
+        "queryDisplay": "0.297",
+        "buildDisplay": "1.424"
+      }
+    ]
+  },
+  "nuget": {
+    "date": "2026-09-30",
+    "source": "site/assets/package-comparison.json",
+    "statistic": "BenchmarkDotNet ShortRun mean",
+    "rows": [
+      {
+        "label": "Tedd.RTree (C#)",
+        "queryMs": 0.2539361328125,
+        "buildMs": 2.1532217447916664,
+        "queryDisplay": "0.254",
+        "buildDisplay": "2.153"
+      },
+      {
+        "label": "RBush 4.0.0 (C#)",
+        "queryMs": 1.1480455403645833,
+        "buildMs": 5.811384895833333,
+        "queryDisplay": "1.148",
+        "buildDisplay": "5.811"
+      },
+      {
+        "label": "NTS STRtree 2.6.0 (C#)",
+        "queryMs": 1.7779634765625,
+        "buildMs": 4.958543880208333,
+        "queryDisplay": "1.778",
+        "buildDisplay": "4.959"
+      },
+      {
+        "label": "RTree 1.1.0 (C#)",
+        "queryMs": 2.0010548828125,
+        "buildMs": 11.937402083333334,
+        "queryDisplay": "2.001",
+        "buildDisplay": "11.937"
+      },
+      {
+        "label": "Enyim.Collections.RTree 1.0.5 (C#)",
+        "queryMs": 11.4431484375,
+        "buildMs": 6.500654427083333,
+        "queryDisplay": "11.443",
+        "buildDisplay": "6.501"
+      }
+    ]
+  },
+  "note": "Compare within panels. Fixtures, runtime settings, allocation contracts, source revisions and construction APIs differ between series. Data represents tested configurations, not isolated language performance."
+}

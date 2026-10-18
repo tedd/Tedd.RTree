@@ -1,0 +1,80 @@
+Generated with the built-in image_gen tool.
+Reference: the previous light-themed comparison with Algorithms with Sol and the gray repository URL.
+
+INITIAL GENERATION PROMPT
+
+Use case: infographic-diagram.
+Asset type: updated professional LinkedIn benchmark infographic, high-resolution landscape 16:9, preferably 3840 × 2160.
+Input image: EDIT TARGET AND STYLE REFERENCE, the previous light mint Tedd.RTree comparison. Update its CONTENT using the exact latest and historical measurements supplied below. Redesign the table area into THREE DISTINCT PANELS so incompatible series are clearly separated. Preserve the established white / pale mint / deep teal / dark ink visual identity, spatial rectangle illustration, small gray top-left "Algorithms with Sol", and small gray bottom-right "github.com/tedd/Tedd.RTree".
+Style: nearly white #f7faf9 canvas; white panels; pale mint #eef5f3; dark ink #13282f; teal #087f78; gray #61747b; hairline borders #d6e3df; restrained copper #b65e28 for occasional rectangle outlines. Space Grotesk-style headings, DM Sans-style body, tabular numerals, excellent spacing and readability. No dark panels, neon, glow, trophies, robots or stock imagery.
+Main title: "Tedd.RTree"
+Subtitle: "Spatial indexes across six languages"
+Fixture line: "10,000 rectangles · Uniform distribution · 64 mixed queries"
+Replace the obsolete 4.52× and 7.00× callouts with TWO CLEAR LATEST-TEDD METRICS:
+"0.077 ms" / "Latest Tedd.RTree · 64 queries"
+"0.422 ms" / "Latest Tedd.RTree · Index build"
+Do not make universal fastest claims or speedup claims across different panels. This is an exact numeric editorial comparison, NOT a bar chart.
+Layout: small tasteful header and spatial illustration above, three generously separated white comparison cards below. Left column has two stacked cards: latest confirmation on top, earlier NuGet comparison below. Right column has one taller cross-language screening card. Use enough space for every row and all labels; all font sizes must be comfortably legible. Each card repeats the column headings EXACTLY: "Library" | "64 queries (ms)" | "Build (ms)". All numeric cells below are milliseconds and must show three decimal places exactly. Language labels in parentheses are mandatory after every library name, including every Tedd.RTree row. Teal/mint highlight Tedd rows. No truncation.
+
+LEFT TOP CARD:
+Title: "Latest optimized comparison · 17 Oct 2026"
+Caption: "Fresh-process medians · Best direct / interop Rust modes"
+Exact rows:
+Tedd.RTree (C#) | 0.077 | 0.422
+static_aabb2d_index (Rust) | 0.078 | 0.562
+geo-index Hilbert (Rust) | 0.128 | 0.627
+geo-index STR (Rust) | 0.137 | 0.588
+Card note: "Tedd.RTree source a5d902c · Reused results"
+Card caveat: "The 0.077 vs 0.078 ms query gap is small."
+
+LEFT BOTTOM CARD:
+Title: "Earlier NuGet comparison · 30 Sep 2026"
+Caption: "Earlier Tedd.RTree · BenchmarkDotNet means · Allocating APIs"
+Exact rows:
+Tedd.RTree (C#) | 0.254 | 2.153
+RBush 4.0.0 (C#) | 1.148 | 5.811
+NTS STRtree 2.6.0 (C#) | 1.778 | 4.959
+RTree 1.1.0 (C#) | 2.001 | 11.937
+Enyim.Collections.RTree 1.0.5 (C#) | 11.443 | 6.501
+Card note: "RTree: incremental build. Enyim: unoptimized published binary."
+
+RIGHT TALL CARD:
+Title: "Cross-language screening · 17 Oct 2026"
+Caption: "Fresh-process medians · Earlier Tedd.RTree source 9d8fb59"
+Exact rows:
+Tedd.RTree (C#) | 0.136 | 3.614
+Boost.Geometry visitor (C++) | 0.121 | 1.635
+Tidwall rtree.c (C) | 0.141 | 0.895
+Superliminal RTree (C++) | 0.234 | 6.151
+Tidwall rtree (Go) | 0.243 | 1.882
+rstar bulk (Rust) | 0.263 | 2.861
+Boost.Geometry packed (C++) | 0.295 | 1.656
+Flatbush (JavaScript) | 0.297 | 1.424
+Card note: "Includes native visitor, iterator and allocating result APIs."
+This card lists the remaining newly tested libraries and two measured Boost APIs; Rust static/geo libraries are shown in the latest comparison card instead.
+
+Bottom methodology note, required verbatim and clearly readable:
+"Lower is better. Compare within each panel; protocols, source revisions and allocation contracts differ."
+"Oct: Ryzen 9 5950X · Windows 11 · .NET 10.0.13 · Five fresh-process blocks"
+"Sept: Same CPU · .NET 10.0.12 · BenchmarkDotNet ShortRun"
+"Query widths: 0 / 20 / 200 / 1,000 · Exact result-ID validation · Local fixture measurements"
+Keep small gray "Algorithms with Sol" TOP LEFT and small gray "github.com/tedd/Tedd.RTree" LOWER RIGHT, inside safe margins and not overlapping other copy.
+Constraints: all seventeen rows (4 + 5 + 8) and all 34 timing cells must be present, exact and legible. All library language labels in parentheses must be retained, including C#, C++, C, Go, Rust and JavaScript. Preserve meaningful library underscores and versions. Do not mix series into a single ranking. Do not add invented measurements or different fixtures. Avoid extra labels, extraneous commentary, watermarks, tiny unreadable text or clipped edges. The final image should feel like an expanded edition of the supplied light-themed design.
+
+LAYOUT REPAIR PROMPT
+
+Edit the supplied benchmark infographic ONLY to improve the layout and prevent clipping.
+CRITICAL: its bottom methodology notes are currently too small and the last line is clipped by the bottom edge. Fix this.
+Keep the same light mint / white / teal / gray palette, all three panels, all seventeen library rows, every timing value and language label, exact panel titles and dates, two latest metrics (0.077 ms and 0.422 ms), small gray top-left "Algorithms with Sol", and small gray lower-right "github.com/tedd/Tedd.RTree".
+Use the same landscape 16:9 canvas. Reclaim vertical space from the header: reduce the main "Tedd.RTree" title size and the decorative rectangle illustration by roughly 25–30%, tighten empty header space, and move the three table panels upward by about 90–110 pixels at the current 1672px-wide scale. Preserve comfortable row text sizes. The tables must finish well above the footer.
+Reserve a full clear footer band at least 85–100 px high at this scale, plus a 16 px bottom safe margin. Render the following footer copy in gray at a comfortably readable size (at least about 15 px at this image scale), completely inside the canvas. If necessary wrap naturally into four lines spanning most of the width. Exact footer text:
+"Lower is better. Compare within each panel; protocols, source revisions and allocation contracts differ."
+"Oct: Ryzen 9 5950X · Windows 11 · .NET 10.0.13 · Five fresh-process blocks"
+"Sept: Same CPU · .NET 10.0.12 · BenchmarkDotNet ShortRun"
+"Query widths: 0 / 20 / 200 / 1,000 · Exact result-ID validation · Local fixture measurements"
+Place the small gray repository URL on its own at lower right inside the safe margin, without overlapping methodology copy.
+Preserve every panel note, including the small 0.077 vs 0.078 ms gap qualification, both Tedd source revision labels, Enyim binary caveat, RTree incremental-build caveat, and native API note. No data changes, no omitted text, no duplicated rows, no new claims. Make all content readable with safe margins on every edge.
+
+LIBRARY LABEL CORRECTION PROMPT
+
+undefined
