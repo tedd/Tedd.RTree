@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7faf9">
-  <meta name="description" content="A high-performance .NET 10 R-tree for 2D and 3D spatial search. Fastest build and aggregate query times among five validated packages in four published fixtures; STR bulk loading and quadratic splits.">
+  <meta name="description" content="Highly optimized, mutable 2D and 3D R-trees for .NET 10. Hilbert packing, radix sorting, and published C# versus Rust build and query benchmarks.">
   <meta property="og:title" content="Tedd.RTree — high-performance spatial indexing for .NET 10">
-  <meta property="og:description" content="Fastest in the published five-package build and query comparison across four fixtures. 2D and 3D R-trees with STR packing, quadratic splits, and concurrent options.">
+  <meta property="og:description" content="Highly optimized spatial indexing with mutability. Compare Tedd.RTree (C#), static_aabb2d_index (Rust), and geo-index (Rust) on six published fixtures.">
   <meta property="og:type" content="website">
   <title>Tedd.RTree — high-performance spatial indexing for .NET 10</title>
   <link rel="icon" href="assets/rtree-icon.svg" type="image/svg+xml">
@@ -37,8 +37,8 @@
         <p class="eyebrow"><span></span> Highly optimised spatial indexing</p>
         <h1>Fast spatial search<br><em>for .NET 10.</em></h1>
         <p class="lede">Tedd.RTree indexes axis-aligned 2D rectangles and 3D boxes for intersection queries. Choose <code>int</code>, <code>long</code>, <code>float</code>, or <code>double</code> coordinates, with individual updates, packed bulk loading, and two concurrent update models.</p>
-        <p class="hero-evidence"><strong>Fastest in the published five-package comparison:</strong> lowest measured mean for both bulk construction and aggregate intersection queries in all four 1,000- and 10,000-entry uniform and clustered fixtures. This ranking applies to the tested 2D <code>double</code> workload.</p>
-        <p class="hero-evidence">In the measured 10,000-entry uniform fixture, bulk build took <strong>2.15 ms</strong> versus 5.81 ms for RBush and 4.96 ms for NTS STRtree. A batch of 64 queries took <strong>253.94 µs</strong> versus 1148.05 µs and 1777.96 µs. <a href="#benchmarks">See all five packages and benchmark conditions</a>.</p>
+        <p class="hero-evidence"><strong>Mutable indexing at packed-index speeds.</strong> At 100,000 uniform rectangles, bulk construction takes <strong>6.802 ms</strong> and 64 intersection queries take <strong>865.46 µs</strong>. Individual inserts, removals, and moves remain available after bulk loading.</p>
+        <p class="hero-evidence">In the same fixture, <code>static_aabb2d_index</code> (Rust) takes 7.765 ms to build and 1222.33 µs for 64 queries. Competitors receive the better measured result of direct Rust and optimized interop. <a href="#benchmarks">Compare all six fixtures and selective-query limits</a>.</p>
         <div class="hero-badges" aria-label="Package and repository status">
           <a href="https://www.nuget.org/packages/Tedd.RTree" aria-label="Tedd.RTree on NuGet"><img src="https://img.shields.io/nuget/v/Tedd.RTree?logo=nuget&amp;label=NuGet" alt="NuGet package version" height="20"></a>
           <a href="https://github.com/tedd/Tedd.RTree/actions/workflows/nuget-publish.yml" aria-label="GitHub Actions build and test status"><img src="https://github.com/tedd/Tedd.RTree/actions/workflows/nuget-publish.yml/badge.svg?branch=main" alt="Build and test status" height="20"></a>
@@ -95,7 +95,7 @@
 
     <section class="fact-strip" aria-label="Technical characteristics">
       <p><strong>Incremental insertion</strong><span>Least enlargement selection and quadratic node splits</span></p>
-      <p><strong>Bulk loading</strong><span>Sort-Tile-Recursive packing on an empty tree</span></p>
+      <p><strong>Bulk loading</strong><span>Hilbert packing for 2D doubles; STR for generic trees</span></p>
       <p><strong>Inclusive search</strong><span>Boundary contact is included in 2D and 3D</span></p>
       <p><strong>Result ownership</strong><span>Return a list or append to a caller-owned list</span></p>
     </section>
@@ -106,7 +106,7 @@
         <p>The index prunes nonintersecting branches before testing entries. Packed construction and incremental updates use different algorithms for their respective workloads.</p>
       </div>
       <div class="algorithm-grid">
-        <article><h3>Sort-Tile-Recursive packing</h3><p><code>BulkLoad</code> sorts entry centers by axis, tiles them into capacity-bounded nodes, then packs parent levels. Use it to build an empty tree from a batch.</p></article>
+        <article><h3>Hilbert and STR packing</h3><p>The original 2D <code>double</code> tree orders centers by Hilbert key, uses radix sorting for large batches, and packs nodes bottom-up. Generic 2D and 3D trees use Sort-Tile-Recursive packing. Bulk load an empty tree, then update entries individually.</p></article>
         <article><h3>Least enlargement insertion</h3><p>Individual inserts descend through the child whose bounds need the smallest enlargement, breaking ties by current area. Overflow uses quadratic seed selection and distribution.</p></article>
         <article><h3>Bounded intersection traversal</h3><p>Search skips nodes whose bounds do not intersect the query. Reuse a caller-owned result list to avoid a fresh result collection; <code>SearchBatch</code> processes several queries with caller-owned outputs.</p></article>
       </div>
@@ -212,94 +212,42 @@ List&lt;int&gt; matches = index.Search(new Rectangle(20, 20, 21, 21));</code></p
 
     <section class="section-shell benchmark-section" id="benchmarks">
       <div class="section-intro">
-        <div><p class="eyebrow">Five validated packages · .NET 10</p><h2>R-tree package comparison.</h2></div>
-        <p>Build and intersection-query throughput on identical rectangles. Teal identifies Tedd.RTree; grey identifies competing packages. Higher bars mean more work per second. Each query creates its result collection.</p>
+        <div><p class="eyebrow">C# and Rust · identical geometry</p><h2>Mutable tree. Packed-index performance.</h2></div>
+        <p>Bulk construction and 64 intersection queries against two fast Rust indexes. Teal identifies Tedd.RTree. Higher bars mean greater throughput. Language appears after each library name.</p>
       </div>
-      <div class="benchmark-controls"><label for="comparison-fixture">Chart fixture</label><select id="comparison-fixture"><option value="10000/Uniform">10,000 · uniform</option><option value="10000/Clustered">10,000 · clustered</option><option value="1000/Uniform">1,000 · uniform</option><option value="1000/Clustered">1,000 · clustered</option></select><span>Tables show every fixture. Bold times mark the lowest measured mean.</span></div>
-      <div class="chart-grid" id="package-charts" aria-live="polite">
-<figure class="bar-chart package-chart" data-operation="Build"><figcaption><span data-fixture>10,000 uniform rectangles</span><strong>Build throughput</strong><small>M entries/s · higher is better</small></figcaption><div class="package-chart-rows">
-<div class="bar-row comparison-ours"><span>Tedd.RTree</span><div class="bar-track"><i class="bar ours" style="width:100.00%"></i></div><b>4.644</b></div>
-<div class="bar-row"><span>NTS STRtree</span><div class="bar-track"><i class="bar other" style="width:43.42%"></i></div><b>2.017</b></div>
-<div class="bar-row"><span>RBush</span><div class="bar-track"><i class="bar other" style="width:37.05%"></i></div><b>1.721</b></div>
-<div class="bar-row"><span>Enyim RTree</span><div class="bar-track"><i class="bar other" style="width:33.12%"></i></div><b>1.538</b></div>
-<div class="bar-row"><span>RTree</span><div class="bar-track"><i class="bar other" style="width:18.04%"></i></div><b>0.838</b></div>
+      <div class="benchmark-controls"><label for="comparison-fixture">Chart fixture</label><select id="comparison-fixture"><option value="100000/uniform">100,000 · uniform</option><option value="100000/clustered">100,000 · clustered</option><option value="10000/uniform">10,000 · uniform</option><option value="10000/clustered">10,000 · clustered</option><option value="1000/uniform">1,000 · uniform</option><option value="1000/clustered">1,000 · clustered</option></select><span>Five fresh processes per variant and fixture · median timings · all result IDs validated</span></div>
+      <div class="chart-grid" aria-live="polite">
+<figure class="bar-chart package-chart" data-operation="build"><figcaption><span data-fixture>100,000 uniform rectangles</span><strong>Build throughput</strong><small>M entries/s · higher is better</small></figcaption><div class="package-chart-rows">
+<div class="bar-row comparison-ours"><span>Tedd.RTree (C#)</span><div class="bar-track"><i class="bar ours" style="width:100.00%"></i></div><b>14.701</b></div>
+<div class="bar-row"><span>geo-index Hilbert (Rust)</span><div class="bar-track"><i class="bar other" style="width:97.15%"></i></div><b>14.282</b></div>
+<div class="bar-row"><span>geo-index STR (Rust)</span><div class="bar-track"><i class="bar other" style="width:95.90%"></i></div><b>14.099</b></div>
+<div class="bar-row"><span>static_aabb2d_index (Rust)</span><div class="bar-track"><i class="bar other" style="width:87.60%"></i></div><b>12.878</b></div>
 </div></figure>
-<figure class="bar-chart package-chart" data-operation="Query64"><figcaption><span data-fixture>10,000 uniform rectangles</span><strong>Query throughput</strong><small>M windows/s · higher is better</small></figcaption><div class="package-chart-rows">
-<div class="bar-row comparison-ours"><span>Tedd.RTree</span><div class="bar-track"><i class="bar ours" style="width:100.00%"></i></div><b>0.252</b></div>
-<div class="bar-row"><span>RBush</span><div class="bar-track"><i class="bar other" style="width:22.12%"></i></div><b>0.056</b></div>
-<div class="bar-row"><span>NTS STRtree</span><div class="bar-track"><i class="bar other" style="width:14.28%"></i></div><b>0.036</b></div>
-<div class="bar-row"><span>RTree</span><div class="bar-track"><i class="bar other" style="width:12.69%"></i></div><b>0.032</b></div>
-<div class="bar-row"><span>Enyim RTree</span><div class="bar-track"><i class="bar other" style="width:2.22%"></i></div><b>0.006</b></div>
+<figure class="bar-chart package-chart" data-operation="queries"><figcaption><span data-fixture>100,000 uniform rectangles</span><strong>Query throughput</strong><small>M windows/s · higher is better</small></figcaption><div class="package-chart-rows">
+<div class="bar-row comparison-ours"><span>Tedd.RTree (C#)</span><div class="bar-track"><i class="bar ours" style="width:100.00%"></i></div><b>0.074</b></div>
+<div class="bar-row"><span>static_aabb2d_index (Rust)</span><div class="bar-track"><i class="bar other" style="width:70.80%"></i></div><b>0.052</b></div>
+<div class="bar-row"><span>geo-index STR (Rust)</span><div class="bar-track"><i class="bar other" style="width:66.28%"></i></div><b>0.049</b></div>
+<div class="bar-row"><span>geo-index Hilbert (Rust)</span><div class="bar-track"><i class="bar other" style="width:45.00%"></i></div><b>0.033</b></div>
 </div></figure>
-      </div>
-<div class="results-panel"><div class="results-heading"><h3>All measured fixtures</h3><p>Mean ± sample standard deviation · managed allocation per operation</p></div><div class="table-scroll"><table class="package-results"><caption>Build and query time across five validated R-tree packages</caption><thead><tr><th scope="col">Entries</th><th scope="col">Distribution</th><th scope="col">Operation</th>
-<th scope="col">Tedd.RTree</th>
-<th scope="col">RBush</th>
-<th scope="col">NTS STRtree</th>
-<th scope="col">RTree</th>
-<th scope="col">Enyim RTree</th>
-</tr></thead><tbody>
-<tr><th scope="row">1,000</th><td>Uniform</td><td>Build</td>
-<td class="comparison-ours best">0.123 ± 0.004 ms<small>133.72 KiB allocated</small></td>
-<td class="">0.230 ± 0.001 ms<small>156.99 KiB allocated</small></td>
-<td class="">0.234 ± 0.049 ms<small>129.86 KiB allocated</small></td>
-<td class="">0.883 ± 0.025 ms<small>314.43 KiB allocated</small></td>
-<td class="">0.401 ± 0.011 ms<small>68.11 KiB allocated</small></td>
-</tr>
-<tr><th scope="row">1,000</th><td>Clustered</td><td>Build</td>
-<td class="comparison-ours best">0.114 ± 0.003 ms<small>133.72 KiB allocated</small></td>
-<td class="">0.325 ± 0.005 ms<small>156.99 KiB allocated</small></td>
-<td class="">0.364 ± 0.005 ms<small>129.86 KiB allocated</small></td>
-<td class="">0.618 ± 0.019 ms<small>313.09 KiB allocated</small></td>
-<td class="">0.377 ± 0.004 ms<small>68.11 KiB allocated</small></td>
-</tr>
-<tr><th scope="row">10,000</th><td>Uniform</td><td>Build</td>
-<td class="comparison-ours best">2.153 ± 0.081 ms<small>1,308.81 KiB allocated</small></td>
-<td class="">5.811 ± 0.126 ms<small>2,165.52 KiB allocated</small></td>
-<td class="">4.959 ± 0.291 ms<small>1,399.61 KiB allocated</small></td>
-<td class="">11.937 ± 0.627 ms<small>3,023.33 KiB allocated</small></td>
-<td class="">6.501 ± 0.376 ms<small>862.78 KiB allocated</small></td>
-</tr>
-<tr><th scope="row">10,000</th><td>Clustered</td><td>Build</td>
-<td class="comparison-ours best">2.226 ± 0.046 ms<small>1,308.81 KiB allocated</small></td>
-<td class="">5.803 ± 0.309 ms<small>2,165.52 KiB allocated</small></td>
-<td class="">4.390 ± 0.011 ms<small>1,399.61 KiB allocated</small></td>
-<td class="">11.539 ± 0.247 ms<small>3,018.80 KiB allocated</small></td>
-<td class="">5.657 ± 0.256 ms<small>862.78 KiB allocated</small></td>
-</tr>
-<tr class="table-divider"><th scope="row">1,000</th><td>Uniform</td><td>64 queries</td>
-<td class="comparison-ours best">29.290 ± 3.099 µs<small>50.67 KiB allocated</small></td>
-<td class="">81.347 ± 1.327 µs<small>108.04 KiB allocated</small></td>
-<td class="">68.640 ± 4.009 µs<small>50.67 KiB allocated</small></td>
-<td class="">120.743 ± 2.025 µs<small>56.67 KiB allocated</small></td>
-<td class="">793.258 ± 61.230 µs<small>116.62 KiB allocated</small></td>
-</tr>
-<tr><th scope="row">1,000</th><td>Clustered</td><td>64 queries</td>
-<td class="comparison-ours best">25.580 ± 1.622 µs<small>55.02 KiB allocated</small></td>
-<td class="">75.435 ± 1.331 µs<small>117.44 KiB allocated</small></td>
-<td class="">84.799 ± 1.431 µs<small>55.02 KiB allocated</small></td>
-<td class="">114.663 ± 3.932 µs<small>61.02 KiB allocated</small></td>
-<td class="">1076.541 ± 18.530 µs<small>129.25 KiB allocated</small></td>
-</tr>
-<tr><th scope="row">10,000</th><td>Uniform</td><td>64 queries</td>
-<td class="comparison-ours best">253.936 ± 3.108 µs<small>702.32 KiB allocated</small></td>
-<td class="">1148.046 ± 34.031 µs<small>1,509.62 KiB allocated</small></td>
-<td class="">1777.963 ± 19.346 µs<small>702.32 KiB allocated</small></td>
-<td class="">2001.055 ± 104.507 µs<small>708.32 KiB allocated</small></td>
-<td class="">11443.148 ± 210.574 µs<small>1,435.88 KiB allocated</small></td>
-</tr>
-<tr><th scope="row">10,000</th><td>Clustered</td><td>64 queries</td>
-<td class="comparison-ours best">197.635 ± 5.934 µs<small>634.80 KiB allocated</small></td>
-<td class="">959.356 ± 21.793 µs<small>1,377.21 KiB allocated</small></td>
-<td class="">1352.807 ± 84.770 µs<small>634.80 KiB allocated</small></td>
-<td class="">1731.322 ± 49.235 µs<small>640.80 KiB allocated</small></td>
-<td class="">11627.599 ± 604.620 µs<small>1,297.76 KiB allocated</small></td>
-</tr>
+</div>
+      <div class="results-panel"><div class="results-heading"><h3>All measured fixtures</h3><p>Median elapsed time · lower is better</p></div><div class="table-scroll"><table class="package-results"><caption>Current mutable-tree and Rust comparison, measured 17 October 2026</caption><thead><tr><th scope="col">Entries</th><th scope="col">Distribution</th><th scope="col">Operation</th><th scope="col">Tedd.RTree (C#)</th><th scope="col">static_aabb2d_index (Rust)</th><th scope="col">geo-index Hilbert (Rust)</th><th scope="col">geo-index STR (Rust)</th></tr></thead><tbody>
+<tr><th scope="row">1,000</th><td>Uniform</td><td>Bulk build</td><td class="comparison-ours ">0.038 ms</td><td class="best">0.017 ms</td><td class="">0.042 ms</td><td class="">0.034 ms</td></tr>
+<tr><th scope="row">1,000</th><td>Uniform</td><td>64 queries</td><td class="comparison-ours ">15.13 µs</td><td class="best">11.72 µs</td><td class="">27.88 µs</td><td class="">28.30 µs</td></tr>
+<tr><th scope="row">1,000</th><td>Clustered</td><td>Bulk build</td><td class="comparison-ours ">0.036 ms</td><td class="best">0.020 ms</td><td class="">0.042 ms</td><td class="">0.034 ms</td></tr>
+<tr><th scope="row">1,000</th><td>Clustered</td><td>64 queries</td><td class="comparison-ours best">9.72 µs</td><td class="">10.43 µs</td><td class="">26.45 µs</td><td class="">26.48 µs</td></tr>
+<tr><th scope="row">10,000</th><td>Uniform</td><td>Bulk build</td><td class="comparison-ours best">0.422 ms</td><td class="">0.562 ms</td><td class="">0.627 ms</td><td class="">0.588 ms</td></tr>
+<tr><th scope="row">10,000</th><td>Uniform</td><td>64 queries</td><td class="comparison-ours best">77.38 µs</td><td class="">78.40 µs</td><td class="">128.47 µs</td><td class="">137.32 µs</td></tr>
+<tr><th scope="row">10,000</th><td>Clustered</td><td>Bulk build</td><td class="comparison-ours best">0.445 ms</td><td class="">0.526 ms</td><td class="">0.608 ms</td><td class="">0.564 ms</td></tr>
+<tr><th scope="row">10,000</th><td>Clustered</td><td>64 queries</td><td class="comparison-ours best">52.16 µs</td><td class="">68.03 µs</td><td class="">108.26 µs</td><td class="">108.38 µs</td></tr>
+<tr><th scope="row">100,000</th><td>Uniform</td><td>Bulk build</td><td class="comparison-ours best">6.802 ms</td><td class="">7.765 ms</td><td class="">7.002 ms</td><td class="">7.093 ms</td></tr>
+<tr><th scope="row">100,000</th><td>Uniform</td><td>64 queries</td><td class="comparison-ours best">865.46 µs</td><td class="">1222.33 µs</td><td class="">1923.11 µs</td><td class="">1305.84 µs</td></tr>
+<tr><th scope="row">100,000</th><td>Clustered</td><td>Bulk build</td><td class="comparison-ours best">6.289 ms</td><td class="">6.733 ms</td><td class="">6.798 ms</td><td class="">6.664 ms</td></tr>
+<tr><th scope="row">100,000</th><td>Clustered</td><td>64 queries</td><td class="comparison-ours best">809.63 µs</td><td class="">1276.31 µs</td><td class="">1360.77 µs</td><td class="">1662.74 µs</td></tr>
 </tbody></table></div></div>
-      <p class="benchmark-method">30 September 2026 · AMD Ryzen 9 5950X · Windows 11 · .NET 10.0.12 · BenchmarkDotNet 0.15.8 · one launch, three warm-ups and three measured iterations. Fixed seed 73211; integer-valued bounds; 64 windows with widths 0, 20, 200 and 1,000 units. Input geometry and package adapters are prepared outside timing. Every query's result IDs are checked against brute force before measurement. These results describe this fixture; small differences require further measurement.</p>
-      <p class="benchmark-method">Tedd.RTree, RBush 4.0.0, Enyim.Collections.RTree 1.0.5 and NetTopologySuite 2.6.0 use bulk construction. RTree 1.1.0 uses incremental insertion, with the 2D data embedded at z = 0 in its 3D float index. Node capacity is 16. STRtree does not accept inserts after build. Enyim targets .NET Framework and its published binary has optimizations disabled; it passed the .NET 10 checks and is measured as distributed. The concurrent wrappers have <a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/CONCURRENCY.md">separate measurements</a>.</p>
-      <div class="comparison-exclusion"><strong>SharpTrees 1.0.6: excluded from timing</strong><p>Its first uniform 1,000-entry validation returned 39 matches where brute force found 40, omitting ID 942. The package is included in the reproducible validation probe, but incorrect result sets are not ranked as faster queries.</p></div>
-      <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PACKAGE-COMPARISON.md">Method, package list and validation ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/package-comparison/PackageComparisonBenchmarks-report.csv">Raw BenchmarkDotNet CSV ↗</a><a href="assets/package-comparison.json">Chart data ↗</a></div>
+      <p class="benchmark-method">17 October 2026 · Ryzen 9 5950X · Windows 11 · .NET 10.0.13 · Rust 1.93.1 · one CPU affinity · node capacity 16. Six deterministic fixtures; 64 windows with widths 0, 20, 200 and 1,000. Five fresh-process blocks per variant, calibrated to at least 100 ms. Queries materialize and consume every result ID. Tedd reuses a result list. Aggregate medians are computed from each process’s sum of four query groups.</p>
+      <p class="benchmark-method">Competitors receive native CPU optimization, thin LTO, and preallocated scratch/output where their APIs permit. Each cell uses the lower whole-workload median of direct Rust and optimized interop execution. Short, allocation-free interop calls suppress GC transitions; direct Rust removes interop entirely. Rust indexes are immutable; Tedd supports inserts, removals, and moves after bulk loading. Native builds include destruction; managed reclamation occurs through GC.</p>
+      <p class="benchmark-method">At 100,000 entries, bulk loading is 4.18–4.40× faster and aggregate queries 1.72–2.01× faster than the previous Tedd implementation. Tedd has the lowest aggregate query median in five of six fixtures; the 10,000-uniform margin is only about 1%. Static-index selective queries can be faster. Measured move batches regressed by up to 14%; post-move queries improved in every fixture. These fixtures do not establish a universal fastest index or steady-state update throughput.</p>
+      <div class="evidence-links"><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/MUTABLE-PACKED.md">Method, ranges and pinned sources ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/results/mutable-packed/confirmation/summary.csv">Full timing CSV ↗</a><a href="assets/mutable-packed.json">Chart data ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/CROSS-LANGUAGE.md">Earlier C, C++, Go and JavaScript screening ↗</a><a href="https://github.com/tedd/Tedd.RTree/blob/main/benchmarks/PACKAGE-COMPARISON.md">Earlier .NET package comparison ↗</a></div>
 
       <div class="coordinate-benchmark">
         <h3>Coordinate type comparison</h3>

@@ -21,7 +21,7 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
 
 const fixtureSelect = document.getElementById("comparison-fixture");
 if (fixtureSelect) {
-  const dataRequest = fetch("assets/package-comparison.json").then((response) => {
+  const dataRequest = fetch("assets/mutable-packed.json").then((response) => {
     if (!response.ok) throw new Error("Comparison data unavailable");
     return response.json();
   });
@@ -32,21 +32,20 @@ if (fixtureSelect) {
       const data = await dataRequest;
       const [sizeText, distribution] = fixtureSelect.value.split("/");
       const size = Number(sizeText);
-      const labels = { NetTopologySuite: "NTS STRtree", "Enyim.Collections.RTree": "Enyim RTree" };
       document.querySelectorAll(".package-chart").forEach((chart) => {
         const operation = chart.dataset.operation;
-        const rows = data.results.filter((row) => row.size === size && row.distribution === distribution && row.operation === operation).sort((a, b) => a.meanNs - b.meanNs);
-        const units = operation === "Build" ? size : 64;
-        const peak = units * 1e9 / rows[0].meanNs;
+        const rows = data.results.filter((row) => row.size === size && row.distribution === distribution && row.operation === operation).sort((a, b) => a.medianUs - b.medianUs);
+        const units = operation === "build" ? size : 64;
+        const peak = units / rows[0].medianUs;
         chart.querySelector("[data-fixture]").textContent = `${size.toLocaleString("en-GB")} ${distribution.toLowerCase()} rectangles`;
         const container = chart.querySelector(".package-chart-rows");
         container.replaceChildren(...rows.map((row) => {
-          const own = row.library === "Tedd.RTree";
-          const rate = units * 1e9 / row.meanNs;
+          const own = row.library === "candidate";
+          const rate = units / row.medianUs;
           const element = document.createElement("div");
           element.className = `bar-row${own ? " comparison-ours" : ""}`;
           const name = document.createElement("span");
-          name.textContent = labels[row.library] || row.library;
+          name.textContent = row.label;
           const track = document.createElement("div");
           track.className = "bar-track";
           const bar = document.createElement("i");
@@ -54,7 +53,7 @@ if (fixtureSelect) {
           bar.style.width = `${rate / peak * 100}%`;
           track.append(bar);
           const value = document.createElement("b");
-          value.textContent = (rate / 1e6).toFixed(3);
+          value.textContent = rate.toFixed(3);
           element.append(name, track, value);
           return element;
         }));
