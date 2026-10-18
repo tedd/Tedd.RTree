@@ -1,0 +1,191 @@
+{
+  "fixture": "10,000 rectangles, uniform, 64 mixed intersection queries",
+  "updated": "2026-10-18",
+  "units": {
+    "query": "milliseconds per 64-query aggregate",
+    "build": "milliseconds per index",
+    "queryThroughput": "thousands of queries per second",
+    "buildThroughput": "millions of entries per second"
+  },
+  "series": {
+    "A": "17 Oct 2026 optimized confirmation: five-process medians; best whole-workload Rust direct/interop modes.",
+    "B": "17 Oct 2026 cross-language screening: five-process medians.",
+    "C": "30 Sep 2026 NuGet comparison: BenchmarkDotNet ShortRun means."
+  },
+  "caveat": "Latest available per implementation. Different runs, source revisions, runtime settings, allocation contracts and construction APIs; not a single controlled experiment. Rust static/geo indexes are immutable. The latest Tedd/static aggregate query difference is small. Enyim uses its unoptimized published binary.",
+  "rows": [
+    {
+      "label": "Tedd.RTree (C#)",
+      "queryMs": 0.07737680206298829,
+      "buildMs": 0.422340234375,
+      "queryDisplay": "0.077",
+      "buildDisplay": "0.422",
+      "queryMode": "candidate",
+      "buildMode": "candidate",
+      "series": "A",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 827.1212856264212,
+      "buildMPerSecond": 23.67759258077435
+    },
+    {
+      "label": "static_aabb2d_index (Rust)",
+      "queryMs": 0.07840012817382812,
+      "buildMs": 0.561926953125,
+      "queryDisplay": "0.078",
+      "buildDisplay": "0.562",
+      "queryMode": "native-static",
+      "buildMode": "interop-static",
+      "series": "A",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 816.3251960264622,
+      "buildMPerSecond": 17.79590735839915
+    },
+    {
+      "label": "Boost.Geometry visitor (C++)",
+      "queryMs": 0.120886968994124,
+      "buildMs": 1.6346671875,
+      "queryDisplay": "0.121",
+      "buildDisplay": "1.635",
+      "series": "B",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 529.420172683053,
+      "buildMPerSecond": 6.117453189534949
+    },
+    {
+      "label": "geo-index Hilbert (Rust)",
+      "queryMs": 0.1284669219970703,
+      "buildMs": 0.6272023437500001,
+      "queryDisplay": "0.128",
+      "buildDisplay": "0.627",
+      "queryMode": "native-geo-hilbert",
+      "buildMode": "native-geo-hilbert",
+      "series": "A",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 498.18271509190146,
+      "buildMPerSecond": 15.943817971423195
+    },
+    {
+      "label": "geo-index STR (Rust)",
+      "queryMs": 0.13731854553222655,
+      "buildMs": 0.5882449218749999,
+      "queryDisplay": "0.137",
+      "buildDisplay": "0.588",
+      "queryMode": "native-geo-str",
+      "buildMode": "native-geo-str",
+      "series": "A",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 466.0696029945947,
+      "buildMPerSecond": 16.99972176236647
+    },
+    {
+      "label": "Tidwall rtree.c (C)",
+      "queryMs": 0.14099013824512,
+      "buildMs": 0.89490234375,
+      "queryDisplay": "0.141",
+      "buildDisplay": "0.895",
+      "series": "B",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 453.93245794774725,
+      "buildMPerSecond": 11.17440363168118
+    },
+    {
+      "label": "Superliminal RTree (C++)",
+      "queryMs": 0.23437600250194002,
+      "buildMs": 6.1505656250000005,
+      "queryDisplay": "0.234",
+      "buildDisplay": "6.151",
+      "series": "B",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 273.06549867224675,
+      "buildMPerSecond": 1.6258667266882465
+    },
+    {
+      "label": "Tidwall rtree (Go)",
+      "queryMs": 0.24335386962912,
+      "buildMs": 1.8817703125,
+      "queryDisplay": "0.243",
+      "buildDisplay": "1.882",
+      "series": "B",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 262.99150326862804,
+      "buildMPerSecond": 5.3141448419996795
+    },
+    {
+      "label": "rstar bulk (Rust)",
+      "queryMs": 0.26304729080200195,
+      "buildMs": 2.8607593749999998,
+      "queryDisplay": "0.263",
+      "buildDisplay": "2.861",
+      "series": "B",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 243.30225871124205,
+      "buildMPerSecond": 3.4955753662434472
+    },
+    {
+      "label": "Boost.Geometry packed (C++)",
+      "queryMs": 0.29509798583986996,
+      "buildMs": 1.6556312499999999,
+      "queryDisplay": "0.295",
+      "buildDisplay": "1.656",
+      "series": "B",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 216.8771156395779,
+      "buildMPerSecond": 6.039992299009819
+    },
+    {
+      "label": "Flatbush (JavaScript)",
+      "queryMs": 0.2966294555664058,
+      "buildMs": 1.4244265624999999,
+      "queryDisplay": "0.297",
+      "buildDisplay": "1.424",
+      "series": "B",
+      "measurementDate": "2026-10-17",
+      "queryKPerSecond": 215.75739967493706,
+      "buildMPerSecond": 7.020368942326573
+    },
+    {
+      "label": "RBush 4.0.0 (C#)",
+      "queryMs": 1.1480455403645833,
+      "buildMs": 5.811384895833333,
+      "queryDisplay": "1.148",
+      "buildDisplay": "5.811",
+      "series": "C",
+      "measurementDate": "2026-09-30",
+      "queryKPerSecond": 55.74691747826973,
+      "buildMPerSecond": 1.7207602282839387
+    },
+    {
+      "label": "NTS STRtree 2.6.0 (C#)",
+      "queryMs": 1.7779634765625,
+      "buildMs": 4.958543880208333,
+      "queryDisplay": "1.778",
+      "buildDisplay": "4.959",
+      "series": "C",
+      "measurementDate": "2026-09-30",
+      "queryKPerSecond": 35.9962399923631,
+      "buildMPerSecond": 2.0167210861870704
+    },
+    {
+      "label": "RTree 1.1.0 (C#)",
+      "queryMs": 2.0010548828125,
+      "buildMs": 11.937402083333334,
+      "queryDisplay": "2.001",
+      "buildDisplay": "11.937",
+      "series": "C",
+      "measurementDate": "2026-09-30",
+      "queryKPerSecond": 31.983130772529062,
+      "buildMPerSecond": 0.8377032062915699
+    },
+    {
+      "label": "Enyim.Collections.RTree 1.0.5 (C#)",
+      "queryMs": 11.4431484375,
+      "buildMs": 6.500654427083333,
+      "queryDisplay": "11.443",
+      "buildDisplay": "6.501",
+      "series": "C",
+      "measurementDate": "2026-09-30",
+      "queryKPerSecond": 5.592866364493491,
+      "buildMPerSecond": 1.5383066600706428
+    }
+  ]
+}
