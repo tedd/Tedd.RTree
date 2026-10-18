@@ -1,0 +1,622 @@
+--- a/src/Tedd.RTree/HilbertOrder.cs
++++ b/src/Tedd.RTree/HilbertOrder.cs
+@@ -1,3 +1,5 @@
++using System.Runtime.Intrinsics;
++
+ namespace Tedd.RTree;
+ 
+ // Fast 16-bit Hilbert transform, derived from the public-domain algorithm by
+@@ -62,4 +64,36 @@
+         x = (x | (x << 2)) & 0x33333333;
+         return (x | (x << 1)) & 0x55555555;
+     }
++    internal static Vector256<uint> Encode(Vector256<uint> x, Vector256<uint> y)
++    {
++        Vector256<uint> a = x ^ y, b = Vector256.Create(0xFFFFu) ^ a, c = Vector256.Create(0xFFFFu) ^ (x | y), d = x & (y ^ Vector256.Create(0xFFFFu));
++        Vector256<uint> A = a | (b >> 1), B = (a >> 1) ^ a;
++        Vector256<uint> C = ((c >> 1) ^ (b & (d >> 1))) ^ c;
++        Vector256<uint> D = ((a & (c >> 1)) ^ (d >> 1)) ^ d;
++        a = A; b = B; c = C; d = D;
++        A = (a & (a >> 2)) ^ (b & (b >> 2));
++        B = (a & (b >> 2)) ^ (b & ((a ^ b) >> 2));
++        C ^= (a & (c >> 2)) ^ (b & (d >> 2));
++        D ^= (b & (c >> 2)) ^ ((a ^ b) & (d >> 2));
++        a = A; b = B; c = C; d = D;
++        A = (a & (a >> 4)) ^ (b & (b >> 4));
++        B = (a & (b >> 4)) ^ (b & ((a ^ b) >> 4));
++        C ^= (a & (c >> 4)) ^ (b & (d >> 4));
++        D ^= (b & (c >> 4)) ^ ((a ^ b) & (d >> 4));
++        a = A; b = B; c = C; d = D;
++        C ^= (a & (c >> 8)) ^ (b & (d >> 8));
++        D ^= (b & (c >> 8)) ^ ((a ^ b) & (d >> 8));
++        a = C ^ (C >> 1); b = D ^ (D >> 1);
++        Vector256<uint> i0 = x ^ y, i1 = b | (Vector256.Create(0xFFFFu) ^ (i0 | a));
++        i0 = Spread(i0); i1 = Spread(i1);
++        return (i1 << 1) | i0;
++    }
++
++    private static Vector256<uint> Spread(Vector256<uint> x)
++    {
++        x = (x | (x << 8)) & Vector256.Create(0x00FF00FFu);
++        x = (x | (x << 4)) & Vector256.Create(0x0F0F0F0Fu);
++        x = (x | (x << 2)) & Vector256.Create(0x33333333u);
++        return (x | (x << 1)) & Vector256.Create(0x55555555u);
++    }
+ }
+--- a/src/Tedd.RTree/RTree.cs
++++ b/src/Tedd.RTree/RTree.cs
+@@ -1,14 +1,18 @@
++using System.Runtime.Intrinsics;
++
+ namespace Tedd.RTree;
+ 
+ /// <summary>A mutable two-dimensional R-tree with incremental updates and packed bulk loading.</summary>
+ /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
+ public sealed class RTree<T>
+ {
+-    private sealed class Node(bool leaf, int capacity)
+-    {
+-        // Leaves never carry child references; branches never carry user values.
++    private sealed class Node(bool leaf, int capacity, T[]? packedValues = null, int valueStart = 0)
++    {
++        // Packed nodes share contiguous values; mutation detaches only the affected leaf.
+         internal readonly Rectangle[] Boxes = new Rectangle[capacity + 1];
+-        internal readonly T[]? Values = leaf ? new T[capacity + 1] : null;
++        internal T[]? Values = packedValues ?? (leaf ? new T[capacity + 1] : null);
++        internal int ValueStart = valueStart;
++        internal int PackedCount;
+         internal readonly Node?[]? Children = leaf ? null : new Node?[capacity + 1];
+         internal readonly bool Leaf = leaf;
+         internal int Count;
+@@ -141,7 +145,26 @@
+         double width = extent.MaxX * 0.5 - minX, height = extent.MaxY * 0.5 - minY;
+         double scaleX = width > 0 ? 65535 / width : 0, scaleY = height > 0 ? 65535 / height : 0;
+         bool finiteScaleX = double.IsFinite(scaleX), finiteScaleY = double.IsFinite(scaleY);
+-        for (int i = 0; i < itemCount; i++)
++        Span<uint> xs = stackalloc uint[8], ys = stackalloc uint[8];
++        int vectorCount = Vector256.IsHardwareAccelerated ? itemCount & ~7 : 0;
++        for (int first = 0; first < vectorCount; first += 8)
++        {
++            for (int lane = 0; lane < 8; lane++)
++            {
++                int index = first + lane;
++            Rectangle b = items[index].Bounds;
++            double x = (b.MinX * 0.25 + b.MaxX * 0.25 - minX);
++            double y = (b.MinY * 0.25 + b.MaxY * 0.25 - minY);
++            // Sort-key rounding cannot change stored bounds or intersection semantics. Retain
++            // division for subnormal extents whose reciprocal scale cannot be represented.
++            uint ix = width > 0 ? (uint)Math.Clamp(finiteScaleX ? x * scaleX : x / width * 65535, 0, 65535) : 0;
++            uint iy = height > 0 ? (uint)Math.Clamp(finiteScaleY ? y * scaleY : y / height * 65535, 0, 65535) : 0;
++            xs[lane] = ix; ys[lane] = iy;
++            order[index] = index;
++            }
++            HilbertOrder.Encode(Vector256.Create(xs), Vector256.Create(ys)).CopyTo(keys.Slice(first, 8));
++        }
++        for (int i = vectorCount; i < itemCount; i++)
+         {
+             Rectangle b = items[i].Bounds;
+             double x = (b.MinX * 0.25 + b.MaxX * 0.25 - minX);
+@@ -161,16 +184,18 @@
+             Span<int> scatter = workspace is null ? new int[itemCount] : workspace.HilbertScatter(itemCount);
+             HilbertOrder.SortIndices(keys, order, scatter);
+         }
++        T[] packedValues = new T[itemCount];
+         Node[] level = new Node[(itemCount - 1) / _capacity + 1];
+         for (int n = 0, start = 0; n < level.Length; n++, start += _capacity)
+         {
+-            Node node = new(true, _capacity);
++            Node node = new(true, _capacity, packedValues, start);
+             int end = Math.Min(start + _capacity, itemCount);
+             for (int i = start; i < end; i++)
+             {
+                 SpatialEntry<T> item = items[order[i]];
+                 Add(node, new Entry(item.Bounds, null, item.Item));
+             }
++            node.PackedCount = node.Count;
+             level[n] = node;
+         }
+         while (level.Length > 1)
+@@ -182,6 +207,9 @@
+                 int end = Math.Min(start + _capacity, level.Length);
+                 for (int i = start; i < end; i++)
+                     Add(parent, new Entry(level[i].Bounds, level[i], default!));
++                parent.Values = packedValues;
++                parent.ValueStart = level[start].ValueStart;
++                parent.PackedCount = level[end - 1].ValueStart + level[end - 1].PackedCount - parent.ValueStart;
+                 parents[n] = parent;
+             }
+             level = parents;
+@@ -196,7 +224,7 @@
+         ArgumentNullException.ThrowIfNull(results);
+         if (_root.Count == 0 || !_root.Bounds.Intersects(bounds))
+             return 0;
+-        return Search(_root, bounds, results);
++        return _root.PackedCount != 0 && bounds.Contains(_root.Bounds) ? CollectValues(_root, results) : Search(_root, bounds, results);
+     }
+ 
+     /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+@@ -244,10 +272,11 @@
+ 
+     private static int CollectValues(Node node, List<T> results)
+     {
+-        if (node.Leaf)
+-        {
+-            results.AddRange(node.Values!.AsSpan(0, node.Count));
+-            return node.Count;
++        if (node.Leaf || node.PackedCount != 0)
++        {
++            int count = node.Leaf ? node.Count : node.PackedCount;
++            results.AddRange(node.Values!.AsSpan(node.ValueStart, count));
++            return count;
+         }
+         int found = 0;
+         for (int i = 0; i < node.Count; i++) found += CollectValues(node.Children![i]!, results);
+@@ -266,7 +295,7 @@
+                 ref readonly Rectangle entry = ref entries[i];
+                 if (entry.Intersects(bounds))
+                 {
+-                    results.Add(node.Values![i]);
++                    results.Add(node.Values![node.ValueStart + i]);
+                     found++;
+                 }
+             }
+@@ -310,6 +339,7 @@
+             if (!node.Boxes[i].Contains(bounds)) continue;
+             Node child = node.Children![i]!;
+             if (!Remove(child, bounds, item, reinserts)) continue;
++            if (node.PackedCount != 0) MakeWritable(node);
+             if (child.Count < _minimum)
+             {
+                 CollectLeafEntries(child, reinserts);
+@@ -325,6 +355,7 @@
+ 
+     private static void RemoveAt(Node node, int index)
+     {
++        if (node.PackedCount != 0) MakeWritable(node);
+         int last = --node.Count;
+         if (index != last)
+         {
+@@ -355,6 +386,10 @@
+         if (node.Leaf)
+         {
+             for (int i = 0; i < node.Count; i++) entries.Add(ReadEntry(node, i));
++            // This entire subtree is discarded after collecting its entries.
++            // Release shared slots even for leaves never individually mutated.
++            if (node.PackedCount != 0)
++                node.Values!.AsSpan(node.ValueStart, node.Count).Clear();
+         }
+         else
+         {
+@@ -364,6 +399,7 @@
+ 
+     private void Insert(Node node, Entry entry, out Node? sibling)
+     {
++        if (node.PackedCount != 0) MakeWritable(node);
+         if (node.Leaf)
+         {
+             Add(node, entry);
+@@ -490,16 +526,33 @@
+         return after > before ? after - before : 0;
+     }
+ 
++    private static void MakeWritable(Node node)
++    {
++        if (node.Leaf)
++        {
++            T[] values = new T[node.Boxes.Length];
++            Span<T> original = node.Values!.AsSpan(node.ValueStart, node.Count);
++            original.CopyTo(values);
++            // Every ancestor range is invalidated by the mutating path. No live range
++            // overlaps this detached leaf; clear its old slots to release references.
++            original.Clear();
++            node.Values = values;
++            node.ValueStart = 0;
++        }
++        else node.Values = null;
++        node.PackedCount = 0;
++    }
++
+     private static void Add(Node node, Entry entry)
+     {
+         int index = node.Count++;
+         node.Boxes[index] = entry.Bounds;
+-        if (node.Leaf) node.Values![index] = entry.Value;
++        if (node.Leaf) node.Values![node.ValueStart + index] = entry.Value;
+         else node.Children![index] = entry.Child;
+         node.Bounds = node.Count == 1 ? entry.Bounds : Rectangle.Union(node.Bounds, entry.Bounds);
+     }
+ 
+     private static Entry ReadEntry(Node node, int index) =>
+-        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![index] : default!);
++        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![node.ValueStart + index] : default!);
+ 
+ }
+--- a/src/Tedd.RTree/RTree2D.Generic.cs
++++ b/src/Tedd.RTree/RTree2D.Generic.cs
+@@ -1,3 +1,5 @@
++using System.Runtime.Intrinsics;
++
+ using System.Runtime.CompilerServices;
+ using System.Numerics;
+ 
+@@ -8,11 +10,13 @@
+ public sealed class RTree2D<TCoordinate, T>
+     where TCoordinate : struct, INumber<TCoordinate>
+ {
+-    private sealed class Node(bool leaf, int capacity)
+-    {
+-        // Leaves never carry child references; branches never carry user values.
++    private sealed class Node(bool leaf, int capacity, T[]? packedValues = null, int valueStart = 0)
++    {
++        // Packed nodes share contiguous values; mutation detaches only the affected leaf.
+         internal readonly Rectangle2D<TCoordinate>[] Boxes = new Rectangle2D<TCoordinate>[capacity + 1];
+-        internal readonly T[]? Values = leaf ? new T[capacity + 1] : null;
++        internal T[]? Values = packedValues ?? (leaf ? new T[capacity + 1] : null);
++        internal int ValueStart = valueStart;
++        internal int PackedCount;
+         internal readonly Node?[]? Children = leaf ? null : new Node?[capacity + 1];
+         internal readonly bool Leaf = leaf;
+         internal int Count;
+@@ -146,7 +150,20 @@
+         for (int i = 0; i < itemCount; i++) extent = Rectangle2D<TCoordinate>.Union(extent, items[i].Bounds);
+         var axisX = new SpatialKeyAxis<TCoordinate>(extent.MinX, extent.MaxX, 65535);
+         var axisY = new SpatialKeyAxis<TCoordinate>(extent.MinY, extent.MaxY, 65535);
+-        for (int i = 0; i < itemCount; i++)
++        Span<uint> xs = stackalloc uint[8], ys = stackalloc uint[8];
++        int vectorCount = Vector256.IsHardwareAccelerated ? itemCount & ~7 : 0;
++        for (int first = 0; first < vectorCount; first += 8)
++        {
++            for (int lane = 0; lane < 8; lane++)
++            {
++                int index = first + lane;
++            Rectangle2D<TCoordinate> b = items[index].Bounds;
++            xs[lane] = axisX.Center(b.MinX, b.MaxX); ys[lane] = axisY.Center(b.MinY, b.MaxY);
++            order[index] = index;
++            }
++            HilbertOrder.Encode(Vector256.Create(xs), Vector256.Create(ys)).CopyTo(keys.Slice(first, 8));
++        }
++        for (int i = vectorCount; i < itemCount; i++)
+         {
+             Rectangle2D<TCoordinate> b = items[i].Bounds;
+             keys[i] = HilbertOrder.Encode(axisX.Center(b.MinX, b.MaxX), axisY.Center(b.MinY, b.MaxY));
+@@ -160,16 +177,18 @@
+             Span<int> scatter = workspace is null ? new int[itemCount] : workspace.HilbertScatter(itemCount);
+             HilbertOrder.SortIndices(keys, order, scatter);
+         }
++        T[] packedValues = new T[itemCount];
+         Node[] level = new Node[(itemCount - 1) / _capacity + 1];
+         for (int n = 0, start = 0; n < level.Length; n++, start += _capacity)
+         {
+-            Node node = new(true, _capacity);
++            Node node = new(true, _capacity, packedValues, start);
+             int end = Math.Min(start + _capacity, itemCount);
+             for (int i = start; i < end; i++)
+             {
+                 SpatialEntry2D<TCoordinate, T> item = items[order[i]];
+                 Add(node, new Entry(item.Bounds, null, item.Item));
+             }
++            node.PackedCount = node.Count;
+             level[n] = node;
+         }
+         while (level.Length > 1)
+@@ -181,6 +200,9 @@
+                 int end = Math.Min(start + _capacity, level.Length);
+                 for (int i = start; i < end; i++)
+                     Add(parent, new Entry(level[i].Bounds, level[i], default!));
++                parent.Values = packedValues;
++                parent.ValueStart = level[start].ValueStart;
++                parent.PackedCount = level[end - 1].ValueStart + level[end - 1].PackedCount - parent.ValueStart;
+                 parents[n] = parent;
+             }
+             level = parents;
+@@ -195,7 +217,7 @@
+         ArgumentNullException.ThrowIfNull(results);
+         if (_root.Count == 0 || !_root.Bounds.Intersects(bounds))
+             return 0;
+-        return Search(_root, bounds, results);
++        return _root.PackedCount != 0 && bounds.Contains(_root.Bounds) ? CollectValues(_root, results) : Search(_root, bounds, results);
+     }
+ 
+     /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+@@ -243,10 +265,11 @@
+ 
+     private static int CollectValues(Node node, List<T> results)
+     {
+-        if (node.Leaf)
+-        {
+-            results.AddRange(node.Values!.AsSpan(0, node.Count));
+-            return node.Count;
++        if (node.Leaf || node.PackedCount != 0)
++        {
++            int count = node.Leaf ? node.Count : node.PackedCount;
++            results.AddRange(node.Values!.AsSpan(node.ValueStart, count));
++            return count;
+         }
+         int found = 0;
+         for (int i = 0; i < node.Count; i++) found += CollectValues(node.Children![i]!, results);
+@@ -265,7 +288,7 @@
+                 ref readonly Rectangle2D<TCoordinate> entry = ref entries[i];
+                 if (entry.Intersects(bounds))
+                 {
+-                    results.Add(node.Values![i]);
++                    results.Add(node.Values![node.ValueStart + i]);
+                     found++;
+                 }
+             }
+@@ -309,6 +332,7 @@
+             if (!node.Boxes[i].Contains(bounds)) continue;
+             Node child = node.Children![i]!;
+             if (!Remove(child, bounds, item, reinserts)) continue;
++            if (node.PackedCount != 0) MakeWritable(node);
+             if (child.Count < _minimum)
+             {
+                 CollectLeafEntries(child, reinserts);
+@@ -324,6 +348,7 @@
+ 
+     private static void RemoveAt(Node node, int index)
+     {
++        if (node.PackedCount != 0) MakeWritable(node);
+         int last = --node.Count;
+         if (index != last)
+         {
+@@ -354,6 +379,10 @@
+         if (node.Leaf)
+         {
+             for (int i = 0; i < node.Count; i++) entries.Add(ReadEntry(node, i));
++            // This entire subtree is discarded after collecting its entries.
++            // Release shared slots even for leaves never individually mutated.
++            if (node.PackedCount != 0)
++                node.Values!.AsSpan(node.ValueStart, node.Count).Clear();
+         }
+         else
+         {
+@@ -363,6 +392,7 @@
+ 
+     private void Insert(Node node, Entry entry, out Node? sibling)
+     {
++        if (node.PackedCount != 0) MakeWritable(node);
+         if (node.Leaf)
+         {
+             Add(node, entry);
+@@ -489,16 +519,33 @@
+         return after > before ? after - before : SpatialMeasure<TCoordinate>.Zero;
+     }
+ 
++    private static void MakeWritable(Node node)
++    {
++        if (node.Leaf)
++        {
++            T[] values = new T[node.Boxes.Length];
++            Span<T> original = node.Values!.AsSpan(node.ValueStart, node.Count);
++            original.CopyTo(values);
++            // Every ancestor range is invalidated by the mutating path. No live range
++            // overlaps this detached leaf; clear its old slots to release references.
++            original.Clear();
++            node.Values = values;
++            node.ValueStart = 0;
++        }
++        else node.Values = null;
++        node.PackedCount = 0;
++    }
++
+     private static void Add(Node node, Entry entry)
+     {
+         int index = node.Count++;
+         node.Boxes[index] = entry.Bounds;
+-        if (node.Leaf) node.Values![index] = entry.Value;
++        if (node.Leaf) node.Values![node.ValueStart + index] = entry.Value;
+         else node.Children![index] = entry.Child;
+         node.Bounds = node.Count == 1 ? entry.Bounds : Rectangle2D<TCoordinate>.Union(node.Bounds, entry.Bounds);
+     }
+ 
+     private static Entry ReadEntry(Node node, int index) =>
+-        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![index] : default!);
++        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![node.ValueStart + index] : default!);
+ 
+ }
+--- a/src/Tedd.RTree/RTree3D.Generic.cs
++++ b/src/Tedd.RTree/RTree3D.Generic.cs
+@@ -1,3 +1,5 @@
++using System.Runtime.Intrinsics;
++
+ using System.Runtime.CompilerServices;
+ using System.Numerics;
+ 
+@@ -8,11 +10,13 @@
+ public sealed class RTree3D<TCoordinate, T>
+     where TCoordinate : struct, INumber<TCoordinate>
+ {
+-    private sealed class Node(bool leaf, int capacity)
+-    {
+-        // Leaves never carry child references; branches never carry user values.
++    private sealed class Node(bool leaf, int capacity, T[]? packedValues = null, int valueStart = 0)
++    {
++        // Packed nodes share contiguous values; mutation detaches only the affected leaf.
+         internal readonly Box<TCoordinate>[] Boxes = new Box<TCoordinate>[capacity + 1];
+-        internal readonly T[]? Values = leaf ? new T[capacity + 1] : null;
++        internal T[]? Values = packedValues ?? (leaf ? new T[capacity + 1] : null);
++        internal int ValueStart = valueStart;
++        internal int PackedCount;
+         internal readonly Node?[]? Children = leaf ? null : new Node?[capacity + 1];
+         internal readonly bool Leaf = leaf;
+         internal int Count;
+@@ -147,7 +151,21 @@
+         var axisX = new SpatialKeyAxis<TCoordinate>(extent.MinX, extent.MaxX, 1023);
+         var axisY = new SpatialKeyAxis<TCoordinate>(extent.MinY, extent.MaxY, 1023);
+         var axisZ = new SpatialKeyAxis<TCoordinate>(extent.MinZ, extent.MaxZ, 1023);
+-        for (int i = 0; i < itemCount; i++)
++        Span<uint> xs = stackalloc uint[8], ys = stackalloc uint[8];
++        Span<uint> zs = stackalloc uint[8];
++        int vectorCount = Vector256.IsHardwareAccelerated ? itemCount & ~7 : 0;
++        for (int first = 0; first < vectorCount; first += 8)
++        {
++            for (int lane = 0; lane < 8; lane++)
++            {
++                int index = first + lane;
++            Box<TCoordinate> b = items[index].Bounds;
++            xs[lane] = axisX.Center(b.MinX, b.MaxX); ys[lane] = axisY.Center(b.MinY, b.MaxY); zs[lane] = axisZ.Center(b.MinZ, b.MaxZ);
++            order[index] = index;
++            }
++            SpatialOrder3D.Morton(Vector256.Create(xs), Vector256.Create(ys), Vector256.Create(zs)).CopyTo(keys.Slice(first, 8));
++        }
++        for (int i = vectorCount; i < itemCount; i++)
+         {
+             Box<TCoordinate> b = items[i].Bounds;
+             keys[i] = SpatialOrder3D.Morton(axisX.Center(b.MinX, b.MaxX), axisY.Center(b.MinY, b.MaxY), axisZ.Center(b.MinZ, b.MaxZ));
+@@ -161,16 +179,18 @@
+             Span<int> scatter = workspace is null ? new int[itemCount] : workspace.HilbertScatter(itemCount);
+             HilbertOrder.SortIndices(keys, order, scatter);
+         }
++        T[] packedValues = new T[itemCount];
+         Node[] level = new Node[(itemCount - 1) / _capacity + 1];
+         for (int n = 0, start = 0; n < level.Length; n++, start += _capacity)
+         {
+-            Node node = new(true, _capacity);
++            Node node = new(true, _capacity, packedValues, start);
+             int end = Math.Min(start + _capacity, itemCount);
+             for (int i = start; i < end; i++)
+             {
+                 SpatialEntry3D<TCoordinate, T> item = items[order[i]];
+                 Add(node, new Entry(item.Bounds, null, item.Item));
+             }
++            node.PackedCount = node.Count;
+             level[n] = node;
+         }
+         while (level.Length > 1)
+@@ -182,6 +202,9 @@
+                 int end = Math.Min(start + _capacity, level.Length);
+                 for (int i = start; i < end; i++)
+                     Add(parent, new Entry(level[i].Bounds, level[i], default!));
++                parent.Values = packedValues;
++                parent.ValueStart = level[start].ValueStart;
++                parent.PackedCount = level[end - 1].ValueStart + level[end - 1].PackedCount - parent.ValueStart;
+                 parents[n] = parent;
+             }
+             level = parents;
+@@ -196,7 +219,7 @@
+         ArgumentNullException.ThrowIfNull(results);
+         if (_root.Count == 0 || !_root.Bounds.Intersects(bounds))
+             return 0;
+-        return Search(_root, bounds, results);
++        return _root.PackedCount != 0 && bounds.Contains(_root.Bounds) ? CollectValues(_root, results) : Search(_root, bounds, results);
+     }
+ 
+     /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+@@ -244,10 +267,11 @@
+ 
+     private static int CollectValues(Node node, List<T> results)
+     {
+-        if (node.Leaf)
+-        {
+-            results.AddRange(node.Values!.AsSpan(0, node.Count));
+-            return node.Count;
++        if (node.Leaf || node.PackedCount != 0)
++        {
++            int count = node.Leaf ? node.Count : node.PackedCount;
++            results.AddRange(node.Values!.AsSpan(node.ValueStart, count));
++            return count;
+         }
+         int found = 0;
+         for (int i = 0; i < node.Count; i++) found += CollectValues(node.Children![i]!, results);
+@@ -266,7 +290,7 @@
+                 ref readonly Box<TCoordinate> entry = ref entries[i];
+                 if (entry.Intersects(bounds))
+                 {
+-                    results.Add(node.Values![i]);
++                    results.Add(node.Values![node.ValueStart + i]);
+                     found++;
+                 }
+             }
+@@ -310,6 +334,7 @@
+             if (!node.Boxes[i].Contains(bounds)) continue;
+             Node child = node.Children![i]!;
+             if (!Remove(child, bounds, item, reinserts)) continue;
++            if (node.PackedCount != 0) MakeWritable(node);
+             if (child.Count < _minimum)
+             {
+                 CollectLeafEntries(child, reinserts);
+@@ -325,6 +350,7 @@
+ 
+     private static void RemoveAt(Node node, int index)
+     {
++        if (node.PackedCount != 0) MakeWritable(node);
+         int last = --node.Count;
+         if (index != last)
+         {
+@@ -355,6 +381,10 @@
+         if (node.Leaf)
+         {
+             for (int i = 0; i < node.Count; i++) entries.Add(ReadEntry(node, i));
++            // This entire subtree is discarded after collecting its entries.
++            // Release shared slots even for leaves never individually mutated.
++            if (node.PackedCount != 0)
++                node.Values!.AsSpan(node.ValueStart, node.Count).Clear();
+         }
+         else
+         {
+@@ -364,6 +394,7 @@
+ 
+     private void Insert(Node node, Entry entry, out Node? sibling)
+     {
++        if (node.PackedCount != 0) MakeWritable(node);
+         if (node.Leaf)
+         {
+             Add(node, entry);
+@@ -490,16 +521,33 @@
+         return after > before ? after - before : SpatialMeasure<TCoordinate>.Zero;
+     }
+ 
++    private static void MakeWritable(Node node)
++    {
++        if (node.Leaf)
++        {
++            T[] values = new T[node.Boxes.Length];
++            Span<T> original = node.Values!.AsSpan(node.ValueStart, node.Count);
++            original.CopyTo(values);
++            // Every ancestor range is invalidated by the mutating path. No live range
++            // overlaps this detached leaf; clear its old slots to release references.
++            original.Clear();
++            node.Values = values;
++            node.ValueStart = 0;
++        }
++        else node.Values = null;
++        node.PackedCount = 0;
++    }
++
+     private static void Add(Node node, Entry entry)
+     {
+         int index = node.Count++;
+         node.Boxes[index] = entry.Bounds;
+-        if (node.Leaf) node.Values![index] = entry.Value;
++        if (node.Leaf) node.Values![node.ValueStart + index] = entry.Value;
+         else node.Children![index] = entry.Child;
+         node.Bounds = node.Count == 1 ? entry.Bounds : Box<TCoordinate>.Union(node.Bounds, entry.Bounds);
+     }
+ 
+     private static Entry ReadEntry(Node node, int index) =>
+-        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![index] : default!);
++        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![node.ValueStart + index] : default!);
+ 
+ }
+--- a/src/Tedd.RTree/SpatialOrder3D.cs
++++ b/src/Tedd.RTree/SpatialOrder3D.cs
+@@ -1,3 +1,5 @@
++using System.Runtime.Intrinsics;
++
+ namespace Tedd.RTree;
+ 
+ internal static class SpatialOrder3D
+@@ -12,4 +14,13 @@
+         x = (x | x << 4) & 0x030C30C3;
+         return (x | x << 2) & 0x09249249;
+     }
++    internal static Vector256<uint> Morton(Vector256<uint> x, Vector256<uint> y, Vector256<uint> z) => Spread(x) << 2 | Spread(y) << 1 | Spread(z);
++
++    private static Vector256<uint> Spread(Vector256<uint> x)
++    {
++        x = (x | x << 16) & Vector256.Create(0x030000FFu);
++        x = (x | x << 8) & Vector256.Create(0x0300F00Fu);
++        x = (x | x << 4) & Vector256.Create(0x030C30C3u);
++        return (x | x << 2) & Vector256.Create(0x09249249u);
++    }
+ }

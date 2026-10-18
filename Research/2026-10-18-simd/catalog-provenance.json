@@ -1,0 +1,2829 @@
+{
+  "records": [
+    {
+      "Id": "analysis-002dc830410349df803e08147d3b8e4b",
+      "Kind": "analysis",
+      "Revision": 1,
+      "Hash": "730fb2f938581a5c947104f3d5a329a09db3daa07abcd6a1633d1c6e46a6172b",
+      "Json": {
+        "id": "analysis-002dc830410349df803e08147d3b8e4b",
+        "capture_id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "artifact_id": "art-d36a4a8c771ac856ed4f15e3979757533afb89f7fe4c6fd96db77107e1deca59",
+        "parser_version": "traceevent-runtime/3",
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "none_reported",
+          "parser_version": "traceevent-runtime/3",
+          "warnings": [
+            "provider_coverage_requires_stimulus",
+            "stack_symbolization_not_qualified"
+          ],
+          "symbol_coverage": null
+        }
+      },
+      "CreatedAt": "2026-10-18T17:40:05.3838886+00:00"
+    },
+    {
+      "Id": "analysis-12bd8fed5b5340e8b5ca93db310e6ae5",
+      "Kind": "analysis",
+      "Revision": 1,
+      "Hash": "d8da3bf237537f5227083785124ff3d173e7076c89bf2ae02314a5e98b88be5f",
+      "Json": {
+        "id": "analysis-12bd8fed5b5340e8b5ca93db310e6ae5",
+        "capture_id": "cap-195588e958f346459b973b9b4240c577",
+        "artifact_id": "art-9114cc99708359131a5bcba4ced748470ef7a74e3214d0cb59f956a4beebe0bd",
+        "parser_version": "traceevent-runtime/3",
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "none_reported",
+          "parser_version": "traceevent-runtime/3",
+          "warnings": [
+            "provider_coverage_requires_stimulus",
+            "stack_symbolization_not_qualified"
+          ],
+          "symbol_coverage": null
+        }
+      },
+      "CreatedAt": "2026-10-18T19:03:50.2165594+00:00"
+    },
+    {
+      "Id": "analysis-1f0ca648058044f3b47cd20f216a3366",
+      "Kind": "analysis",
+      "Revision": 1,
+      "Hash": "0d8272891b24ac7ff1556cdfd498fd4ced0f52bd7a9bab42bfff3bf6cf674946",
+      "Json": {
+        "id": "analysis-1f0ca648058044f3b47cd20f216a3366",
+        "capture_id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "artifact_id": "art-2c78487741fe23790795eb6bba155eadb2b7850784b84830bb913e0304445f26",
+        "parser_version": "traceevent-runtime/3",
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "none_reported",
+          "parser_version": "traceevent-runtime/3",
+          "warnings": [
+            "overlapping_runtime_suspension",
+            "provider_coverage_requires_stimulus",
+            "stack_symbolization_not_qualified",
+            "unmatched_suspension_end"
+          ],
+          "symbol_coverage": null
+        }
+      },
+      "CreatedAt": "2026-10-18T18:10:02.6550490+00:00"
+    },
+    {
+      "Id": "analysis-2ced5cac96054aa185b2966fdfb4c536",
+      "Kind": "analysis",
+      "Revision": 1,
+      "Hash": "f21d6c975cffcbb1373fb51746e52392c1deb0e343aedcfb8ada3c0f7e4c0f60",
+      "Json": {
+        "id": "analysis-2ced5cac96054aa185b2966fdfb4c536",
+        "capture_id": "cap-947054385e304dd28625d6f705569ba4",
+        "artifact_id": "art-437049655127429929e36e5746204e02f02eeaf85ee92e12491e4cfe1fa168ae",
+        "parser_version": "traceevent-runtime/3",
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "none_reported",
+          "parser_version": "traceevent-runtime/3",
+          "warnings": [
+            "provider_coverage_requires_stimulus",
+            "stack_symbolization_not_qualified"
+          ],
+          "symbol_coverage": null
+        }
+      },
+      "CreatedAt": "2026-10-18T18:09:50.4652344+00:00"
+    },
+    {
+      "Id": "analysis-da6bcacf612a41bf88ba74619d2cb465",
+      "Kind": "analysis",
+      "Revision": 1,
+      "Hash": "446dbe518146e0391cb0fa13ee191ae9019f2aa225a632ddb3a26fcebfc4c2bd",
+      "Json": {
+        "id": "analysis-da6bcacf612a41bf88ba74619d2cb465",
+        "capture_id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "artifact_id": "art-61fcccbe1943952504f3e4ecfc076a224834fa4f7bf2139d632759af08503187",
+        "parser_version": "traceevent-runtime/3",
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "none_reported",
+          "parser_version": "traceevent-runtime/3",
+          "warnings": [
+            "overlapping_runtime_suspension",
+            "provider_coverage_requires_stimulus",
+            "stack_symbolization_not_qualified",
+            "unmatched_suspension_end"
+          ],
+          "symbol_coverage": null
+        }
+      },
+      "CreatedAt": "2026-10-18T17:40:17.6708327+00:00"
+    },
+    {
+      "Id": "cap-195588e958f346459b973b9b4240c577",
+      "Kind": "capture",
+      "Revision": 1,
+      "Hash": "27e91887c5a7094f479313f68a8d39fc0eb88545b024736fbe67ceabf01700b6",
+      "Json": {
+        "id": "cap-195588e958f346459b973b9b4240c577",
+        "target": {
+          "id": "target-31609d282b672cb1919ef77d",
+          "process_id": 4608,
+          "start_time_utc_ticks": "639279470193323151",
+          "runtime_instance": "target-31609d282b672cb1919ef77d",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "created",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T19:03:44.4337709+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T19:03:44.4470203+00:00"
+    },
+    {
+      "Id": "cap-195588e958f346459b973b9b4240c577",
+      "Kind": "capture",
+      "Revision": 2,
+      "Hash": "6b73758a31d35ffda8c04be708c4dc04f155c6874f14a3c72d9f0b7dc6a040ed",
+      "Json": {
+        "id": "cap-195588e958f346459b973b9b4240c577",
+        "target": {
+          "id": "target-31609d282b672cb1919ef77d",
+          "process_id": 4608,
+          "start_time_utc_ticks": "639279470193323151",
+          "runtime_instance": "target-31609d282b672cb1919ef77d",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "opening",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T19:03:44.4337709+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T19:03:44.4595820+00:00"
+    },
+    {
+      "Id": "cap-195588e958f346459b973b9b4240c577",
+      "Kind": "capture",
+      "Revision": 3,
+      "Hash": "ae5417d2d302a06f2d7cde29a0b98948fba5b3bd4ebdba2c24a26a2e660e8212",
+      "Json": {
+        "id": "cap-195588e958f346459b973b9b4240c577",
+        "target": {
+          "id": "target-31609d282b672cb1919ef77d",
+          "process_id": 4608,
+          "start_time_utc_ticks": "639279470193323151",
+          "runtime_instance": "target-31609d282b672cb1919ef77d",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "collecting",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T19:03:44.4337709+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T19:03:44.5744358+00:00"
+    },
+    {
+      "Id": "cap-195588e958f346459b973b9b4240c577",
+      "Kind": "capture",
+      "Revision": 4,
+      "Hash": "10752a9f2b4546343dde0b8fb163fa524e629d3395a26d0ee6e73714ff93974d",
+      "Json": {
+        "id": "cap-195588e958f346459b973b9b4240c577",
+        "target": {
+          "id": "target-31609d282b672cb1919ef77d",
+          "process_id": 4608,
+          "start_time_utc_ticks": "639279470193323151",
+          "runtime_instance": "target-31609d282b672cb1919ef77d",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "stopping",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T19:03:44.4337709+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T19:03:49.5876386+00:00"
+    },
+    {
+      "Id": "cap-195588e958f346459b973b9b4240c577",
+      "Kind": "capture",
+      "Revision": 5,
+      "Hash": "2a75c63cb1cdf32636c6c3b1ff9c7a27de06fea52cb8b65704d6d42d91bfe0e9",
+      "Json": {
+        "id": "cap-195588e958f346459b973b9b4240c577",
+        "target": {
+          "id": "target-31609d282b672cb1919ef77d",
+          "process_id": 4608,
+          "start_time_utc_ticks": "639279470193323151",
+          "runtime_instance": "target-31609d282b672cb1919ef77d",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "draining",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T19:03:44.4337709+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T19:03:49.6852240+00:00"
+    },
+    {
+      "Id": "cap-195588e958f346459b973b9b4240c577",
+      "Kind": "capture",
+      "Revision": 6,
+      "Hash": "b12dcf6a6d42825c9d985f7c49fdb7e82f8dab261419a9213281f6ed72fb0469",
+      "Json": {
+        "id": "cap-195588e958f346459b973b9b4240c577",
+        "target": {
+          "id": "target-31609d282b672cb1919ef77d",
+          "process_id": 4608,
+          "start_time_utc_ticks": "639279470193323151",
+          "runtime_instance": "target-31609d282b672cb1919ef77d",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "sealed",
+        "artifact_id": "art-a06e2ffd466f92654872339f2464aea2331b2c67626fb431dd4e1960f6993958",
+        "quality": {
+          "coverage": "capture_complete_unparsed",
+          "loss_status": "unknown",
+          "parser_version": "unparsed",
+          "warnings": [],
+          "symbol_coverage": null
+        },
+        "created_at": "2026-10-18T19:03:44.4337709+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T19:03:49.7331725+00:00"
+    },
+    {
+      "Id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "Kind": "capture",
+      "Revision": 1,
+      "Hash": "e5e6d214f07871bb87277cbda47aee6259253d21ec4709c28e17fc7ff2d63741",
+      "Json": {
+        "id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "target": {
+          "id": "target-192f6321ad691c179043b97f",
+          "process_id": 63116,
+          "start_time_utc_ticks": "639279420067500633",
+          "runtime_instance": "target-192f6321ad691c179043b97f",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "created",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:40:11.81543+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:11.8259057+00:00"
+    },
+    {
+      "Id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "Kind": "capture",
+      "Revision": 2,
+      "Hash": "9f3945edae3b2f5846b5413e843516e61e62b6236c2feb21e427e33c6cd911d4",
+      "Json": {
+        "id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "target": {
+          "id": "target-192f6321ad691c179043b97f",
+          "process_id": 63116,
+          "start_time_utc_ticks": "639279420067500633",
+          "runtime_instance": "target-192f6321ad691c179043b97f",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "opening",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:40:11.81543+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:11.8390396+00:00"
+    },
+    {
+      "Id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "Kind": "capture",
+      "Revision": 3,
+      "Hash": "dc5a594ee445235005ff8bda401d6acc05628610ca5faf588a960e63c50a210d",
+      "Json": {
+        "id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "target": {
+          "id": "target-192f6321ad691c179043b97f",
+          "process_id": 63116,
+          "start_time_utc_ticks": "639279420067500633",
+          "runtime_instance": "target-192f6321ad691c179043b97f",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "collecting",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:40:11.81543+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:11.9363492+00:00"
+    },
+    {
+      "Id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "Kind": "capture",
+      "Revision": 4,
+      "Hash": "807670633784dee91eb215fc5493421717729bb189aff092269899d17ce82197",
+      "Json": {
+        "id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "target": {
+          "id": "target-192f6321ad691c179043b97f",
+          "process_id": 63116,
+          "start_time_utc_ticks": "639279420067500633",
+          "runtime_instance": "target-192f6321ad691c179043b97f",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "stopping",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:40:11.81543+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:16.9623911+00:00"
+    },
+    {
+      "Id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "Kind": "capture",
+      "Revision": 5,
+      "Hash": "4d7c1f93cb3f47da335db7329c5fdb4cbc3b19184b096d2114bfcb28e40f4332",
+      "Json": {
+        "id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "target": {
+          "id": "target-192f6321ad691c179043b97f",
+          "process_id": 63116,
+          "start_time_utc_ticks": "639279420067500633",
+          "runtime_instance": "target-192f6321ad691c179043b97f",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "draining",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:40:11.81543+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:17.0676434+00:00"
+    },
+    {
+      "Id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "Kind": "capture",
+      "Revision": 6,
+      "Hash": "efd9755ebd0ff823dfd2b495f912248eaaa3a6ffd41b92ec78e865c80f603d4e",
+      "Json": {
+        "id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "target": {
+          "id": "target-192f6321ad691c179043b97f",
+          "process_id": 63116,
+          "start_time_utc_ticks": "639279420067500633",
+          "runtime_instance": "target-192f6321ad691c179043b97f",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "sealed",
+        "artifact_id": "art-d0b59b3680c8002e3f45030e056cd980f6f250494c1603f907adf626ebd559d0",
+        "quality": {
+          "coverage": "capture_complete_unparsed",
+          "loss_status": "unknown",
+          "parser_version": "unparsed",
+          "warnings": [],
+          "symbol_coverage": null
+        },
+        "created_at": "2026-10-18T17:40:11.81543+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:17.1174299+00:00"
+    },
+    {
+      "Id": "cap-947054385e304dd28625d6f705569ba4",
+      "Kind": "capture",
+      "Revision": 1,
+      "Hash": "9a03c74b16134516446507d3008f3307ab725c61ac2f84e55017894488d91308",
+      "Json": {
+        "id": "cap-947054385e304dd28625d6f705569ba4",
+        "target": {
+          "id": "target-6cd223d662e9742533e6dfec",
+          "process_id": 17508,
+          "start_time_utc_ticks": "639279437794316990",
+          "runtime_instance": "target-6cd223d662e9742533e6dfec",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "created",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:44.6513908+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:44.6620374+00:00"
+    },
+    {
+      "Id": "cap-947054385e304dd28625d6f705569ba4",
+      "Kind": "capture",
+      "Revision": 2,
+      "Hash": "482c2e566793f75a9a8de30c7beeb6cb70fe8d3e19386fbbf1ba3de3f527f3f9",
+      "Json": {
+        "id": "cap-947054385e304dd28625d6f705569ba4",
+        "target": {
+          "id": "target-6cd223d662e9742533e6dfec",
+          "process_id": 17508,
+          "start_time_utc_ticks": "639279437794316990",
+          "runtime_instance": "target-6cd223d662e9742533e6dfec",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "opening",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:44.6513908+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:44.6751970+00:00"
+    },
+    {
+      "Id": "cap-947054385e304dd28625d6f705569ba4",
+      "Kind": "capture",
+      "Revision": 3,
+      "Hash": "04aa1ccd421e4a69c24ee922cf3ad57c78002522e36d226e82cfa91eea84bcea",
+      "Json": {
+        "id": "cap-947054385e304dd28625d6f705569ba4",
+        "target": {
+          "id": "target-6cd223d662e9742533e6dfec",
+          "process_id": 17508,
+          "start_time_utc_ticks": "639279437794316990",
+          "runtime_instance": "target-6cd223d662e9742533e6dfec",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "collecting",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:44.6513908+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:44.7941091+00:00"
+    },
+    {
+      "Id": "cap-947054385e304dd28625d6f705569ba4",
+      "Kind": "capture",
+      "Revision": 4,
+      "Hash": "725300428ab07932e935f9331c08112c1f4672fdba9bc3db3f91aaec3978b918",
+      "Json": {
+        "id": "cap-947054385e304dd28625d6f705569ba4",
+        "target": {
+          "id": "target-6cd223d662e9742533e6dfec",
+          "process_id": 17508,
+          "start_time_utc_ticks": "639279437794316990",
+          "runtime_instance": "target-6cd223d662e9742533e6dfec",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "stopping",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:44.6513908+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:49.8097618+00:00"
+    },
+    {
+      "Id": "cap-947054385e304dd28625d6f705569ba4",
+      "Kind": "capture",
+      "Revision": 5,
+      "Hash": "68f75e23a37bd37ac3c62a618be75c0b41cb20033449781039614f0d60116c19",
+      "Json": {
+        "id": "cap-947054385e304dd28625d6f705569ba4",
+        "target": {
+          "id": "target-6cd223d662e9742533e6dfec",
+          "process_id": 17508,
+          "start_time_utc_ticks": "639279437794316990",
+          "runtime_instance": "target-6cd223d662e9742533e6dfec",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "draining",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:44.6513908+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:49.8891199+00:00"
+    },
+    {
+      "Id": "cap-947054385e304dd28625d6f705569ba4",
+      "Kind": "capture",
+      "Revision": 6,
+      "Hash": "07a4945f27bc28a26edd3222c114f43b3f8cc3265c620e712bb9d2524a4e4853",
+      "Json": {
+        "id": "cap-947054385e304dd28625d6f705569ba4",
+        "target": {
+          "id": "target-6cd223d662e9742533e6dfec",
+          "process_id": 17508,
+          "start_time_utc_ticks": "639279437794316990",
+          "runtime_instance": "target-6cd223d662e9742533e6dfec",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "sealed",
+        "artifact_id": "art-d0e12cd458f0d0ab686047582441ebc0e9c4a6318d788b05845bf4c717589f9d",
+        "quality": {
+          "coverage": "capture_complete_unparsed",
+          "loss_status": "unknown",
+          "parser_version": "unparsed",
+          "warnings": [],
+          "symbol_coverage": null
+        },
+        "created_at": "2026-10-18T18:09:44.6513908+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:49.9561475+00:00"
+    },
+    {
+      "Id": "cap-f1fe7c371731466f961f550fdea765c2",
+      "Kind": "capture",
+      "Revision": 1,
+      "Hash": "c2eff3dea99d7d4965c5cd1fd443969079b952baa9d0b42023594c2682e76420",
+      "Json": {
+        "id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "target": {
+          "id": "target-bb8c06892ac0ea6f5f0040df",
+          "process_id": 17344,
+          "start_time_utc_ticks": "639279437917910055",
+          "runtime_instance": "target-bb8c06892ac0ea6f5f0040df",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "created",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:56.8407189+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:56.8538106+00:00"
+    },
+    {
+      "Id": "cap-f1fe7c371731466f961f550fdea765c2",
+      "Kind": "capture",
+      "Revision": 2,
+      "Hash": "936917f54305dcd9b5eafbb2029dff98262332f53bdfe3330940aa6ccea60c32",
+      "Json": {
+        "id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "target": {
+          "id": "target-bb8c06892ac0ea6f5f0040df",
+          "process_id": 17344,
+          "start_time_utc_ticks": "639279437917910055",
+          "runtime_instance": "target-bb8c06892ac0ea6f5f0040df",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "opening",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:56.8407189+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:56.8661782+00:00"
+    },
+    {
+      "Id": "cap-f1fe7c371731466f961f550fdea765c2",
+      "Kind": "capture",
+      "Revision": 3,
+      "Hash": "82ebb41858bb3d4059b299a64166cc50f8599cdc9f5778932bceb1ce42b5dabc",
+      "Json": {
+        "id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "target": {
+          "id": "target-bb8c06892ac0ea6f5f0040df",
+          "process_id": 17344,
+          "start_time_utc_ticks": "639279437917910055",
+          "runtime_instance": "target-bb8c06892ac0ea6f5f0040df",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "collecting",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:56.8407189+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:09:56.9600336+00:00"
+    },
+    {
+      "Id": "cap-f1fe7c371731466f961f550fdea765c2",
+      "Kind": "capture",
+      "Revision": 4,
+      "Hash": "b2c928fca280aef15c0c3a151034238331592e871272ae70fcfdebeb836fdda9",
+      "Json": {
+        "id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "target": {
+          "id": "target-bb8c06892ac0ea6f5f0040df",
+          "process_id": 17344,
+          "start_time_utc_ticks": "639279437917910055",
+          "runtime_instance": "target-bb8c06892ac0ea6f5f0040df",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "stopping",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:56.8407189+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:10:01.9898789+00:00"
+    },
+    {
+      "Id": "cap-f1fe7c371731466f961f550fdea765c2",
+      "Kind": "capture",
+      "Revision": 5,
+      "Hash": "f74d119d669b087401b650a5a7271937b2c92217708050337f9ab61182f7b926",
+      "Json": {
+        "id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "target": {
+          "id": "target-bb8c06892ac0ea6f5f0040df",
+          "process_id": 17344,
+          "start_time_utc_ticks": "639279437917910055",
+          "runtime_instance": "target-bb8c06892ac0ea6f5f0040df",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "draining",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T18:09:56.8407189+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:10:02.0437951+00:00"
+    },
+    {
+      "Id": "cap-f1fe7c371731466f961f550fdea765c2",
+      "Kind": "capture",
+      "Revision": 6,
+      "Hash": "51c076f1ca05b75b6b052b0a79991fb31b7825cb14fd635a54aaf6e1c83b7b9d",
+      "Json": {
+        "id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "target": {
+          "id": "target-bb8c06892ac0ea6f5f0040df",
+          "process_id": 17344,
+          "start_time_utc_ticks": "639279437917910055",
+          "runtime_instance": "target-bb8c06892ac0ea6f5f0040df",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "sealed",
+        "artifact_id": "art-459ed8bd28ccb36c80c8c8311efbbdb0d087cfaacbbb0a20811941ed5cb68c5c",
+        "quality": {
+          "coverage": "capture_complete_unparsed",
+          "loss_status": "unknown",
+          "parser_version": "unparsed",
+          "warnings": [],
+          "symbol_coverage": null
+        },
+        "created_at": "2026-10-18T18:09:56.8407189+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T18:10:02.0948563+00:00"
+    },
+    {
+      "Id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+      "Kind": "capture",
+      "Revision": 1,
+      "Hash": "fc757817b1bab71d6e8983ee84341813135047225fc9367f4df4039b880a91ff",
+      "Json": {
+        "id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "target": {
+          "id": "target-6a2b9e89fc1afe74163c65d0",
+          "process_id": 7064,
+          "start_time_utc_ticks": "639279419945362387",
+          "runtime_instance": "target-6a2b9e89fc1afe74163c65d0",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "created",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:39:59.6090974+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:39:59.6220891+00:00"
+    },
+    {
+      "Id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+      "Kind": "capture",
+      "Revision": 2,
+      "Hash": "3012c6d90848f76c3622d75b90fbc26a61dba3507d27a7c206c6775cce6e386f",
+      "Json": {
+        "id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "target": {
+          "id": "target-6a2b9e89fc1afe74163c65d0",
+          "process_id": 7064,
+          "start_time_utc_ticks": "639279419945362387",
+          "runtime_instance": "target-6a2b9e89fc1afe74163c65d0",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "opening",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:39:59.6090974+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:39:59.6340024+00:00"
+    },
+    {
+      "Id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+      "Kind": "capture",
+      "Revision": 3,
+      "Hash": "bd36ca215b26495e7eec47e8dd38b3a105d695f9d927bbaafe145e5db5fa8cd6",
+      "Json": {
+        "id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "target": {
+          "id": "target-6a2b9e89fc1afe74163c65d0",
+          "process_id": 7064,
+          "start_time_utc_ticks": "639279419945362387",
+          "runtime_instance": "target-6a2b9e89fc1afe74163c65d0",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "collecting",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:39:59.6090974+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:39:59.7368346+00:00"
+    },
+    {
+      "Id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+      "Kind": "capture",
+      "Revision": 4,
+      "Hash": "d3a5b3e380162570c51834ba3910abec62b6d6951010875a2d0d5324b1902eed",
+      "Json": {
+        "id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "target": {
+          "id": "target-6a2b9e89fc1afe74163c65d0",
+          "process_id": 7064,
+          "start_time_utc_ticks": "639279419945362387",
+          "runtime_instance": "target-6a2b9e89fc1afe74163c65d0",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "stopping",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:39:59.6090974+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:04.7652796+00:00"
+    },
+    {
+      "Id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+      "Kind": "capture",
+      "Revision": 5,
+      "Hash": "f0ae14b2fd276ef501ac499493380404ad5164cca054f5973434e62264297bb9",
+      "Json": {
+        "id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "target": {
+          "id": "target-6a2b9e89fc1afe74163c65d0",
+          "process_id": 7064,
+          "start_time_utc_ticks": "639279419945362387",
+          "runtime_instance": "target-6a2b9e89fc1afe74163c65d0",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "draining",
+        "artifact_id": null,
+        "quality": null,
+        "created_at": "2026-10-18T17:39:59.6090974+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:04.8250146+00:00"
+    },
+    {
+      "Id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+      "Kind": "capture",
+      "Revision": 6,
+      "Hash": "b36dbb553de68950c909d55c37306601cd16c97d435a6a95c43d9ebbabe8f934",
+      "Json": {
+        "id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "target": {
+          "id": "target-6a2b9e89fc1afe74163c65d0",
+          "process_id": 7064,
+          "start_time_utc_ticks": "639279419945362387",
+          "runtime_instance": "target-6a2b9e89fc1afe74163c65d0",
+          "runtime_version": "unknown",
+          "architecture": "unknown",
+          "epoch": "0"
+        },
+        "profile": {
+          "name": "cpu-diagnostic",
+          "version": "net10/1",
+          "providers": [
+            {
+              "name": "Microsoft-Windows-DotNETRuntime",
+              "keywords": "25",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "Tedd.DotNetLab-Harness",
+              "keywords": "-1",
+              "level": 4,
+              "arguments": {}
+            },
+            {
+              "name": "System.Runtime",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {
+                "EventCounterIntervalSec": "1"
+              }
+            },
+            {
+              "name": "Microsoft-DotNETCore-SampleProfiler",
+              "keywords": "0",
+              "level": 4,
+              "arguments": {}
+            }
+          ],
+          "buffer_mi_b": 32,
+          "rundown": true,
+          "data_classes": [
+            "gc",
+            "suspension",
+            "counters",
+            "markers",
+            "samples"
+          ],
+          "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+        },
+        "state": "sealed",
+        "artifact_id": "art-e18c1a3d1c010ff6b3b95249b9205f9960b33fb5d5939bac4678a7bb2d9d43e5",
+        "quality": {
+          "coverage": "capture_complete_unparsed",
+          "loss_status": "unknown",
+          "parser_version": "unparsed",
+          "warnings": [],
+          "symbol_coverage": null
+        },
+        "created_at": "2026-10-18T17:39:59.6090974+00:00",
+        "reason": null
+      },
+      "CreatedAt": "2026-10-18T17:40:04.8742078+00:00"
+    },
+    {
+      "Id": "analysis-002dc830410349df803e08147d3b8e4b-capture",
+      "Kind": "capture_analysis",
+      "Revision": 1,
+      "Hash": "c15257f43255dfd67a47d9df3dddf5d52aabd0729a7d6d4aba47c51158177739",
+      "Json": {
+        "capture_id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "analysis_id": "analysis-002dc830410349df803e08147d3b8e4b"
+      },
+      "CreatedAt": "2026-10-18T17:40:05.3947385+00:00"
+    },
+    {
+      "Id": "analysis-12bd8fed5b5340e8b5ca93db310e6ae5-capture",
+      "Kind": "capture_analysis",
+      "Revision": 1,
+      "Hash": "aa763bf10f2e2dab9a9655f5e1c79ea678d48215ebd3153ab6503986a0a4aeb8",
+      "Json": {
+        "capture_id": "cap-195588e958f346459b973b9b4240c577",
+        "analysis_id": "analysis-12bd8fed5b5340e8b5ca93db310e6ae5"
+      },
+      "CreatedAt": "2026-10-18T19:03:50.2278849+00:00"
+    },
+    {
+      "Id": "analysis-1f0ca648058044f3b47cd20f216a3366-capture",
+      "Kind": "capture_analysis",
+      "Revision": 1,
+      "Hash": "da496866b2ccb9c3d5559871de1087c35bac09bee923d27836b63e49a919d99b",
+      "Json": {
+        "capture_id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "analysis_id": "analysis-1f0ca648058044f3b47cd20f216a3366"
+      },
+      "CreatedAt": "2026-10-18T18:10:02.6662645+00:00"
+    },
+    {
+      "Id": "analysis-2ced5cac96054aa185b2966fdfb4c536-capture",
+      "Kind": "capture_analysis",
+      "Revision": 1,
+      "Hash": "b17d7d20838f559df1696b08a57e5cbd37c2182818b346e02ae84095c5ede4a5",
+      "Json": {
+        "capture_id": "cap-947054385e304dd28625d6f705569ba4",
+        "analysis_id": "analysis-2ced5cac96054aa185b2966fdfb4c536"
+      },
+      "CreatedAt": "2026-10-18T18:09:50.4770018+00:00"
+    },
+    {
+      "Id": "analysis-da6bcacf612a41bf88ba74619d2cb465-capture",
+      "Kind": "capture_analysis",
+      "Revision": 1,
+      "Hash": "8dd74b59ff5bde1eb87444fa039664d74cfbcbb021aa9b4b10ee53d6dc6a5530",
+      "Json": {
+        "capture_id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "analysis_id": "analysis-da6bcacf612a41bf88ba74619d2cb465"
+      },
+      "CreatedAt": "2026-10-18T17:40:17.6827995+00:00"
+    },
+    {
+      "Id": "grant-2a63fccf9e6a43839a06d80def079594",
+      "Kind": "grant",
+      "Revision": 1,
+      "Hash": "393c2238744adaf12f37f7e7ba0da3f7342bc23783276321f37c86bfaa965675",
+      "Json": {
+        "id": "grant-2a63fccf9e6a43839a06d80def079594",
+        "workspace": "D:\\Workspaces\\AI\\rtree-simd-20261018\\lab",
+        "target_id": "target-6cd223d662e9742533e6dfec",
+        "start_time_utc_ticks": "639279437794316990",
+        "permission": "observe",
+        "expires_at": "2026-10-18T18:11:40.2807022+00:00",
+        "maximum_operations": 3,
+        "content_hash": null,
+        "method_scope": null
+      },
+      "CreatedAt": "2026-10-18T18:09:40.2954940+00:00"
+    },
+    {
+      "Id": "grant-3666fd0973d1406f82733e94d2dee9b5",
+      "Kind": "grant",
+      "Revision": 1,
+      "Hash": "e7846645e06c9e56d7e34021d7282cc2c1e862dd76557c0ddc917365c70f8cce",
+      "Json": {
+        "id": "grant-3666fd0973d1406f82733e94d2dee9b5",
+        "workspace": "D:\\Workspaces\\AI\\rtree-simd-20261018\\lab",
+        "target_id": "target-b71fbd6e190819b03af7b094",
+        "start_time_utc_ticks": "639279419731883315",
+        "permission": "observe",
+        "expires_at": "2026-10-18T17:41:34.3161746+00:00",
+        "maximum_operations": 3,
+        "content_hash": null,
+        "method_scope": null
+      },
+      "CreatedAt": "2026-10-18T17:39:34.3304626+00:00"
+    },
+    {
+      "Id": "grant-a4585584f2f34e7293ca5cda2dc481d7",
+      "Kind": "grant",
+      "Revision": 1,
+      "Hash": "6dd1f2c015e367e86672861a50fa3593d0f5002cc2fe8e4842fbd34ce0363338",
+      "Json": {
+        "id": "grant-a4585584f2f34e7293ca5cda2dc481d7",
+        "workspace": "D:\\Workspaces\\AI\\rtree-simd-20261018\\lab",
+        "target_id": "target-31609d282b672cb1919ef77d",
+        "start_time_utc_ticks": "639279470193323151",
+        "permission": "observe",
+        "expires_at": "2026-10-18T19:05:40.1543665+00:00",
+        "maximum_operations": 3,
+        "content_hash": null,
+        "method_scope": null
+      },
+      "CreatedAt": "2026-10-18T19:03:40.1681625+00:00"
+    },
+    {
+      "Id": "grant-b9e8bbbd0e0542ecaf79468693f91a2f",
+      "Kind": "grant",
+      "Revision": 1,
+      "Hash": "ac35ecc30bb70807ce8691d115c7293c9d3d194c5afb914deb8273ea38f2adac",
+      "Json": {
+        "id": "grant-b9e8bbbd0e0542ecaf79468693f91a2f",
+        "workspace": "D:\\Workspaces\\AI\\rtree-simd-20261018\\lab",
+        "target_id": "target-192f6321ad691c179043b97f",
+        "start_time_utc_ticks": "639279420067500633",
+        "permission": "observe",
+        "expires_at": "2026-10-18T17:42:07.4762273+00:00",
+        "maximum_operations": 3,
+        "content_hash": null,
+        "method_scope": null
+      },
+      "CreatedAt": "2026-10-18T17:40:07.4905326+00:00"
+    },
+    {
+      "Id": "grant-cc0cabdaa1544cf4b7fcc7b78f47df36",
+      "Kind": "grant",
+      "Revision": 1,
+      "Hash": "93aef38bc720d6d04d2afb022b7539aa4aed7bfc6bb24067648e58b6fd21d05f",
+      "Json": {
+        "id": "grant-cc0cabdaa1544cf4b7fcc7b78f47df36",
+        "workspace": "D:\\Workspaces\\AI\\rtree-simd-20261018\\lab",
+        "target_id": "target-bb8c06892ac0ea6f5f0040df",
+        "start_time_utc_ticks": "639279437917910055",
+        "permission": "observe",
+        "expires_at": "2026-10-18T18:11:52.4996617+00:00",
+        "maximum_operations": 3,
+        "content_hash": null,
+        "method_scope": null
+      },
+      "CreatedAt": "2026-10-18T18:09:52.5150954+00:00"
+    },
+    {
+      "Id": "grant-e0c3c6e475674452b8060a7949ca8a1b",
+      "Kind": "grant",
+      "Revision": 1,
+      "Hash": "c9847739601df9fd27d0ba82bb79e74266bafb574c8dda261713377849fb2af5",
+      "Json": {
+        "id": "grant-e0c3c6e475674452b8060a7949ca8a1b",
+        "workspace": "D:\\Workspaces\\AI\\rtree-simd-20261018\\lab",
+        "target_id": "target-6a2b9e89fc1afe74163c65d0",
+        "start_time_utc_ticks": "639279419945362387",
+        "permission": "observe",
+        "expires_at": "2026-10-18T17:41:55.2796919+00:00",
+        "maximum_operations": 3,
+        "content_hash": null,
+        "method_scope": null
+      },
+      "CreatedAt": "2026-10-18T17:39:55.2942841+00:00"
+    },
+    {
+      "Id": "hyp-51d83244ac04460b824a81283673536d",
+      "Kind": "hypothesis",
+      "Revision": 1,
+      "Hash": "62abb09b2265466586725f06e92fc7c3904dbea8f76977c629831cf13e1f0ec9",
+      "Json": {
+        "id": "hyp-51d83244ac04460b824a81283673536d",
+        "mechanism": "Scalar bounding-box traversal uses several comparisons and branches per entry; broad matches traverse contained leaves and copy output.",
+        "prediction": "Vector comparison or scalar conjunction reduces complete-query cost only if predicate work remains material; preserve scalar fallback, exact inclusive geometry, node shape, and mutation costs.",
+        "state": "proposed",
+        "evidence_ids": [
+          "cap-5922e0b06b4b4823a3a242d20efb25fe",
+          "stack-analysis-13fe9b66ca5243d59240cd02216f0da3"
+        ]
+      },
+      "CreatedAt": "2026-10-18T17:40:18.9092469+00:00"
+    },
+    {
+      "Id": "hyp-653c5b5710fd4aa8a3d57caebb9a7b16",
+      "Kind": "hypothesis",
+      "Revision": 1,
+      "Hash": "82e18e3eb7b911949e1d3e1427551f51727ead1d9241cf87baa87089305b3f01",
+      "Json": {
+        "id": "hyp-653c5b5710fd4aa8a3d57caebb9a7b16",
+        "mechanism": "Packed descendants share contiguous values; a contained subtree copies one range. First writes detach only the affected leaf, and all discarded shared slots are cleared.",
+        "prediction": "Complete materialized queries improve through fewer collector visits and copies while preserving exact geometry, mutations, and reference reclamation.",
+        "state": "proposed",
+        "evidence_ids": [
+          "cap-f1fe7c371731466f961f550fdea765c2",
+          "stack-analysis-495b23d7ff2f4326bc3a2d7e1d7ea1d0"
+        ]
+      },
+      "CreatedAt": "2026-10-18T18:10:03.9211631+00:00"
+    },
+    {
+      "Id": "hyp-8d660c6cad954894ba8479e6021ffb78",
+      "Kind": "hypothesis",
+      "Revision": 1,
+      "Hash": "ee48262057f6b7e9a83c4c2bda867f577eecba09cddd6007ad7ff7fb86ce9c45",
+      "Json": {
+        "id": "hyp-8d660c6cad954894ba8479e6021ffb78",
+        "mechanism": "Scalar bounding-box traversal uses several comparisons and branches per entry; broad matches traverse contained leaves and copy output.",
+        "prediction": "Vector comparison or scalar conjunction reduces complete-query cost only if predicate work remains material; preserve scalar fallback, exact inclusive geometry, node shape, and mutation costs.",
+        "state": "proposed",
+        "evidence_ids": [
+          "cap-fd73f06e4e96421c94f0def4baf18f43",
+          "stack-analysis-8b78c8736c7a414b9d1ebf7b133d4ad4"
+        ]
+      },
+      "CreatedAt": "2026-10-18T17:40:06.6963329+00:00"
+    },
+    {
+      "Id": "hyp-9667481073a24f6188b8bd4d27860e82",
+      "Kind": "hypothesis",
+      "Revision": 1,
+      "Hash": "c28ed4cc4b09e69287bfca025eee9ca12acfb50b8b04a705319569e46afc66cb",
+      "Json": {
+        "id": "hyp-9667481073a24f6188b8bd4d27860e82",
+        "mechanism": "Packed descendants share contiguous values; a contained subtree copies one range. First writes detach only the affected leaf, and all discarded shared slots are cleared.",
+        "prediction": "Complete materialized queries improve through fewer collector visits and copies while preserving exact geometry, mutations, and reference reclamation.",
+        "state": "proposed",
+        "evidence_ids": [
+          "cap-947054385e304dd28625d6f705569ba4",
+          "stack-analysis-c9deb25865cb41bc8390a12845cf48b4"
+        ]
+      },
+      "CreatedAt": "2026-10-18T18:09:51.7342539+00:00"
+    },
+    {
+      "Id": "stack-analysis-13fe9b66ca5243d59240cd02216f0da3",
+      "Kind": "stack_analysis",
+      "Revision": 1,
+      "Hash": "26f1aa4aa900595232287e5ea821ce021635503c4e13cf46467324d10e19707f",
+      "Json": {
+        "id": "stack-analysis-13fe9b66ca5243d59240cd02216f0da3",
+        "capture_id": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+        "artifact_id": "art-d555def4d5558530c4fd987d6064fa7afd3e5a2497e80eff5e6561899f3fb77f",
+        "observed_samples": "470",
+        "methods": 25,
+        "symbol_coverage": 1,
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "unknown",
+          "parser_version": "traceevent-stack/1",
+          "warnings": [
+            "stack_loss_status_unknown"
+          ],
+          "symbol_coverage": 1
+        }
+      },
+      "CreatedAt": "2026-10-18T17:40:18.6675124+00:00"
+    },
+    {
+      "Id": "stack-analysis-495b23d7ff2f4326bc3a2d7e1d7ea1d0",
+      "Kind": "stack_analysis",
+      "Revision": 1,
+      "Hash": "41401a27c3e4e6835a66dd03010691b16ce397c1dc975bfd3a7d60aeb7500cee",
+      "Json": {
+        "id": "stack-analysis-495b23d7ff2f4326bc3a2d7e1d7ea1d0",
+        "capture_id": "cap-f1fe7c371731466f961f550fdea765c2",
+        "artifact_id": "art-87e656e89f636730b8165c9c4369c81bd67ceba761ca85d2bb622fd3facbd88a",
+        "observed_samples": "512",
+        "methods": 25,
+        "symbol_coverage": 1,
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "unknown",
+          "parser_version": "traceevent-stack/1",
+          "warnings": [
+            "stack_loss_status_unknown"
+          ],
+          "symbol_coverage": 1
+        }
+      },
+      "CreatedAt": "2026-10-18T18:10:03.6764071+00:00"
+    },
+    {
+      "Id": "stack-analysis-8b78c8736c7a414b9d1ebf7b133d4ad4",
+      "Kind": "stack_analysis",
+      "Revision": 1,
+      "Hash": "cda15db5152a8192a60013ac390e88948b82c8d342175f6a3ce491ede53719c9",
+      "Json": {
+        "id": "stack-analysis-8b78c8736c7a414b9d1ebf7b133d4ad4",
+        "capture_id": "cap-fd73f06e4e96421c94f0def4baf18f43",
+        "artifact_id": "art-67576880a867a82a647fbd047f627b718ca9def1c17b4ca79e0f9908c6cc24eb",
+        "observed_samples": "296",
+        "methods": 28,
+        "symbol_coverage": 1,
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "unknown",
+          "parser_version": "traceevent-stack/1",
+          "warnings": [
+            "stack_loss_status_unknown"
+          ],
+          "symbol_coverage": 1
+        }
+      },
+      "CreatedAt": "2026-10-18T17:40:06.3869277+00:00"
+    },
+    {
+      "Id": "stack-analysis-c9deb25865cb41bc8390a12845cf48b4",
+      "Kind": "stack_analysis",
+      "Revision": 1,
+      "Hash": "fd944dad6f72298a8cdb2716cdb692da790da2206b6aed897e9254006608e65d",
+      "Json": {
+        "id": "stack-analysis-c9deb25865cb41bc8390a12845cf48b4",
+        "capture_id": "cap-947054385e304dd28625d6f705569ba4",
+        "artifact_id": "art-fe96a124f7b16641d3e9f9fd4d40f1f8111cae92d3ac2953f9a3fbd65d8b7b05",
+        "observed_samples": "302",
+        "methods": 25,
+        "symbol_coverage": 1,
+        "quality": {
+          "coverage": "partial",
+          "loss_status": "unknown",
+          "parser_version": "traceevent-stack/1",
+          "warnings": [
+            "stack_loss_status_unknown"
+          ],
+          "symbol_coverage": 1
+        }
+      },
+      "CreatedAt": "2026-10-18T18:09:51.4171985+00:00"
+    }
+  ],
+  "operations": [
+    {
+      "Id": "op-b693043dd41343d285a2026ca9e63223",
+      "Kind": "capture",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "target-6a2b9e89fc1afe74163c65d0",
+      "ResultId": "cap-fd73f06e4e96421c94f0def4baf18f43",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T17:39:59.5135863+00:00"
+    },
+    {
+      "Id": "op-eee73a60fe69402ba9e869caf2bde58b",
+      "Kind": "stack_analysis",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "stack-analysis-cap-fd73f06e4e96421c94f0def4baf18f43",
+      "ResultId": "stack-analysis-8b78c8736c7a414b9d1ebf7b133d4ad4",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T17:40:05.6173799+00:00"
+    },
+    {
+      "Id": "op-d93dea330e5a44d0b9f11ecf73c1eab3",
+      "Kind": "capture",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "target-192f6321ad691c179043b97f",
+      "ResultId": "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T17:40:11.7185984+00:00"
+    },
+    {
+      "Id": "op-ef59b6646a3149e782b5ba27e2bbda45",
+      "Kind": "stack_analysis",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "stack-analysis-cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "ResultId": "stack-analysis-13fe9b66ca5243d59240cd02216f0da3",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T17:40:17.8264626+00:00"
+    },
+    {
+      "Id": "op-9a3609c9226e47e980920b891b835e52",
+      "Kind": "capture",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "target-6cd223d662e9742533e6dfec",
+      "ResultId": "cap-947054385e304dd28625d6f705569ba4",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T18:09:44.5452982+00:00"
+    },
+    {
+      "Id": "op-297c8595fcb047c19957740c8401cf21",
+      "Kind": "stack_analysis",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "stack-analysis-cap-947054385e304dd28625d6f705569ba4",
+      "ResultId": "stack-analysis-c9deb25865cb41bc8390a12845cf48b4",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T18:09:50.6521477+00:00"
+    },
+    {
+      "Id": "op-90cdf29e332e430c9a6c981da9d2341a",
+      "Kind": "capture",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "target-bb8c06892ac0ea6f5f0040df",
+      "ResultId": "cap-f1fe7c371731466f961f550fdea765c2",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T18:09:56.7360936+00:00"
+    },
+    {
+      "Id": "op-a60e82fda10e4e7ba5d68592188ac161",
+      "Kind": "stack_analysis",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "stack-analysis-cap-f1fe7c371731466f961f550fdea765c2",
+      "ResultId": "stack-analysis-495b23d7ff2f4326bc3a2d7e1d7ea1d0",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T18:10:02.8412262+00:00"
+    },
+    {
+      "Id": "op-deec626f129f4961b72f1b33c868b9a7",
+      "Kind": "capture",
+      "State": "Completed",
+      "Revision": 3,
+      "TargetId": "target-31609d282b672cb1919ef77d",
+      "ResultId": "cap-195588e958f346459b973b9b4240c577",
+      "ErrorCode": null,
+      "CreatedAt": "2026-10-18T19:03:44.3340436+00:00"
+    },
+    {
+      "Id": "op-fc1e645eda8045c091bc6ae4616da838",
+      "Kind": "stack_analysis",
+      "State": "Failed",
+      "Revision": 3,
+      "TargetId": "stack-analysis-cap-195588e958f346459b973b9b4240c577",
+      "ResultId": null,
+      "ErrorCode": "invalid_path",
+      "CreatedAt": "2026-10-18T19:03:50.4440722+00:00"
+    }
+  ],
+  "operation_events": [
+    {
+      "OperationId": "op-b693043dd41343d285a2026ca9e63223",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T17:39:59.5135863+00:00"
+    },
+    {
+      "OperationId": "op-b693043dd41343d285a2026ca9e63223",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T17:39:59.5383663+00:00"
+    },
+    {
+      "OperationId": "op-b693043dd41343d285a2026ca9e63223",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T17:40:05.4056378+00:00"
+    },
+    {
+      "OperationId": "op-eee73a60fe69402ba9e869caf2bde58b",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T17:40:05.6173799+00:00"
+    },
+    {
+      "OperationId": "op-eee73a60fe69402ba9e869caf2bde58b",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T17:40:05.6384334+00:00"
+    },
+    {
+      "OperationId": "op-eee73a60fe69402ba9e869caf2bde58b",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T17:40:06.3974270+00:00"
+    },
+    {
+      "OperationId": "op-d93dea330e5a44d0b9f11ecf73c1eab3",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T17:40:11.7185984+00:00"
+    },
+    {
+      "OperationId": "op-d93dea330e5a44d0b9f11ecf73c1eab3",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T17:40:11.7456982+00:00"
+    },
+    {
+      "OperationId": "op-d93dea330e5a44d0b9f11ecf73c1eab3",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T17:40:17.6940447+00:00"
+    },
+    {
+      "OperationId": "op-ef59b6646a3149e782b5ba27e2bbda45",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T17:40:17.8264626+00:00"
+    },
+    {
+      "OperationId": "op-ef59b6646a3149e782b5ba27e2bbda45",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T17:40:17.8472941+00:00"
+    },
+    {
+      "OperationId": "op-ef59b6646a3149e782b5ba27e2bbda45",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T17:40:18.6780015+00:00"
+    },
+    {
+      "OperationId": "op-9a3609c9226e47e980920b891b835e52",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T18:09:44.5452982+00:00"
+    },
+    {
+      "OperationId": "op-9a3609c9226e47e980920b891b835e52",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T18:09:44.5719608+00:00"
+    },
+    {
+      "OperationId": "op-9a3609c9226e47e980920b891b835e52",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T18:09:50.4887356+00:00"
+    },
+    {
+      "OperationId": "op-297c8595fcb047c19957740c8401cf21",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T18:09:50.6521477+00:00"
+    },
+    {
+      "OperationId": "op-297c8595fcb047c19957740c8401cf21",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T18:09:50.6744523+00:00"
+    },
+    {
+      "OperationId": "op-297c8595fcb047c19957740c8401cf21",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T18:09:51.4277691+00:00"
+    },
+    {
+      "OperationId": "op-90cdf29e332e430c9a6c981da9d2341a",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T18:09:56.7360936+00:00"
+    },
+    {
+      "OperationId": "op-90cdf29e332e430c9a6c981da9d2341a",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T18:09:56.7645440+00:00"
+    },
+    {
+      "OperationId": "op-90cdf29e332e430c9a6c981da9d2341a",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T18:10:02.6776723+00:00"
+    },
+    {
+      "OperationId": "op-a60e82fda10e4e7ba5d68592188ac161",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T18:10:02.8412262+00:00"
+    },
+    {
+      "OperationId": "op-a60e82fda10e4e7ba5d68592188ac161",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T18:10:02.8630845+00:00"
+    },
+    {
+      "OperationId": "op-a60e82fda10e4e7ba5d68592188ac161",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T18:10:03.6871887+00:00"
+    },
+    {
+      "OperationId": "op-deec626f129f4961b72f1b33c868b9a7",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T19:03:44.3340436+00:00"
+    },
+    {
+      "OperationId": "op-deec626f129f4961b72f1b33c868b9a7",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T19:03:44.3608101+00:00"
+    },
+    {
+      "OperationId": "op-deec626f129f4961b72f1b33c868b9a7",
+      "Revision": 3,
+      "State": "Completed",
+      "CreatedAt": "2026-10-18T19:03:50.2388460+00:00"
+    },
+    {
+      "OperationId": "op-fc1e645eda8045c091bc6ae4616da838",
+      "Revision": 1,
+      "State": "Accepted",
+      "CreatedAt": "2026-10-18T19:03:50.4440722+00:00"
+    },
+    {
+      "OperationId": "op-fc1e645eda8045c091bc6ae4616da838",
+      "Revision": 2,
+      "State": "Running",
+      "CreatedAt": "2026-10-18T19:03:50.4673768+00:00"
+    },
+    {
+      "OperationId": "op-fc1e645eda8045c091bc6ae4616da838",
+      "Revision": 3,
+      "State": "Failed",
+      "CreatedAt": "2026-10-18T19:03:50.9654602+00:00"
+    }
+  ],
+  "idempotency_records": [
+    {
+      "Caller": "local",
+      "Key": "baseline-worker-30ed496e4a16-query-cpu-v1",
+      "Hash": "43ae3bd3dcd0ed0860d267c8313f203e6126bd156f86a460da3f4214760cbd49",
+      "OperationId": "op-b693043dd41343d285a2026ca9e63223"
+    },
+    {
+      "Caller": "local",
+      "Key": "baseline-worker-30ed496e4a16-query-stacks-v1",
+      "Hash": "58e5c8d58efaca4596f6c335881d3f907a55919394728fa9b43172e338d639b2",
+      "OperationId": "op-eee73a60fe69402ba9e869caf2bde58b"
+    },
+    {
+      "Caller": "local",
+      "Key": "baseline-worker-30ed496e4a16-build-cpu-v1",
+      "Hash": "c223f3ca7247086ca05eb59bebce8eedd721abbe10e26e509560350308146d14",
+      "OperationId": "op-d93dea330e5a44d0b9f11ecf73c1eab3"
+    },
+    {
+      "Caller": "local",
+      "Key": "baseline-worker-30ed496e4a16-build-stacks-v1",
+      "Hash": "c0eb50666b1340d401c4019844b10a9c7d6a7c0174c9d4a023eb0cbd54513090",
+      "OperationId": "op-ef59b6646a3149e782b5ba27e2bbda45"
+    },
+    {
+      "Caller": "local",
+      "Key": "selected-worker-2659f0e9009f-query-cpu-v1",
+      "Hash": "b3ee98cbcd9c43dbbdff7f8ecaa3e86dbdc0f04f20ddef1d8d58bd60fa0667f2",
+      "OperationId": "op-9a3609c9226e47e980920b891b835e52"
+    },
+    {
+      "Caller": "local",
+      "Key": "selected-worker-2659f0e9009f-query-stacks-v1",
+      "Hash": "ab7ea3b6e0133d550d0f0fe2acdc0e0ba685f9b187bbbdd86695ba9e89e13532",
+      "OperationId": "op-297c8595fcb047c19957740c8401cf21"
+    },
+    {
+      "Caller": "local",
+      "Key": "selected-worker-2659f0e9009f-build-cpu-v1",
+      "Hash": "bd0513d7d838bd2f857c66daa05a9a709813b200af7873e6630d36412148fc01",
+      "OperationId": "op-90cdf29e332e430c9a6c981da9d2341a"
+    },
+    {
+      "Caller": "local",
+      "Key": "selected-worker-2659f0e9009f-build-stacks-v1",
+      "Hash": "a9e6bbaa02113215e3183404ee1afa2fa7cbc0d8951ff500638e8959c020e9d4",
+      "OperationId": "op-a60e82fda10e4e7ba5d68592188ac161"
+    },
+    {
+      "Caller": "local",
+      "Key": "keyvector-worker-2d2f4202f289-query-cpu-v1",
+      "Hash": "2b999789c8538558739332e4704797895cf6d7aff768bece44057cac3e1feeeb",
+      "OperationId": "op-deec626f129f4961b72f1b33c868b9a7"
+    },
+    {
+      "Caller": "local",
+      "Key": "keyvector-worker-2d2f4202f289-query-stacks-v1",
+      "Hash": "3cf651943d2f295e3eddef6d6a6e6b3004c5da2336ccb95c3d4bfdb5ad07ed76",
+      "OperationId": "op-fc1e645eda8045c091bc6ae4616da838"
+    }
+  ],
+  "grant_uses": [
+    {
+      "GrantId": "grant-e0c3c6e475674452b8060a7949ca8a1b",
+      "Count": 1
+    },
+    {
+      "GrantId": "grant-b9e8bbbd0e0542ecaf79468693f91a2f",
+      "Count": 1
+    },
+    {
+      "GrantId": "grant-2a63fccf9e6a43839a06d80def079594",
+      "Count": 1
+    },
+    {
+      "GrantId": "grant-cc0cabdaa1544cf4b7fcc7b78f47df36",
+      "Count": 1
+    },
+    {
+      "GrantId": "grant-a4585584f2f34e7293ca5cda2dc481d7",
+      "Count": 1
+    }
+  ],
+  "note": "Read-only export of owned catalog. Earlier four capture RPC payloads were not logged verbatim; their scoped grants, idempotency hashes and operation records are retained. Latest capture includes exact requests.jsonl. No policies/signing material exported."
+}

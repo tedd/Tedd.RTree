@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "data": {
+    "rows": [
+      {
+        "frame": {
+          "id": "sampled-method-0650803879bd705b9539093f124505409f36398247e0bfcc605fcfc757bd8893",
+          "name": "System.Threading.WaitHandle.WaitOneNoCheck(int32,bool,class System.Object,value class WaitHandleWaitSourceMap)",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723601636867",
+          "method_token": 100679454
+        },
+        "self_count": "144",
+        "inclusive_count": "144",
+        "self_share": 0.4864864864864865,
+        "inclusive_share": 0.4864864864864865
+      },
+      {
+        "frame": {
+          "id": "sampled-method-0ffa0e11d9c2e06cc58d20624291f4493b74ac661fbfa069e93ea21889b07ea1",
+          "name": "Bench+<>c__DisplayClass3_0`1[System.Double].<Run>g__Query|2(int32)",
+          "module": "Bench",
+          "resolution": "managed_rundown",
+          "address": "140722008738349",
+          "method_token": 100663354
+        },
+        "self_count": "57",
+        "inclusive_count": "146",
+        "self_share": 0.19256756756756757,
+        "inclusive_share": 0.49324324324324326
+      },
+      {
+        "frame": {
+          "id": "sampled-method-d9bc8ba62097165b6141c4aa8445146aca0b579ae330a2e3d9af735470dc5af1",
+          "name": "Tedd.RTree.RTree`1[System.Int32].Search(class Node<!0>,value class Tedd.RTree.Rectangle&,class System.Collections.Generic.List`1<!0>)",
+          "module": "Tedd.RTree",
+          "resolution": "managed_rundown",
+          "address": "140722008733721",
+          "method_token": 100663401
+        },
+        "self_count": "46",
+        "inclusive_count": "89",
+        "self_share": 0.1554054054054054,
+        "inclusive_share": 0.30067567567567566
+      },
+      {
+        "frame": {
+          "id": "sampled-method-92c115341bfc0a4e6445aab1719538c41445fd11a355472917dc727b1e78cc1b",
+          "name": "Tedd.RTree.RTree`1[System.Int32].CollectValues(class Node<!0>,class System.Collections.Generic.List`1<!0>)",
+          "module": "Tedd.RTree",
+          "resolution": "managed_rundown",
+          "address": "140722008735841",
+          "method_token": 100663400
+        },
+        "self_count": "28",
+        "inclusive_count": "43",
+        "self_share": 0.0945945945945946,
+        "inclusive_share": 0.14527027027027026
+      },
+      {
+        "frame": {
+          "id": "sampled-method-a7bb8bbdab3c44c2255a42c9bfbac0bb8526fa51793f11dcb5f845dac84cf12c",
+          "name": "System.SpanHelpers.Memmove(unsigned int8&,unsigned int8&,unsigned int)",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723601007152",
+          "method_token": 100671147
+        },
+        "self_count": "15",
+        "inclusive_count": "15",
+        "self_share": 0.05067567567567568,
+        "inclusive_share": 0.05067567567567568
+      },
+      {
+        "frame": {
+          "id": "sampled-method-b566c723fe75022f3c203b28da13995d45e075753286aaedd184619433a23cc6",
+          "name": "Interop+Kernel32.GetSystemTimes(int64&,int64&,int64&)",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723600406996",
+          "method_token": 100663468
+        },
+        "self_count": "2",
+        "inclusive_count": "2",
+        "self_share": 0.006756756756756757,
+        "inclusive_share": 0.006756756756756757
+      },
+      {
+        "frame": {
+          "id": "sampled-method-2503a4308087073d17cfe8d9c4b4f6c558ac41036102838d097a60efad651ea6",
+          "name": "System.Threading.Thread.PollGC()",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723601626090",
+          "method_token": 100679317
+        },
+        "self_count": "1",
+        "inclusive_count": "1",
+        "self_share": 0.0033783783783783786,
+        "inclusive_share": 0.0033783783783783786
+      },
+      {
+        "frame": {
+          "id": "sampled-method-3ede6b0da43dcf2791d4727a1929ee7975a26defc4876873a9c1c035671dbaaa",
+          "name": "Bench.Run(class System.String[])",
+          "module": "Bench",
+          "resolution": "managed_rundown",
+          "address": "140722008708178",
+          "method_token": 100663299
+        },
+        "self_count": "1",
+        "inclusive_count": "148",
+        "self_share": 0.0033783783783783786,
+        "inclusive_share": 0.5
+      },
+      {
+        "frame": {
+          "id": "sampled-method-8abbd09b2fe689a64a32561bea8b7ed608b18363d575cd2631707bdc7f092e04",
+          "name": "System.Diagnostics.Tracing.EventPipeEventProvider.EventWriteTransfer(required_modifier System.Runtime.InteropServices.InAttribute value class System.Diagnostics.Tracing.EventDescriptor&,int,value class System.Guid*,value class System.Guid*,int32,value class EventData*)",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723602827463",
+          "method_token": 100702893
+        },
+        "self_count": "1",
+        "inclusive_count": "1",
+        "self_share": 0.0033783783783783786,
+        "inclusive_share": 0.0033783783783783786
+      },
+      {
+        "frame": {
+          "id": "sampled-method-e1a03d24910d18d522256bd4c75623eddcbd62a40254818bd6856ee691827b60",
+          "name": "System.Threading.Thread.StartCore()",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723601622869",
+          "method_token": 100679270
+        },
+        "self_count": "1",
+        "inclusive_count": "1",
+        "self_share": 0.0033783783783783786,
+        "inclusive_share": 0.0033783783783783786
+      },
+      {
+        "frame": {
+          "id": "sampled-method-0d25bc638861fccaf1609f7bbb4b3ac55bb39ce8c1e38401c3f9f3bf0a97630a",
+          "name": "Bench+OriginalIndex.Search(int32,class System.Collections.Generic.List`1<int32>)",
+          "module": "Bench",
+          "resolution": "managed_rundown",
+          "address": "140722008733309",
+          "method_token": 100663331
+        },
+        "self_count": "0",
+        "inclusive_count": "89",
+        "self_share": 0,
+        "inclusive_share": 0.30067567567567566
+      },
+      {
+        "frame": {
+          "id": "sampled-method-16a002712e223e7cee1f179de333354d9fc6b749a081976d230b5bbee7819e51",
+          "name": "System.Diagnostics.Tracing.CounterGroup.EnableTimer(float32)",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723602815775",
+          "method_token": 100702751
+        },
+        "self_count": "0",
+        "inclusive_count": "1",
+        "self_share": 0,
+        "inclusive_share": 0.0033783783783783786
+      },
+      {
+        "frame": {
+          "id": "sampled-method-1b4790b667542711d4a261d47f036593b7f96fe65530afd3b7fed002baaab0b4",
+          "name": "Program.<Main>$(class System.String[])",
+          "module": "Bench",
+          "resolution": "managed_rundown",
+          "address": "140722008702203",
+          "method_token": 100663297
+        },
+        "self_count": "0",
+        "inclusive_count": "148",
+        "self_share": 0,
+        "inclusive_share": 0.5
+      },
+      {
+        "frame": {
+          "id": "sampled-method-3bd83cc79466a231e5b7bc31bc660cd47bea307de5b1ac764a28e3bcaf953484",
+          "name": "System.Diagnostics.Tracing.EventSource.DoCommand(class System.Diagnostics.Tracing.EventCommandEventArgs)",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723602863145",
+          "method_token": 100703044
+        },
+        "self_count": "0",
+        "inclusive_count": "1",
+        "self_share": 0,
+        "inclusive_share": 0.0033783783783783786
+      },
+      {
+        "frame": {
+          "id": "sampled-method-44a0b4d62a2e56a886db640df5c12f43c29cf0a03727fd74bc1c04318e8ccf75",
+          "name": "System.Diagnostics.Tracing.CounterGroup.PollForValues()",
+          "module": "System.Private.CoreLib",
+          "resolution": "managed_rundown",
+          "address": "140723602817329",
+          "method_token": 100702755
+        },
+        "self_count": "0",
+        "inclusive_count": "147",
+        "self_share": 0,
+        "inclusive_share": 0.4966216216216216
+      }
+    ],
+    "truncated": true,
+    "next_cursor": "stack-analysis-8b78c8736c7a414b9d1ebf7b133d4ad4:hotspots-self:15"
+  },
+  "code": null,
+  "message": null,
+  "recovery": null
+}

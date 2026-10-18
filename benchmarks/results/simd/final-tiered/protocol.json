@@ -1,0 +1,232 @@
+{
+  "jobs": [
+    [
+      2,
+      2,
+      "double",
+      10000,
+      "uniform",
+      "original",
+      "selected"
+    ],
+    [
+      0,
+      2,
+      "double",
+      10000,
+      "uniform",
+      "original",
+      "baseline"
+    ],
+    [
+      1,
+      2,
+      "double",
+      10000,
+      "uniform",
+      "original",
+      "baseline"
+    ],
+    [
+      2,
+      2,
+      "double",
+      100000,
+      "uniform",
+      "original",
+      "selected"
+    ],
+    [
+      1,
+      2,
+      "double",
+      100000,
+      "clustered",
+      "original",
+      "selected"
+    ],
+    [
+      2,
+      2,
+      "double",
+      10000,
+      "uniform",
+      "original",
+      "baseline"
+    ],
+    [
+      1,
+      2,
+      "double",
+      100000,
+      "uniform",
+      "original",
+      "selected"
+    ],
+    [
+      0,
+      2,
+      "double",
+      100000,
+      "uniform",
+      "original",
+      "baseline"
+    ],
+    [
+      1,
+      2,
+      "double",
+      10000,
+      "uniform",
+      "original",
+      "selected"
+    ],
+    [
+      2,
+      2,
+      "double",
+      100000,
+      "clustered",
+      "original",
+      "baseline"
+    ],
+    [
+      0,
+      2,
+      "double",
+      100000,
+      "clustered",
+      "original",
+      "baseline"
+    ],
+    [
+      1,
+      2,
+      "double",
+      100000,
+      "uniform",
+      "original",
+      "baseline"
+    ],
+    [
+      0,
+      2,
+      "double",
+      100000,
+      "clustered",
+      "original",
+      "selected"
+    ],
+    [
+      0,
+      2,
+      "double",
+      100000,
+      "uniform",
+      "original",
+      "selected"
+    ],
+    [
+      1,
+      2,
+      "double",
+      100000,
+      "clustered",
+      "original",
+      "baseline"
+    ],
+    [
+      0,
+      2,
+      "double",
+      10000,
+      "uniform",
+      "original",
+      "selected"
+    ],
+    [
+      2,
+      2,
+      "double",
+      100000,
+      "uniform",
+      "original",
+      "baseline"
+    ],
+    [
+      2,
+      2,
+      "double",
+      100000,
+      "clustered",
+      "original",
+      "selected"
+    ]
+  ],
+  "identities": {
+    "baseline": {
+      "caller": "4fae59411e60705fcfb65341c7b476f3bd351f4310094087ae21a1a4e6548c55",
+      "library": "30ed496e4a16e3dcb67277a7f29b726808af4c38fc87d75d4a151247350d4a97",
+      "source": {
+        "Box.cs": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+        "BulkLoadWorkspace.cs": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+        "ConcurrentRTree.cs": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+        "ConcurrentRTree2D.Generic.cs": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+        "ConcurrentRTree3D.Generic.cs": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+        "HilbertOrder.cs": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+        "Rectangle.cs": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+        "Rectangle2D.Generic.cs": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+        "RTree.cs": "3cf09c3663593c9ac4ec388c7e70a08f084804500c3bac87c5ac1d99f8e2b3e8",
+        "RTree2D.Generic.cs": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+        "RTree3D.Generic.cs": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+        "SnapshotRTree.cs": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+        "SnapshotRTree2D.Generic.cs": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+        "SnapshotRTree3D.Generic.cs": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+        "SpatialEntry.cs": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+        "SpatialEntry2D.Generic.cs": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+        "SpatialEntry3D.cs": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+        "SpatialKeyAxis.cs": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+        "SpatialMeasure.cs": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+        "SpatialOrder3D.cs": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d"
+      }
+    },
+    "selected": {
+      "caller": "4fae59411e60705fcfb65341c7b476f3bd351f4310094087ae21a1a4e6548c55",
+      "library": "2659f0e9009fa6cab7c0ee09f809bd7e9a7dbade7157ee41c49d3680e8aab068",
+      "source": {
+        "Box.cs": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+        "BulkLoadWorkspace.cs": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+        "ConcurrentRTree.cs": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+        "ConcurrentRTree2D.Generic.cs": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+        "ConcurrentRTree3D.Generic.cs": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+        "HilbertOrder.cs": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+        "Rectangle.cs": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+        "Rectangle2D.Generic.cs": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+        "RTree.cs": "22b0b4fd4618747f32dfdb956d4a0395b8fba2d45533d278038036216e27a078",
+        "RTree2D.Generic.cs": "0d6736adacc062c24d22ec1aa2093acf5cda73b2bd3041d419665a27622150cc",
+        "RTree3D.Generic.cs": "4cfc6a0cdbb1f3f80be0749dc6d3ff67d74a43f3074d58b5acc232584901f7e8",
+        "SnapshotRTree.cs": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+        "SnapshotRTree2D.Generic.cs": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+        "SnapshotRTree3D.Generic.cs": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+        "SpatialEntry.cs": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+        "SpatialEntry2D.Generic.cs": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+        "SpatialEntry3D.cs": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+        "SpatialKeyAxis.cs": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+        "SpatialMeasure.cs": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+        "SpatialOrder3D.cs": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d"
+      }
+    }
+  },
+  "seed": 181148,
+  "runtime": "10.0.13",
+  "runtime_hashes": {
+    "coreclr.dll": "18eed8c40d05fc455be95d12cc77eacf379265063b15ca84bd7a11cf29078a22",
+    "clrjit.dll": "2a2332c3c0cb023e71deb356b5fb85ce9045fb8434734dcfe9a7529e427dc858",
+    "System.Private.CoreLib.dll": "0a175cdd09067c52f8b2477cfcebf894b2f926d7302e55ae76fc921529662c7b"
+  },
+  "tiered_compilation": true,
+  "driver_sha256": "c69ee825de9aaf6c841b919fcaf6f79fb856da24b2161898fef923d090fa4922",
+  "affinity": 4,
+  "observer": "none",
+  "calibration_ms": 100
+}

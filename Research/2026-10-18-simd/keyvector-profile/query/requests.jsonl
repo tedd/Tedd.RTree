@@ -1,0 +1,22 @@
+{"tool": "lab.discover", "arguments": {"request": {"action": "workspace"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "profiles"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "targets", "limit": 100}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "scenarios", "target_id": "target-31609d282b672cb1919ef77d"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "capabilities", "target_id": "target-31609d282b672cb1919ef77d"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "compatibility", "target_id": "target-31609d282b672cb1919ef77d"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "start_capture", "target_id": "target-31609d282b672cb1919ef77d", "expected_target_epoch": "0", "profile": "cpu-diagnostic", "duration_seconds": 5, "grant_id": "grant-a4585584f2f34e7293ca5cda2dc481d7", "idempotency_key": "keyvector-worker-2d2f4202f289-query-cpu-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-deec626f129f4961b72f1b33c868b9a7"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "cap-195588e958f346459b973b9b4240c577"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "analyze_stacks", "capture_id": "cap-195588e958f346459b973b9b4240c577", "idempotency_key": "keyvector-worker-2d2f4202f289-query-stacks-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-fc1e645eda8045c091bc6ae4616da838"}}}

@@ -1,0 +1,459 @@
+"""Task-owned controlled SIMD experiments; never uses an external database."""
+import csv
+import ctypes
+import hashlib
+import json
+import os
+from pathlib import Path
+import random
+import shutil
+import statistics
+import subprocess
+import sys
+import time
+
+REPO = Path(__file__).resolve().parents[2]
+ROOT = Path('D:/Workspaces/AI/rtree-simd-20261018')
+EVIDENCE = REPO / 'benchmarks/results/simd'
+RESEARCH = REPO / 'Research/2026-10-18-simd'
+DOTNET = r'C:\Program Files\dotnet\dotnet.exe'
+ENV = dict(os.environ, TEMP=str(ROOT), TMP=str(ROOT), DOTNET_TieredCompilation='0',
+           DOTNET_CLI_TELEMETRY_OPTOUT='1')
+
+def run(command, log=None, env=None, timeout=180):
+    command=list(map(str,command))
+    started=time.time_ns()
+    process=subprocess.Popen(command,cwd=ROOT,env=env or ENV,stdout=subprocess.PIPE,stderr=subprocess.PIPE,
+                             text=True,creationflags=subprocess.CREATE_NO_WINDOW)
+    try: stdout,stderr=process.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        process.kill();process.wait();raise
+    result=subprocess.CompletedProcess(command,process.returncode,stdout,stderr)
+    result.pid=process.pid;result.started_ns=started
+    if log:
+        Path(log).write_text(result.stdout + '\nSTDERR:\n' + result.stderr, encoding='utf8')
+    if result.returncode:
+        raise RuntimeError((command, result.returncode, result.stdout[-6000:], result.stderr[-3000:]))
+    return result
+
+def digest(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+def build(stage):
+    source = ROOT / f'{stage}-source/src/Tedd.RTree/Tedd.RTree.csproj'
+    run([DOTNET, 'build', source, '-c', 'Release', '--artifacts-path', ROOT/f'{stage}-artifacts',
+         '-o', ROOT/f'{stage}-library', '-p:UseSharedCompilation=false'], ROOT/f'{stage}-build.log')
+
+def common_caller():
+    run([DOTNET,'build',REPO/'benchmarks/generic-packed/Bench.csproj','-c','Release',
+         '--artifacts-path',ROOT/'caller-artifacts','-o',ROOT/'caller',
+         '-p:UseSharedCompilation=false',f'-p:LibraryPath={ROOT}/baseline-library/Tedd.RTree.dll'],ROOT/'caller-build.log')
+
+def file_caller():
+    run([DOTNET,'build',REPO/'benchmarks/mutable-packed/Bench.csproj','-c','Release',
+         '--artifacts-path',ROOT/'file-caller-artifacts','-o',ROOT/'file-caller',
+         '-p:UseSharedCompilation=false',f'-p:LibraryPath={ROOT}/baseline-library/Tedd.RTree.dll'],ROOT/'file-caller-build.log')
+
+def warm_caller(stage):
+    text=(REPO/'benchmarks/generic-packed/Worker.cs').read_text()
+    marker='        Measure("build", Build);'
+    if text.count(marker) not in (1,2): raise RuntimeError('Warm caller source drift')
+    before,after=text.rsplit(marker,1)
+    text=before+'''        if (action is "measure-warm" or "codegen-warm")
+        {
+            var warmup = Stopwatch.StartNew();
+            while (warmup.Elapsed.TotalSeconds < 3)
+            {
+                sink ^= Build();
+                for (int group = 0; group < 4; group++) sink ^= Query(group);
+            }
+            if (action == "codegen-warm") { Console.WriteLine(sink); return; }
+        }
+'''+marker+after
+    (ROOT/'WarmWorker.cs').write_text(text)
+    (ROOT/'Warm.csproj').write_text(f'''<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><AssemblyName>Bench</AssemblyName><TargetFramework>net10.0</TargetFramework><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup><ItemGroup><Compile Include="WarmWorker.cs"/><Reference Include="Tedd.RTree"><HintPath>{ROOT}/baseline-library/Tedd.RTree.dll</HintPath></Reference></ItemGroup></Project>''')
+    run([DOTNET,'build',ROOT/'Warm.csproj','-c','Release','--artifacts-path',ROOT/'warm-artifacts',
+         '-o',ROOT/'warm-caller','-p:UseSharedCompilation=false'],ROOT/'warm-build.log')
+    shutil.copyfile(ROOT/'WarmWorker.cs',RESEARCH/'warm-worker.cs.txt')
+    for s in ('baseline',stage):
+        destination=ROOT/f'{s}-warm-worker';destination.mkdir(exist_ok=True)
+        for p in (ROOT/'warm-caller').iterdir():
+            if p.is_file() and not p.name.startswith('Tedd.RTree.'): shutil.copyfile(p,destination/p.name)
+        shutil.copyfile(ROOT/f'{s}-library/Tedd.RTree.dll',destination/'Tedd.RTree.dll')
+        env=dict(ENV,DOTNET_TieredCompilation='1',DOTNET_TieredPGO='1',DOTNET_JitDisasm='*Search* *CollectValues*',
+                 DOTNET_JitDisasmAssemblies='Tedd.RTree',DOTNET_JitStdOutFile=str(RESEARCH/f'{s}-tiered-jit.txt'))
+        if Path(env['DOTNET_JitStdOutFile']).exists(): raise RuntimeError('Existing tier evidence')
+        run([DOTNET,'exec','--fx-version','10.0.13',destination/'Bench.dll','2','double','10000','uniform','original','codegen-warm'],
+            ROOT/f'{s}-tiered-codegen.log',env=env)
+
+def weak_tests(stage):
+    (ROOT/'WeakMain.cs').write_text('PackedValueChecks.Run(); System.Console.WriteLine("Reference-release checks passed.");')
+    (ROOT/'Weak.csproj').write_text(f'''<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup><ItemGroup><Compile Include="WeakMain.cs"/><Compile Include="{REPO}/tests/Tedd.RTree.Tests/PackedValueChecks.cs"/><Reference Include="Tedd.RTree"><HintPath>{ROOT}/{stage}-library/Tedd.RTree.dll</HintPath></Reference></ItemGroup></Project>''')
+    run([DOTNET,'build',ROOT/'Weak.csproj','-c','Release','--artifacts-path',ROOT/f'{stage}-weak-artifacts',
+         '-o',ROOT/f'{stage}-weak','-p:UseSharedCompilation=false'],ROOT/f'{stage}-weak-build.log')
+    shutil.copyfile(ROOT/f'{stage}-library/Tedd.RTree.dll',ROOT/f'{stage}-weak/Tedd.RTree.dll')
+    result=run([DOTNET,'exec','--fx-version','10.0.13',ROOT/f'{stage}-weak/Weak.dll'],RESEARCH/f'{stage}-reference-release.txt')
+    print(stage,result.stdout.strip(),flush=True)
+
+def fixtures():
+    result=[]
+    for n in (1000,10000,100000):
+        for distribution in ('uniform','clustered'):
+            state=73211
+            def next_int(limit):
+                nonlocal state
+                state=(state*1664525+1013904223)&0xffffffff
+                return (state>>8)%limit
+            boxes=[]
+            for i in range(n):
+                x=i%8*125+next_int(30) if distribution=='clustered' else next_int(1000)
+                y=i%8*125+next_int(30) if distribution=='clustered' else next_int(1000)
+                boxes.append((x,y,x+next_int(5)+1,y+next_int(5)+1))
+            queries=[]
+            for i in range(64):
+                x,y=next_int(1000),next_int(1000)
+                width=(0,20,200,1000)[i%4]
+                queries.append((x,y,x+width,y+width))
+            path=ROOT/f'fixture-{n}-{distribution}.txt'
+            path.write_text(str(n)+'\n'+'\n'.join(' '.join(map(str,b)) for b in boxes+queries)+'\n',encoding='ascii')
+            result.append((n,distribution,path))
+    return result
+
+def build_measure():
+    destination=EVIDENCE/'construction'
+    destination.mkdir(parents=True,exist_ok=False)
+    cases=[(n,d,p) for n,d,p in fixtures() if (n,d) in ((10000,'uniform'),(100000,'uniform'),(100000,'clustered'))]
+    jobs=[(b,n,d,str(p),s) for b in range(3) for n,d,p in cases for s in ('baseline','pdep','histogram')]
+    random.Random(181044).shuffle(jobs)
+    identities={s:digest(ROOT/f'{s}-library/Tedd.RTree.dll') for s in ('baseline','pdep','histogram')}
+    (destination/'protocol.json').write_text(json.dumps(dict(jobs=jobs,libraries=identities,caller=digest(ROOT/'file-caller/Bench.dll'),
+        runtime='10.0.13',affinity=4,seed=181044,observer='none',tiering=False),indent=2))
+    samples=[];launches=[]
+    for index,(block,n,distribution,fixture,stage) in enumerate(jobs):
+        shutil.copyfile(ROOT/f'{stage}-library/Tedd.RTree.dll',ROOT/'file-caller/Tedd.RTree.dll')
+        result=run([DOTNET,'exec','--fx-version','10.0.13',ROOT/'file-caller/Bench.dll',fixture,'build-only'],destination/f'{index:03d}.out')
+        if 'validated=64' not in result.stderr: raise RuntimeError('Missing validation')
+        for row in csv.reader(result.stdout.splitlines()):
+            op,us,reps,allocated=row
+            samples.append(dict(block=block,size=n,distribution=distribution,stage=stage,operation=op,us=float(us),allocated=float(allocated)))
+        (destination/'samples.json').write_text(json.dumps(samples,indent=2))
+        launches.append(dict(block=block,size=n,distribution=distribution,stage=stage,pid=result.pid,
+            start_ns=result.started_ns,validation=result.stderr.strip(),command=result.args))
+        (destination/'launches.json').write_text(json.dumps(launches,indent=2))
+        print(f'{index+1}/{len(jobs)} {stage} {n} {distribution} {samples[-1]["us"]:.2f} us',flush=True)
+
+def competitor_boundaries():
+    env=dict(ENV,PACKED_NATIVE_PATH=str(ROOT/'native/target/release/packed_native.dll'))
+    shutil.copyfile(ROOT/'selected-library/Tedd.RTree.dll',ROOT/'file-caller/Tedd.RTree.dll')
+    records=[]
+    for n in (0,1,16,17):
+        path=ROOT/f'native-boundary-{n}.txt'
+        boxes=[(i%4-2,-1,i%4-1,1) for i in range(n)]
+        qs=[(0,0,0,0),(-3,-2,3,2),(1,1,1,1),(100,100,101,101),(-2,-1,-2,-1),(-1,-1,0,1),(-3,-3,-2,-1),(2,1,2,1)]
+        path.write_text(str(n)+'\n'+'\n'.join(' '.join(map(str,b)) for b in boxes+qs)+'\n')
+        result=run([DOTNET,'exec','--fx-version','10.0.13',ROOT/'file-caller/Bench.dll',path,'native-static'],
+                   RESEARCH/f'native-boundary-{n}.txt',env=env)
+        if 'validated=8' not in result.stderr: raise RuntimeError('Native boundary validation absent')
+        records.append(dict(count=n,queries=8,pid=result.pid,started_ns=result.started_ns,exit_code=result.returncode))
+    (RESEARCH/'native-boundaries.json').write_text(json.dumps(records,indent=2))
+
+def competitors(stage_name='selected', phase='competitors'):
+    destination=EVIDENCE/phase
+    destination.mkdir(parents=True,exist_ok=False)
+    jobs=[(b,n,d,str(p),s) for b in range(3) for n,d,p in fixtures() for s in (stage_name,'rust-direct','rust-interop')]
+    seed=181149 if phase.startswith('final-') else 181049
+    random.Random(seed).shuffle(jobs)
+    native=ROOT/'native/target/release'
+    (destination/'protocol.json').write_text(json.dumps(dict(jobs=jobs,seed=seed,runtime='10.0.13',affinity=4,tiering=False,
+        caller=digest(ROOT/'file-caller/Bench.dll'),selected_library=digest(ROOT/f'{stage_name}-library/Tedd.RTree.dll'),
+        native_executable=digest(native/'packed-worker.exe'),native_library=digest(native/'packed_native.dll'),
+        cargo_lock=digest(ROOT/'native/Cargo.lock'),static_source_zip=digest(ROOT/'static.zip'),geo_source_zip=digest(ROOT/'geo.zip'),
+        rustflags='-C target-cpu=native',release={'lto':'thin','codegen_units':1,'panic':'abort'},
+        static_revision='a511a6327e14a0f0418cea01c401bf147e0e835c',observer='none',driver=digest(__file__)),indent=2))
+    env=dict(ENV,PACKED_NATIVE_PATH=str(native/'packed_native.dll'))
+    shutil.copyfile(ROOT/f'{stage_name}-library/Tedd.RTree.dll',ROOT/'file-caller/Tedd.RTree.dll')
+    samples=[];launches=[]
+    for index,(block,n,distribution,fixture,stage) in enumerate(jobs):
+        if stage=='rust-direct': command=[native/'packed-worker.exe',fixture,'static']
+        else:
+            command=[DOTNET,'exec','--fx-version','10.0.13',ROOT/'file-caller/Bench.dll',fixture]
+            if stage=='rust-interop': command+=['native-static']
+        result=run(command,destination/f'{index:03d}.out',env=env)
+        expected='validated=128' if stage==stage_name else 'validated=64'
+        if expected not in result.stderr: raise RuntimeError('Missing competitor validation')
+        launches.append(dict(block=block,size=n,distribution=distribution,stage=stage,pid=result.pid,start_ns=result.started_ns,
+            validation=result.stderr.strip(),command=result.args,exit_code=result.returncode))
+        for row in csv.reader(result.stdout.splitlines()):
+            op,us,reps,allocated=row
+            samples.append(dict(block=block,dimension=2,coordinate='double',size=n,distribution=distribution,mode='original',stage=stage,
+                operation=op,us=float(us),repetitions=int(reps),allocated=None if allocated=='NA' else float(allocated)))
+        (destination/'samples.json').write_text(json.dumps(samples,indent=2))
+        (destination/'launches.json').write_text(json.dumps(launches,indent=2))
+        print(f'{index+1}/{len(jobs)} {stage} {n} {distribution}',flush=True)
+    summarize(destination)
+
+def codegen_generic(stage='selected'):
+    for dim in (2,3):
+        for coord in ('int','double'):
+            path=RESEARCH/f'{stage}-{dim}d-{coord}-jit.txt'
+            if path.exists(): raise RuntimeError('Existing code evidence')
+            env=dict(ENV,DOTNET_JitDisasm='*Search* *CollectValues* *BulkLoadPacked*',DOTNET_JitDisasmAssemblies='Tedd.RTree',DOTNET_JitStdOutFile=str(path))
+            run([DOTNET,'exec','--fx-version','10.0.13',ROOT/f'{stage}-worker/Bench.dll',str(dim),coord,'10000','uniform','plain','codegen'],
+                ROOT/f'{stage}-{dim}d-{coord}-codegen.log',env=env)
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
+
+def stage_caller(stage):
+    destination = ROOT/f'{stage}-worker'
+    destination.mkdir(exist_ok=True)
+    for file in (ROOT/'caller').iterdir():
+        if file.is_file() and not file.name.startswith('Tedd.RTree.'):
+            shutil.copyfile(file,destination/file.name)
+    shutil.copyfile(ROOT/f'{stage}-library/Tedd.RTree.dll',destination/'Tedd.RTree.dll')
+
+def tests(stage, include_scalar=True):
+    project = ROOT/'Tests.csproj'
+    project.write_text(f'''<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup><ItemGroup><Compile Include="{REPO}/tests/Tedd.RTree.Tests/*.cs"/><Reference Include="Tedd.RTree"><HintPath>{ROOT}/{stage}-library/Tedd.RTree.dll</HintPath></Reference></ItemGroup></Project>''')
+    run([DOTNET,'build',project,'-c','Release','--artifacts-path',ROOT/f'{stage}-test-artifacts',
+         '-o',ROOT/f'{stage}-tests','-p:UseSharedCompilation=false'],ROOT/f'{stage}-test-build.log')
+    shutil.copyfile(ROOT/f'{stage}-library/Tedd.RTree.dll',ROOT/f'{stage}-tests/Tedd.RTree.dll')
+    if digest(ROOT/f'{stage}-tests/Tedd.RTree.dll') != digest(ROOT/f'{stage}-library/Tedd.RTree.dll'):
+        raise RuntimeError('Test dependency identity drift')
+    for disabled in ((False,True) if include_scalar else (False,)):
+        env = dict(ENV)
+        if disabled: env['DOTNET_EnableHWIntrinsic']='0'
+        result=run([DOTNET,'exec','--fx-version','10.0.13',ROOT/f'{stage}-tests/Tests.dll'],env=env,
+                   log=ROOT/f'{stage}-tests-{disabled}.log')
+        print(stage,'tests', 'scalar' if disabled else 'hardware',result.stdout.strip(),flush=True)
+
+def prepare():
+    # Immutable snapshot created before any candidate edits. Copy only source, never user scratch.
+    for stage in ('branchless','vector'):
+        destination=ROOT/f'{stage}-source/src/Tedd.RTree'
+        destination.mkdir(parents=True,exist_ok=False)
+        for file in (ROOT/'baseline-source/src/Tedd.RTree').iterdir():
+            if file.suffix in ('.cs','.csproj'): shutil.copyfile(file,destination/file.name)
+    for name in ('Rectangle.cs','Rectangle2D.Generic.cs','Box.cs'):
+        path=ROOT/f'branchless-source/src/Tedd.RTree/{name}'
+        source=path.read_text()
+        start=source.index('    public bool Intersects(')
+        end=source.index('    internal ',start)
+        source=source[:start]+source[start:end].replace(' &&',' &')+source[end:]
+        path.write_text(source)
+    path=ROOT/'vector-source/src/Tedd.RTree/RTree.cs'
+    source=path.read_text()
+    source='using System.Runtime.Intrinsics;\nusing System.Runtime.InteropServices;\n\n'+source
+    source=source.replace('return Search(_root, bounds, results);','''if (Vector256.IsHardwareAccelerated)
+            return SearchVector(_root, bounds, Vector256.Create(bounds.MaxX, bounds.MaxY, -bounds.MinX, -bounds.MinY), results);
+        return Search(_root, bounds, results);''',1)
+    at=source.index('    private bool Remove(Node node,')
+    vector='''    private static int SearchVector(Node node, in Rectangle bounds, Vector256<double> query, List<T> results)
+    {
+        // Rectangle has four sequential doubles. Cast only the validated active prefix.
+        ReadOnlySpan<Vector256<double>> entries = MemoryMarshal.Cast<Rectangle, Vector256<double>>(node.Boxes.AsSpan(0, node.Count));
+        Vector256<double> signs = Vector256.Create(0.0, 0.0, -0.0, -0.0);
+        int found = 0;
+        if (node.Leaf)
+        {
+            for (int i = 0; i < entries.Length; i++)
+            {
+                if (Vector256.LessThanOrEqualAll(Vector256.Xor(entries[i], signs), query))
+                {
+                    results.Add(node.Values![i]);
+                    found++;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < entries.Length; i++)
+            {
+                if (Vector256.LessThanOrEqualAll(Vector256.Xor(entries[i], signs), query))
+                    found += bounds.Contains(node.Boxes[i])
+                        ? CollectValues(node.Children![i]!, results)
+                        : SearchVector(node.Children![i]!, bounds, query, results);
+            }
+        }
+        return found;
+    }
+
+'''
+    path.write_text(source[:at]+vector+source[at:])
+    for stage in ('baseline','branchless','vector'):
+        build(stage)
+    common_caller()
+    for stage in ('baseline','branchless','vector'):
+        stage_caller(stage)
+        tests(stage)
+
+def codegen(stage):
+    output=RESEARCH/f'{stage}-jit.txt'
+    if output.exists(): raise RuntimeError('Frozen code evidence already exists')
+    env=dict(ENV,DOTNET_JitDisasm='*Search* *CollectValues* *BulkLoadPacked* *Encode* *Spread* *SortIndices*',
+             DOTNET_JitDisasmAssemblies='Tedd.RTree',DOTNET_JitStdOutFile=str(output))
+    run([DOTNET,'exec','--fx-version','10.0.13',ROOT/f'{stage}-worker/Bench.dll',
+         '2','double','100000','uniform','original','codegen'],ROOT/f'{stage}-codegen.log',env=env)
+    output.write_text('\n'.join(line.rstrip() for line in output.read_text().splitlines())+'\n')
+
+def measure(phase, source_stage='selected'):
+    destination_phase=phase
+    final=phase.startswith('final-')
+    if final: phase=phase[6:]
+    if phase=='exploration': names, rounds, seed=['baseline','branchless','vector'],3,181041
+    elif phase=='collection': names,rounds,seed=['baseline','runs','ranges'],3,181043
+    elif phase=='refinement': names,rounds,seed=['baseline','ranges-fixed','ranges-raw'],3,181045
+    elif phase=='confirmation': names,rounds,seed=['baseline','selected'],5,181042
+    elif phase=='generic': names,rounds,seed=['baseline','selected'],2,181046
+    elif phase=='wrappers': names,rounds,seed=['baseline','selected'],2,181047
+    elif phase=='tiered': names,rounds,seed=['baseline','selected'],3,181048
+    elif phase=='chunks': names,rounds,seed=['baseline','selected','chunked'],3,181050
+    elif phase=='fill': names,rounds,seed=['baseline','selected','filled'],3,181051
+    elif phase=='counts': names,rounds,seed=['baseline','selected','counted'],3,181052
+    else: raise RuntimeError('Unknown phase')
+    if final:
+        names=[source_stage if s=='selected' else s for s in names]
+        seed+=100
+    fixtures=[(2,'double',n,d,'original') for n in (1000,10000,100000) for d in ('uniform','clustered')]
+    if phase=='refinement': fixtures=[f for f in fixtures if f[2] in (1000,100000) and f[3]=='uniform']
+    if phase=='generic': fixtures=[(dim,c,n,d,'plain') for dim in (2,3) for c in ('int','long','float','double') for n,d in ((10000,'uniform'),(100000,'clustered'))]
+    if phase=='wrappers': fixtures=[(dim,c,10000,'uniform',mode) for dim in (2,3) for c in ('int','double') for mode in ('snapshot','concurrent')]
+    if phase=='tiered': fixtures=[f for f in fixtures if (f[2],f[3]) in ((10000,'uniform'),(100000,'uniform'),(100000,'clustered'))]
+    if phase in ('chunks','fill','counts'): fixtures=[f for f in fixtures if f[2]==100000]
+    jobs=[(b,*f,s) for b in range(rounds) for f in fixtures for s in names]
+    random.Random(seed).shuffle(jobs)
+    destination=EVIDENCE/destination_phase
+    destination.mkdir(parents=True,exist_ok=False)
+    warm=final and phase=='tiered'
+    worker_suffix='warm-worker' if warm else 'worker'
+    identities={s:{'caller':digest(ROOT/f'{s}-{worker_suffix}/Bench.dll'),
+                   'library':digest(ROOT/f'{s}-{worker_suffix}/Tedd.RTree.dll'),
+                   'source':{p.name:digest(p) for p in (ROOT/f'{s}-source/src/Tedd.RTree').glob('*.cs')}} for s in names}
+    if len({v['caller'] for v in identities.values()})!=1: raise RuntimeError('Caller drift')
+    env=dict(ENV)
+    if phase=='tiered': env.update(DOTNET_TieredCompilation='1',DOTNET_TieredPGO='1')
+    runtime_root=Path('C:/Program Files/dotnet/shared/Microsoft.NETCore.App/10.0.13')
+    (destination/'protocol.json').write_text(json.dumps(dict(jobs=jobs,identities=identities,seed=seed,
+        runtime='10.0.13',runtime_hashes={name:digest(runtime_root/name) for name in ('coreclr.dll','clrjit.dll','System.Private.CoreLib.dll')},
+        tiered_compilation=phase=='tiered',driver_sha256=digest(__file__),affinity=4,observer='none',calibration_ms=100),indent=2))
+    shutil.copyfile(__file__,destination/'driver.py.txt')
+    samples=[]; launches=[]
+    for index,(block,dim,coord,n,distribution,mode,stage) in enumerate(jobs):
+        command=[DOTNET,'exec','--fx-version','10.0.13',str(ROOT/f'{stage}-{worker_suffix}/Bench.dll'),str(dim),coord,str(n),distribution,mode]
+        if warm: command+=['measure-warm']
+        started=time.time_ns()
+        child=subprocess.Popen(command,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,
+                               creationflags=subprocess.CREATE_NO_WINDOW)
+        stdout,stderr=child.communicate(timeout=180)
+        (destination/f'{index:03d}.out').write_text(stdout+'\nSTDERR:\n'+stderr)
+        expected='validated=64' if mode=='snapshot' else 'validated=128'
+        if child.returncode or expected not in stderr: raise RuntimeError((command,stdout,stderr))
+        launches.append(dict(block=block,dimension=dim,coordinate=coord,size=n,distribution=distribution,
+            mode=mode,stage=stage,pid=child.pid,start_ns=started,validation=stderr.strip()))
+        for row in csv.reader(stdout.splitlines()):
+            op,us,reps,allocated=row
+            samples.append(dict(block=block,dimension=dim,coordinate=coord,size=n,distribution=distribution,
+                mode=mode,stage=stage,operation=op,us=float(us),repetitions=int(reps),allocated=float(allocated)))
+        (destination/'samples.json').write_text(json.dumps(samples,indent=2))
+        (destination/'launches.json').write_text(json.dumps(launches,indent=2))
+        print(f'{index+1}/{len(jobs)} {stage} {n} {distribution}',flush=True)
+    summarize(destination)
+
+def summarize(destination):
+    samples=json.loads((destination/'samples.json').read_text())
+    result=[]
+    keys=sorted({(s['dimension'],s['coordinate'],s['size'],s['distribution'],s['mode'],s['stage']) for s in samples})
+    for key in keys:
+        rows=[s for s in samples if (s['dimension'],s['coordinate'],s['size'],s['distribution'],s['mode'],s['stage'])==key]
+        for op in sorted({r['operation'] for r in rows}|{'aggregate','post-aggregate'}):
+            if op in ('aggregate','post-aggregate'):
+                prefix='query' if op=='aggregate' else 'mutated'
+                if not any(r['operation'].startswith(prefix) for r in rows): continue
+                data=[sum(r['us'] for r in rows if r['block']==b and r['operation'].startswith(prefix)) for b in sorted({r['block'] for r in rows})]
+                allocations=[]
+            else:
+                data=[r['us'] for r in rows if r['operation']==op]
+                allocations=[r['allocated'] for r in rows if r['operation']==op]
+            result.append(dict(zip(('dimension','coordinate','size','distribution','mode','stage'),key),operation=op,
+                median_us=statistics.median(data),min_us=min(data),max_us=max(data),
+                median_allocated=statistics.median(allocations) if allocations and all(a is not None for a in allocations) else None))
+    (destination/'summary.json').write_text(json.dumps(result,indent=2))
+    for row in result:
+        if row['operation']=='aggregate': print(row,flush=True)
+
+if __name__=='__main__':
+    ROOT.mkdir(parents=True,exist_ok=True); EVIDENCE.mkdir(parents=True,exist_ok=True); RESEARCH.mkdir(parents=True,exist_ok=True)
+    kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+    kernel.CreateMutexW.restype=ctypes.c_void_p
+    kernel.WaitForSingleObject.argtypes=[ctypes.c_void_p,ctypes.c_uint]
+    kernel.ReleaseMutex.argtypes=[ctypes.c_void_p];kernel.CloseHandle.argtypes=[ctypes.c_void_p]
+    kernel.GetCurrentProcess.restype=ctypes.c_void_p
+    kernel.SetProcessAffinityMask.argtypes=[ctypes.c_void_p,ctypes.c_size_t]
+    mutex=kernel.CreateMutexW(None,False,'Global\\Tedd.RTree.PerformanceHost')
+    if kernel.WaitForSingleObject(mutex,1000) not in (0,0x80): raise RuntimeError('Performance host busy')
+    try:
+        if not kernel.SetProcessAffinityMask(kernel.GetCurrentProcess(),4): raise ctypes.WinError(ctypes.get_last_error())
+        action=sys.argv[1]
+        if action=='prepare': prepare()
+        elif action=='rebuild':
+            shutil.copyfile(REPO/'global.json',ROOT/'global.json')
+            for s in ('baseline','branchless','vector'): build(s)
+            common_caller()
+            for s in ('baseline','branchless','vector'): stage_caller(s);tests(s)
+        elif action=='refresh':
+            # Source advanced during an interrupted turn. Only the independently committed
+            # Union-constructor inline requests differ; rebase all arms before any timing.
+            for s in ('baseline','branchless','vector'):
+                for name, signature in (('Rectangle.cs','    private Rectangle(in Rectangle a, in Rectangle b)'),
+                                        ('Rectangle2D.Generic.cs','    private Rectangle2D(in Rectangle2D<TCoordinate> a, in Rectangle2D<TCoordinate> b)'),
+                                        ('Box.cs','    private Box(in Box<TCoordinate> a, in Box<TCoordinate> b)')):
+                    p=ROOT/f'{s}-source/src/Tedd.RTree/{name}'
+                    text=p.read_text()
+                    if '    [MethodImpl(MethodImplOptions.AggressiveInlining)]\n'+signature not in text:
+                        text=text.replace(signature,'    [MethodImpl(MethodImplOptions.AggressiveInlining)]\n'+signature)
+                        p.write_text(text)
+            for p in (REPO/'src/Tedd.RTree').glob('*.cs'):
+                if p.read_text() != (ROOT/'baseline-source/src/Tedd.RTree'/p.name).read_text():
+                    raise RuntimeError('Unaccounted baseline source drift: '+p.name)
+            if (RESEARCH/'baseline-jit.txt').exists():
+                (RESEARCH/'baseline-jit.txt').rename(RESEARCH/'pre-refresh-baseline-jit.txt')
+            for s in ('baseline','branchless','vector'): build(s);stage_caller(s);tests(s)
+        elif action=='codegen': codegen(sys.argv[2])
+        elif action=='prepare-collection':
+            import candidates
+            for s in ('runs','ranges'):
+                candidates.create(s);build(s);stage_caller(s);tests(s,include_scalar=False)
+        elif action=='prepare-build':
+            import candidates
+            for s in ('pdep','histogram'):
+                candidates.create(s);build(s);stage_caller(s);tests(s)
+        elif action=='prepare-refinement':
+            import candidates
+            for s in ('ranges-fixed','ranges-raw'):
+                candidates.create(s);build(s);stage_caller(s);weak_tests(s);tests(s,include_scalar=False)
+        elif action=='prepare-chunks':
+            import candidates
+            candidates.create('chunked');build('chunked');stage_caller('chunked');weak_tests('chunked');tests('chunked')
+        elif action=='prepare-fill':
+            import candidates
+            candidates.create('filled');build('filled');stage_caller('filled');weak_tests('filled');tests('filled')
+        elif action=='prepare-counts':
+            import candidates
+            candidates.create('counted');build('counted');stage_caller('counted');weak_tests('counted');tests('counted')
+        elif action=='build': build(sys.argv[2]);stage_caller(sys.argv[2]);tests(sys.argv[2])
+        elif action=='weak-tests': weak_tests(sys.argv[2])
+        elif action=='file-caller': file_caller()
+        elif action=='select':
+            target=ROOT/'selected-source/src/Tedd.RTree'
+            target.mkdir(parents=True,exist_ok=False)
+            for p in (ROOT/'ranges-raw-source/src/Tedd.RTree').iterdir():
+                if p.suffix in ('.cs','.csproj'): shutil.copyfile(p,target/p.name)
+            build('selected');stage_caller('selected');tests('selected')
+        elif action=='construction': build_measure()
+        elif action=='competitor-boundaries': competitor_boundaries()
+        elif action=='competitors': competitors()
+        elif action=='final-competitors': competitors(sys.argv[2],'final-competitors')
+        elif action=='codegen-generic': codegen_generic(sys.argv[2] if len(sys.argv)>2 else 'selected')
+        elif action=='warm-caller': warm_caller(sys.argv[2])
+        elif action=='summarize': summarize(EVIDENCE/sys.argv[2])
+        else: measure(action,sys.argv[2] if len(sys.argv)>2 else 'selected')
+    finally:
+        kernel.ReleaseMutex(mutex);kernel.CloseHandle(mutex)

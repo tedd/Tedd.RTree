@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "data": {
+    "id": "hyp-51d83244ac04460b824a81283673536d",
+    "mechanism": "Scalar bounding-box traversal uses several comparisons and branches per entry; broad matches traverse contained leaves and copy output.",
+    "prediction": "Vector comparison or scalar conjunction reduces complete-query cost only if predicate work remains material; preserve scalar fallback, exact inclusive geometry, node shape, and mutation costs.",
+    "state": "proposed",
+    "evidence_ids": [
+      "cap-5922e0b06b4b4823a3a242d20efb25fe",
+      "stack-analysis-13fe9b66ca5243d59240cd02216f0da3"
+    ]
+  },
+  "code": null,
+  "message": null,
+  "recovery": null
+}

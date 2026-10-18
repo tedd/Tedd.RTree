@@ -1,0 +1,938 @@
+[
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 106668,
+    "start_ns": 1792347891704852400,
+    "validation": "validated=128;sink=157885",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 120876,
+    "start_ns": 1792347896244301200,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 117580,
+    "start_ns": 1792347898490882900,
+    "validation": "validated=128;sink=109185",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 38340,
+    "start_ns": 1792347902761176800,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 98568,
+    "start_ns": 1792347904850523500,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 78228,
+    "start_ns": 1792347907085485300,
+    "validation": "validated=128;sink=32608",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 31980,
+    "start_ns": 1792347911357039200,
+    "validation": "validated=128;sink=28142",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 13340,
+    "start_ns": 1792347915187965200,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 88820,
+    "start_ns": 1792347917211647800,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 116952,
+    "start_ns": 1792347919510736000,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 64600,
+    "start_ns": 1792347921868199700,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 88796,
+    "start_ns": 1792347924296474100,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 110704,
+    "start_ns": 1792347926482184600,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 64488,
+    "start_ns": 1792347929076437900,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 98312,
+    "start_ns": 1792347931206941900,
+    "validation": "validated=128;sink=28142",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 84956,
+    "start_ns": 1792347935036210300,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 20780,
+    "start_ns": 1792347937416155600,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 71144,
+    "start_ns": 1792347939848147300,
+    "validation": "validated=128;sink=32608",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 36540,
+    "start_ns": 1792347944083584700,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 50988,
+    "start_ns": 1792347946304999900,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 76768,
+    "start_ns": 1792347948534403500,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 11348,
+    "start_ns": 1792347950969779700,
+    "validation": "validated=128;sink=9534",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 54072,
+    "start_ns": 1792347955099230000,
+    "validation": "validated=128;sink=14050",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 86892,
+    "start_ns": 1792347959372698100,
+    "validation": "validated=128;sink=109185",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 65368,
+    "start_ns": 1792347963498187800,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 74472,
+    "start_ns": 1792347965607010000,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 98868,
+    "start_ns": 1792347968025910800,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 111056,
+    "start_ns": 1792347970224709400,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 95836,
+    "start_ns": 1792347972804181800,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 29252,
+    "start_ns": 1792347975220135700,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 70276,
+    "start_ns": 1792347977405983400,
+    "validation": "validated=128;sink=157885",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 64680,
+    "start_ns": 1792347982138313000,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 85232,
+    "start_ns": 1792347984359176900,
+    "validation": "validated=128;sink=14050",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 53944,
+    "start_ns": 1792347988211335300,
+    "validation": "validated=128;sink=109185",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 56424,
+    "start_ns": 1792347992345646000,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 10708,
+    "start_ns": 1792347994464808100,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 26904,
+    "start_ns": 1792347996690494000,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 108988,
+    "start_ns": 1792347998771831300,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 109484,
+    "start_ns": 1792348001147801900,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 37776,
+    "start_ns": 1792348003257676700,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "rust-interop",
+    "pid": 121716,
+    "start_ns": 1792348005579693800,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 28832,
+    "start_ns": 1792348007777481200,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 57428,
+    "start_ns": 1792348009869638700,
+    "validation": "validated=128;sink=32608",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 39360,
+    "start_ns": 1792348014101722300,
+    "validation": "validated=128;sink=9534",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 15844,
+    "start_ns": 1792348018134405900,
+    "validation": "validated=128;sink=14050",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "rust-direct",
+    "pid": 64736,
+    "start_ns": 1792348021991189700,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 64572,
+    "start_ns": 1792348024004077400,
+    "validation": "validated=128;sink=157885",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 59880,
+    "start_ns": 1792348028740212100,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 34800,
+    "start_ns": 1792348031139865400,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "stage": "selected",
+    "pid": 118744,
+    "start_ns": 1792348033230907300,
+    "validation": "validated=128;sink=9534",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-clustered.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "stage": "selected",
+    "pid": 29380,
+    "start_ns": 1792348036943364100,
+    "validation": "validated=128;sink=28142",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-1000-uniform.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 94680,
+    "start_ns": 1792348040717960400,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-100000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "rust-direct",
+    "pid": 105196,
+    "start_ns": 1792348043278910300,
+    "validation": "validated=64",
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt",
+      "static"
+    ],
+    "exit_code": 0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "stage": "rust-interop",
+    "pid": 91600,
+    "start_ns": 1792348045352846100,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\file-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-simd-20261018\\fixture-10000-uniform.txt",
+      "native-static"
+    ],
+    "exit_code": 0
+  }
+]

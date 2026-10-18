@@ -1,0 +1,2253 @@
+{
+  "archive_sha256": "4b265fc78fe0738bbbd65b10bed4361fe850c3cdd45047883bdd6dd7c78af505",
+  "files": {
+    "baseline-build.log": {
+      "sha256": "f941c3f6463fbe86664564cf19afa1c7cde721cf044c6f3cdebe0b00128868f6",
+      "bytes": 261
+    },
+    "baseline-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "baseline-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "baseline-library/Tedd.RTree.dll": {
+      "sha256": "30ed496e4a16e3dcb67277a7f29b726808af4c38fc87d75d4a151247350d4a97",
+      "bytes": 50176
+    },
+    "baseline-library/Tedd.RTree.pdb": {
+      "sha256": "880c7461917ead31763a01ba711b2f66082249e25bf7b66222cae3f026e9a1a5",
+      "bytes": 30352
+    },
+    "baseline-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "baseline-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "baseline-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "baseline-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "baseline-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "baseline-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "baseline-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "baseline-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "baseline-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "3cf09c3663593c9ac4ec388c7e70a08f084804500c3bac87c5ac1d99f8e2b3e8",
+      "bytes": 19523
+    },
+    "baseline-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+      "bytes": 20257
+    },
+    "baseline-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+      "bytes": 20144
+    },
+    "baseline-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "baseline-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "baseline-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "baseline-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "baseline-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "baseline-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "baseline-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "baseline-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "baseline-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "baseline-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "baseline-test-build.log": {
+      "sha256": "244e54cdb359d3731e4a7f23197a6ed713d29edd58cc75efebaaa23a02301244",
+      "bytes": 249
+    },
+    "baseline-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "baseline-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "baseline-tiered-codegen.log": {
+      "sha256": "b16b7a57706740b305778dea7a8348c3af1ff7d133ab60a25d881f962740c9ad",
+      "bytes": 14
+    },
+    "baseline-warm-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "baseline-warm-worker/Bench.dll": {
+      "sha256": "4fae59411e60705fcfb65341c7b476f3bd351f4310094087ae21a1a4e6548c55",
+      "bytes": 22528
+    },
+    "baseline-warm-worker/Bench.pdb": {
+      "sha256": "f4f7ce370e523d12d38485635306d34634e769b08cab9d0b08df32f2b5938c45",
+      "bytes": 14952
+    },
+    "baseline-warm-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "baseline-warm-worker/Tedd.RTree.dll": {
+      "sha256": "30ed496e4a16e3dcb67277a7f29b726808af4c38fc87d75d4a151247350d4a97",
+      "bytes": 50176
+    },
+    "baseline-weak-build.log": {
+      "sha256": "875d5a2e1b7e784e08f0ebe01794483bee0b55502202052b121f24530c0ebae4",
+      "bytes": 246
+    },
+    "baseline-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "baseline-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "baseline-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "baseline-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "baseline-worker/Tedd.RTree.dll": {
+      "sha256": "30ed496e4a16e3dcb67277a7f29b726808af4c38fc87d75d4a151247350d4a97",
+      "bytes": 50176
+    },
+    "branchless-build.log": {
+      "sha256": "11571b4c88dd1f8409d34054287cf09f70142c53ef15e7644b66e9f646470795",
+      "bytes": 263
+    },
+    "branchless-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "branchless-library/Tedd.RTree.dll": {
+      "sha256": "f00ac70543192b8c20bfb290115e0ca7bb0226765bc37c40c8358c12d0ca983d",
+      "bytes": 50176
+    },
+    "branchless-library/Tedd.RTree.pdb": {
+      "sha256": "1534a981292fccf4cba207f4b9bb56b6c81914caa58f2afcac8ee9ca583da819",
+      "bytes": 30356
+    },
+    "branchless-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "88d22524dc839867f1debdb80e10f42197047bb1d190413706269c5e1acf08e7",
+      "bytes": 3823
+    },
+    "branchless-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "branchless-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "branchless-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "branchless-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "branchless-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "branchless-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "9be1a07bb01dde875724dc20877fe27bc4bddc650f79425664bed4072b965e14",
+      "bytes": 3107
+    },
+    "branchless-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "62fc0fc5a5b809197d21a21cd3104dd7b7b2afc558d1628b45174e00f3118833",
+      "bytes": 3385
+    },
+    "branchless-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "3cf09c3663593c9ac4ec388c7e70a08f084804500c3bac87c5ac1d99f8e2b3e8",
+      "bytes": 19523
+    },
+    "branchless-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+      "bytes": 20257
+    },
+    "branchless-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+      "bytes": 20144
+    },
+    "branchless-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "branchless-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "branchless-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "branchless-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "branchless-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "branchless-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "branchless-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "branchless-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "branchless-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "branchless-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "branchless-test-build.log": {
+      "sha256": "249deb3bb983a06d4db060e7f1d6fe965d00b3678acdd88c8deb787010de7265",
+      "bytes": 251
+    },
+    "branchless-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "branchless-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "branchless-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "branchless-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "branchless-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "branchless-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "branchless-worker/Tedd.RTree.dll": {
+      "sha256": "f00ac70543192b8c20bfb290115e0ca7bb0226765bc37c40c8358c12d0ca983d",
+      "bytes": 50176
+    },
+    "caller/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "caller/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "caller/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "caller/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "caller/Tedd.RTree.dll": {
+      "sha256": "bb941d8316600c5f1c0209ea874b94f55685fa583c697d7f050283f07ff89849",
+      "bytes": 50176
+    },
+    "caller/Tedd.RTree.pdb": {
+      "sha256": "86b473c46d04d7231cc1b444c1ec6df4a2ec70eb4c7f41517777c33de98409c3",
+      "bytes": 30348
+    },
+    "caller-build.log": {
+      "sha256": "3bf0501387ebf9fac8fcda30afa323e2ad4bbad88e190dca57ef67999f3edcc7",
+      "bytes": 286
+    },
+    "chunked-build.log": {
+      "sha256": "414915ec21e6f85c8f8fa72b97ecfca56ae48bef67f2d9f68e666a56856a6af1",
+      "bytes": 326
+    },
+    "chunked-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "chunked-library/Tedd.RTree.dll": {
+      "sha256": "50c1708baeafae75440e3b3e3d62bda9765383aab641d711d6d7421f1fd183f7",
+      "bytes": 52224
+    },
+    "chunked-library/Tedd.RTree.pdb": {
+      "sha256": "ef3a1deb99b114670fd217e391572dadad49a6e91bcdbca48da11dbbdbf1416b",
+      "bytes": 31572
+    },
+    "chunked-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "chunked-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "chunked-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "chunked-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "chunked-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "chunked-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "chunked-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "chunked-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "chunked-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "e4fc3fba63adaca62ddd6135f58739729e39ce138ecf046fb42ae413f3922547",
+      "bytes": 22836
+    },
+    "chunked-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "6b267ceeec4cfab66727988c29c8c4d9749cb2f5d1f28594766e0a54841e2167",
+      "bytes": 23527
+    },
+    "chunked-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "b0b6a18e5b584564cb4319f66218941a769824bf4b7f5b61efd0dabc6dcaa1e8",
+      "bytes": 23415
+    },
+    "chunked-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "chunked-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "chunked-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "chunked-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "chunked-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "chunked-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "chunked-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "chunked-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "chunked-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "chunked-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "chunked-test-build.log": {
+      "sha256": "5ecc8e788a6d5e5eb4912513273b85be550548d1d7657bf870a6a5382e968a8b",
+      "bytes": 279
+    },
+    "chunked-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "chunked-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "chunked-weak-build.log": {
+      "sha256": "4ce331fe0ef46065f7b0c68e6fae1e97af3f3afd97b1724c396b5ec628139abc",
+      "bytes": 275
+    },
+    "chunked-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "chunked-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "chunked-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "chunked-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "chunked-worker/Tedd.RTree.dll": {
+      "sha256": "50c1708baeafae75440e3b3e3d62bda9765383aab641d711d6d7421f1fd183f7",
+      "bytes": 52224
+    },
+    "counted-build.log": {
+      "sha256": "571efa29020e0803640d137eb4a5f0f3fbfe1638118407679433cbdb019ef149",
+      "bytes": 326
+    },
+    "counted-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "counted-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "counted-library/Tedd.RTree.dll": {
+      "sha256": "93f836b3429e7af05f7d92a567482a609537294a134e7910732496b4be9af2b9",
+      "bytes": 51712
+    },
+    "counted-library/Tedd.RTree.pdb": {
+      "sha256": "20dfd247bd0ac2b781658482f3307f59b606b5ddf78bc335d76291f8dedaac6b",
+      "bytes": 31100
+    },
+    "counted-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "counted-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "counted-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "counted-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "counted-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "counted-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "counted-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "counted-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "counted-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "6c3601b6ca0cbeef1518c01a02225207cf2789b7ce08eca5bf866273e578e2c8",
+      "bytes": 21239
+    },
+    "counted-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "3c300c6462c7f1d7cd5f9bddc9c8b5515efe52da2ac938155aa8db922fc5ff7f",
+      "bytes": 21972
+    },
+    "counted-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "d1a9b4820a0842ddcc4af1bbd32a6d9f7f2a2a0a55017b64b385510b369a6632",
+      "bytes": 21860
+    },
+    "counted-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "counted-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "counted-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "counted-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "counted-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "counted-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "counted-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "counted-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "counted-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "counted-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "counted-test-build.log": {
+      "sha256": "0a3dcd71d727885a19b2400bbbb24d5feb89c2572db4b267226f3ff70df6b205",
+      "bytes": 279
+    },
+    "counted-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "counted-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "counted-weak-build.log": {
+      "sha256": "f0dd67e82a3b499250e8cfb5d4aaeb1aa85209b8026e0de1ac724c318af562c2",
+      "bytes": 275
+    },
+    "counted-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "counted-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "counted-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "counted-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "counted-worker/Tedd.RTree.dll": {
+      "sha256": "93f836b3429e7af05f7d92a567482a609537294a134e7910732496b4be9af2b9",
+      "bytes": 51712
+    },
+    "file-caller/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "file-caller/Bench.dll": {
+      "sha256": "ba0e40513d0382ae959e1b8ca07bd680a1729045edb9451743e738e4fcc637c5",
+      "bytes": 17408
+    },
+    "file-caller/Bench.pdb": {
+      "sha256": "8a315c7f4003f11b7f43c35c3905aa22423317a37f5f702a25f0ff9fa3472fa4",
+      "bytes": 14580
+    },
+    "file-caller/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "file-caller/Tedd.RTree.dll": {
+      "sha256": "2659f0e9009fa6cab7c0ee09f809bd7e9a7dbade7157ee41c49d3680e8aab068",
+      "bytes": 51200
+    },
+    "file-caller/Tedd.RTree.pdb": {
+      "sha256": "880c7461917ead31763a01ba711b2f66082249e25bf7b66222cae3f026e9a1a5",
+      "bytes": 30352
+    },
+    "file-caller-build.log": {
+      "sha256": "e1c2611921c1ef3175f7fe343833fa71961290838e07475b4cc5ad1ce2957451",
+      "bytes": 291
+    },
+    "filled-build.log": {
+      "sha256": "94b833cdc3f8aeb2e57f0616050017496f25b96be36d50b5caac912922d105f9",
+      "bytes": 324
+    },
+    "filled-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "filled-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "filled-library/Tedd.RTree.dll": {
+      "sha256": "aea428427d2082d0ab9a2ff0dc0d5a90108bd0572b6c4ebfde5edee8b86bba42",
+      "bytes": 52224
+    },
+    "filled-library/Tedd.RTree.pdb": {
+      "sha256": "f1a549f7f9438fe8b46974f245662a81087b50b8ac67a08a44fe4f225018d505",
+      "bytes": 31300
+    },
+    "filled-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "filled-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "filled-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "filled-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "filled-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "filled-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "filled-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "filled-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "filled-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "ab517e36d6eab32366410994501c71ebc4e84b6c89473aba22d9e2540501128d",
+      "bytes": 22404
+    },
+    "filled-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "d6d6a2db76e9df6350bf666e18f8039d31da50c916793fbc1fbdbb139d60d948",
+      "bytes": 23197
+    },
+    "filled-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "c3a573a5d755a0f0c839ee81f5cf0f0ed203fbeadfd4d32139098f88e3b59623",
+      "bytes": 23061
+    },
+    "filled-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "filled-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "filled-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "filled-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "filled-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "filled-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "filled-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "filled-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "filled-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "filled-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "filled-test-build.log": {
+      "sha256": "0100604eb783ed8035d76ba74d7db1d880c908bb5658a603c5d926b555b62d2d",
+      "bytes": 278
+    },
+    "filled-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "filled-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "filled-weak-build.log": {
+      "sha256": "61b9042d402e1a2dfd1300b707fdd68eb752ae6607b35dd61626d3c96927e18c",
+      "bytes": 274
+    },
+    "filled-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "filled-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "filled-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "filled-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "filled-worker/Tedd.RTree.dll": {
+      "sha256": "aea428427d2082d0ab9a2ff0dc0d5a90108bd0572b6c4ebfde5edee8b86bba42",
+      "bytes": 52224
+    },
+    "fixture-1000-clustered.txt": {
+      "sha256": "0e1774aa32da441faac8aaf62936f5aba57c5d4df0fca1924d419bdcd4e9d3cb",
+      "bytes": 17467
+    },
+    "fixture-1000-uniform.txt": {
+      "sha256": "febc3e184248cd66ce5394856b9dd18d98ea08740ba8076142ee97f9be1c59ae",
+      "bytes": 17665
+    },
+    "fixture-10000-clustered.txt": {
+      "sha256": "225934a1a025b93d8d3b4615191c2b569ea228615aa81e512d69f0de9be48657",
+      "bytes": 164713
+    },
+    "fixture-10000-uniform.txt": {
+      "sha256": "edee892d1c0e12fd1080c9f2738aee82f49b0839f98d0f4c6e499ad2d65f5834",
+      "bytes": 166795
+    },
+    "fixture-100000-clustered.txt": {
+      "sha256": "159a7c0d57c6374b4903e911f6b83ce5747d46dc9a45a693055164f75499eff3",
+      "bytes": 1636824
+    },
+    "fixture-100000-uniform.txt": {
+      "sha256": "aafe18c67ccfc9382573bf97e0de09f57be380eac0ee692d00fd921fe9d92a49",
+      "bytes": 1658704
+    },
+    "geo.zip": {
+      "sha256": "a32a9f54f0b2ffbf48fcbf569094d9ebe26a2f598c83dcc0cb75f00f0f84a484",
+      "bytes": 562971
+    },
+    "global.json": {
+      "sha256": "fc4602f9d88c9440f70f72732343a88c5e4190223fb9b77f9b8ac8eb1c4c8c2d",
+      "bytes": 79
+    },
+    "histogram-build.log": {
+      "sha256": "5d1a0da2a46f897abae9cf495be43604816fe14e37b18cfb77a9d63a773bfd60",
+      "bytes": 330
+    },
+    "histogram-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "histogram-library/Tedd.RTree.dll": {
+      "sha256": "bb8393d3fe18bcfef7e5ef17084a5b52fc58d2e45e713c33183087e90d6342b7",
+      "bytes": 50176
+    },
+    "histogram-library/Tedd.RTree.pdb": {
+      "sha256": "d8c11a3435680d7c8e425e1281cad375e672cf3e9eadc1c55949882d84aecd79",
+      "bytes": 30392
+    },
+    "histogram-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "histogram-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "histogram-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "histogram-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "histogram-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "histogram-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "55019c3164a8c30e96e7564ee458fce354cc7a96e2bdfe1175bf8eb8dc2e68c6",
+      "bytes": 3069
+    },
+    "histogram-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "histogram-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "histogram-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "78908bd59b29c8fddbcf922c54a88056a13778f29675d3505b2015c75a6ea556",
+      "bytes": 20028
+    },
+    "histogram-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+      "bytes": 20257
+    },
+    "histogram-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+      "bytes": 20144
+    },
+    "histogram-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "histogram-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "histogram-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "histogram-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "histogram-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "histogram-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "histogram-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "histogram-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "histogram-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "histogram-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "histogram-test-build.log": {
+      "sha256": "5f3e8790b1ffe8bdff08596cf65c38cd88b8657c9f9d7c01c5cf8cf3563f1032",
+      "bytes": 281
+    },
+    "histogram-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "histogram-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "histogram-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "histogram-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "histogram-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "histogram-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "histogram-worker/Tedd.RTree.dll": {
+      "sha256": "bb8393d3fe18bcfef7e5ef17084a5b52fc58d2e45e713c33183087e90d6342b7",
+      "bytes": 50176
+    },
+    "keyinline-build.log": {
+      "sha256": "eea47f5e2d7ddf89f6da837ba64d383b22d70aa33793972d32f2439bc0ed867f",
+      "bytes": 330
+    },
+    "keyinline-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "keyinline-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "keyinline-library/Tedd.RTree.dll": {
+      "sha256": "d78b742d46b1881068e68a24fb55d22c02c5e56423e6d207d54a602dd731d761",
+      "bytes": 54272
+    },
+    "keyinline-library/Tedd.RTree.pdb": {
+      "sha256": "45e8363a4fdbb6e5bba59df3642aef24ae07373aeb4905e78bea23351bd45a2b",
+      "bytes": 32340
+    },
+    "keyinline-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "keyinline-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "keyinline-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "keyinline-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "keyinline-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "keyinline-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "ff4e5ccb67f6a2cacc0f1011a9b3a0644f9e07bc9d3f770316da132ddd5a5871",
+      "bytes": 4363
+    },
+    "keyinline-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "keyinline-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "keyinline-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "bb570f92d1785f07008efc608f813f812a8ec2bb41ddf9b43883b517d117f156",
+      "bytes": 23004
+    },
+    "keyinline-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "f50899b93d5e878953d1d804805c85d6f26132fae259541fc7b3e9787088e81b",
+      "bytes": 23257
+    },
+    "keyinline-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "2bea11f115e28d330694a10917e8bc41e05e86705a409a65506d232a70c0d760",
+      "bytes": 23247
+    },
+    "keyinline-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "keyinline-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "keyinline-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "keyinline-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "keyinline-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "keyinline-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "keyinline-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "keyinline-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "keyinline-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "2751b4a543d07977f2232010cd290094c23b60f07ba90308c7cbe693a3d50355",
+      "bytes": 1063
+    },
+    "keyinline-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "keyinline-test-build.log": {
+      "sha256": "a8a61879839f0af4ceb5394090e19a4971aa5851a6b54e58c789634992160d77",
+      "bytes": 281
+    },
+    "keyinline-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "keyinline-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "keyinline-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "keyinline-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "keyinline-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "keyinline-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "keyinline-worker/Tedd.RTree.dll": {
+      "sha256": "d78b742d46b1881068e68a24fb55d22c02c5e56423e6d207d54a602dd731d761",
+      "bytes": 54272
+    },
+    "keyvector-build.log": {
+      "sha256": "1f9107299dec3ab4444917bd54b62224cf902c5a3ec3dfccfbb24e3968da35e4",
+      "bytes": 262
+    },
+    "keyvector-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "keyvector-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "keyvector-library/Tedd.RTree.dll": {
+      "sha256": "2d2f4202f28924a723af4fdfad6fb0faf0278ee4290809aea68cee23aaf0c899",
+      "bytes": 54272
+    },
+    "keyvector-library/Tedd.RTree.pdb": {
+      "sha256": "90bb57d633aea48c46104f8b2737b7d1a3de2e44f05db0ab8f1ed5f343f1086a",
+      "bytes": 32300
+    },
+    "keyvector-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "keyvector-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "keyvector-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "keyvector-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "keyvector-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "keyvector-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "70c7b006ff56816d72d61772bb7e6ec36a5b665a2ce87f84dd14bd54085b6d1d",
+      "bytes": 4265
+    },
+    "keyvector-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "keyvector-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "keyvector-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "bb570f92d1785f07008efc608f813f812a8ec2bb41ddf9b43883b517d117f156",
+      "bytes": 23004
+    },
+    "keyvector-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "f50899b93d5e878953d1d804805c85d6f26132fae259541fc7b3e9787088e81b",
+      "bytes": 23257
+    },
+    "keyvector-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "2bea11f115e28d330694a10917e8bc41e05e86705a409a65506d232a70c0d760",
+      "bytes": 23247
+    },
+    "keyvector-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "keyvector-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "keyvector-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "keyvector-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "keyvector-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "keyvector-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "keyvector-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "keyvector-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "keyvector-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "b3045e9761a2e54a2d21ba66f0c803745cb31782aa5a76989b3768eeec75fc5b",
+      "bytes": 965
+    },
+    "keyvector-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "keyvector-test-build.log": {
+      "sha256": "69b0d59cfd67ae02b24782b51df17c20acf5dd98d9cb7304f90d1fb0e982bdd8",
+      "bytes": 250
+    },
+    "keyvector-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "keyvector-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "keyvector-weak-build.log": {
+      "sha256": "8a5e004812396cd8eb50f0eb86971958258bad364c086193bb1bbb7a61aa76e9",
+      "bytes": 277
+    },
+    "keyvector-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "keyvector-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "keyvector-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "keyvector-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "keyvector-worker/Tedd.RTree.dll": {
+      "sha256": "2d2f4202f28924a723af4fdfad6fb0faf0278ee4290809aea68cee23aaf0c899",
+      "bytes": 54272
+    },
+    "native/Cargo.lock": {
+      "sha256": "4c39e4eb4da16c87807d5702c57ed9a173371212dda0c0fc444c8d0f9c3f23da",
+      "bytes": 5281
+    },
+    "native/Cargo.toml": {
+      "sha256": "207fd37155936bca900b3dd4011e104137182379f94537157fe901bf60c800c9",
+      "bytes": 386
+    },
+    "native/src/lib.rs": {
+      "sha256": "e22cd310f708941824d7f1617a8d5719d7fbf4150da94ba1e6a7bcb0cc106f51",
+      "bytes": 2780
+    },
+    "native/src/main.rs": {
+      "sha256": "d0daf13b2fed16b364d8aade6f935c40a304eedb09a8aec0a458191441030cd2",
+      "bytes": 1859
+    },
+    "native/target/release/packed-worker.exe": {
+      "sha256": "77a1c66d412bb401477a989e1532975485ebdc805fe97ecb30e405e2ea034cc1",
+      "bytes": 248320
+    },
+    "native/target/release/packed_native.dll": {
+      "sha256": "fb69b8979b612f731dc9a5323b9bf4200f3b20c167067da740ec19cb91703d64",
+      "bytes": 155648
+    },
+    "pdep-build.log": {
+      "sha256": "dabcbfc0e20b93ce94ea566cf13b4fd80750cacae5b9061f6fdc81a27082775c",
+      "bytes": 320
+    },
+    "pdep-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "pdep-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "pdep-library/Tedd.RTree.dll": {
+      "sha256": "98eb2cffbd48df6df2e86a177faad5fb3508d7193782e2f2a618ba3a9911f658",
+      "bytes": 50176
+    },
+    "pdep-library/Tedd.RTree.pdb": {
+      "sha256": "75a4e5bd09a770d13603924bfe4b13efa9c77c0cd9f1dd908553772a06e6b75e",
+      "bytes": 30432
+    },
+    "pdep-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "pdep-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "pdep-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "pdep-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "pdep-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "pdep-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "fa12f98015d94f19994882d6217cf94ea7fa14f2cf951221267c5e809920c885",
+      "bytes": 2776
+    },
+    "pdep-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "pdep-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "pdep-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "78908bd59b29c8fddbcf922c54a88056a13778f29675d3505b2015c75a6ea556",
+      "bytes": 20028
+    },
+    "pdep-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+      "bytes": 20257
+    },
+    "pdep-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+      "bytes": 20144
+    },
+    "pdep-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "pdep-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "pdep-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "pdep-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "pdep-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "pdep-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "pdep-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "pdep-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "pdep-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "aa7060e59468286c056b0ca66804a4c0e2d64b4febbee2f7aa08dfae7a288cc1",
+      "bytes": 581
+    },
+    "pdep-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "pdep-test-build.log": {
+      "sha256": "0d84d0604a65862177be3011f2d1cdfb4adb7c5e120dde9861c01ff8caa3fb5c",
+      "bytes": 276
+    },
+    "pdep-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "pdep-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "pdep-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "pdep-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "pdep-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "pdep-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "pdep-worker/Tedd.RTree.dll": {
+      "sha256": "98eb2cffbd48df6df2e86a177faad5fb3508d7193782e2f2a618ba3a9911f658",
+      "bytes": 50176
+    },
+    "ranges-build.log": {
+      "sha256": "6b1244007368f544a6cb42c922e29ff3eaaa83263331bb973a6366caa9632a1f",
+      "bytes": 324
+    },
+    "ranges-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "ranges-fixed-build.log": {
+      "sha256": "f9f5190c3d19ce70bac5693e8727f7ad098fe05cfcba6839c12ca355bc968e6c",
+      "bytes": 336
+    },
+    "ranges-fixed-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "ranges-fixed-library/Tedd.RTree.dll": {
+      "sha256": "d0b7205cf54de983b926a2214854bb4bb5219023c92d784ef29c3f896a08fb75",
+      "bytes": 52224
+    },
+    "ranges-fixed-library/Tedd.RTree.pdb": {
+      "sha256": "78f9aeb982239a858dec050f98f064fbf604eeadfd1c94a9747cdc7f716ec31e",
+      "bytes": 31152
+    },
+    "ranges-fixed-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "ranges-fixed-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "ranges-fixed-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "ranges-fixed-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "ranges-fixed-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "ranges-fixed-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "ranges-fixed-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "ranges-fixed-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "ranges-fixed-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "1d66aaed27be0d9295fd62fb3d68f1da4116ea7c7c5cc65ad44844a20db31c30",
+      "bytes": 21884
+    },
+    "ranges-fixed-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "56235926c3d5f5a363258da5f4d407b45b0c5cde1f1a66f84f3672c1a05ea09f",
+      "bytes": 22617
+    },
+    "ranges-fixed-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "cec036b2b2101fefa7ebec03ce84eb1b6acb6e74ecd8c068259c8c1a335ea8d4",
+      "bytes": 22505
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "ranges-fixed-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "ranges-fixed-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "ranges-fixed-test-build.log": {
+      "sha256": "eedc468a2be9202328c6cfb4d0fe8a704afab3b7854980b1aaa9fe5afafe0ede",
+      "bytes": 284
+    },
+    "ranges-fixed-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "ranges-fixed-weak-build.log": {
+      "sha256": "08d165f37bd64fd66303ed05fdff5d2654f44218b77b367ccf5b3d5e0a79e1e4",
+      "bytes": 280
+    },
+    "ranges-fixed-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "ranges-fixed-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "ranges-fixed-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "ranges-fixed-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "ranges-fixed-worker/Tedd.RTree.dll": {
+      "sha256": "d0b7205cf54de983b926a2214854bb4bb5219023c92d784ef29c3f896a08fb75",
+      "bytes": 52224
+    },
+    "ranges-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "ranges-library/Tedd.RTree.dll": {
+      "sha256": "563285ead539585bcda5e4d04926f3e42516cd37e42bd8933fc2b156fa53fd31",
+      "bytes": 50688
+    },
+    "ranges-library/Tedd.RTree.pdb": {
+      "sha256": "77e7813c5b019d81f008f029515e93f6793950c19539610ca5e3bd87c8e985b4",
+      "bytes": 30848
+    },
+    "ranges-raw-build.log": {
+      "sha256": "232267596b1c90e2927f1b4095e4adbf9198fcd18f8f44e21739cd6c40989581",
+      "bytes": 332
+    },
+    "ranges-raw-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "ranges-raw-library/Tedd.RTree.dll": {
+      "sha256": "e284e5d35c57073260d460b1efe36b7a1c71ce628f57ed008f8f8b7493468b64",
+      "bytes": 51712
+    },
+    "ranges-raw-library/Tedd.RTree.pdb": {
+      "sha256": "d2ed24bc1dab7dbe2c7dd85c877390676c8e37b7361a92ceca942adb737da0c5",
+      "bytes": 31068
+    },
+    "ranges-raw-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "ranges-raw-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "ranges-raw-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "ranges-raw-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "ranges-raw-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "ranges-raw-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "ranges-raw-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "ranges-raw-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "ranges-raw-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "22b0b4fd4618747f32dfdb956d4a0395b8fba2d45533d278038036216e27a078",
+      "bytes": 21820
+    },
+    "ranges-raw-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "0d6736adacc062c24d22ec1aa2093acf5cda73b2bd3041d419665a27622150cc",
+      "bytes": 22553
+    },
+    "ranges-raw-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "4cfc6a0cdbb1f3f80be0749dc6d3ff67d74a43f3074d58b5acc232584901f7e8",
+      "bytes": 22441
+    },
+    "ranges-raw-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "ranges-raw-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "ranges-raw-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "ranges-raw-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "ranges-raw-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "ranges-raw-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "ranges-raw-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "ranges-raw-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "ranges-raw-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "ranges-raw-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "ranges-raw-test-build.log": {
+      "sha256": "d435a5e95bf78662a29ed45fc7618a1c177593490cbb33c34421f6dd30800d58",
+      "bytes": 282
+    },
+    "ranges-raw-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "ranges-raw-weak-build.log": {
+      "sha256": "caee618b6633a43ed3c4b52beec72827b29ea98785282f993c7edf926ba9358d",
+      "bytes": 278
+    },
+    "ranges-raw-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "ranges-raw-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "ranges-raw-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "ranges-raw-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "ranges-raw-worker/Tedd.RTree.dll": {
+      "sha256": "e284e5d35c57073260d460b1efe36b7a1c71ce628f57ed008f8f8b7493468b64",
+      "bytes": 51712
+    },
+    "ranges-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "ranges-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "ranges-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "ranges-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "ranges-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "ranges-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "ranges-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "ranges-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "ranges-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "5d0f489de7c39fee6a2e0614880069c8f9c003de7dc2133f167ecedfb160370e",
+      "bytes": 21546
+    },
+    "ranges-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+      "bytes": 20257
+    },
+    "ranges-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+      "bytes": 20144
+    },
+    "ranges-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "ranges-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "ranges-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "ranges-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "ranges-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "ranges-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "ranges-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "ranges-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "ranges-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "ranges-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "ranges-test-build.log": {
+      "sha256": "1d680dfd902f3cda544cec51e0f32cea5dc18ecb7d44dc3f1b74968dd57c8143",
+      "bytes": 278
+    },
+    "ranges-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "ranges-weak-build.log": {
+      "sha256": "62f341a8739659769c6c8275c023a3c576c49a4651e952b1baab85124f91ade0",
+      "bytes": 244
+    },
+    "ranges-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "ranges-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "ranges-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "ranges-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "ranges-worker/Tedd.RTree.dll": {
+      "sha256": "563285ead539585bcda5e4d04926f3e42516cd37e42bd8933fc2b156fa53fd31",
+      "bytes": 50688
+    },
+    "runs-build.log": {
+      "sha256": "089e53172e37c555300fb1aba05bda9f693a5f4a12ea3d27afd5d3e2fd5ec1c1",
+      "bytes": 320
+    },
+    "runs-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "runs-library/Tedd.RTree.dll": {
+      "sha256": "bc1be25304fc466278b7c69749d1fa1c1c41f8390dc8b264eae56caa9dd8e47b",
+      "bytes": 50176
+    },
+    "runs-library/Tedd.RTree.pdb": {
+      "sha256": "4ba7914e03ce3a7ad3fc2399646ca7de08bb6545bbd799020e9b74102d5e619e",
+      "bytes": 30384
+    },
+    "runs-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "runs-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "runs-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "runs-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "runs-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "runs-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "runs-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "runs-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "runs-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "ec8ef78a25f980a91a63a76d31a9c92902d3e574f90e592296d341b7eca86537",
+      "bytes": 20107
+    },
+    "runs-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+      "bytes": 20257
+    },
+    "runs-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+      "bytes": 20144
+    },
+    "runs-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "runs-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "runs-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "runs-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "runs-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "runs-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "runs-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "runs-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "runs-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "runs-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "runs-test-build.log": {
+      "sha256": "8e103ef8e4239fa79f76cc58dbd2af0a9ba8b93f53384546b92cdb7db232fe69",
+      "bytes": 276
+    },
+    "runs-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "runs-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "runs-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "runs-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "runs-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "runs-worker/Tedd.RTree.dll": {
+      "sha256": "bc1be25304fc466278b7c69749d1fa1c1c41f8390dc8b264eae56caa9dd8e47b",
+      "bytes": 50176
+    },
+    "selected-2d-double-codegen.log": {
+      "sha256": "a56e2baecba4c5c23447c3c08795de40997fed312d969aaabc5122db120c219c",
+      "bytes": 22
+    },
+    "selected-2d-int-codegen.log": {
+      "sha256": "a56e2baecba4c5c23447c3c08795de40997fed312d969aaabc5122db120c219c",
+      "bytes": 22
+    },
+    "selected-3d-double-codegen.log": {
+      "sha256": "8c6ae51ac0e70db07015a8c529737ee253509f6c747b2b7eac76ff15d2a03bd8",
+      "bytes": 22
+    },
+    "selected-3d-int-codegen.log": {
+      "sha256": "8c6ae51ac0e70db07015a8c529737ee253509f6c747b2b7eac76ff15d2a03bd8",
+      "bytes": 22
+    },
+    "selected-build.log": {
+      "sha256": "453f9ca82d0cdb93308649ae34652aaa1699d03b6452873aefa0db1883829c95",
+      "bytes": 328
+    },
+    "selected-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "selected-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "selected-library/Tedd.RTree.dll": {
+      "sha256": "2659f0e9009fa6cab7c0ee09f809bd7e9a7dbade7157ee41c49d3680e8aab068",
+      "bytes": 51200
+    },
+    "selected-library/Tedd.RTree.pdb": {
+      "sha256": "05bea6ce525631410c81d0080b8357e17adc804ce9adb096fc95e19d104d7462",
+      "bytes": 31060
+    },
+    "selected-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "selected-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "selected-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "selected-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "selected-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "selected-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "selected-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "selected-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "selected-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "22b0b4fd4618747f32dfdb956d4a0395b8fba2d45533d278038036216e27a078",
+      "bytes": 21820
+    },
+    "selected-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "0d6736adacc062c24d22ec1aa2093acf5cda73b2bd3041d419665a27622150cc",
+      "bytes": 22553
+    },
+    "selected-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "4cfc6a0cdbb1f3f80be0749dc6d3ff67d74a43f3074d58b5acc232584901f7e8",
+      "bytes": 22441
+    },
+    "selected-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "selected-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "selected-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "selected-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "selected-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "selected-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "selected-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "selected-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "selected-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "selected-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "selected-test-build.log": {
+      "sha256": "47a79f6a4ea72ba5e36cd48b2a44693b5b5c44e0eb101030ac07b3f44f25fb3e",
+      "bytes": 280
+    },
+    "selected-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "selected-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "selected-tiered-codegen.log": {
+      "sha256": "736ebd0b9bd9549cd445af8ad5898013c65dd9b73e05932ee00fc62f432c6158",
+      "bytes": 22
+    },
+    "selected-warm-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "selected-warm-worker/Bench.dll": {
+      "sha256": "4fae59411e60705fcfb65341c7b476f3bd351f4310094087ae21a1a4e6548c55",
+      "bytes": 22528
+    },
+    "selected-warm-worker/Bench.pdb": {
+      "sha256": "f4f7ce370e523d12d38485635306d34634e769b08cab9d0b08df32f2b5938c45",
+      "bytes": 14952
+    },
+    "selected-warm-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "selected-warm-worker/Tedd.RTree.dll": {
+      "sha256": "2659f0e9009fa6cab7c0ee09f809bd7e9a7dbade7157ee41c49d3680e8aab068",
+      "bytes": 51200
+    },
+    "selected-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "selected-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "selected-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "selected-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "selected-worker/Tedd.RTree.dll": {
+      "sha256": "2659f0e9009fa6cab7c0ee09f809bd7e9a7dbade7157ee41c49d3680e8aab068",
+      "bytes": 51200
+    },
+    "starting-source.json": {
+      "sha256": "cc36a59285031a4a2d508a01a26452f238b50e0377a7fddea7756faddab061f5",
+      "bytes": 4234
+    },
+    "static.zip": {
+      "sha256": "4cf0148977f73d1869acb4c57d0709c613cc2f582c0e45f0f6413cdfb1fdbfb5",
+      "bytes": 41930
+    },
+    "vector-build.log": {
+      "sha256": "3d8dfdc8ccfe88a05d61fcd3446ad1217d3d57af9642b6477cd7d0ad439362fc",
+      "bytes": 259
+    },
+    "vector-codegen.log": {
+      "sha256": "f97337ded9e16b0805aa30a9f1959e71c62a7f4ef8e71fe1adfc1d008e133541",
+      "bytes": 24
+    },
+    "vector-library/Tedd.RTree.deps.json": {
+      "sha256": "dae5c3bfffb03774a00b0e7c306ab16ede05ab25a724108be60bb9c7336a44cb",
+      "bytes": 424
+    },
+    "vector-library/Tedd.RTree.dll": {
+      "sha256": "cda5618f404dd525d31c23386428df3d7d2df341f5d22387423906d84b61d34f",
+      "bytes": 50688
+    },
+    "vector-library/Tedd.RTree.pdb": {
+      "sha256": "3f4f07a80657c88b7f67dd3a06f89919989d824b0d70e084b3d8dd316edfc40f",
+      "bytes": 30884
+    },
+    "vector-source/src/Tedd.RTree/Box.cs": {
+      "sha256": "103601e77fe4e217a8f136847d33907f9938a13fbf84c599e22637a7b4c4f426",
+      "bytes": 3833
+    },
+    "vector-source/src/Tedd.RTree/BulkLoadWorkspace.cs": {
+      "sha256": "a13f18bea29deadef1183789f7a9ca0da9fb6985701fe66c475c25725d323862",
+      "bytes": 1456
+    },
+    "vector-source/src/Tedd.RTree/ConcurrentRTree.cs": {
+      "sha256": "c63857e3b99e149261915e188e00ed172fa6a6d28564d38005571bfd39b7a98d",
+      "bytes": 5776
+    },
+    "vector-source/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs": {
+      "sha256": "17365ac4a3f32aec9965559bedeb204ed696dc56ef5ad675faf6147fddc611b0",
+      "bytes": 6063
+    },
+    "vector-source/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs": {
+      "sha256": "f46743f34212eab8d6c37ad6ab8390e1482d9717024f29644850f5c620be8cb0",
+      "bytes": 5991
+    },
+    "vector-source/src/Tedd.RTree/HilbertOrder.cs": {
+      "sha256": "395b1796f3f3230aef9443fef4fa4a6c813f90456b7bf9f20b5cf1f3c70607c7",
+      "bytes": 2592
+    },
+    "vector-source/src/Tedd.RTree/Rectangle.cs": {
+      "sha256": "46d0eda366a8dee968c48ba9de3790e8dc9347116a91b25e7d42bfe4676e0f08",
+      "bytes": 3113
+    },
+    "vector-source/src/Tedd.RTree/Rectangle2D.Generic.cs": {
+      "sha256": "3ce8d994380e97506dc8b5a5c910ae608fe74cae9a329fc8f4cdbbe90f9ee9e8",
+      "bytes": 3391
+    },
+    "vector-source/src/Tedd.RTree/RTree.cs": {
+      "sha256": "b98b8f37fe72595b181257f6462479f596aee3b30c7aa4991a6a979b78405b42",
+      "bytes": 21522
+    },
+    "vector-source/src/Tedd.RTree/RTree2D.Generic.cs": {
+      "sha256": "7508b34655ad2457b50ffcf2d42c46390f78f6fa1152322eeddde7ebd21abf69",
+      "bytes": 20257
+    },
+    "vector-source/src/Tedd.RTree/RTree3D.Generic.cs": {
+      "sha256": "877e432d74b4c462c2e10041fc149469a2e182b69f710bd1afe2612b2866f1a1",
+      "bytes": 20144
+    },
+    "vector-source/src/Tedd.RTree/SnapshotRTree.cs": {
+      "sha256": "0bedbd89f8df2056f925cd62b30231f798524aae1f246f1d949e3350115f37f2",
+      "bytes": 2738
+    },
+    "vector-source/src/Tedd.RTree/SnapshotRTree2D.Generic.cs": {
+      "sha256": "aabc7cb41399a5a15ce7f4e9dd4eb027f07866dffdb6632f9fa3680f2fb19e5c",
+      "bytes": 2930
+    },
+    "vector-source/src/Tedd.RTree/SnapshotRTree3D.Generic.cs": {
+      "sha256": "906397c20d1beb19adc893343d8f97475c49e0a471ae11fc148d1bcf487f3c56",
+      "bytes": 2906
+    },
+    "vector-source/src/Tedd.RTree/SpatialEntry.cs": {
+      "sha256": "9d6edc0bbad391c047ec923b077af648e3cb9f4a1077341d5bff25883a1e94a4",
+      "bytes": 164
+    },
+    "vector-source/src/Tedd.RTree/SpatialEntry2D.Generic.cs": {
+      "sha256": "b2d455610192ae3bdf9c6e68496a2989204744720860d1af963e72f7be662c76",
+      "bytes": 279
+    },
+    "vector-source/src/Tedd.RTree/SpatialEntry3D.cs": {
+      "sha256": "f38be1e66478e7b44ee45d89bd384c80eda4e9178f4a10b25115c17de703e4a6",
+      "bytes": 276
+    },
+    "vector-source/src/Tedd.RTree/SpatialKeyAxis.cs": {
+      "sha256": "962ca928c319cb6dad28e9426ece9d3a9cfb60d4c2b5e821b717770d93355b1f",
+      "bytes": 1818
+    },
+    "vector-source/src/Tedd.RTree/SpatialMeasure.cs": {
+      "sha256": "fde64fb19ca24d0fec27353bf8fff28d676c2d89fbcff2b19573f879a0399ac2",
+      "bytes": 4982
+    },
+    "vector-source/src/Tedd.RTree/SpatialOrder3D.cs": {
+      "sha256": "97b4ceb0a4d5749d27c24795ae1036387e1c0104b716e999a9abb7fd86bbef0d",
+      "bytes": 447
+    },
+    "vector-source/src/Tedd.RTree/Tedd.RTree.csproj": {
+      "sha256": "e545630fc33f2c5644c4eadc7cdb43126e7622b50deb0cff26d3fee0d1b16aab",
+      "bytes": 1516
+    },
+    "vector-test-build.log": {
+      "sha256": "dd5493918438eae8845ec1610186da768191afbdef99aced23c74f2df53391c3",
+      "bytes": 247
+    },
+    "vector-tests-False.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "vector-tests-True.log": {
+      "sha256": "c4f6cd4649c17c5e4e66c124ff834ed677b941a7cfbe892116e38ff008e615b4",
+      "bytes": 64
+    },
+    "vector-worker/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "vector-worker/Bench.dll": {
+      "sha256": "d5a7f73376fb547476cf581642038c853bb225a8eb8c3f9ac21f6ab24599c3e9",
+      "bytes": 21504
+    },
+    "vector-worker/Bench.pdb": {
+      "sha256": "6463a38f3cec9fd8583cad003a07abc1783c75c1eae85c5e471570bb4ec89fec",
+      "bytes": 15308
+    },
+    "vector-worker/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "vector-worker/Tedd.RTree.dll": {
+      "sha256": "cda5618f404dd525d31c23386428df3d7d2df341f5d22387423906d84b61d34f",
+      "bytes": 50688
+    },
+    "warm-build.log": {
+      "sha256": "c778ee890ebdfb34f32e0542dd5b575e7013bb362993fdb8ef720f023bd85f6a",
+      "bytes": 275
+    },
+    "warm-caller/Bench.deps.json": {
+      "sha256": "f4360e26a9d2a464e931a5fe65862438dbc691f86743f4d5cf2996534396b52a",
+      "bytes": 796
+    },
+    "warm-caller/Bench.dll": {
+      "sha256": "4fae59411e60705fcfb65341c7b476f3bd351f4310094087ae21a1a4e6548c55",
+      "bytes": 22528
+    },
+    "warm-caller/Bench.pdb": {
+      "sha256": "f4f7ce370e523d12d38485635306d34634e769b08cab9d0b08df32f2b5938c45",
+      "bytes": 14952
+    },
+    "warm-caller/Bench.runtimeconfig.json": {
+      "sha256": "c230a317a54dd960bcbeb5f347f52e18dc665a26f7efda2159fced9a5ac7e097",
+      "bytes": 342
+    },
+    "warm-caller/Tedd.RTree.dll": {
+      "sha256": "46b6ab9e2cc6ff7e528a7df78f0573773991d351488ff0c8cc1ae80425efc743",
+      "bytes": 15360
+    },
+    "Warm.csproj": {
+      "sha256": "56253588178472596101c4bb38e67b032b48f27a1a392dcb0144dcc8541a092c",
+      "bytes": 494
+    },
+    "WarmWorker.cs": {
+      "sha256": "037b09406b44ff7fb6e63c94b8e7ef29ce4c370bd47c47a7a220300a8209f447",
+      "bytes": 13785
+    }
+  }
+}

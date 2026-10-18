@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "data": {
+    "id": "hyp-653c5b5710fd4aa8a3d57caebb9a7b16",
+    "mechanism": "Packed descendants share contiguous values; a contained subtree copies one range. First writes detach only the affected leaf, and all discarded shared slots are cleared.",
+    "prediction": "Complete materialized queries improve through fewer collector visits and copies while preserving exact geometry, mutations, and reference reclamation.",
+    "state": "proposed",
+    "evidence_ids": [
+      "cap-f1fe7c371731466f961f550fdea765c2",
+      "stack-analysis-495b23d7ff2f4326bc3a2d7e1d7ea1d0"
+    ]
+  },
+  "code": null,
+  "message": null,
+  "recovery": null
+}

@@ -1,0 +1,6 @@
+
+STDERR:
+Unhandled exception. System.Exception: Packed storage retained a removed value after condensation.
+   at PackedValueChecks.Check(ValueTuple`2 state) in D:\SourceCode\Tedd.RTree\tests\Tedd.RTree.Tests\PackedValueChecks.cs:line 20
+   at PackedValueChecks.Run() in D:\SourceCode\Tedd.RTree\tests\Tedd.RTree.Tests\PackedValueChecks.cs:line 10
+   at Program.<Main>$(String[] args) in D:\Workspaces\AI\rtree-simd-20261018\WeakMain.cs:line 1
