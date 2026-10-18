@@ -3,6 +3,7 @@ using Tedd.RTree;
 MutablePackedChecks.Run();
 GenericPackedChecks.Run();
 LocalUpdateChecks.Run();
+IntegerMeasureChecks.Run();
 
 static void Check(bool condition, string message)
 {

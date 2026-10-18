@@ -25,8 +25,12 @@ internal readonly struct SpatialMeasure<TCoordinate> : IComparable<SpatialMeasur
         TCoordinate minX, TCoordinate maxX, TCoordinate minY, TCoordinate maxY)
     {
         if (ExactInteger)
+        {
+            ulong x = IntegerExtent(minX, maxX), y = IntegerExtent(minY, maxY);
+            if ((x | y) <= uint.MaxValue) return new(new BigInteger(x * y));
             return new((BigInteger.CreateChecked(maxX) - BigInteger.CreateChecked(minX)) *
                 (BigInteger.CreateChecked(maxY) - BigInteger.CreateChecked(minY)));
+        }
         double area = (double.CreateSaturating(maxX) - double.CreateSaturating(minX)) *
             (double.CreateSaturating(maxY) - double.CreateSaturating(minY));
         return new(double.IsFinite(area) ? area : double.MaxValue);
@@ -37,14 +41,22 @@ internal readonly struct SpatialMeasure<TCoordinate> : IComparable<SpatialMeasur
         TCoordinate minZ, TCoordinate maxZ)
     {
         if (ExactInteger)
+        {
+            ulong x = IntegerExtent(minX, maxX), y = IntegerExtent(minY, maxY), z = IntegerExtent(minZ, maxZ);
+            // Three 21-bit extents have an exact product below 2^63; larger spans use BigInteger.
+            if ((x | y | z) <= 0x1fffff) return new(new BigInteger(x * y * z));
             return new((BigInteger.CreateChecked(maxX) - BigInteger.CreateChecked(minX)) *
                 (BigInteger.CreateChecked(maxY) - BigInteger.CreateChecked(minY)) *
                 (BigInteger.CreateChecked(maxZ) - BigInteger.CreateChecked(minZ)));
+        }
         double volume = (double.CreateSaturating(maxX) - double.CreateSaturating(minX)) *
             (double.CreateSaturating(maxY) - double.CreateSaturating(minY)) *
             (double.CreateSaturating(maxZ) - double.CreateSaturating(minZ));
         return new(double.IsFinite(volume) ? volume : double.MaxValue);
     }
+
+    private static ulong IntegerExtent(TCoordinate min, TCoordinate max) =>
+        (ulong)((Int128)long.CreateChecked(max) - long.CreateChecked(min));
 
     internal static BigInteger IntegerCenter(TCoordinate min, TCoordinate max) =>
         BigInteger.CreateChecked(min) + BigInteger.CreateChecked(max);
