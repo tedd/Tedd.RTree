@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-17",
-  "source": "a5d902c",
+  "date": "2026-10-18",
+  "source": "cf34a58",
   "results": [
     {
       "size": 1000,
@@ -8,9 +8,9 @@
       "operation": "build",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 37.8206787109375,
-      "minUs": 37.089550781250004,
-      "maxUs": 38.949999999999996,
+      "medianUs": 36.4417236328125,
+      "minUs": 36.2615478515625,
+      "maxUs": 37.1840576171875,
       "mode": "candidate"
     },
     {
@@ -19,9 +19,9 @@
       "operation": "build",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 16.62933349609375,
-      "minUs": 16.619165039062498,
-      "maxUs": 17.172778320312503,
+      "medianUs": 16.92894287109375,
+      "minUs": 16.69599609375,
+      "maxUs": 18.8641357421875,
       "mode": "native-static"
     },
     {
@@ -30,9 +30,9 @@
       "operation": "build",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 42.242578125,
-      "minUs": 42.029467773437496,
-      "maxUs": 43.051928710937496,
+      "medianUs": 42.036865234375,
+      "minUs": 41.9620361328125,
+      "maxUs": 42.4421630859375,
       "mode": "native-geo-hilbert"
     },
     {
@@ -41,9 +41,9 @@
       "operation": "build",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 34.236083984375,
-      "minUs": 33.945556640625,
-      "maxUs": 34.2994140625,
+      "medianUs": 34.5322998046875,
+      "minUs": 34.48271484375,
+      "maxUs": 35.34990234375,
       "mode": "native-geo-str"
     },
     {
@@ -52,9 +52,9 @@
       "operation": "queries",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 15.130239868164063,
-      "minUs": 15.102299499511718,
-      "maxUs": 15.224270629882813,
+      "medianUs": 15.225557708740233,
+      "minUs": 15.133001708984375,
+      "maxUs": 15.343421936035156,
       "mode": "candidate"
     },
     {
@@ -63,9 +63,9 @@
       "operation": "queries",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 11.719775390625001,
-      "minUs": 11.664885330200194,
-      "maxUs": 11.758987045288086,
+      "medianUs": 11.655704498291016,
+      "minUs": 11.588916397094726,
+      "maxUs": 11.732348632812501,
       "mode": "native-static"
     },
     {
@@ -74,9 +74,9 @@
       "operation": "queries",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 27.881692504882814,
-      "minUs": 27.1903434753418,
-      "maxUs": 28.63876953125,
+      "medianUs": 27.75665817260742,
+      "minUs": 27.206824493408202,
+      "maxUs": 28.41964874267578,
       "mode": "native-geo-hilbert"
     },
     {
@@ -85,9 +85,9 @@
       "operation": "queries",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 28.301250457763675,
-      "minUs": 27.65151138305664,
-      "maxUs": 29.257070159912107,
+      "medianUs": 28.086009216308597,
+      "minUs": 27.92461776733398,
+      "maxUs": 28.19625396728516,
       "mode": "native-geo-str"
     },
     {
@@ -96,9 +96,9 @@
       "operation": "build",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 36.376416015625004,
-      "minUs": 35.773974609375,
-      "maxUs": 36.6158203125,
+      "medianUs": 36.826318359375,
+      "minUs": 36.134204101562496,
+      "maxUs": 38.819921875000006,
       "mode": "candidate"
     },
     {
@@ -107,9 +107,9 @@
       "operation": "build",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 20.269006347656248,
-      "minUs": 19.82904052734375,
-      "maxUs": 20.42255859375,
+      "medianUs": 19.93843994140625,
+      "minUs": 19.85186767578125,
+      "maxUs": 20.35797119140625,
       "mode": "native-static"
     },
     {
@@ -118,9 +118,9 @@
       "operation": "build",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 41.999560546874996,
-      "minUs": 41.75263671875,
-      "maxUs": 42.80556640625,
+      "medianUs": 42.05009765625,
+      "minUs": 41.8046630859375,
+      "maxUs": 42.176806640625,
       "mode": "native-geo-hilbert"
     },
     {
@@ -129,9 +129,9 @@
       "operation": "build",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 34.4142822265625,
-      "minUs": 33.9755859375,
-      "maxUs": 34.8023193359375,
+      "medianUs": 34.6730224609375,
+      "minUs": 34.3296630859375,
+      "maxUs": 34.9242919921875,
       "mode": "native-geo-str"
     },
     {
@@ -140,9 +140,9 @@
       "operation": "queries",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 9.721529388427735,
-      "minUs": 9.689447784423828,
-      "maxUs": 9.775586700439453,
+      "medianUs": 9.794529914855957,
+      "minUs": 9.750692176818848,
+      "maxUs": 9.867720222473144,
       "mode": "candidate"
     },
     {
@@ -151,9 +151,9 @@
       "operation": "queries",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 10.43245267868042,
-      "minUs": 10.417325687408448,
-      "maxUs": 10.509332466125487,
+      "medianUs": 10.477055072784424,
+      "minUs": 10.403404140472412,
+      "maxUs": 10.54500436782837,
       "mode": "native-static"
     },
     {
@@ -162,9 +162,9 @@
       "operation": "queries",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 26.445819091796874,
-      "minUs": 26.306869506835938,
-      "maxUs": 27.18202362060547,
+      "medianUs": 26.202217102050778,
+      "minUs": 26.110491180419924,
+      "maxUs": 26.511512756347653,
       "mode": "native-geo-hilbert"
     },
     {
@@ -173,9 +173,9 @@
       "operation": "queries",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 26.48263168334961,
-      "minUs": 26.133135223388674,
-      "maxUs": 27.830809020996096,
+      "medianUs": 25.944860076904295,
+      "minUs": 25.59630661010742,
+      "maxUs": 26.279341888427734,
       "mode": "native-geo-str"
     },
     {
@@ -184,9 +184,9 @@
       "operation": "build",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 422.340234375,
-      "minUs": 388.9390625,
-      "maxUs": 428.02421875000005,
+      "medianUs": 391.09062500000005,
+      "minUs": 379.245703125,
+      "maxUs": 402.92265625,
       "mode": "candidate"
     },
     {
@@ -195,9 +195,9 @@
       "operation": "build",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 561.926953125,
-      "minUs": 559.355859375,
-      "maxUs": 624.9359375,
+      "medianUs": 592.3734375,
+      "minUs": 560.65078125,
+      "maxUs": 673.812109375,
       "mode": "interop-static"
     },
     {
@@ -206,9 +206,9 @@
       "operation": "build",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 627.2023437500001,
-      "minUs": 611.9015625,
-      "maxUs": 759.47109375,
+      "medianUs": 613.1171875,
+      "minUs": 599.715234375,
+      "maxUs": 615.63515625,
       "mode": "native-geo-hilbert"
     },
     {
@@ -217,9 +217,9 @@
       "operation": "build",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 588.2449218749999,
-      "minUs": 560.3933593749999,
-      "maxUs": 620.5031250000001,
+      "medianUs": 593.294921875,
+      "minUs": 581.156640625,
+      "maxUs": 595.08671875,
       "mode": "native-geo-str"
     },
     {
@@ -228,9 +228,9 @@
       "operation": "queries",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 77.37680206298829,
-      "minUs": 76.98427124023438,
-      "maxUs": 79.38312683105468,
+      "medianUs": 77.36230316162109,
+      "minUs": 77.09159774780274,
+      "maxUs": 79.16914367675781,
       "mode": "candidate"
     },
     {
@@ -239,9 +239,9 @@
       "operation": "queries",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 78.40012817382812,
-      "minUs": 77.85979843139648,
-      "maxUs": 79.37139053344725,
+      "medianUs": 76.23677673339843,
+      "minUs": 75.28503112792968,
+      "maxUs": 79.50567092895508,
       "mode": "native-static"
     },
     {
@@ -250,9 +250,9 @@
       "operation": "queries",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 128.4669219970703,
-      "minUs": 127.23080139160156,
-      "maxUs": 129.68907470703127,
+      "medianUs": 128.5373275756836,
+      "minUs": 126.80277252197266,
+      "maxUs": 129.5980270385742,
       "mode": "native-geo-hilbert"
     },
     {
@@ -261,9 +261,9 @@
       "operation": "queries",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 137.31854553222655,
-      "minUs": 136.0716567993164,
-      "maxUs": 139.8542495727539,
+      "medianUs": 136.00126495361326,
+      "minUs": 133.3599853515625,
+      "maxUs": 136.94222717285157,
       "mode": "native-geo-str"
     },
     {
@@ -272,9 +272,9 @@
       "operation": "build",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 445.454296875,
-      "minUs": 437.196484375,
-      "maxUs": 456.8546875,
+      "medianUs": 437.10234375,
+      "minUs": 431.37851562500003,
+      "maxUs": 445.79999999999995,
       "mode": "candidate"
     },
     {
@@ -283,9 +283,9 @@
       "operation": "build",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 525.700390625,
-      "minUs": 488.38671875,
-      "maxUs": 581.519921875,
+      "medianUs": 557.555078125,
+      "minUs": 491.45937499999997,
+      "maxUs": 562.431640625,
       "mode": "interop-static"
     },
     {
@@ -294,9 +294,9 @@
       "operation": "build",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 608.2269531249999,
-      "minUs": 604.8796874999999,
-      "maxUs": 617.260546875,
+      "medianUs": 610.9828125,
+      "minUs": 609.11171875,
+      "maxUs": 624.5519531250001,
       "mode": "native-geo-hilbert"
     },
     {
@@ -305,9 +305,9 @@
       "operation": "build",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 563.706640625,
-      "minUs": 554.2648437500001,
-      "maxUs": 613.8140625000001,
+      "medianUs": 575.644921875,
+      "minUs": 565.962890625,
+      "maxUs": 586.9773437499999,
       "mode": "native-geo-str"
     },
     {
@@ -316,9 +316,9 @@
       "operation": "queries",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 52.161126327514644,
-      "minUs": 51.92466506958008,
-      "maxUs": 53.50123386383057,
+      "medianUs": 51.94768104553222,
+      "minUs": 51.69365081787109,
+      "maxUs": 52.85771255493164,
       "mode": "candidate"
     },
     {
@@ -327,9 +327,9 @@
       "operation": "queries",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 68.02770309448242,
-      "minUs": 67.28170146942138,
-      "maxUs": 68.56862010955811,
+      "medianUs": 66.80496807098389,
+      "minUs": 64.65566806793213,
+      "maxUs": 67.21722240447998,
       "mode": "native-static"
     },
     {
@@ -338,9 +338,9 @@
       "operation": "queries",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 108.26382446289062,
-      "minUs": 107.93029403686523,
-      "maxUs": 109.84325332641602,
+      "medianUs": 107.67847442626953,
+      "minUs": 106.49390869140625,
+      "maxUs": 109.49812164306641,
       "mode": "native-geo-hilbert"
     },
     {
@@ -349,9 +349,9 @@
       "operation": "queries",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 108.37733078002928,
-      "minUs": 107.64500122070312,
-      "maxUs": 109.5348419189453,
+      "medianUs": 107.18554153442383,
+      "minUs": 104.71426696777344,
+      "maxUs": 107.88109817504883,
       "mode": "native-geo-str"
     },
     {
@@ -360,9 +360,9 @@
       "operation": "build",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 6802.071875000001,
-      "minUs": 6594.625,
-      "maxUs": 6853.5625,
+      "medianUs": 6764.5375,
+      "minUs": 6545.26875,
+      "maxUs": 6898.30625,
       "mode": "candidate"
     },
     {
@@ -371,9 +371,9 @@
       "operation": "build",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 7764.95,
-      "minUs": 7624.90625,
-      "maxUs": 7822.875,
+      "medianUs": 7682.64375,
+      "minUs": 7655.73125,
+      "maxUs": 7703.59375,
       "mode": "native-static"
     },
     {
@@ -382,9 +382,9 @@
       "operation": "build",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 7001.675,
-      "minUs": 6974.775,
-      "maxUs": 7131.03125,
+      "medianUs": 6816.74375,
+      "minUs": 6801.11875,
+      "maxUs": 7070.74375,
       "mode": "native-geo-hilbert"
     },
     {
@@ -393,9 +393,9 @@
       "operation": "build",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 7092.5125,
-      "minUs": 6857.30625,
-      "maxUs": 7419.1375,
+      "medianUs": 6925.7625,
+      "minUs": 6813.825,
+      "maxUs": 7202.525,
       "mode": "interop-geo-str"
     },
     {
@@ -404,9 +404,9 @@
       "operation": "queries",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 865.4618103027343,
-      "minUs": 857.8705276489258,
-      "maxUs": 866.8827087402343,
+      "medianUs": 867.2869979858399,
+      "minUs": 859.8665313720703,
+      "maxUs": 873.4109268188478,
       "mode": "candidate"
     },
     {
@@ -415,9 +415,9 @@
       "operation": "queries",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 1222.33497467041,
-      "minUs": 1214.2449752807618,
-      "maxUs": 1228.11982421875,
+      "medianUs": 1216.34434967041,
+      "minUs": 1212.766271972656,
+      "maxUs": 1221.7240036010742,
       "mode": "native-static"
     },
     {
@@ -426,9 +426,9 @@
       "operation": "queries",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 1923.109405517578,
-      "minUs": 1292.8381546020507,
-      "maxUs": 1976.581495666504,
+      "medianUs": 1309.372901916504,
+      "minUs": 1284.8389724731444,
+      "maxUs": 2010.4998596191406,
       "mode": "native-geo-hilbert"
     },
     {
@@ -437,9 +437,9 @@
       "operation": "queries",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 1305.8356567382812,
-      "minUs": 1297.9232925415038,
-      "maxUs": 1319.0698791503905,
+      "medianUs": 1303.2800567626953,
+      "minUs": 1292.237210083008,
+      "maxUs": 1321.7351547241212,
       "mode": "native-geo-str"
     },
     {
@@ -448,9 +448,9 @@
       "operation": "build",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 6288.7375,
-      "minUs": 5936.515625,
-      "maxUs": 6429.55625,
+      "medianUs": 6321.409375,
+      "minUs": 5916.224999999999,
+      "maxUs": 6365.1,
       "mode": "candidate"
     },
     {
@@ -459,9 +459,9 @@
       "operation": "build",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 6732.6,
-      "minUs": 6680.29375,
-      "maxUs": 6743.8,
+      "medianUs": 6641.606250000001,
+      "minUs": 6603.15625,
+      "maxUs": 6720.09375,
       "mode": "native-static"
     },
     {
@@ -470,9 +470,9 @@
       "operation": "build",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 6797.78125,
-      "minUs": 6777.1,
-      "maxUs": 7107.037499999999,
+      "medianUs": 6848.64375,
+      "minUs": 6726.775,
+      "maxUs": 7219.01875,
       "mode": "native-geo-hilbert"
     },
     {
@@ -481,10 +481,10 @@
       "operation": "build",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 6663.925,
-      "minUs": 6451.45625,
-      "maxUs": 6849.86875,
-      "mode": "native-geo-str"
+      "medianUs": 6389.725,
+      "minUs": 6320.9375,
+      "maxUs": 6485.137500000001,
+      "mode": "interop-geo-str"
     },
     {
       "size": 100000,
@@ -492,9 +492,9 @@
       "operation": "queries",
       "library": "candidate",
       "label": "Tedd.RTree (C#)",
-      "medianUs": 809.6290054321288,
-      "minUs": 808.7133275985718,
-      "maxUs": 814.4585943222046,
+      "medianUs": 803.9012689590454,
+      "minUs": 799.8733028411865,
+      "maxUs": 807.7996021270751,
       "mode": "candidate"
     },
     {
@@ -503,9 +503,9 @@
       "operation": "queries",
       "library": "static",
       "label": "static_aabb2d_index (Rust)",
-      "medianUs": 1276.3054203033448,
-      "minUs": 1271.9718448638919,
-      "maxUs": 1293.1749397277833,
+      "medianUs": 1271.425576019287,
+      "minUs": 1265.6261547088623,
+      "maxUs": 1293.8653518676758,
       "mode": "native-static"
     },
     {
@@ -514,9 +514,9 @@
       "operation": "queries",
       "library": "geo-hilbert",
       "label": "geo-index Hilbert (Rust)",
-      "medianUs": 1360.7691497802734,
-      "minUs": 1346.3638587951662,
-      "maxUs": 2051.5220138549803,
+      "medianUs": 1335.9185928344727,
+      "minUs": 1309.071061706543,
+      "maxUs": 1800.621868133545,
       "mode": "native-geo-hilbert"
     },
     {
@@ -525,9 +525,9 @@
       "operation": "queries",
       "library": "geo-str",
       "label": "geo-index STR (Rust)",
-      "medianUs": 1662.7386444091796,
-      "minUs": 1300.652210235596,
-      "maxUs": 1686.3676017761231,
+      "medianUs": 1291.1448677062988,
+      "minUs": 1279.0788734436035,
+      "maxUs": 1304.6516830444336,
       "mode": "native-geo-str"
     }
   ]

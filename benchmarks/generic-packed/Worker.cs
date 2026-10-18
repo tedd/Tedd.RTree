@@ -15,11 +15,12 @@ switch (args[1])
 
 internal static class Bench
 {
+    internal static int MoveScale = 1;
     internal readonly record struct Bounds(int X, int Y, int Z, int MaxX, int MaxY, int MaxZ)
     {
         internal bool Intersects(Bounds b, int dimension) => X <= b.MaxX && MaxX >= b.X && Y <= b.MaxY && MaxY >= b.Y &&
             (dimension == 2 || Z <= b.MaxZ && MaxZ >= b.Z);
-        internal Bounds Moved => new(X + 7, Y - 9, Z + 11, MaxX + 7, MaxY - 9, MaxZ + 11);
+        internal Bounds Moved => new(X + 7 * MoveScale, Y - 9 * MoveScale, Z + 11 * MoveScale, MaxX + 7 * MoveScale, MaxY - 9 * MoveScale, MaxZ + 11 * MoveScale);
     }
     internal interface IIndex : IDisposable { int Count { get; } void Search(int q, List<int> results); bool Move(int id); }
 
@@ -27,6 +28,8 @@ internal static class Bench
     {
         int dimension = int.Parse(args[0]), n = int.Parse(args[2]);
         string distribution = args[3], mode = args[4], action = args.Length > 5 ? args[5] : "measure";
+        MoveScale = args.Length > 6 ? int.Parse(args[6]) : 1;
+        int guardMask = args.Length > 7 ? int.Parse(args[7]) : 0;
         uint state = 73211;
         int Next(int limit) { state = unchecked(state * 1664525 + 1013904223); return (int)((state >> 8) % (uint)limit); }
         var boxes = new Bounds[n]; var queries = new Bounds[64];
@@ -50,7 +53,13 @@ internal static class Bench
         {
             var entries = boxes.Select((b, i) => new SpatialEntry2D<C, int>(Rect<C>(b), i)).ToArray();
             var qs = queries.Select(Rect<C>).ToArray();
-            factory = () => new Index2<C>(entries, qs, mode);
+            if (mode == "original")
+            {
+                var originalEntries = boxes.Select((b, i) => new SpatialEntry<int>(new(b.X, b.Y, b.MaxX, b.MaxY), i)).ToArray();
+                var originalQueries = queries.Select(b => new Rectangle(b.X, b.Y, b.MaxX, b.MaxY)).ToArray();
+                factory = () => new OriginalIndex(originalEntries, originalQueries);
+            }
+            else factory = () => new Index2<C>(entries, qs, mode);
         }
         else
         {
@@ -59,13 +68,14 @@ internal static class Bench
             factory = () => new Index3<C>(entries, qs, mode);
         }
         using IIndex tree = factory();
-        var output = new List<int>(n); long sink = 0;
+        var output = new List<int>(n); long sink = 0; ulong shape = 14695981039346656037UL;
         void Verify()
         {
             if (tree.Count != n) throw new Exception("Count mismatch");
             for (int q = 0; q < queries.Length; q++)
             {
                 output.Clear(); tree.Search(q, output);
+                foreach (int id in output) shape = unchecked((shape ^ (uint)(id + 1)) * 1099511628211UL);
                 var expected = Enumerable.Range(0, n).Where(i => boxes[i].Intersects(queries[q], dimension));
                 if (!output.Order().SequenceEqual(expected)) throw new Exception("Result-set mismatch");
             }
@@ -85,18 +95,46 @@ internal static class Bench
         {
             int repetitions = 1;
             double Block() { var sw = Stopwatch.StartNew(); for (int i = 0; i < repetitions; i++) sink ^= operation(); return sw.Elapsed.TotalMilliseconds; }
-            while (Block() < 100) repetitions *= 2;
+            int milliseconds = action == "guard" && ((name == "build" && (guardMask & 1) != 0) ||
+                (name == "queryall" && (guardMask & 2) != 0) || (name == "mutatedall" && (guardMask & 4) != 0)) ? 1000 : 100;
+            while (Block() < milliseconds) repetitions *= 2;
             long allocation = GC.GetAllocatedBytesForCurrentThread();
             double elapsed = Block(); allocation = GC.GetAllocatedBytesForCurrentThread() - allocation;
             Console.WriteLine($"{name},{elapsed * 1000 / repetitions:R},{repetitions},{(double)allocation / repetitions:R}");
         }
         Verify();
+        if (action == "guard")
+        {
+            long QueryAll() { long sum = 0; for (int g = 0; g < 4; g++) sum += Query(g); return sum; }
+            Measure("queryall", QueryAll);
+            if (mode != "snapshot")
+            {
+                using (var warm = factory()) for (int i = 0; i < Math.Min(64, n); i++) if (!warm.Move(i)) throw new Exception("Guard warm move failed");
+                long allocation = GC.GetAllocatedBytesForCurrentThread(); var sw = Stopwatch.StartNew();
+                for (int i = 0; i < Math.Min(1000, n); i++) if (!tree.Move(i)) throw new Exception("Guard move failed");
+                double elapsed = sw.Elapsed.TotalMicroseconds; allocation = GC.GetAllocatedBytesForCurrentThread() - allocation;
+                Console.WriteLine($"mutation,{elapsed:R},1,{allocation}");
+                for (int i = 0; i < Math.Min(1000, n); i++) boxes[i] = boxes[i].Moved;
+                Verify();
+                Measure("mutatedall", QueryAll);
+            }
+            Measure("build", Build);
+            Console.Error.WriteLine($"validated={(mode == "snapshot" ? 64 : 128)};sink={sink};shape={shape:x16}");
+            return;
+        }
         if (action == "codegen") { Build(); for (int g = 0; g < 4; g++) sink ^= Query(g); Console.WriteLine(sink); return; }
         if (action.StartsWith("profile-"))
         {
             Console.WriteLine($"READY {Environment.ProcessId}"); Console.Out.Flush();
             var sw = Stopwatch.StartNew(); while (sw.Elapsed.TotalSeconds < 45)
-                if (action == "profile-build") sink ^= Build(); else for (int g = 0; g < 4; g++) sink ^= Query(g);
+                if (action == "profile-build") sink ^= Build();
+                else if (action == "profile-mutation")
+                {
+                    using var moved = factory();
+                    for (int i = 0; i < Math.Min(1000, n); i++) if (!moved.Move(i)) throw new Exception("Profile move failed");
+                    sink ^= moved.Count;
+                }
+                else for (int g = 0; g < 4; g++) sink ^= Query(g);
             Console.WriteLine(sink); return;
         }
         Measure("build", Build);
@@ -112,11 +150,28 @@ internal static class Bench
             Verify();
             for (int g = 0; g < 4; g++) { int group = g; Measure($"mutated{g}", () => Query(group)); }
         }
-        Console.Error.WriteLine($"validated={(mode == "snapshot" ? 64 : 128)};sink={sink}");
+        Console.Error.WriteLine($"validated={(mode == "snapshot" ? 64 : 128)};sink={sink};shape={shape:x16}");
     }
 
     private static Rectangle2D<C> Rect<C>(Bounds b) where C : struct, INumber<C> => new(C.CreateChecked(b.X), C.CreateChecked(b.Y), C.CreateChecked(b.MaxX), C.CreateChecked(b.MaxY));
     private static Box<C> Box<C>(Bounds b) where C : struct, INumber<C> => new(C.CreateChecked(b.X), C.CreateChecked(b.Y), C.CreateChecked(b.Z), C.CreateChecked(b.MaxX), C.CreateChecked(b.MaxY), C.CreateChecked(b.MaxZ));
+
+    private sealed class OriginalIndex : IIndex
+    {
+        private readonly RTree<int> _tree = new();
+        private readonly SpatialEntry<int>[] _entries;
+        private readonly Rectangle[] _queries;
+        public OriginalIndex(SpatialEntry<int>[] entries, Rectangle[] queries)
+        { _entries = entries; _queries = queries; _tree.BulkLoad(entries); }
+        public int Count => _tree.Count;
+        public void Search(int q, List<int> output) => _tree.Search(_queries[q], output);
+        public bool Move(int id)
+        {
+            var b = _entries[id].Bounds;
+            return _tree.Update(b, id, new(b.MinX + 7 * MoveScale, b.MinY - 9 * MoveScale, b.MaxX + 7 * MoveScale, b.MaxY - 9 * MoveScale));
+        }
+        public void Dispose() { }
+    }
 
     private sealed class Index2<C> : IIndex where C : struct, INumber<C>
     {
@@ -140,7 +195,7 @@ internal static class Bench
         { if (_plain is not null) _plain.Search(_queries[q], output); else if (_snapshot is not null) _snapshot.Search(_queries[q], output); else _concurrent!.Search(_queries[q], output); }
         public bool Move(int id)
         {
-            var b = _entries[id].Bounds; var moved = new Rectangle2D<C>(b.MinX + C.CreateChecked(7), b.MinY - C.CreateChecked(9), b.MaxX + C.CreateChecked(7), b.MaxY - C.CreateChecked(9));
+            var b = _entries[id].Bounds; var moved = new Rectangle2D<C>(b.MinX + C.CreateChecked(7 * MoveScale), b.MinY - C.CreateChecked(9 * MoveScale), b.MaxX + C.CreateChecked(7 * MoveScale), b.MaxY - C.CreateChecked(9 * MoveScale));
             return _plain is not null ? _plain.Update(b, id, moved) : _concurrent!.Move(id, moved);
         }
         public void Dispose() => _concurrent?.Dispose();
@@ -167,7 +222,7 @@ internal static class Bench
         { if (_plain is not null) _plain.Search(_queries[q], output); else if (_snapshot is not null) _snapshot.Search(_queries[q], output); else _concurrent!.Search(_queries[q], output); }
         public bool Move(int id)
         {
-            var b = _entries[id].Bounds; var moved = new Box<C>(b.MinX + C.CreateChecked(7), b.MinY - C.CreateChecked(9), b.MinZ + C.CreateChecked(11), b.MaxX + C.CreateChecked(7), b.MaxY - C.CreateChecked(9), b.MaxZ + C.CreateChecked(11));
+            var b = _entries[id].Bounds; var moved = new Box<C>(b.MinX + C.CreateChecked(7 * MoveScale), b.MinY - C.CreateChecked(9 * MoveScale), b.MinZ + C.CreateChecked(11 * MoveScale), b.MaxX + C.CreateChecked(7 * MoveScale), b.MaxY - C.CreateChecked(9 * MoveScale), b.MaxZ + C.CreateChecked(11 * MoveScale));
             return _plain is not null ? _plain.Update(b, id, moved) : _concurrent!.Move(id, moved);
         }
         public void Dispose() => _concurrent?.Dispose();

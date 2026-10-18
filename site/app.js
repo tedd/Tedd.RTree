@@ -21,7 +21,7 @@ document.querySelectorAll("[data-copy-target]").forEach((button) => {
 
 const fixtureSelect = document.getElementById("comparison-fixture");
 if (fixtureSelect) {
-  const dataRequest = fetch("assets/mutable-packed.json").then((response) => {
+  const dataRequest = fetch("assets/mutable-packed.json", { cache: "no-cache" }).then((response) => {
     if (!response.ok) throw new Error("Comparison data unavailable");
     return response.json();
   });
@@ -70,7 +70,7 @@ if (genericControls) {
   const coordinate = document.getElementById("generic-coordinate");
   const mode = document.getElementById("generic-mode");
   const fixture = document.getElementById("generic-fixture");
-  const request = fetch("assets/generic-packed.json").then((response) => {
+  const request = fetch("assets/generic-packed.json", { cache: "no-cache" }).then((response) => {
     if (!response.ok) throw new Error("Generic comparison unavailable");
     return response.json();
   });
@@ -95,7 +95,7 @@ if (genericControls) {
         chart.querySelector(".generic-chart-rows").replaceChildren(...rows.map((row) => {
           const current = row.stage === "candidate";
           const element = document.createElement("div"); element.className = `bar-row${current ? " comparison-ours" : ""}`;
-          const label = document.createElement("span"); label.textContent = current ? "Current (C#)" : "Previous (C#)";
+          const label = document.createElement("span"); label.textContent = current ? "Current (C#)" : "1.0.12 (C#)";
           const track = document.createElement("div"); track.className = "bar-track";
           const bar = document.createElement("i"); bar.className = `bar ${current ? "ours" : "other"}`;
           const rate = units / row.medianUs; bar.style.width = `${rate / peak * 100}%`; track.append(bar);
@@ -103,11 +103,14 @@ if (genericControls) {
           element.append(label, track, number); return element;
         }));
       });
-      document.getElementById("generic-timings").replaceChildren(...["build", "queries"].map((operation) => {
+      const operations = ["build", "queries", "mutation", "mutated"].filter((operation) => selected.some((row) => row.operation === operation));
+      const operationLabels = { build: "Bulk build", queries: "64 queries", mutation: "1,000 updates", mutated: "64 queries after updates" };
+      document.getElementById("generic-timings").replaceChildren(...operations.map((operation) => {
         const old = selected.find((row) => row.stage === "control" && row.operation === operation).medianUs;
         const current = selected.find((row) => row.stage === "candidate" && row.operation === operation).medianUs;
-        const scale = operation === "build" ? 1000 : 1; const unit = operation === "build" ? "ms" : "µs";
-        const tr = document.createElement("tr"); const th = document.createElement("th"); th.scope = "row"; th.textContent = operation === "build" ? "Bulk build" : "64 queries"; tr.append(th);
+        const milliseconds = operation === "build" || operation === "mutation";
+        const scale = milliseconds ? 1000 : 1; const unit = milliseconds ? "ms" : "µs";
+        const tr = document.createElement("tr"); const th = document.createElement("th"); th.scope = "row"; th.textContent = operationLabels[operation]; tr.append(th);
         for (const [value, className] of [[`${(old / scale).toFixed(3)} ${unit}`, ""], [`${(current / scale).toFixed(3)} ${unit}`, "comparison-ours"], [`${(old / current).toFixed(2)}×`, ""]]) {
           const td = document.createElement("td"); td.className = className; td.textContent = value; tr.append(td);
         }

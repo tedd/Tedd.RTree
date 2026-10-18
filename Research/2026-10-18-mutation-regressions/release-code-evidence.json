@@ -1,0 +1,146 @@
+[
+  {
+    "coordinate": "int",
+    "method": "Tedd.RTree.RTree3D`2[int,int]:BulkLoadPacked(System.ReadOnlySpan`1[Tedd.RTree.SpatialEntry3D`2[int,int]],Tedd.RTree.BulkLoadWorkspace):this (FullOpts)",
+    "equal_normalized_instructions": false,
+    "old_instruction_count": 842,
+    "new_instruction_count": 866,
+    "old_union_constructor_calls": 1,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "int",
+    "method": "Bench+Index3`1[int]:Search(int,System.Collections.Generic.List`1[int]):this (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 180,
+    "new_instruction_count": 180,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "int",
+    "method": "Tedd.RTree.RTree3D`2[int,int]:Search(Tedd.RTree.RTree3D`2+Node[int,int],byref,System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 154,
+    "new_instruction_count": 154,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "int",
+    "method": "Tedd.RTree.RTree3D`2[int,int]:CollectValues(Tedd.RTree.RTree3D`2+Node[int,int],System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 61,
+    "new_instruction_count": 61,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "double",
+    "method": "Tedd.RTree.RTree3D`2[double,int]:BulkLoadPacked(System.ReadOnlySpan`1[Tedd.RTree.SpatialEntry3D`2[double,int]],Tedd.RTree.BulkLoadWorkspace):this (FullOpts)",
+    "equal_normalized_instructions": false,
+    "old_instruction_count": 916,
+    "new_instruction_count": 1046,
+    "old_union_constructor_calls": 3,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "double",
+    "method": "Bench+Index3`1[double]:Search(int,System.Collections.Generic.List`1[int]):this (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 182,
+    "new_instruction_count": 182,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "double",
+    "method": "Tedd.RTree.RTree3D`2[double,int]:Search(Tedd.RTree.RTree3D`2+Node[double,int],byref,System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 170,
+    "new_instruction_count": 170,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "double",
+    "method": "Tedd.RTree.RTree3D`2[double,int]:CollectValues(Tedd.RTree.RTree3D`2+Node[double,int],System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 61,
+    "new_instruction_count": 61,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "long",
+    "method": "Tedd.RTree.RTree2D`2[long,int]:BulkLoadPacked(System.ReadOnlySpan`1[Tedd.RTree.SpatialEntry2D`2[long,int]],Tedd.RTree.BulkLoadWorkspace):this (FullOpts)",
+    "equal_normalized_instructions": false,
+    "old_instruction_count": 668,
+    "new_instruction_count": 721,
+    "old_union_constructor_calls": 3,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "long",
+    "method": "Bench+Index2`1[long]:Search(int,System.Collections.Generic.List`1[int]):this (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 182,
+    "new_instruction_count": 182,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "long",
+    "method": "Tedd.RTree.RTree2D`2[long,int]:Search(Tedd.RTree.RTree2D`2+Node[long,int],byref,System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 132,
+    "new_instruction_count": 132,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "long",
+    "method": "Tedd.RTree.RTree2D`2[long,int]:CollectValues(Tedd.RTree.RTree2D`2+Node[long,int],System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 61,
+    "new_instruction_count": 61,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "original",
+    "method": "Tedd.RTree.RTree`1[int]:BulkLoadPacked(System.ReadOnlySpan`1[Tedd.RTree.SpatialEntry`1[int]],Tedd.RTree.BulkLoadWorkspace):this (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 643,
+    "new_instruction_count": 643,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "original",
+    "method": "Bench+OriginalIndex:Search(int,System.Collections.Generic.List`1[int]):this (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 43,
+    "new_instruction_count": 43,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "original",
+    "method": "Tedd.RTree.RTree`1[int]:Search(Tedd.RTree.RTree`1+Node[int],byref,System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 145,
+    "new_instruction_count": 145,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  },
+  {
+    "coordinate": "original",
+    "method": "Tedd.RTree.RTree`1[int]:CollectValues(Tedd.RTree.RTree`1+Node[int],System.Collections.Generic.List`1[int]):int (FullOpts)",
+    "equal_normalized_instructions": true,
+    "old_instruction_count": 61,
+    "new_instruction_count": 61,
+    "old_union_constructor_calls": 0,
+    "new_union_constructor_calls": 0
+  }
+]

@@ -1,120 +1,123 @@
-# Generic 2D and 3D packed-tree comparison
+# Generic 2D and 3D performance
 
-Measured 18 October 2026: candidate production source `04028ea` against unchanged source `3d2d88f` (library behavior from NuGet 1.0.8). The current implementation uses Hilbert keys in 2D and three-axis Morton keys in 3D, primitive radix sorting, bottom-up packing, compact mutable nodes, and bulk copying of contained leaves. Plain, snapshot, and concurrent APIs share these implementations. Typed bounds and exact integer selection/split metrics remain intact.
+Measured 18 October 2026: current source `cf34a58` against packed source `79a5dd2` (NuGet 1.0.12) in fresh matched processes. The implementation uses Hilbert ordering in 2D, three-axis Morton ordering in 3D, radix sorting and compact mutable nodes. Split/subtree metrics are reused; bounded integer products are exact, with BigInteger fallback for large extents. Individual updates retain remove/reinsert semantics and identical traversal fingerprints.
 
-All measured build and aggregate-query medians improved. At 100,000 entries, 3D construction improved 4.73–5.56× and aggregate queries 1.80–3.80× across the four types and two distributions. Mutability remains direct, with a performance tradeoff: some 10,000-entry clustered move batches were up to 52.1% slower, and 100k uniform 3D moves up to 13.6% slower. All post-move aggregate queries improved. The adoption prioritizes bulk construction and search; it does not claim universally faster updates.
+The 40 mutable configurations have current/1.0.12 update-time ratios of 0.423–0.699. Private bounds-union constructors are selectively inlined after generated-code inspection. These are complete 1,000-move batches, not individual latency percentiles. Construction, pre-update queries, post-update queries, allocation and every process range remain visible in the complete CSV and guardrail audit.
 
-## Plain mutable APIs
+## Construction and queries
 
-Median of three fresh-process block averages; lower is faster. Query figures are the median of the within-process sums of four separately measured groups of 16 windows. All returned IDs are materialized and consumed. Each row compares identical coordinate/dimension/fixture/API regimes.
-
-| API | Coordinates | Entries | Distribution | Old build ms | New build ms | Build speedup | Old 64 queries µs | New 64 queries µs | Query speedup |
-|---|---|---:|---|---:|---:|---:|---:|---:|---:|
-| 2D | int | 10,000 | uniform | 2.812 | 0.586 | 4.80× | 212.73 | 77.63 | 2.74× |
-| 2D | int | 10,000 | clustered | 2.616 | 0.618 | 4.23× | 232.82 | 74.35 | 3.13× |
-| 2D | int | 100,000 | uniform | 38.147 | 7.729 | 4.94× | 2047.45 | 698.25 | 2.93× |
-| 2D | int | 100,000 | clustered | 40.082 | 8.052 | 4.98× | 2233.78 | 693.95 | 3.22× |
-| 2D | long | 10,000 | uniform | 5.480 | 0.649 | 8.44× | 211.86 | 84.04 | 2.52× |
-| 2D | long | 10,000 | clustered | 5.501 | 0.652 | 8.44× | 234.82 | 75.69 | 3.10× |
-| 2D | long | 100,000 | uniform | 36.169 | 8.718 | 4.15× | 2040.45 | 756.95 | 2.70× |
-| 2D | long | 100,000 | clustered | 35.210 | 8.570 | 4.11× | 2219.45 | 732.28 | 3.03× |
-| 2D | float | 10,000 | uniform | 2.030 | 0.587 | 3.46× | 222.99 | 82.61 | 2.70× |
-| 2D | float | 10,000 | clustered | 1.980 | 0.601 | 3.30× | 247.83 | 74.82 | 3.31× |
-| 2D | float | 100,000 | uniform | 29.418 | 7.621 | 3.86× | 2115.93 | 729.77 | 2.90× |
-| 2D | float | 100,000 | clustered | 27.142 | 7.881 | 3.44× | 2257.00 | 695.49 | 3.25× |
-| 2D | double | 10,000 | uniform | 3.660 | 0.664 | 5.52× | 234.92 | 83.32 | 2.82× |
-| 2D | double | 10,000 | clustered | 3.636 | 0.661 | 5.50× | 261.39 | 74.23 | 3.52× |
-| 2D | double | 100,000 | uniform | 32.554 | 8.302 | 3.92× | 2142.37 | 764.07 | 2.80× |
-| 2D | double | 100,000 | clustered | 29.256 | 8.483 | 3.45× | 2317.73 | 729.49 | 3.18× |
-| 3D | int | 10,000 | uniform | 5.643 | 0.761 | 7.42× | 184.46 | 93.41 | 1.97× |
-| 3D | int | 10,000 | clustered | 5.506 | 0.748 | 7.36× | 216.18 | 62.56 | 3.46× |
-| 3D | int | 100,000 | uniform | 49.436 | 10.116 | 4.89× | 1155.61 | 567.90 | 2.03× |
-| 3D | int | 100,000 | clustered | 47.048 | 9.941 | 4.73× | 1136.74 | 321.46 | 3.54× |
-| 3D | long | 10,000 | uniform | 7.693 | 0.888 | 8.66× | 197.59 | 100.76 | 1.96× |
-| 3D | long | 10,000 | clustered | 7.775 | 0.876 | 8.88× | 227.32 | 63.15 | 3.60× |
-| 3D | long | 100,000 | uniform | 55.450 | 9.978 | 5.56× | 1222.57 | 597.25 | 2.05× |
-| 3D | long | 100,000 | clustered | 49.573 | 9.949 | 4.98× | 1214.81 | 320.70 | 3.79× |
-| 3D | float | 10,000 | uniform | 2.920 | 0.684 | 4.27× | 203.45 | 102.50 | 1.98× |
-| 3D | float | 10,000 | clustered | 2.829 | 0.660 | 4.29× | 237.83 | 63.87 | 3.72× |
-| 3D | float | 100,000 | uniform | 39.273 | 8.306 | 4.73× | 1208.98 | 661.02 | 1.83× |
-| 3D | float | 100,000 | clustered | 39.546 | 8.262 | 4.79× | 1166.79 | 321.92 | 3.62× |
-| 3D | double | 10,000 | uniform | 4.238 | 0.779 | 5.44× | 197.77 | 108.25 | 1.83× |
-| 3D | double | 10,000 | clustered | 4.220 | 0.775 | 5.45× | 232.80 | 64.31 | 3.62× |
-| 3D | double | 100,000 | uniform | 43.196 | 9.087 | 4.75× | 1255.57 | 695.62 | 1.80× |
-| 3D | double | 100,000 | clustered | 45.058 | 8.899 | 5.06× | 1228.04 | 323.27 | 3.80× |
-
-## Snapshot and concurrent APIs
-
-10,000 uniform entries. Snapshot construction includes `ReplaceAll`; concurrent construction includes `BulkLoad` and disposal. These wrapper measurements include their normal publication/locking work. Snapshots replace complete batches rather than moving individual entries.
-
-| API | Coordinates | Update model | Old build ms | New build ms | Old 64 queries µs | New 64 queries µs |
-|---|---|---|---:|---:|---:|---:|
-| 2D | int | snapshot | 2.792 | 0.605 | 210.76 | 77.60 |
-| 2D | int | concurrent | 5.456 | 0.970 | 214.84 | 80.70 |
-| 2D | long | snapshot | 5.480 | 0.662 | 216.05 | 81.59 |
-| 2D | long | concurrent | 3.885 | 1.581 | 216.50 | 82.07 |
-| 2D | float | snapshot | 2.032 | 0.592 | 223.09 | 82.35 |
-| 2D | float | concurrent | 3.848 | 0.975 | 225.51 | 84.45 |
-| 2D | double | snapshot | 3.658 | 0.633 | 228.08 | 83.91 |
-| 2D | double | concurrent | 3.139 | 1.563 | 225.47 | 85.60 |
-| 3D | int | snapshot | 5.286 | 0.762 | 185.43 | 92.99 |
-| 3D | int | concurrent | 7.781 | 1.267 | 188.54 | 98.38 |
-| 3D | long | snapshot | 7.800 | 0.868 | 198.94 | 102.73 |
-| 3D | long | concurrent | 6.269 | 2.197 | 198.76 | 104.73 |
-| 3D | float | snapshot | 2.892 | 0.683 | 195.92 | 107.10 |
-| 3D | float | concurrent | 4.994 | 1.263 | 200.88 | 104.48 |
-| 3D | double | snapshot | 4.224 | 0.817 | 200.31 | 103.97 |
-| 3D | double | concurrent | 3.875 | 2.204 | 202.60 | 109.33 |
-
-## Mutation guardrails
-
-Plain trees: move the first 1,000 entries through the public API, with 64 moves on a separate tree warming the code beforehand. Mutation batches are timed once per process, so their ranges and inference differ from calibrated query/build throughput; unvisited paths can still incur first-use work. Exact result sets are checked again afterward. Tree grouping changes split/condensation work; this harness does not isolate the cause of the observed regressions. Concurrent move-batch data is also retained in the complete CSV.
-
-| API | Coordinates | Entries | Distribution | Old moves ms | New moves ms | Old post-move queries µs | New post-move queries µs |
+| API | Coordinates | Entries | Distribution | 1.0.12 build ms | Current build ms | 1.0.12 queries µs | Current queries µs |
 |---|---|---:|---|---:|---:|---:|---:|
-| 2D | int | 10,000 | uniform | 27.055 | 31.239 | 273.63 | 96.01 |
-| 2D | int | 10,000 | clustered | 23.785 | 28.331 | 301.26 | 94.63 |
-| 2D | int | 100,000 | uniform | 82.534 | 96.122 | 2538.64 | 992.31 |
-| 2D | int | 100,000 | clustered | 68.032 | 41.803 | 2591.96 | 865.76 |
-| 2D | long | 10,000 | uniform | 31.510 | 36.317 | 279.83 | 113.47 |
-| 2D | long | 10,000 | clustered | 27.988 | 33.600 | 313.58 | 93.33 |
-| 2D | long | 100,000 | uniform | 95.057 | 110.323 | 2698.54 | 1189.56 |
-| 2D | long | 100,000 | clustered | 74.274 | 46.156 | 2591.67 | 926.79 |
-| 2D | float | 10,000 | uniform | 7.531 | 8.050 | 266.52 | 103.78 |
-| 2D | float | 10,000 | clustered | 6.114 | 8.001 | 320.85 | 89.92 |
-| 2D | float | 100,000 | uniform | 19.706 | 26.103 | 2535.97 | 1072.83 |
-| 2D | float | 100,000 | clustered | 16.209 | 13.247 | 2651.37 | 886.62 |
-| 2D | double | 10,000 | uniform | 7.499 | 8.800 | 308.21 | 105.26 |
-| 2D | double | 10,000 | clustered | 6.144 | 7.561 | 331.82 | 92.94 |
-| 2D | double | 100,000 | uniform | 24.787 | 25.285 | 2707.73 | 1083.01 |
-| 2D | double | 100,000 | clustered | 22.106 | 12.928 | 2942.87 | 916.42 |
-| 3D | int | 10,000 | uniform | 34.779 | 36.344 | 238.45 | 111.61 |
-| 3D | int | 10,000 | clustered | 26.891 | 40.892 | 279.01 | 76.43 |
-| 3D | int | 100,000 | uniform | 80.877 | 86.948 | 1343.56 | 765.01 |
-| 3D | int | 100,000 | clustered | 89.169 | 54.268 | 1335.92 | 390.58 |
-| 3D | long | 10,000 | uniform | 34.942 | 37.446 | 244.94 | 122.91 |
-| 3D | long | 10,000 | clustered | 27.321 | 41.513 | 291.52 | 78.75 |
-| 3D | long | 100,000 | uniform | 81.202 | 88.311 | 1419.74 | 789.36 |
-| 3D | long | 100,000 | clustered | 90.615 | 53.157 | 1464.38 | 399.90 |
-| 3D | float | 10,000 | uniform | 9.180 | 9.265 | 250.94 | 114.36 |
-| 3D | float | 10,000 | clustered | 7.777 | 11.430 | 302.47 | 76.28 |
-| 3D | float | 100,000 | uniform | 18.759 | 21.313 | 1404.02 | 844.32 |
-| 3D | float | 100,000 | clustered | 21.223 | 16.857 | 1375.74 | 390.67 |
-| 3D | double | 10,000 | uniform | 9.180 | 9.823 | 262.10 | 125.76 |
-| 3D | double | 10,000 | clustered | 7.650 | 11.418 | 304.72 | 80.31 |
-| 3D | double | 100,000 | uniform | 20.071 | 22.650 | 1500.03 | 898.46 |
-| 3D | double | 100,000 | clustered | 21.984 | 16.280 | 1504.97 | 399.97 |
+| 2D plain | double | 10,000 | clustered | 0.660 | 0.422 | 75.06 | 75.51 |
+| 2D concurrent | double | 10,000 | uniform | 1.583 | 1.570 | 84.38 | 84.76 |
+| 2D plain | double | 10,000 | uniform | 0.656 | 0.403 | 83.60 | 83.68 |
+| 2D snapshot | double | 10,000 | uniform | 0.625 | 0.397 | 83.66 | 83.44 |
+| 2D plain | double | 100,000 | clustered | 8.657 | 6.794 | 726.99 | 724.63 |
+| 2D plain | double | 100,000 | uniform | 8.673 | 6.741 | 757.17 | 764.38 |
+| 2D plain | float | 10,000 | clustered | 0.592 | 0.421 | 74.99 | 75.26 |
+| 2D concurrent | float | 10,000 | uniform | 0.979 | 0.971 | 84.24 | 83.91 |
+| 2D plain | float | 10,000 | uniform | 0.568 | 0.419 | 83.17 | 83.78 |
+| 2D snapshot | float | 10,000 | uniform | 0.584 | 0.388 | 82.56 | 82.51 |
+| 2D plain | float | 100,000 | clustered | 7.956 | 5.289 | 698.82 | 695.75 |
+| 2D plain | float | 100,000 | uniform | 7.643 | 6.555 | 731.28 | 738.55 |
+| 2D plain | int | 10,000 | clustered | 0.640 | 0.543 | 74.38 | 75.58 |
+| 2D concurrent | int | 10,000 | uniform | 0.973 | 0.979 | 81.53 | 80.32 |
+| 2D plain | int | 10,000 | uniform | 0.604 | 0.514 | 77.68 | 79.07 |
+| 2D snapshot | int | 10,000 | uniform | 0.610 | 0.516 | 77.60 | 78.96 |
+| 2D plain | int | 100,000 | clustered | 7.947 | 8.134 | 690.55 | 695.20 |
+| 2D plain | int | 100,000 | uniform | 8.460 | 7.611 | 711.08 | 704.49 |
+| 2D plain | long | 10,000 | clustered | 0.673 | 0.553 | 75.57 | 75.79 |
+| 2D concurrent | long | 10,000 | uniform | 1.580 | 1.567 | 81.82 | 82.52 |
+| 2D plain | long | 10,000 | uniform | 0.635 | 0.577 | 82.62 | 84.21 |
+| 2D snapshot | long | 10,000 | uniform | 0.657 | 0.542 | 80.41 | 81.32 |
+| 2D plain | long | 100,000 | clustered | 8.667 | 7.343 | 723.36 | 726.49 |
+| 2D plain | long | 100,000 | uniform | 8.613 | 8.527 | 739.40 | 750.62 |
+| 3D plain | double | 10,000 | clustered | 0.800 | 0.399 | 64.01 | 63.92 |
+| 3D concurrent | double | 10,000 | uniform | 2.212 | 2.201 | 106.14 | 106.65 |
+| 3D plain | double | 10,000 | uniform | 0.805 | 0.419 | 108.67 | 108.94 |
+| 3D snapshot | double | 10,000 | uniform | 0.810 | 0.426 | 104.32 | 104.93 |
+| 3D plain | double | 100,000 | clustered | 9.014 | 5.085 | 323.18 | 321.70 |
+| 3D plain | double | 100,000 | uniform | 9.188 | 5.234 | 682.82 | 679.79 |
+| 3D plain | float | 10,000 | clustered | 0.659 | 0.492 | 63.87 | 63.65 |
+| 3D concurrent | float | 10,000 | uniform | 1.268 | 1.271 | 108.33 | 105.44 |
+| 3D plain | float | 10,000 | uniform | 0.681 | 0.514 | 102.68 | 105.84 |
+| 3D snapshot | float | 10,000 | uniform | 0.692 | 0.503 | 101.53 | 104.85 |
+| 3D plain | float | 100,000 | clustered | 8.385 | 7.409 | 322.48 | 323.75 |
+| 3D plain | float | 100,000 | uniform | 8.260 | 7.463 | 661.41 | 663.89 |
+| 3D plain | int | 10,000 | clustered | 0.738 | 0.580 | 62.51 | 62.94 |
+| 3D concurrent | int | 10,000 | uniform | 1.279 | 1.262 | 96.11 | 95.56 |
+| 3D plain | int | 10,000 | uniform | 0.758 | 0.610 | 93.27 | 92.94 |
+| 3D snapshot | int | 10,000 | uniform | 0.754 | 0.609 | 93.57 | 93.13 |
+| 3D plain | int | 100,000 | clustered | 9.348 | 8.145 | 318.83 | 318.60 |
+| 3D plain | int | 100,000 | uniform | 9.253 | 8.285 | 574.52 | 571.51 |
+| 3D plain | long | 10,000 | clustered | 0.873 | 0.611 | 63.27 | 62.63 |
+| 3D concurrent | long | 10,000 | uniform | 2.192 | 2.200 | 101.00 | 102.07 |
+| 3D plain | long | 10,000 | uniform | 0.877 | 0.645 | 99.74 | 99.43 |
+| 3D snapshot | long | 10,000 | uniform | 0.872 | 0.621 | 102.41 | 101.57 |
+| 3D plain | long | 100,000 | clustered | 11.477 | 7.487 | 320.25 | 322.70 |
+| 3D plain | long | 100,000 | uniform | 10.599 | 7.762 | 592.15 | 593.83 |
 
-## Method, evidence and limits
+## Mutable update batches
 
-Ryzen 9 5950X, Windows 11 build 26200, .NET SDK 10.0.402/runtime 10.0.13, Release x64 managed code. CPU affinity mask 4, tiering disabled, serial workers under `Global\Tedd.RTree.PerformanceHost`. Three matched fresh-process blocks; fixed shuffled order and seed 47381; 100 ms calibration followed by one measured block. All 288 scheduled processes validate exact IDs before timing; mutable APIs additionally validate after movement. No observer is active during timing. Background desktop activity is uncontrolled; fresh PIDs are not proof of independent samples. No tail-latency or significance claims.
+| API | Coordinates | Entries | Distribution | 1.0.12 ms | Current ms | Current/1.0.12 | Post-update queries µs |
+|---|---|---:|---|---:|---:|---:|---:|
+| 2D plain | double | 10,000 | clustered | 7.838 | 4.326 | 0.552 | 91.97 |
+| 2D concurrent | double | 10,000 | uniform | 9.109 | 5.125 | 0.563 | 109.65 |
+| 2D plain | double | 10,000 | uniform | 8.731 | 5.063 | 0.580 | 108.06 |
+| 2D plain | double | 100,000 | clustered | 13.026 | 7.868 | 0.604 | 921.74 |
+| 2D plain | double | 100,000 | uniform | 24.419 | 13.310 | 0.545 | 1104.42 |
+| 2D plain | float | 10,000 | clustered | 7.925 | 4.289 | 0.541 | 90.11 |
+| 2D concurrent | float | 10,000 | uniform | 9.174 | 5.159 | 0.562 | 105.42 |
+| 2D plain | float | 10,000 | uniform | 8.052 | 5.097 | 0.633 | 101.31 |
+| 2D plain | float | 100,000 | clustered | 11.734 | 8.202 | 0.699 | 913.52 |
+| 2D plain | float | 100,000 | uniform | 25.937 | 14.102 | 0.544 | 1030.00 |
+| 2D plain | int | 10,000 | clustered | 28.294 | 14.307 | 0.506 | 91.36 |
+| 2D concurrent | int | 10,000 | uniform | 31.332 | 15.718 | 0.502 | 106.67 |
+| 2D plain | int | 10,000 | uniform | 31.047 | 15.759 | 0.508 | 100.04 |
+| 2D plain | int | 100,000 | clustered | 41.567 | 23.027 | 0.554 | 909.94 |
+| 2D plain | int | 100,000 | uniform | 96.468 | 48.798 | 0.506 | 1062.11 |
+| 2D plain | long | 10,000 | clustered | 33.532 | 14.449 | 0.431 | 97.36 |
+| 2D concurrent | long | 10,000 | uniform | 36.296 | 16.128 | 0.444 | 105.22 |
+| 2D plain | long | 10,000 | uniform | 36.520 | 15.993 | 0.438 | 108.25 |
+| 2D plain | long | 100,000 | clustered | 46.017 | 23.697 | 0.515 | 925.76 |
+| 2D plain | long | 100,000 | uniform | 110.296 | 49.581 | 0.450 | 1086.86 |
+| 3D plain | double | 10,000 | clustered | 11.351 | 6.991 | 0.616 | 81.10 |
+| 3D concurrent | double | 10,000 | uniform | 9.898 | 5.412 | 0.547 | 127.08 |
+| 3D plain | double | 10,000 | uniform | 9.943 | 5.369 | 0.540 | 125.80 |
+| 3D plain | double | 100,000 | clustered | 16.093 | 9.961 | 0.619 | 403.94 |
+| 3D plain | double | 100,000 | uniform | 23.179 | 12.070 | 0.521 | 914.86 |
+| 3D plain | float | 10,000 | clustered | 11.631 | 6.609 | 0.568 | 76.70 |
+| 3D concurrent | float | 10,000 | uniform | 9.586 | 5.177 | 0.540 | 120.94 |
+| 3D plain | float | 10,000 | uniform | 9.591 | 5.013 | 0.523 | 123.29 |
+| 3D plain | float | 100,000 | clustered | 16.135 | 10.024 | 0.621 | 406.42 |
+| 3D plain | float | 100,000 | uniform | 21.908 | 11.460 | 0.523 | 861.78 |
+| 3D plain | int | 10,000 | clustered | 40.901 | 17.821 | 0.436 | 77.17 |
+| 3D concurrent | int | 10,000 | uniform | 36.394 | 15.618 | 0.429 | 115.91 |
+| 3D plain | int | 10,000 | uniform | 36.416 | 15.421 | 0.423 | 112.36 |
+| 3D plain | int | 100,000 | clustered | 54.243 | 26.005 | 0.479 | 400.21 |
+| 3D plain | int | 100,000 | uniform | 86.945 | 37.417 | 0.430 | 767.75 |
+| 3D plain | long | 10,000 | clustered | 42.857 | 18.816 | 0.439 | 78.04 |
+| 3D concurrent | long | 10,000 | uniform | 36.193 | 16.320 | 0.451 | 120.97 |
+| 3D plain | long | 10,000 | uniform | 36.895 | 16.234 | 0.440 | 121.90 |
+| 3D plain | long | 100,000 | clustered | 54.837 | 26.449 | 0.482 | 389.13 |
+| 3D plain | long | 100,000 | uniform | 86.613 | 38.843 | 0.448 | 780.16 |
 
-The new fixture is explicitly 2D or 3D, with seed 73211, integer-valued coordinates represented exactly in all four types, and widths 0/20/200/1000. It includes nonempty points, edge contacts, and full containment. Geometry/adapters are prepared outside timing; index construction includes a small identical harness adapter in both arms. Build allocations measure the current managed thread, not live memory or process working set. Query timings include result consumption and interface adapter dispatch.
+## Guardrails and interpretation
 
-Correctness includes mixed insert/remove/update, duplicate bounds/reference values, capacities 4/5/16/128, root collapse, empty/singleton/radix-size cases, signed/extreme coordinates, isolated subnormal extents, adjacent long values beyond 2^53, a z-only long dataset, indexed-only sources, source-order preservation, append/count semantics, cross-type/dimension workspace reuse, and wrapper batch/concurrency contracts. Search comparisons never use quantized keys. Reusable workspace primitive buffers require 12 bytes per reserved entry, excluding array/object headers.
+The [guardrail audit](results/mutation-regressions/final/guardrails.csv) reports every current/1.0.12 median ratio and allocation counter, including failures of the prospective 5% elapsed threshold or exact allocation threshold. Read the [investigation report](../Research/2026-10-18-mutation-regressions/REPORT.md) for candidate disposition, contradictory observations, generated-code evidence and the acceptance decision. No flag is silently removed as noise.
 
-The 3D exploration compared both Hilbert and Morton ordering with unchanged controls. Morton was retained for substantially faster construction; Hilbert had faster uniform queries. This choice does not establish a universal best ordering. Rust competitors from the earlier comparison implement 2D indexing; their timings are not reused as 3D competitors. The original unsuffixed 2D implementation retains its separate historical comparison.
+All final construction and pre-update query medians remain within the 5% threshold. Two 2D int post-update query medians are 5.6% higher. A prospectively frozen [18-worker longer-window check](results/mutation-regressions/final-query-guard/summary.csv) gives candidate/control ratios of 1.046 and 1.010, with zero query allocation; its different preparation and composite windows cannot replace the original observations. A 0.3125-byte/build concurrent allocation-counter flag is also retained. Mutation and query allocations do not increase.
 
-DotNetLab diagnostic captures and optimized JIT listings are separate from confirmation workers. These changed-dependency external targets use the ordinary diagnostic lane; no qualified native promotion is claimed. The ledger preserves candidate decisions, contradictory observations, and diagnostic IDs in the [research record](../Research/2026-10-18-generic-packed/REPORT.md).
+Earlier source epochs and every failed/inconclusive guardrail remain in the investigation record. The rejected leaf-contained replacement prototype changed later tree shape and regressed one post-update query aggregate by 18.9%. It is excluded. The integer exploration also observed one 12.4% post-query median discrepancy and a 4.5-byte/build allocation discrepancy; these remain retained separately from fresh confirmation.
 
-Raw [samples](results/generic-packed/confirmation/samples.json), [launch records](results/generic-packed/confirmation/processes.json), [frozen protocol and binary hashes](results/generic-packed/confirmation/protocol.json), and [complete medians, ranges and allocations](results/generic-packed/confirmation/summary.csv) are retained. Exploration results are in adjacent `ordering`, `transfer`, and `inline` directories. Reproduce with `generic-packed/locked.ps1` after staging the original control library in a designated workspace, then `generic-packed/summarize.py`.
+## Method and limits
+
+Ryzen 9 5950X, Windows 11, .NET SDK 10.0.402/runtime 10.0.13, Release x64 managed code. Node capacity 16, affinity mask 4, tiering disabled. Three shuffled fresh-process replications, seed 71933; one identical caller binary in every arm, normal fresh library builds and fixed source/executable hashes. All 288 final workers validate exact IDs; the 48 additional original-API and distant-move workers are retained in the supplementary record. The shared Global\Tedd.RTree.PerformanceHost mutex serializes cooperating builds/tests/profiles/measurements. External desktop load, thermal/frequency variation and runtime scheduling remain uncontrolled. Fresh PIDs do not prove statistical independence.
+
+Fixture seed 73211; 10,000 or 100,000 integer-valued bounds represented exactly in int/long/float/double. Uniform or eight diagonal clusters; queries cover points, edge contacts, widths 20/200/1000 and full containment. Each operation calibrates to at least 100 ms, then measures one block. IDs are consumed; result lists are reused. Geometry/adapters are prepared outside timing; construction includes an identical small adapter. Current-thread allocation counters do not measure live memory/working set. Mutation timing measures the first 1,000 IDs displaced (+7,-9,+11) after 64 warm moves on a separate tree. It does not establish sustained churn performance.
+
+Snapshot construction includes publication; concurrent operations include normal locking. All types preserve typed geometry and exact integer metrics. Extreme coordinates, threshold neighbors, duplicates, mixed mutation, root collapse and snapshot publication are verified separately from timing. No source change uses approximate geometry or hidden query caches.
+
+Timing is an inspected external rig; DotNetLab provides bound CPU captures, stack analysis, hypotheses and generated-code investigation. The worker exposes no registered harness scenario; these are external normal-build measurements rather than a DotNetLab qualified confirmation result. No ReJIT/native promotion is claimed. Sampled frames include waiting threads and construction in the diagnostic loop, and do not represent per-update CPU time or call counts.
+
+Evidence: [protocol](../Research/2026-10-18-mutation-regressions/PROTOCOL.md), [primary medians/ranges/allocation](results/mutation-regressions/final/summary.csv), [primary raw observations](results/mutation-regressions/final/samples.json), [adverse/original observations](results/mutation-regressions/adverse/summary.csv), and [prior generic packing study](../Research/2026-10-18-generic-packed/REPORT.md). The cross-language [original 2D comparison](MUTABLE-PACKED.md) uses its own retained fixture and competitor measurements.

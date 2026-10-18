@@ -1,0 +1,590 @@
+[
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "hyp-9b74dc226131496da74b41532fac9646"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-9b74dc226131496da74b41532fac9646",
+        "kind": "hypothesis",
+        "revision": "1",
+        "hash": "fb7b62b96e1add41c4990981d26b3d744218066e195c339943145ef8b3ab6c97",
+        "json": "{\"id\":\"hyp-9b74dc226131496da74b41532fac9646\",\"mechanism\":\"Packed-tree updates remove and reinsert every entry, causing restructuring and exact split metric work for local moves.\",\"prediction\":\"An integrated local replacement path should avoid restructuring for contained moves, with the existing relocation fallback and query guardrails.\",\"state\":\"proposed\",\"evidence_ids\":[\"cap-6573bc2679f6404584d946d4729d0e0c\",\"stack-analysis-13c17d838f1f48559cc0020ede9ca172\"]}",
+        "created_at": "2026-10-18T07:37:10.4827137+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.experiment",
+    "request": {
+      "action": "revise_hypothesis",
+      "id": "hyp-9b74dc226131496da74b41532fac9646",
+      "expected_revision": "1",
+      "mechanism": "Packed-tree updates remove and reinsert every entry, causing restructuring and exact split metric work for local moves.",
+      "prediction": "An integrated local replacement path should avoid restructuring for contained moves, with the existing relocation fallback and query guardrails.",
+      "state": "not_supported",
+      "evidence_ids": [
+        "cap-6573bc2679f6404584d946d4729d0e0c",
+        "stack-analysis-13c17d838f1f48559cc0020ede9ca172"
+      ]
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-9b74dc226131496da74b41532fac9646",
+        "mechanism": "Packed-tree updates remove and reinsert every entry, causing restructuring and exact split metric work for local moves.",
+        "prediction": "An integrated local replacement path should avoid restructuring for contained moves, with the existing relocation fallback and query guardrails.",
+        "state": "not_supported",
+        "evidence_ids": [
+          "cap-6573bc2679f6404584d946d4729d0e0c",
+          "stack-analysis-13c17d838f1f48559cc0020ede9ca172"
+        ]
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "cap-6573bc2679f6404584d946d4729d0e0c"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "cap-6573bc2679f6404584d946d4729d0e0c",
+        "kind": "capture",
+        "revision": "6",
+        "hash": "d1783373f4d39dcd36905394558014df9083a1cb6e180053bc4bc524b6c65020",
+        "json": "{\"id\":\"cap-6573bc2679f6404584d946d4729d0e0c\",\"target\":{\"id\":\"target-c47e2fe022fbc0e2a16982dd\",\"process_id\":95420,\"start_time_utc_ticks\":\"639279058216325563\",\"runtime_instance\":\"target-c47e2fe022fbc0e2a16982dd\",\"runtime_version\":\"unknown\",\"architecture\":\"unknown\",\"epoch\":\"0\"},\"profile\":{\"name\":\"cpu-diagnostic\",\"version\":\"net10/1\",\"providers\":[{\"name\":\"Microsoft-Windows-DotNETRuntime\",\"keywords\":\"25\",\"level\":4,\"arguments\":{}},{\"name\":\"Tedd.DotNetLab-Harness\",\"keywords\":\"-1\",\"level\":4,\"arguments\":{}},{\"name\":\"System.Runtime\",\"keywords\":\"0\",\"level\":4,\"arguments\":{\"EventCounterIntervalSec\":\"1\"}},{\"name\":\"Microsoft-DotNETCore-SampleProfiler\",\"keywords\":\"0\",\"level\":4,\"arguments\":{}}],\"buffer_mi_b\":32,\"rundown\":true,\"data_classes\":[\"gc\",\"suspension\",\"counters\",\"markers\",\"samples\"],\"hash\":\"d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a\"},\"state\":\"sealed\",\"artifact_id\":\"art-a211d78ff1c5c78c58f052ac7361ef2bb9846bb22245243e3fe2373da954e986\",\"quality\":{\"coverage\":\"capture_complete_unparsed\",\"loss_status\":\"unknown\",\"parser_version\":\"unparsed\",\"warnings\":[],\"symbol_coverage\":null},\"created_at\":\"2026-10-18T07:37:03.4037346+00:00\",\"reason\":null}",
+        "created_at": "2026-10-18T07:37:08.7639515+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "stack-analysis-13c17d838f1f48559cc0020ede9ca172"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "stack-analysis-13c17d838f1f48559cc0020ede9ca172",
+        "kind": "stack_analysis",
+        "revision": "1",
+        "hash": "17ce3fff26671ca66fbd453a2e4c872e8f62281d5fd93b56f2a16963744f113a",
+        "json": "{\"id\":\"stack-analysis-13c17d838f1f48559cc0020ede9ca172\",\"capture_id\":\"cap-6573bc2679f6404584d946d4729d0e0c\",\"artifact_id\":\"art-1d3ec2890277a14215b9865ff78cb2d5938039fc61d0ee342099e8f3a0c4e48f\",\"observed_samples\":\"268\",\"methods\":37,\"symbol_coverage\":1,\"quality\":{\"coverage\":\"partial\",\"loss_status\":\"unknown\",\"parser_version\":\"traceevent-stack/1\",\"warnings\":[\"stack_loss_status_unknown\"],\"symbol_coverage\":1}}",
+        "created_at": "2026-10-18T07:37:10.149527+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "hyp-d8f195b0e2384132953d910966d3509d"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-d8f195b0e2384132953d910966d3509d",
+        "kind": "hypothesis",
+        "revision": "1",
+        "hash": "652628684c48023f509e61071d18c055adb203fae209afe6c994049ba6142193",
+        "json": "{\"id\":\"hyp-d8f195b0e2384132953d910966d3509d\",\"mechanism\":\"Packed-tree updates remove and reinsert every entry, causing restructuring and exact split metric work for local moves.\",\"prediction\":\"An integrated local replacement path should avoid restructuring for contained moves, with the existing relocation fallback and query guardrails.\",\"state\":\"proposed\",\"evidence_ids\":[\"cap-5ca72d3713eb4c93bf83d05c95fb5df3\",\"stack-analysis-c77eab3593904ff38cb6fefd09162995\"]}",
+        "created_at": "2026-10-18T07:37:01.5651823+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.experiment",
+    "request": {
+      "action": "revise_hypothesis",
+      "id": "hyp-d8f195b0e2384132953d910966d3509d",
+      "expected_revision": "1",
+      "mechanism": "Packed-tree updates remove and reinsert every entry, causing restructuring and exact split metric work for local moves.",
+      "prediction": "An integrated local replacement path should avoid restructuring for contained moves, with the existing relocation fallback and query guardrails.",
+      "state": "not_supported",
+      "evidence_ids": [
+        "cap-5ca72d3713eb4c93bf83d05c95fb5df3",
+        "stack-analysis-c77eab3593904ff38cb6fefd09162995"
+      ]
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-d8f195b0e2384132953d910966d3509d",
+        "mechanism": "Packed-tree updates remove and reinsert every entry, causing restructuring and exact split metric work for local moves.",
+        "prediction": "An integrated local replacement path should avoid restructuring for contained moves, with the existing relocation fallback and query guardrails.",
+        "state": "not_supported",
+        "evidence_ids": [
+          "cap-5ca72d3713eb4c93bf83d05c95fb5df3",
+          "stack-analysis-c77eab3593904ff38cb6fefd09162995"
+        ]
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "cap-5ca72d3713eb4c93bf83d05c95fb5df3"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "cap-5ca72d3713eb4c93bf83d05c95fb5df3",
+        "kind": "capture",
+        "revision": "6",
+        "hash": "b026b3026f9b12f3ed3a50a26f1a7c8cd826ba79ee713f8c4a338b2aea5c81d8",
+        "json": "{\"id\":\"cap-5ca72d3713eb4c93bf83d05c95fb5df3\",\"target\":{\"id\":\"target-8fe621b805c8e740d91fc4cf\",\"process_id\":60896,\"start_time_utc_ticks\":\"639279058123101536\",\"runtime_instance\":\"target-8fe621b805c8e740d91fc4cf\",\"runtime_version\":\"unknown\",\"architecture\":\"unknown\",\"epoch\":\"0\"},\"profile\":{\"name\":\"cpu-diagnostic\",\"version\":\"net10/1\",\"providers\":[{\"name\":\"Microsoft-Windows-DotNETRuntime\",\"keywords\":\"25\",\"level\":4,\"arguments\":{}},{\"name\":\"Tedd.DotNetLab-Harness\",\"keywords\":\"-1\",\"level\":4,\"arguments\":{}},{\"name\":\"System.Runtime\",\"keywords\":\"0\",\"level\":4,\"arguments\":{\"EventCounterIntervalSec\":\"1\"}},{\"name\":\"Microsoft-DotNETCore-SampleProfiler\",\"keywords\":\"0\",\"level\":4,\"arguments\":{}}],\"buffer_mi_b\":32,\"rundown\":true,\"data_classes\":[\"gc\",\"suspension\",\"counters\",\"markers\",\"samples\"],\"hash\":\"d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a\"},\"state\":\"sealed\",\"artifact_id\":\"art-88869b25b5c65912d413a50597d9124b28835b86c81059293bb8bfacec566bf9\",\"quality\":{\"coverage\":\"capture_complete_unparsed\",\"loss_status\":\"unknown\",\"parser_version\":\"unparsed\",\"warnings\":[],\"symbol_coverage\":null},\"created_at\":\"2026-10-18T07:36:54.4607611+00:00\",\"reason\":null}",
+        "created_at": "2026-10-18T07:36:59.7675135+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "stack-analysis-c77eab3593904ff38cb6fefd09162995"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "stack-analysis-c77eab3593904ff38cb6fefd09162995",
+        "kind": "stack_analysis",
+        "revision": "1",
+        "hash": "51a9e24e55cbc43d3d370ce2f6d20c0832041eae534edf755a94f014c80aa18d",
+        "json": "{\"id\":\"stack-analysis-c77eab3593904ff38cb6fefd09162995\",\"capture_id\":\"cap-5ca72d3713eb4c93bf83d05c95fb5df3\",\"artifact_id\":\"art-cc6f06ec6482c9c1836f15a3a8989d395bb9732c376938a2fe4b7836ce5d6690\",\"observed_samples\":\"266\",\"methods\":35,\"symbol_coverage\":1,\"quality\":{\"coverage\":\"partial\",\"loss_status\":\"unknown\",\"parser_version\":\"traceevent-stack/1\",\"warnings\":[\"stack_loss_status_unknown\"],\"symbol_coverage\":1}}",
+        "created_at": "2026-10-18T07:37:01.2203865+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "hyp-1e53dd5edc1448bb80d359d52380bebb"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-1e53dd5edc1448bb80d359d52380bebb",
+        "kind": "hypothesis",
+        "revision": "1",
+        "hash": "7357914859d567111df22057b91753659c943a3fe9bf252c4c33b91d516ef12e",
+        "json": "{\"id\":\"hyp-1e53dd5edc1448bb80d359d52380bebb\",\"mechanism\":\"Immutable split metrics are recomputed in quadratic seed selection and group selection; bounded integer extents also repeat arbitrary-precision conversions.\",\"prediction\":\"Cache exact areas and specialize provably bounded integer products to reduce update cost while preserving traversal order and allocations.\",\"state\":\"proposed\",\"evidence_ids\":[\"cap-2dbf30398b2a4cf2b619f5830ed53a64\",\"stack-analysis-d20caa98b3a749c795baca1c184224e8\"]}",
+        "created_at": "2026-10-18T08:36:26.8042054+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.experiment",
+    "request": {
+      "action": "revise_hypothesis",
+      "id": "hyp-1e53dd5edc1448bb80d359d52380bebb",
+      "expected_revision": "1",
+      "mechanism": "Immutable split metrics are recomputed in quadratic seed selection and group selection; bounded integer extents also repeat arbitrary-precision conversions.",
+      "prediction": "Cache exact areas and specialize provably bounded integer products to reduce update cost while preserving traversal order and allocations.",
+      "state": "supported",
+      "evidence_ids": [
+        "cap-2dbf30398b2a4cf2b619f5830ed53a64",
+        "stack-analysis-d20caa98b3a749c795baca1c184224e8"
+      ]
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-1e53dd5edc1448bb80d359d52380bebb",
+        "mechanism": "Immutable split metrics are recomputed in quadratic seed selection and group selection; bounded integer extents also repeat arbitrary-precision conversions.",
+        "prediction": "Cache exact areas and specialize provably bounded integer products to reduce update cost while preserving traversal order and allocations.",
+        "state": "supported",
+        "evidence_ids": [
+          "cap-2dbf30398b2a4cf2b619f5830ed53a64",
+          "stack-analysis-d20caa98b3a749c795baca1c184224e8"
+        ]
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "cap-2dbf30398b2a4cf2b619f5830ed53a64"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "cap-2dbf30398b2a4cf2b619f5830ed53a64",
+        "kind": "capture",
+        "revision": "6",
+        "hash": "a54fc1720e33c23fea53becdfc9d5abce0910aec66ec5f84af1b585a87e72ee0",
+        "json": "{\"id\":\"cap-2dbf30398b2a4cf2b619f5830ed53a64\",\"target\":{\"id\":\"target-3d56146216e161808f55f227\",\"process_id\":92348,\"start_time_utc_ticks\":\"639279093748186809\",\"runtime_instance\":\"target-3d56146216e161808f55f227\",\"runtime_version\":\"unknown\",\"architecture\":\"unknown\",\"epoch\":\"0\"},\"profile\":{\"name\":\"cpu-diagnostic\",\"version\":\"net10/1\",\"providers\":[{\"name\":\"Microsoft-Windows-DotNETRuntime\",\"keywords\":\"25\",\"level\":4,\"arguments\":{}},{\"name\":\"Tedd.DotNetLab-Harness\",\"keywords\":\"-1\",\"level\":4,\"arguments\":{}},{\"name\":\"System.Runtime\",\"keywords\":\"0\",\"level\":4,\"arguments\":{\"EventCounterIntervalSec\":\"1\"}},{\"name\":\"Microsoft-DotNETCore-SampleProfiler\",\"keywords\":\"0\",\"level\":4,\"arguments\":{}}],\"buffer_mi_b\":32,\"rundown\":true,\"data_classes\":[\"gc\",\"suspension\",\"counters\",\"markers\",\"samples\"],\"hash\":\"d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a\"},\"state\":\"sealed\",\"artifact_id\":\"art-73c35d0426c32bc3085bd3c2468bef5d7ea5d724d58173ec6b19152eb4951ee4\",\"quality\":{\"coverage\":\"capture_complete_unparsed\",\"loss_status\":\"unknown\",\"parser_version\":\"unparsed\",\"warnings\":[],\"symbol_coverage\":null},\"created_at\":\"2026-10-18T08:36:19.7230137+00:00\",\"reason\":null}",
+        "created_at": "2026-10-18T08:36:25.0369059+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "stack-analysis-d20caa98b3a749c795baca1c184224e8"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "stack-analysis-d20caa98b3a749c795baca1c184224e8",
+        "kind": "stack_analysis",
+        "revision": "1",
+        "hash": "388751136e16771326f0b03853d042b53d65700b438e0646483f925fe7181562",
+        "json": "{\"id\":\"stack-analysis-d20caa98b3a749c795baca1c184224e8\",\"capture_id\":\"cap-2dbf30398b2a4cf2b619f5830ed53a64\",\"artifact_id\":\"art-0fbb391871340cad3b3d21df634e56a009f26f51514eec21f5fbeaec0e889183\",\"observed_samples\":\"294\",\"methods\":35,\"symbol_coverage\":1,\"quality\":{\"coverage\":\"partial\",\"loss_status\":\"unknown\",\"parser_version\":\"traceevent-stack/1\",\"warnings\":[\"stack_loss_status_unknown\"],\"symbol_coverage\":1}}",
+        "created_at": "2026-10-18T08:36:26.4895022+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "hyp-8cda526fe01e49c3aec049b43879f0af"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-8cda526fe01e49c3aec049b43879f0af",
+        "kind": "hypothesis",
+        "revision": "1",
+        "hash": "c5c7698065f5a0f7fd2e2ec413eb9f240fbeef1b2e3611665013b6682ad88eb0",
+        "json": "{\"id\":\"hyp-8cda526fe01e49c3aec049b43879f0af\",\"mechanism\":\"Immutable split metrics are recomputed in quadratic seed selection and group selection; bounded integer extents also repeat arbitrary-precision conversions.\",\"prediction\":\"Cache exact areas and specialize provably bounded integer products to reduce update cost while preserving traversal order and allocations.\",\"state\":\"proposed\",\"evidence_ids\":[\"cap-9e5a89e78298420dba96654c3868274f\",\"stack-analysis-7e33fe85a5f048e1b4bf7eb13b698c4d\"]}",
+        "created_at": "2026-10-18T08:36:14.7315683+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.experiment",
+    "request": {
+      "action": "revise_hypothesis",
+      "id": "hyp-8cda526fe01e49c3aec049b43879f0af",
+      "expected_revision": "1",
+      "mechanism": "Immutable split metrics are recomputed in quadratic seed selection and group selection; bounded integer extents also repeat arbitrary-precision conversions.",
+      "prediction": "Cache exact areas and specialize provably bounded integer products to reduce update cost while preserving traversal order and allocations.",
+      "state": "supported",
+      "evidence_ids": [
+        "cap-9e5a89e78298420dba96654c3868274f",
+        "stack-analysis-7e33fe85a5f048e1b4bf7eb13b698c4d"
+      ]
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-8cda526fe01e49c3aec049b43879f0af",
+        "mechanism": "Immutable split metrics are recomputed in quadratic seed selection and group selection; bounded integer extents also repeat arbitrary-precision conversions.",
+        "prediction": "Cache exact areas and specialize provably bounded integer products to reduce update cost while preserving traversal order and allocations.",
+        "state": "supported",
+        "evidence_ids": [
+          "cap-9e5a89e78298420dba96654c3868274f",
+          "stack-analysis-7e33fe85a5f048e1b4bf7eb13b698c4d"
+        ]
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "cap-9e5a89e78298420dba96654c3868274f"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "cap-9e5a89e78298420dba96654c3868274f",
+        "kind": "capture",
+        "revision": "6",
+        "hash": "5d8268fbdd0b2ff61ff257702110586ba85d37cd179a641330f7ab655893cb0e",
+        "json": "{\"id\":\"cap-9e5a89e78298420dba96654c3868274f\",\"target\":{\"id\":\"target-95e391d1133507f47d122bf1\",\"process_id\":116308,\"start_time_utc_ticks\":\"639279093626718205\",\"runtime_instance\":\"target-95e391d1133507f47d122bf1\",\"runtime_version\":\"unknown\",\"architecture\":\"unknown\",\"epoch\":\"0\"},\"profile\":{\"name\":\"cpu-diagnostic\",\"version\":\"net10/1\",\"providers\":[{\"name\":\"Microsoft-Windows-DotNETRuntime\",\"keywords\":\"25\",\"level\":4,\"arguments\":{}},{\"name\":\"Tedd.DotNetLab-Harness\",\"keywords\":\"-1\",\"level\":4,\"arguments\":{}},{\"name\":\"System.Runtime\",\"keywords\":\"0\",\"level\":4,\"arguments\":{\"EventCounterIntervalSec\":\"1\"}},{\"name\":\"Microsoft-DotNETCore-SampleProfiler\",\"keywords\":\"0\",\"level\":4,\"arguments\":{}}],\"buffer_mi_b\":32,\"rundown\":true,\"data_classes\":[\"gc\",\"suspension\",\"counters\",\"markers\",\"samples\"],\"hash\":\"d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a\"},\"state\":\"sealed\",\"artifact_id\":\"art-2d9d3343f608f7cb12565c0efe7abd255b83faf42150fe4eae846825c202e420\",\"quality\":{\"coverage\":\"capture_complete_unparsed\",\"loss_status\":\"unknown\",\"parser_version\":\"unparsed\",\"warnings\":[],\"symbol_coverage\":null},\"created_at\":\"2026-10-18T08:36:07.6463692+00:00\",\"reason\":null}",
+        "created_at": "2026-10-18T08:36:12.947239+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "stack-analysis-7e33fe85a5f048e1b4bf7eb13b698c4d"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "stack-analysis-7e33fe85a5f048e1b4bf7eb13b698c4d",
+        "kind": "stack_analysis",
+        "revision": "1",
+        "hash": "73057f15efdcbd140934efd0d9dbd97f1ca103c0252e032ce22e0a1b862ea30f",
+        "json": "{\"id\":\"stack-analysis-7e33fe85a5f048e1b4bf7eb13b698c4d\",\"capture_id\":\"cap-9e5a89e78298420dba96654c3868274f\",\"artifact_id\":\"art-883fa6ad0f4ec9fda2dc59757af51c77fe44f74cf8ec468e8376fb4d89835a45\",\"observed_samples\":\"296\",\"methods\":38,\"symbol_coverage\":1,\"quality\":{\"coverage\":\"partial\",\"loss_status\":\"unknown\",\"parser_version\":\"traceevent-stack/1\",\"warnings\":[\"stack_loss_status_unknown\"],\"symbol_coverage\":1}}",
+        "created_at": "2026-10-18T08:36:14.4224955+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "hyp-804d3d9ee3f24b9b991e46965ba7b495"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-804d3d9ee3f24b9b991e46965ba7b495",
+        "kind": "hypothesis",
+        "revision": "1",
+        "hash": "4f3a553755fda6d5db4e160c84eec968b1aaf8f1085eabff514aca437eeb3fff",
+        "json": "{\"id\":\"hyp-804d3d9ee3f24b9b991e46965ba7b495\",\"mechanism\":\"Bounds union constructors remain calls in hot bulk/mutation loops; cached exact metrics and bounded integer products remove repeated arithmetic.\",\"prediction\":\"Selective constructor inlining removes emitted calls and reduces bulk/mutation time without changing geometry or ordering.\",\"state\":\"proposed\",\"evidence_ids\":[\"cap-9e7ad999fd32428d8c92cca558bf2df4\",\"stack-analysis-f64b2d594700430a8ef0d304bd19f89b\"]}",
+        "created_at": "2026-10-18T09:53:59.6926083+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.experiment",
+    "request": {
+      "action": "revise_hypothesis",
+      "id": "hyp-804d3d9ee3f24b9b991e46965ba7b495",
+      "expected_revision": "1",
+      "mechanism": "Bounds union constructors remain calls in hot bulk/mutation loops; cached exact metrics and bounded integer products remove repeated arithmetic.",
+      "prediction": "Selective constructor inlining removes emitted calls and reduces bulk/mutation time without changing geometry or ordering.",
+      "state": "supported",
+      "evidence_ids": [
+        "cap-9e7ad999fd32428d8c92cca558bf2df4",
+        "stack-analysis-f64b2d594700430a8ef0d304bd19f89b"
+      ]
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-804d3d9ee3f24b9b991e46965ba7b495",
+        "mechanism": "Bounds union constructors remain calls in hot bulk/mutation loops; cached exact metrics and bounded integer products remove repeated arithmetic.",
+        "prediction": "Selective constructor inlining removes emitted calls and reduces bulk/mutation time without changing geometry or ordering.",
+        "state": "supported",
+        "evidence_ids": [
+          "cap-9e7ad999fd32428d8c92cca558bf2df4",
+          "stack-analysis-f64b2d594700430a8ef0d304bd19f89b"
+        ]
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "cap-9e7ad999fd32428d8c92cca558bf2df4"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "cap-9e7ad999fd32428d8c92cca558bf2df4",
+        "kind": "capture",
+        "revision": "6",
+        "hash": "e66af4d49120f4fbadf3c9b252b5b9cf65abe308a0cdbb6fe7eb231c87a00568",
+        "json": "{\"id\":\"cap-9e7ad999fd32428d8c92cca558bf2df4\",\"target\":{\"id\":\"target-72c4a0746aa989325390b4d9\",\"process_id\":111824,\"start_time_utc_ticks\":\"639279140276184047\",\"runtime_instance\":\"target-72c4a0746aa989325390b4d9\",\"runtime_version\":\"unknown\",\"architecture\":\"unknown\",\"epoch\":\"0\"},\"profile\":{\"name\":\"cpu-diagnostic\",\"version\":\"net10/1\",\"providers\":[{\"name\":\"Microsoft-Windows-DotNETRuntime\",\"keywords\":\"25\",\"level\":4,\"arguments\":{}},{\"name\":\"Tedd.DotNetLab-Harness\",\"keywords\":\"-1\",\"level\":4,\"arguments\":{}},{\"name\":\"System.Runtime\",\"keywords\":\"0\",\"level\":4,\"arguments\":{\"EventCounterIntervalSec\":\"1\"}},{\"name\":\"Microsoft-DotNETCore-SampleProfiler\",\"keywords\":\"0\",\"level\":4,\"arguments\":{}}],\"buffer_mi_b\":32,\"rundown\":true,\"data_classes\":[\"gc\",\"suspension\",\"counters\",\"markers\",\"samples\"],\"hash\":\"d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a\"},\"state\":\"sealed\",\"artifact_id\":\"art-1791a784272fd6c12a3595cc3b0424cb31bf513dbf9fc639c795d10901856158\",\"quality\":{\"coverage\":\"capture_complete_unparsed\",\"loss_status\":\"unknown\",\"parser_version\":\"unparsed\",\"warnings\":[],\"symbol_coverage\":null},\"created_at\":\"2026-10-18T09:53:52.613869+00:00\",\"reason\":null}",
+        "created_at": "2026-10-18T09:53:57.8758266+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "stack-analysis-f64b2d594700430a8ef0d304bd19f89b"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "stack-analysis-f64b2d594700430a8ef0d304bd19f89b",
+        "kind": "stack_analysis",
+        "revision": "1",
+        "hash": "a864a513bafe1b3543070b90e58b461353550a8b42af1ecddc1bc569b72b7703",
+        "json": "{\"id\":\"stack-analysis-f64b2d594700430a8ef0d304bd19f89b\",\"capture_id\":\"cap-9e7ad999fd32428d8c92cca558bf2df4\",\"artifact_id\":\"art-e3814b3d014f87ae362ff894a97fae541f2ebba182dcbd07f5fd9b2f871de69e\",\"observed_samples\":\"486\",\"methods\":25,\"symbol_coverage\":1,\"quality\":{\"coverage\":\"partial\",\"loss_status\":\"unknown\",\"parser_version\":\"traceevent-stack/1\",\"warnings\":[\"stack_loss_status_unknown\"],\"symbol_coverage\":1}}",
+        "created_at": "2026-10-18T09:53:59.4185383+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "hyp-4685ab5b09db47b4b3d11f90f817a6fb"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-4685ab5b09db47b4b3d11f90f817a6fb",
+        "kind": "hypothesis",
+        "revision": "1",
+        "hash": "6de71f29746bc050270e998a928ebe67c8706ef8f4b331056784a67435500ca0",
+        "json": "{\"id\":\"hyp-4685ab5b09db47b4b3d11f90f817a6fb\",\"mechanism\":\"Bounds union constructors remain calls in hot bulk/mutation loops; cached exact metrics and bounded integer products remove repeated arithmetic.\",\"prediction\":\"Selective constructor inlining removes emitted calls and reduces bulk/mutation time without changing geometry or ordering.\",\"state\":\"proposed\",\"evidence_ids\":[\"cap-06305342fe1d4eceb0caa3497fc2ce09\",\"stack-analysis-91b294c316d24448a681d37d6091f344\"]}",
+        "created_at": "2026-10-18T09:53:47.5430531+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.experiment",
+    "request": {
+      "action": "revise_hypothesis",
+      "id": "hyp-4685ab5b09db47b4b3d11f90f817a6fb",
+      "expected_revision": "1",
+      "mechanism": "Bounds union constructors remain calls in hot bulk/mutation loops; cached exact metrics and bounded integer products remove repeated arithmetic.",
+      "prediction": "Selective constructor inlining removes emitted calls and reduces bulk/mutation time without changing geometry or ordering.",
+      "state": "supported",
+      "evidence_ids": [
+        "cap-06305342fe1d4eceb0caa3497fc2ce09",
+        "stack-analysis-91b294c316d24448a681d37d6091f344"
+      ]
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "hyp-4685ab5b09db47b4b3d11f90f817a6fb",
+        "mechanism": "Bounds union constructors remain calls in hot bulk/mutation loops; cached exact metrics and bounded integer products remove repeated arithmetic.",
+        "prediction": "Selective constructor inlining removes emitted calls and reduces bulk/mutation time without changing geometry or ordering.",
+        "state": "supported",
+        "evidence_ids": [
+          "cap-06305342fe1d4eceb0caa3497fc2ce09",
+          "stack-analysis-91b294c316d24448a681d37d6091f344"
+        ]
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "cap-06305342fe1d4eceb0caa3497fc2ce09"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "cap-06305342fe1d4eceb0caa3497fc2ce09",
+        "kind": "capture",
+        "revision": "6",
+        "hash": "f1fa6e35dfa95fdbe137caa2aac47b9bb6d5607711ab4cad75d385fc2acdb745",
+        "json": "{\"id\":\"cap-06305342fe1d4eceb0caa3497fc2ce09\",\"target\":{\"id\":\"target-7e447cbd05cc11c4cdb8eae4\",\"process_id\":82392,\"start_time_utc_ticks\":\"639279140154941985\",\"runtime_instance\":\"target-7e447cbd05cc11c4cdb8eae4\",\"runtime_version\":\"unknown\",\"architecture\":\"unknown\",\"epoch\":\"0\"},\"profile\":{\"name\":\"cpu-diagnostic\",\"version\":\"net10/1\",\"providers\":[{\"name\":\"Microsoft-Windows-DotNETRuntime\",\"keywords\":\"25\",\"level\":4,\"arguments\":{}},{\"name\":\"Tedd.DotNetLab-Harness\",\"keywords\":\"-1\",\"level\":4,\"arguments\":{}},{\"name\":\"System.Runtime\",\"keywords\":\"0\",\"level\":4,\"arguments\":{\"EventCounterIntervalSec\":\"1\"}},{\"name\":\"Microsoft-DotNETCore-SampleProfiler\",\"keywords\":\"0\",\"level\":4,\"arguments\":{}}],\"buffer_mi_b\":32,\"rundown\":true,\"data_classes\":[\"gc\",\"suspension\",\"counters\",\"markers\",\"samples\"],\"hash\":\"d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a\"},\"state\":\"sealed\",\"artifact_id\":\"art-13e844cb2756d98428e31645bf1d2f1d893e450ee7124f2f721b7acccfcb6f82\",\"quality\":{\"coverage\":\"capture_complete_unparsed\",\"loss_status\":\"unknown\",\"parser_version\":\"unparsed\",\"warnings\":[],\"symbol_coverage\":null},\"created_at\":\"2026-10-18T09:53:40.4667385+00:00\",\"reason\":null}",
+        "created_at": "2026-10-18T09:53:45.763203+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  },
+  {
+    "tool": "lab.inspect",
+    "request": {
+      "action": "record",
+      "id": "stack-analysis-91b294c316d24448a681d37d6091f344"
+    },
+    "response": {
+      "schema_version": "1.0",
+      "status": "ok",
+      "data": {
+        "id": "stack-analysis-91b294c316d24448a681d37d6091f344",
+        "kind": "stack_analysis",
+        "revision": "1",
+        "hash": "1cb49ec6e6a09480416c98a4cd61793949611db2744ed591c4464974d14db6f6",
+        "json": "{\"id\":\"stack-analysis-91b294c316d24448a681d37d6091f344\",\"capture_id\":\"cap-06305342fe1d4eceb0caa3497fc2ce09\",\"artifact_id\":\"art-f311975e29dc238ed44edb245d18ccd5ee0dbc9c784d90dbea99cf3bdab317d0\",\"observed_samples\":\"294\",\"methods\":38,\"symbol_coverage\":1,\"quality\":{\"coverage\":\"partial\",\"loss_status\":\"unknown\",\"parser_version\":\"traceevent-stack/1\",\"warnings\":[\"stack_loss_status_unknown\"],\"symbol_coverage\":1}}",
+        "created_at": "2026-10-18T09:53:47.2083589+00:00"
+      },
+      "code": null,
+      "message": null,
+      "recovery": null
+    }
+  }
+]

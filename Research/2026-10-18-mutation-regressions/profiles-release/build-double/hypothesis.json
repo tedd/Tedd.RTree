@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "data": {
+    "id": "hyp-804d3d9ee3f24b9b991e46965ba7b495",
+    "mechanism": "Bounds union constructors remain calls in hot bulk/mutation loops; cached exact metrics and bounded integer products remove repeated arithmetic.",
+    "prediction": "Selective constructor inlining removes emitted calls and reduces bulk/mutation time without changing geometry or ordering.",
+    "state": "proposed",
+    "evidence_ids": [
+      "cap-9e7ad999fd32428d8c92cca558bf2df4",
+      "stack-analysis-f64b2d594700430a8ef0d304bd19f89b"
+    ]
+  },
+  "code": null,
+  "message": null,
+  "recovery": null
+}
