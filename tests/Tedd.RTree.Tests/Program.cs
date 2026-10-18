@@ -1,6 +1,7 @@
 using Tedd.RTree;
 
 MutablePackedChecks.Run();
+GenericPackedChecks.Run();
 
 static void Check(bool condition, string message)
 {

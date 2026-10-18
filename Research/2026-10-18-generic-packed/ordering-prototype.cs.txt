@@ -1,0 +1,34 @@
+namespace Tedd.RTree;
+
+internal static class SpatialOrder3D
+{
+    // Axes-to-transposed Hilbert transform (Skilling, 2004), specialized to 3 × 10 bits.
+    internal static uint Hilbert(uint x, uint y, uint z)
+    {
+        for (uint q = 512; q > 1; q >>= 1)
+        {
+            uint p = q - 1;
+            if ((x & q) != 0) x ^= p;
+            if ((y & q) != 0) x ^= p;
+            else { uint t = (x ^ y) & p; x ^= t; y ^= t; }
+            if ((z & q) != 0) x ^= p;
+            else { uint t = (x ^ z) & p; x ^= t; z ^= t; }
+        }
+        y ^= x; z ^= y;
+        uint correction = 0;
+        for (uint q = 512; q > 1; q >>= 1)
+            if ((z & q) != 0) correction ^= q - 1;
+        x ^= correction; y ^= correction; z ^= correction;
+        return Spread(x) << 2 | Spread(y) << 1 | Spread(z);
+    }
+
+    internal static uint Morton(uint x, uint y, uint z) => Spread(x) << 2 | Spread(y) << 1 | Spread(z);
+
+    private static uint Spread(uint x)
+    {
+        x = (x | x << 16) & 0x030000FF;
+        x = (x | x << 8) & 0x0300F00F;
+        x = (x | x << 4) & 0x030C30C3;
+        return (x | x << 2) & 0x09249249;
+    }
+}

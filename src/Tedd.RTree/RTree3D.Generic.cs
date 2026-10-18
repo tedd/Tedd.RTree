@@ -5,21 +5,14 @@ namespace Tedd.RTree;
 /// <summary>A mutable three-dimensional R-tree with incremental updates and packed bulk loading.</summary>
 /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
 public sealed class RTree3D<TCoordinate, T>
-    where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+    where TCoordinate : struct, INumber<TCoordinate>
 {
-    private sealed class AxisComparer(double[] centers) : IComparer<int>
-    {
-        public int Compare(int a, int b) => centers[a].CompareTo(centers[b]);
-    }
-
-    private sealed class IntegerAxisComparer(BigInteger[] centers) : IComparer<int>
-    {
-        public int Compare(int a, int b) => centers[a].CompareTo(centers[b]);
-    }
-
     private sealed class Node(bool leaf, int capacity)
     {
-        internal readonly Entry[] Entries = new Entry[capacity + 1];
+        // Leaves never carry child references; branches never carry user values.
+        internal readonly Box<TCoordinate>[] Boxes = new Box<TCoordinate>[capacity + 1];
+        internal readonly T[]? Values = leaf ? new T[capacity + 1] : null;
+        internal readonly Node?[]? Children = leaf ? null : new Node?[capacity + 1];
         internal readonly bool Leaf = leaf;
         internal int Count;
         internal Box<TCoordinate> Bounds;
@@ -82,7 +75,7 @@ public sealed class RTree3D<TCoordinate, T>
             if (!Remove(_root, bounds, item, reinserts)) return false;
             Count--;
             while (!_root.Leaf && _root.Count == 1)
-                _root = _root.Entries[0].Child!;
+                _root = _root.Children![0]!;
             if (_root.Count == 0)
                 _root = new Node(true, _capacity);
             foreach (Entry entry in reinserts)
@@ -103,7 +96,7 @@ public sealed class RTree3D<TCoordinate, T>
     }
 
     /// <summary>Builds a packed tree from a batch. The tree must be empty; later individual updates are allowed.</summary>
-    /// <remarks>Uses Sort-Tile-Recursive packing. Input order is not modified.</remarks>
+    /// <remarks>Uses three-axis Morton ordering and bottom-up packing. Input order is not modified.</remarks>
     public void BulkLoad(IReadOnlyList<SpatialEntry3D<TCoordinate, T>> items)
         => BulkLoadCore(items, null);
 
@@ -124,29 +117,71 @@ public sealed class RTree3D<TCoordinate, T>
         if (itemCount == 0)
             return;
 
-        Entry[] level = new Entry[itemCount];
+        if (items is SpatialEntry3D<TCoordinate, T>[] array)
+        {
+            BulkLoadPacked(array, workspace);
+        }
+        else
+        {
+            // Retain IReadOnlyList's indexed contract, including custom lists without enumeration.
+            SpatialEntry3D<TCoordinate, T>[] copy = new SpatialEntry3D<TCoordinate, T>[itemCount];
+            for (int i = 0; i < copy.Length; i++) copy[i] = items[i];
+            BulkLoadPacked(copy, workspace);
+        }
+    }
+
+    private void BulkLoadPacked(ReadOnlySpan<SpatialEntry3D<TCoordinate, T>> items, BulkLoadWorkspace? workspace)
+    {
+        int itemCount = items.Length;
+        workspace?.EnsureCapacity(itemCount);
+        Span<int> order = workspace is null ? new int[itemCount] : workspace.Order.AsSpan(0, itemCount);
+        Span<uint> keys = workspace is null ? new uint[itemCount] : workspace.HilbertKeys(itemCount);
+        Box<TCoordinate> extent = items[0].Bounds;
+        for (int i = 0; i < itemCount; i++) extent = Box<TCoordinate>.Union(extent, items[i].Bounds);
+        var axisX = new SpatialKeyAxis<TCoordinate>(extent.MinX, extent.MaxX, 1023);
+        var axisY = new SpatialKeyAxis<TCoordinate>(extent.MinY, extent.MaxY, 1023);
+        var axisZ = new SpatialKeyAxis<TCoordinate>(extent.MinZ, extent.MaxZ, 1023);
         for (int i = 0; i < itemCount; i++)
         {
-            SpatialEntry3D<TCoordinate, T> item = items[i];
-            level[i] = new Entry(item.Bounds, null, item.Item);
+            Box<TCoordinate> b = items[i].Bounds;
+            keys[i] = SpatialOrder3D.Morton(axisX.Center(b.MinX, b.MaxX), axisY.Center(b.MinY, b.MaxY), axisZ.Center(b.MinZ, b.MaxZ));
+            order[i] = i;
         }
-
-        bool leaf = true;
-        while (true)
+        // Primitive keys avoid virtual comparisons through an indirect coordinate lookup.
+        if (itemCount < 2048)
+            keys.Sort(order);
+        else
         {
-            Node[] nodes = PackLevel(level, leaf, workspace);
-            if (nodes.Length == 1)
-            {
-                _root = nodes[0];
-                Count = itemCount;
-                return;
-            }
-
-            level = new Entry[nodes.Length];
-            for (int i = 0; i < nodes.Length; i++)
-                level[i] = new Entry(nodes[i].Bounds, nodes[i], default!);
-            leaf = false;
+            Span<int> scatter = workspace is null ? new int[itemCount] : workspace.HilbertScatter(itemCount);
+            HilbertOrder.SortIndices(keys, order, scatter);
         }
+        Node[] level = new Node[(itemCount - 1) / _capacity + 1];
+        for (int n = 0, start = 0; n < level.Length; n++, start += _capacity)
+        {
+            Node node = new(true, _capacity);
+            int end = Math.Min(start + _capacity, itemCount);
+            for (int i = start; i < end; i++)
+            {
+                SpatialEntry3D<TCoordinate, T> item = items[order[i]];
+                Add(node, new Entry(item.Bounds, null, item.Item));
+            }
+            level[n] = node;
+        }
+        while (level.Length > 1)
+        {
+            Node[] parents = new Node[(level.Length - 1) / _capacity + 1];
+            for (int n = 0, start = 0; n < parents.Length; n++, start += _capacity)
+            {
+                Node parent = new(false, _capacity);
+                int end = Math.Min(start + _capacity, level.Length);
+                for (int i = start; i < end; i++)
+                    Add(parent, new Entry(level[i].Bounds, level[i], default!));
+                parents[n] = parent;
+            }
+            level = parents;
+        }
+        _root = level[0];
+        Count = itemCount;
     }
 
     /// <summary>Appends intersecting items to <paramref name="results"/> and returns the number appended.</summary>
@@ -201,28 +236,49 @@ public sealed class RTree3D<TCoordinate, T>
         _reinsertScratch = null;
     }
 
+    private static int CollectValues(Node node, List<T> results)
+    {
+        if (node.Leaf)
+        {
+            results.AddRange(node.Values!.AsSpan(0, node.Count));
+            return node.Count;
+        }
+        int found = 0;
+        for (int i = 0; i < node.Count; i++) found += CollectValues(node.Children![i]!, results);
+        return found;
+    }
+
     private static int Search(Node node, in Box<TCoordinate> bounds, List<T> results)
     {
+        // Validate the active prefix once; mutations cannot overlap a search (H-004/H-014).
+        ReadOnlySpan<Box<TCoordinate>> entries = node.Boxes.AsSpan(0, node.Count);
         int found = 0;
         if (node.Leaf)
         {
-            for (int i = 0; i < node.Count; i++)
+            for (int i = 0; i < entries.Length; i++)
             {
-                ref Entry entry = ref node.Entries[i];
-                if (entry.Bounds.Intersects(bounds))
+                ref readonly Box<TCoordinate> entry = ref entries[i];
+                if (entry.Intersects(bounds))
                 {
-                    results.Add(entry.Value);
+                    results.Add(node.Values![i]);
                     found++;
                 }
             }
         }
         else
         {
-            for (int i = 0; i < node.Count; i++)
+            for (int i = 0; i < entries.Length; i++)
             {
-                ref Entry entry = ref node.Entries[i];
-                if (entry.Bounds.Intersects(bounds))
-                    found += Search(entry.Child!, bounds, results);
+                ref readonly Box<TCoordinate> entry = ref entries[i];
+                if (entry.Intersects(bounds))
+                {
+                    // Every descendant lies within this entry. Containment therefore permits
+                    // collecting values without further geometry tests, preserving duplicates.
+                    // Check only intersecting children to limit selective-query overhead (H-013/H-014).
+                    found += bounds.Contains(entry)
+                        ? CollectValues(node.Children![i]!, results)
+                        : Search(node.Children![i]!, bounds, results);
+                }
             }
         }
         return found;
@@ -234,7 +290,7 @@ public sealed class RTree3D<TCoordinate, T>
         {
             for (int i = 0; i < node.Count; i++)
             {
-                Entry entry = node.Entries[i];
+                Entry entry = ReadEntry(node, i);
                 if (entry.Bounds != bounds || !EqualityComparer<T>.Default.Equals(entry.Value, item)) continue;
                 RemoveAt(node, i);
                 RecomputeBounds(node);
@@ -245,9 +301,8 @@ public sealed class RTree3D<TCoordinate, T>
 
         for (int i = 0; i < node.Count; i++)
         {
-            ref Entry entry = ref node.Entries[i];
-            if (!entry.Bounds.Contains(bounds)) continue;
-            Node child = entry.Child!;
+            if (!node.Boxes[i].Contains(bounds)) continue;
+            Node child = node.Children![i]!;
             if (!Remove(child, bounds, item, reinserts)) continue;
             if (child.Count < _minimum)
             {
@@ -255,7 +310,7 @@ public sealed class RTree3D<TCoordinate, T>
                 RemoveAt(node, i);
             }
             else
-                entry.Bounds = child.Bounds;
+                node.Boxes[i] = child.Bounds;
             RecomputeBounds(node);
             return true;
         }
@@ -265,8 +320,15 @@ public sealed class RTree3D<TCoordinate, T>
     private static void RemoveAt(Node node, int index)
     {
         int last = --node.Count;
-        if (index != last) node.Entries[index] = node.Entries[last];
-        node.Entries[last] = default;
+        if (index != last)
+        {
+            node.Boxes[index] = node.Boxes[last];
+            if (node.Leaf) node.Values![index] = node.Values[last];
+            else node.Children![index] = node.Children[last];
+        }
+        node.Boxes[last] = default;
+        if (node.Leaf) node.Values![last] = default!;
+        else node.Children![last] = null;
     }
 
     private static void RecomputeBounds(Node node)
@@ -276,9 +338,9 @@ public sealed class RTree3D<TCoordinate, T>
             node.Bounds = default;
             return;
         }
-        Box<TCoordinate> bounds = node.Entries[0].Bounds;
+        Box<TCoordinate> bounds = node.Boxes[0];
         for (int i = 1; i < node.Count; i++)
-            bounds = Box<TCoordinate>.Union(bounds, node.Entries[i].Bounds);
+            bounds = Box<TCoordinate>.Union(bounds, node.Boxes[i]);
         node.Bounds = bounds;
     }
 
@@ -286,75 +348,12 @@ public sealed class RTree3D<TCoordinate, T>
     {
         if (node.Leaf)
         {
-            for (int i = 0; i < node.Count; i++) entries.Add(node.Entries[i]);
+            for (int i = 0; i < node.Count; i++) entries.Add(ReadEntry(node, i));
         }
         else
         {
-            for (int i = 0; i < node.Count; i++) CollectLeafEntries(node.Entries[i].Child!, entries);
+            for (int i = 0; i < node.Count; i++) CollectLeafEntries(node.Children![i]!, entries);
         }
-    }
-
-    private Node[] PackLevel(Entry[] entries, bool leaf, BulkLoadWorkspace? workspace)
-    {
-        int nodeCount = (entries.Length + _capacity - 1) / _capacity;
-        Node[] nodes = new Node[nodeCount];
-        int slabs = (int)Math.Ceiling(Math.Cbrt(nodeCount));
-        int slabCapacity = ((nodeCount + slabs - 1) / slabs) * _capacity;
-        workspace?.EnsureCapacity(entries.Length);
-        int[] order = workspace?.Order ?? new int[entries.Length];
-        bool exactInteger = SpatialMeasure<TCoordinate>.ExactInteger;
-        if (exactInteger) workspace?.EnsureIntegerCapacity(entries.Length, true);
-        else workspace?.EnsureZCapacity(entries.Length);
-        double[]? xCenters = exactInteger ? null : workspace?.XCenters ?? new double[entries.Length];
-        double[]? yCenters = exactInteger ? null : workspace?.YCenters ?? new double[entries.Length];
-        double[]? zCenters = exactInteger ? null : workspace?.ZCenters ?? new double[entries.Length];
-        BigInteger[]? xIntegerCenters = exactInteger ? workspace?.XIntegerCenters ?? new BigInteger[entries.Length] : null;
-        BigInteger[]? yIntegerCenters = exactInteger ? workspace?.YIntegerCenters ?? new BigInteger[entries.Length] : null;
-        BigInteger[]? zIntegerCenters = exactInteger ? workspace?.ZIntegerCenters ?? new BigInteger[entries.Length] : null;
-        for (int i = 0; i < entries.Length; i++)
-        {
-            order[i] = i;
-            Box<TCoordinate> bounds = entries[i].Bounds;
-            if (exactInteger)
-            {
-                xIntegerCenters![i] = SpatialMeasure<TCoordinate>.IntegerCenter(bounds.MinX, bounds.MaxX);
-                yIntegerCenters![i] = SpatialMeasure<TCoordinate>.IntegerCenter(bounds.MinY, bounds.MaxY);
-                zIntegerCenters![i] = SpatialMeasure<TCoordinate>.IntegerCenter(bounds.MinZ, bounds.MaxZ);
-            }
-            else
-            {
-                xCenters![i] = SpatialMeasure<TCoordinate>.FloatingCenter(bounds.MinX, bounds.MaxX);
-                yCenters![i] = SpatialMeasure<TCoordinate>.FloatingCenter(bounds.MinY, bounds.MaxY);
-                zCenters![i] = SpatialMeasure<TCoordinate>.FloatingCenter(bounds.MinZ, bounds.MaxZ);
-            }
-        }
-        IComparer<int> xComparer = exactInteger ? new IntegerAxisComparer(xIntegerCenters!) : new AxisComparer(xCenters!);
-        IComparer<int> yComparer = exactInteger ? new IntegerAxisComparer(yIntegerCenters!) : new AxisComparer(yCenters!);
-        IComparer<int> zComparer = exactInteger ? new IntegerAxisComparer(zIntegerCenters!) : new AxisComparer(zCenters!);
-        Array.Sort(order, 0, entries.Length, xComparer);
-        int nextNode = 0;
-        for (int slabStart = 0; slabStart < entries.Length; slabStart += slabCapacity)
-        {
-            int slabLength = Math.Min(slabCapacity, entries.Length - slabStart);
-            Array.Sort(order, slabStart, slabLength, yComparer);
-            int nodesInSlab = (slabLength + _capacity - 1) / _capacity;
-            int rows = (int)Math.Ceiling(Math.Sqrt(nodesInSlab));
-            int rowCapacity = ((nodesInSlab + rows - 1) / rows) * _capacity;
-            for (int rowStart = slabStart; rowStart < slabStart + slabLength; rowStart += rowCapacity)
-            {
-                int rowLength = Math.Min(rowCapacity, slabStart + slabLength - rowStart);
-                Array.Sort(order, rowStart, rowLength, zComparer);
-                for (int offset = 0; offset < rowLength; offset += _capacity)
-                {
-                    Node node = new(leaf, _capacity);
-                    int end = Math.Min(offset + _capacity, rowLength);
-                    for (int i = offset; i < end; i++)
-                        Add(node, entries[order[rowStart + i]]);
-                    nodes[nextNode++] = node;
-                }
-            }
-        }
-        return nodes;
     }
 
     private void Insert(Node node, Entry entry, out Node? sibling)
@@ -366,9 +365,9 @@ public sealed class RTree3D<TCoordinate, T>
         else
         {
             int selected = ChooseSubtree(node, entry.Bounds);
-            Node child = node.Entries[selected].Child!;
+            Node child = node.Children![selected]!;
             Insert(child, entry, out Node? childSibling);
-            node.Entries[selected].Bounds = child.Bounds;
+            node.Boxes[selected] = child.Bounds;
             node.Bounds = Box<TCoordinate>.Union(node.Bounds, child.Bounds);
             if (childSibling is not null)
                 Add(node, new Entry(childSibling.Bounds, childSibling, default!));
@@ -384,7 +383,7 @@ public sealed class RTree3D<TCoordinate, T>
         SpatialMeasure<TCoordinate> bestArea = SpatialMeasure<TCoordinate>.PositiveInfinity;
         for (int i = 0; i < node.Count; i++)
         {
-            Box<TCoordinate> current = node.Entries[i].Bounds;
+            Box<TCoordinate> current = node.Boxes[i];
             SpatialMeasure<TCoordinate> area = current.Area;
             SpatialMeasure<TCoordinate> enlargement = Enlargement(current, bounds);
             if (enlargement < bestEnlargement ||
@@ -402,7 +401,7 @@ public sealed class RTree3D<TCoordinate, T>
     {
         int length = node.Count;
         Entry[] entries = new Entry[length];
-        Array.Copy(node.Entries, entries, length);
+        for (int i = 0; i < length; i++) entries[i] = ReadEntry(node, i);
         int seedA = 0, seedB = 1;
         SpatialMeasure<TCoordinate> worstWaste = SpatialMeasure<TCoordinate>.NegativeInfinity;
         for (int i = 0; i < length - 1; i++)
@@ -467,7 +466,9 @@ public sealed class RTree3D<TCoordinate, T>
             remaining--;
         }
         // The vacated slots otherwise retain values and child nodes after a split.
-        Array.Clear(node.Entries, node.Count, length - node.Count);
+        Array.Clear(node.Boxes, node.Count, length - node.Count);
+        if (node.Leaf) Array.Clear(node.Values!, node.Count, length - node.Count);
+        else Array.Clear(node.Children!, node.Count, length - node.Count);
         return other;
     }
 
@@ -480,8 +481,14 @@ public sealed class RTree3D<TCoordinate, T>
 
     private static void Add(Node node, Entry entry)
     {
-        node.Entries[node.Count++] = entry;
+        int index = node.Count++;
+        node.Boxes[index] = entry.Bounds;
+        if (node.Leaf) node.Values![index] = entry.Value;
+        else node.Children![index] = entry.Child;
         node.Bounds = node.Count == 1 ? entry.Bounds : Box<TCoordinate>.Union(node.Bounds, entry.Bounds);
     }
+
+    private static Entry ReadEntry(Node node, int index) =>
+        new(node.Boxes[index], node.Leaf ? null : node.Children![index], node.Leaf ? node.Values![index] : default!);
 
 }
