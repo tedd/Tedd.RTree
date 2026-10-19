@@ -1,0 +1,109 @@
+size,distribution,operation,library,label,mode,medianUs,minUs,maxUs,allocated
+1000,uniform,build,packed,PackedRTree (experimental C#),packed,28.4381591796875,27.066210937500003,28.639355468749997,46408.0
+1000,uniform,build,mutable,Tedd.RTree (C#),mutable,40.1562744140625,38.133544921875,53.1910400390625,60368.0
+1000,uniform,build,rbush,RBush (C#),rbush,311.55039062500003,307.6119140625,312.8494140625,163520.0
+1000,uniform,build,nts,NetTopologySuite (C#),nts-list,378.1923828125,377.99257812499997,380.98515625,133016.0
+1000,uniform,build,rtree,RTree (C#),rtree,778.58046875,770.3214843750001,781.1710937500001,323424.0
+1000,uniform,build,enyim,Enyim.Collections.RTree (C#),enyim,293.17421874999997,292.3884765625,373.951171875,69744.0
+1000,uniform,build,static,static_aabb2d_index (Rust),direct-static,16.845837402343747,16.79130859375,17.19161376953125,
+1000,uniform,build,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,43.551464843750004,42.732177734375,58.96572265625,
+1000,uniform,build,geo-str,geo-index STR (Rust),direct-geo-str,34.2688720703125,34.233642578125,34.4718994140625,
+1000,uniform,queries,packed,PackedRTree (experimental C#),packed,15.821159362792969,15.407371520996094,16.042606353759766,
+1000,uniform,queries,mutable,Tedd.RTree (C#),mutable,15.496266937255859,15.453607940673828,34.289756011962886,
+1000,uniform,queries,rbush,RBush (C#),rbush,121.30582580566406,120.04152221679689,121.32909545898437,
+1000,uniform,queries,nts,NetTopologySuite (C#),nts-visitor,134.42553100585937,131.6831237792969,140.778369140625,
+1000,uniform,queries,rtree,RTree (C#),rtree,118.30588378906249,117.62483215332031,127.75745849609376,
+1000,uniform,queries,enyim,Enyim.Collections.RTree (C#),enyim,824.3617187499999,813.5751953125,1057.2916015625,
+1000,uniform,queries,static,static_aabb2d_index (Rust),direct-static,11.819011688232422,11.68599090576172,12.0731632232666,
+1000,uniform,queries,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,30.719177246093746,27.807627868652343,37.23271789550781,
+1000,uniform,queries,geo-str,geo-index STR (Rust),direct-geo-str,27.89727096557617,27.881880950927734,32.3173225402832,
+1000,clustered,build,packed,PackedRTree (experimental C#),packed,27.874755859375,27.59287109375,39.7335205078125,46408.0
+1000,clustered,build,mutable,Tedd.RTree (C#),mutable,39.58505859375,37.497485351562496,41.700903320312506,60368.0
+1000,clustered,build,rbush,RBush (C#),rbush,312.897265625,307.4017578125,323.1072265625,163520.0
+1000,clustered,build,nts,NetTopologySuite (C#),nts-visitor,376.7755859375,374.786328125,467.09375,133016.0
+1000,clustered,build,rtree,RTree (C#),rtree,739.71328125,732.0011718750001,743.5929687500001,321528.0
+1000,clustered,build,enyim,Enyim.Collections.RTree (C#),enyim,279.44785156250003,258.5125,293.7390625,69744.0
+1000,clustered,build,static,static_aabb2d_index (Rust),direct-static,20.2384521484375,20.2243896484375,20.30831298828125,
+1000,clustered,build,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,42.444873046874996,42.2033935546875,44.249951171875,
+1000,clustered,build,geo-str,geo-index STR (Rust),direct-geo-str,34.78798828125,34.367333984375,35.4376953125,
+1000,clustered,queries,packed,PackedRTree (experimental C#),packed,9.044788169860839,9.019221878051757,9.12459545135498,
+1000,clustered,queries,mutable,Tedd.RTree (C#),mutable,10.06866855621338,10.045682525634767,10.291303253173828,
+1000,clustered,queries,rbush,RBush (C#),rbush,130.66338806152345,129.4774299621582,136.4773391723633,
+1000,clustered,queries,nts,NetTopologySuite (C#),nts-visitor,115.20694313049317,110.97695808410644,147.4767333984375,
+1000,clustered,queries,rtree,RTree (C#),rtree,123.86121520996095,119.87643280029297,350.1075164794922,
+1000,clustered,queries,enyim,Enyim.Collections.RTree (C#),enyim,796.72919921875,777.9546875,830.41328125,
+1000,clustered,queries,static,static_aabb2d_index (Rust),direct-static,10.526905059814453,10.498055839538575,10.601518821716308,
+1000,clustered,queries,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,26.1718017578125,26.09622573852539,26.22764434814453,
+1000,clustered,queries,geo-str,geo-index STR (Rust),direct-geo-str,26.46199264526367,26.181072998046876,26.846368408203123,
+10000,uniform,build,packed,PackedRTree (experimental C#),packed,660.8207031249999,503.21015625,765.521484375,501808.625
+10000,uniform,build,mutable,Tedd.RTree (C#),mutable,434.653515625,409.95273437500003,570.69921875,626864.0
+10000,uniform,build,rbush,RBush (C#),rbush,6236.565625,6230.03125,9485.525000000001,2248488.0
+10000,uniform,build,nts,NetTopologySuite (C#),nts-visitor,5738.0125,5692.60625,6445.665625000001,1433216.0
+10000,uniform,build,rtree,RTree (C#),rtree,12891.74375,12780.11875,14527.481249999999,3099306.5
+10000,uniform,build,enyim,Enyim.Collections.RTree (C#),enyim,5372.296875,5354.040625,5450.83125,883488.0
+10000,uniform,build,static,static_aabb2d_index (Rust),direct-static,644.1171875,630.153515625,662.56015625,
+10000,uniform,build,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,604.09296875,601.3375,649.230859375,
+10000,uniform,build,geo-str,geo-index STR (Rust),direct-geo-str,583.4855468750001,578.715234375,589.019921875,
+10000,uniform,queries,packed,PackedRTree (experimental C#),packed,69.95467071533203,69.6145034790039,70.49536437988282,
+10000,uniform,queries,mutable,Tedd.RTree (C#),mutable,85.26861877441407,80.72601318359375,121.78694458007813,
+10000,uniform,queries,rbush,RBush (C#),rbush,983.9878540039062,973.1360412597656,1604.4615905761718,
+10000,uniform,queries,nts,NetTopologySuite (C#),nts-visitor,1061.600048828125,1059.9300659179687,1068.3502197265625,
+10000,uniform,queries,rtree,RTree (C#),rtree,1412.228094482422,1384.9080444335937,1471.0649047851562,
+10000,uniform,queries,enyim,Enyim.Collections.RTree (C#),enyim,9087.3375,8736.1515625,9106.134375,
+10000,uniform,queries,static,static_aabb2d_index (Rust),direct-static,79.27062454223633,78.75535736083984,80.09414291381836,
+10000,uniform,queries,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,128.7458953857422,126.16214294433593,154.81208038330078,
+10000,uniform,queries,geo-str,geo-index STR (Rust),direct-geo-str,135.98035736083983,135.95547180175782,136.84783782958985,
+10000,clustered,build,packed,PackedRTree (experimental C#),packed,615.06484375,594.7820312499999,767.445703125,501762.5625
+10000,clustered,build,mutable,Tedd.RTree (C#),mutable,470.247265625,453.53359375,473.34999999999997,626864.0
+10000,clustered,build,rbush,RBush (C#),rbush,5598.55625,5594.243750000001,5605.740625,2248488.0
+10000,clustered,build,nts,NetTopologySuite (C#),nts-list,5741.58125,5732.771875,5813.5125,1433216.0
+10000,clustered,build,rtree,RTree (C#),rtree,12637.3375,12079.581250000001,17231.6625,3088014.0
+10000,clustered,build,enyim,Enyim.Collections.RTree (C#),enyim,4873.325000000001,4779.40625,7099.009375,883488.0
+10000,clustered,build,static,static_aabb2d_index (Rust),native-static,591.394921875,578.764453125,596.7722656249999,
+10000,clustered,build,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,637.7203125,613.726953125,662.359765625,
+10000,clustered,build,geo-str,geo-index STR (Rust),direct-geo-str,577.20546875,571.51953125,624.6281250000001,
+10000,clustered,queries,packed,PackedRTree (experimental C#),packed,38.41971015930176,38.183644485473636,38.470032119750975,
+10000,clustered,queries,mutable,Tedd.RTree (C#),mutable,52.736663246154784,52.45814361572266,60.56596660614014,
+10000,clustered,queries,rbush,RBush (C#),rbush,943.1389999389647,931.453237915039,1238.2963912963867,
+10000,clustered,queries,nts,NetTopologySuite (C#),nts-visitor,921.0710647583007,899.906932067871,927.5310501098633,
+10000,clustered,queries,rtree,RTree (C#),rtree,1314.2065658569334,1295.2998054504394,1316.8186866760254,
+10000,clustered,queries,enyim,Enyim.Collections.RTree (C#),enyim,9120.4015625,9022.8109375,10236.1921875,
+10000,clustered,queries,static,static_aabb2d_index (Rust),direct-static,68.34896411895751,67.1022445678711,197.98179626464844,
+10000,clustered,queries,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,108.19915084838867,107.32602844238282,108.36295013427734,
+10000,clustered,queries,geo-str,geo-index STR (Rust),direct-geo-str,121.65420227050781,107.30862045288086,122.28374710083007,
+100000,uniform,build,packed,PackedRTree (experimental C#),packed,4094.8031250000004,3828.759375,5685.665625000001,5014886.5
+100000,uniform,build,mutable,Tedd.RTree (C#),mutable,7765.456249999999,6427.675,8293.35,6242897.0
+100000,uniform,build,rbush,RBush (C#),rbush,108817.5,100311.9,121099.5,28525280.0
+100000,uniform,build,nts,NetTopologySuite (C#),nts-list,85058.40000000001,73443.29999999999,93646.1,14259768.0
+100000,uniform,build,rtree,RTree (C#),rtree,154222.3,151976.69999999998,184481.5,29512800.0
+100000,uniform,build,enyim,Enyim.Collections.RTree (C#),enyim,99026.1,86469.09999999999,105758.0,10729608.0
+100000,uniform,build,static,static_aabb2d_index (Rust),direct-static,7848.81875,7801.325,8114.831249999999,
+100000,uniform,build,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,7044.9375,6931.125,7182.69375,
+100000,uniform,build,geo-str,geo-index STR (Rust),direct-geo-str,7582.35625,7159.31875,8404.3875,
+100000,uniform,queries,packed,PackedRTree (experimental C#),packed,619.3369201660156,612.3478149414062,625.2109893798828,
+100000,uniform,queries,mutable,Tedd.RTree (C#),mutable,884.0414489746095,858.9843719482421,2938.3562591552736,
+100000,uniform,queries,rbush,RBush (C#),rbush,22555.00173339844,18351.99392089844,22927.04606323242,
+100000,uniform,queries,nts,NetTopologySuite (C#),nts-visitor,18539.16047363281,15777.163806152344,24217.857336425783,
+100000,uniform,queries,rtree,RTree (C#),rtree,40873.91589355468,28158.8794921875,52876.70141601562,
+100000,uniform,queries,enyim,Enyim.Collections.RTree (C#),enyim,213912.1875,139489.65,239173.375,
+100000,uniform,queries,static,static_aabb2d_index (Rust),direct-static,1239.7522369384765,1239.0231628417969,1283.2852645874023,
+100000,uniform,queries,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,1983.7356079101562,1933.7713226318358,1985.7140686035154,
+100000,uniform,queries,geo-str,geo-index STR (Rust),direct-geo-str,1306.821499633789,1303.105096435547,1306.9994888305664,
+100000,clustered,build,packed,PackedRTree (experimental C#),packed,3886.921875,3631.5656249999997,3906.38125,5014624.5
+100000,clustered,build,mutable,Tedd.RTree (C#),mutable,6966.16875,6641.23125,7354.578125,6242910.0
+100000,clustered,build,rbush,RBush (C#),rbush,93050.6,91805.40000000001,140929.6,28533312.0
+100000,clustered,build,nts,NetTopologySuite (C#),nts-list,88010.95,84772.40000000001,93596.75,14259768.0
+100000,clustered,build,rtree,RTree (C#),rtree,158155.6,157894.9,161679.8,29518000.0
+100000,clustered,build,enyim,Enyim.Collections.RTree (C#),enyim,84112.5,80639.55,100851.8,10729608.0
+100000,clustered,build,static,static_aabb2d_index (Rust),direct-static,6819.1375,6744.45,7198.2625,
+100000,clustered,build,geo-hilbert,geo-index Hilbert (Rust),native-geo-hilbert,7951.96875,7455.09375,8166.41875,
+100000,clustered,build,geo-str,geo-index STR (Rust),native-geo-str,7333.98125,6747.10625,8800.41875,
+100000,clustered,queries,packed,PackedRTree (experimental C#),packed,479.6090389251709,473.3382736206055,518.4501716613769,
+100000,clustered,queries,mutable,Tedd.RTree (C#),mutable,816.524415397644,815.8911291122437,842.5010503768921,
+100000,clustered,queries,rbush,RBush (C#),rbush,23000.937427520756,19198.48995285034,27060.71316680908,
+100000,clustered,queries,nts,NetTopologySuite (C#),nts-visitor,21555.05390777588,20693.43383331299,53651.263072204594,
+100000,clustered,queries,rtree,RTree (C#),rtree,34310.59197921753,32257.88929595947,49801.6051361084,
+100000,clustered,queries,enyim,Enyim.Collections.RTree (C#),enyim,254133.175,215707.35,759840.8875,
+100000,clustered,queries,static,static_aabb2d_index (Rust),direct-static,1293.9180213928223,1267.3952703475952,1297.1795974731444,
+100000,clustered,queries,geo-hilbert,geo-index Hilbert (Rust),direct-geo-hilbert,1337.1673492431642,1335.0077590942383,1487.8862983703614,
+100000,clustered,queries,geo-str,geo-index STR (Rust),direct-geo-str,1296.6827453613282,1296.2595573425292,1341.1554412841797,

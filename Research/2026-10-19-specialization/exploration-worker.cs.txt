@@ -1,0 +1,95 @@
+using System.Diagnostics;
+using System.Globalization;
+using Tedd.RTree;
+
+CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+string mode = args[1], action = args.Length > 2 ? args[2] : "measure";
+var lines = File.ReadAllLines(args[0]);
+int n = int.Parse(lines[0]);
+Rectangle Parse(string line) { var v = line.Split(' ').Select(double.Parse).ToArray(); return new(v[0], v[1], v[2], v[3]); }
+Rectangle[] boxes = lines.Skip(1).Take(n).Select(Parse).ToArray();
+Rectangle[] queries = lines.Skip(n + 1).Select(Parse).ToArray();
+var entries = boxes.Select((b, i) => new SpatialEntry<int>(b, i)).ToArray();
+IReadOnlySpatialIndex<Rectangle, int> Build()
+{
+    if (mode == "mutable") { var t = new RTree<int>(); t.BulkLoad(entries); return t; }
+    if (mode == "partition") { var t = new PartitionRTree<int>(); t.BulkLoad(entries); return t; }
+    return new PackedRTree<int>(entries, partial: mode == "flat-partition");
+}
+IReadOnlySpatialIndex<Rectangle, int> tree = Build();
+IReadOnlySpatialIndex<Rectangle, int>? retained = null;
+var output = new List<int>(n);
+long sink = 0;
+void Verify()
+{
+    if (tree.Count != n) throw new Exception("Count mismatch");
+    foreach (var query in queries)
+    {
+        output.Clear(); int found = tree.Search(query, output);
+        var expected = Enumerable.Range(0, n).Where(i => boxes[i].Intersects(query));
+        if (found != output.Count || !output.Order().SequenceEqual(expected)) throw new Exception("Exact result IDs differ");
+    }
+}
+long Query(int group)
+{
+    long sum = 0;
+    for (int q = group; q < queries.Length; q += 4)
+    {
+        output.Clear(); tree.Search(queries[q], output);
+        foreach (int id in output) sum += id + 1;
+    }
+    return sum;
+}
+long Construct() { retained = Build(); return retained.Count; }
+Verify();
+if (action == "validate") { ResearchChecks.Run(); Console.Error.WriteLine("validated=" + queries.Length); return; }
+if (action == "codegen") { Construct(); for (int g = 0; g < 4; g++) sink ^= Query(g); Console.WriteLine(sink); return; }
+if (action.StartsWith("profile-"))
+{
+    Console.WriteLine("READY " + Environment.ProcessId); Console.Out.Flush();
+    var sw = Stopwatch.StartNew();
+    while (sw.Elapsed.TotalSeconds < 45)
+        if (action == "profile-build") sink ^= Construct();
+        else for (int g = 0; g < 4; g++) sink ^= Query(g);
+    GC.KeepAlive(retained); Console.WriteLine(sink); return;
+}
+if (action == "warm")
+{
+    var sw = Stopwatch.StartNew();
+    while (sw.Elapsed.TotalSeconds < 3) { sink ^= Construct(); for (int g = 0; g < 4; g++) sink ^= Query(g); }
+}
+void Measure(string name, Func<long> operation)
+{
+    int repetitions = 1;
+    double Block() { var sw = Stopwatch.StartNew(); for (int i = 0; i < repetitions; i++) sink ^= operation(); return sw.Elapsed.TotalMicroseconds; }
+    while (Block() < 100000) repetitions = checked(repetitions * 2);
+    long bytes = GC.GetAllocatedBytesForCurrentThread();
+    double us = Block(); bytes = GC.GetAllocatedBytesForCurrentThread() - bytes;
+    Console.WriteLine($"{name},{us / repetitions:R},{repetitions},{(double)bytes / repetitions:R}");
+}
+Measure("build", Construct);
+for (int g = 0; g < 4; g++) { int group = g; Measure("query" + g, () => Query(group)); }
+bool mutable = tree is IMutableSpatialIndex<Rectangle, int>;
+if (mutable)
+{
+    var warm = (IMutableSpatialIndex<Rectangle, int>)Build();
+    for (int i = 0; i < Math.Min(64, n); i++)
+    {
+        var b = entries[i].Bounds;
+        if (!warm.Update(b, i, new(b.MinX + 7, b.MinY - 9, b.MaxX + 7, b.MaxY - 9))) throw new Exception("Warm move failed");
+    }
+    var writer = (IMutableSpatialIndex<Rectangle, int>)tree;
+    long bytes = GC.GetAllocatedBytesForCurrentThread(); var sw = Stopwatch.StartNew();
+    for (int i = 0; i < Math.Min(1000, n); i++)
+    {
+        var b = entries[i].Bounds; var moved = new Rectangle(b.MinX + 7, b.MinY - 9, b.MaxX + 7, b.MaxY - 9);
+        if (!writer.Update(b, i, moved)) throw new Exception("Move failed");
+        boxes[i] = moved;
+    }
+    double us = sw.Elapsed.TotalMicroseconds; bytes = GC.GetAllocatedBytesForCurrentThread() - bytes;
+    Console.WriteLine($"mutation,{us:R},1,{bytes}");
+    Verify();
+    for (int g = 0; g < 4; g++) { int group = g; Measure("mutated" + g, () => Query(group)); }
+}
+GC.KeepAlive(retained);
+Console.Error.WriteLine($"validated={queries.Length * (mutable ? 2 : 1)};sink={sink}");

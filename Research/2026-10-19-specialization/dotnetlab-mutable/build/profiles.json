@@ -1,0 +1,200 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "data": [
+    {
+      "name": "quiet-validation",
+      "capability": "managed",
+      "manifest": {
+        "name": "quiet-validation",
+        "version": "net10/1",
+        "providers": [],
+        "buffer_mi_b": 32,
+        "rundown": false,
+        "data_classes": [
+          "harness"
+        ],
+        "hash": "c66f7cbdc225a2028c31e321073ba473a02766d6b6d2e0114279876ef135a2d5"
+      }
+    },
+    {
+      "name": "baseline-context",
+      "capability": "managed",
+      "manifest": {
+        "name": "baseline-context",
+        "version": "net10/1",
+        "providers": [
+          {
+            "name": "Microsoft-Windows-DotNETRuntime",
+            "keywords": "1",
+            "level": 4,
+            "arguments": {}
+          },
+          {
+            "name": "Tedd.DotNetLab-Harness",
+            "keywords": "-1",
+            "level": 4,
+            "arguments": {}
+          },
+          {
+            "name": "System.Runtime",
+            "keywords": "0",
+            "level": 4,
+            "arguments": {
+              "EventCounterIntervalSec": "1"
+            }
+          }
+        ],
+        "buffer_mi_b": 32,
+        "rundown": false,
+        "data_classes": [
+          "gc",
+          "suspension",
+          "counters",
+          "markers"
+        ],
+        "hash": "5b17500678769970a57dc24058ee2786ce4702356fb7f45a9d675787e0d79f08"
+      }
+    },
+    {
+      "name": "cpu-diagnostic",
+      "capability": "managed",
+      "manifest": {
+        "name": "cpu-diagnostic",
+        "version": "net10/1",
+        "providers": [
+          {
+            "name": "Microsoft-Windows-DotNETRuntime",
+            "keywords": "25",
+            "level": 4,
+            "arguments": {}
+          },
+          {
+            "name": "Tedd.DotNetLab-Harness",
+            "keywords": "-1",
+            "level": 4,
+            "arguments": {}
+          },
+          {
+            "name": "System.Runtime",
+            "keywords": "0",
+            "level": 4,
+            "arguments": {
+              "EventCounterIntervalSec": "1"
+            }
+          },
+          {
+            "name": "Microsoft-DotNETCore-SampleProfiler",
+            "keywords": "0",
+            "level": 4,
+            "arguments": {}
+          }
+        ],
+        "buffer_mi_b": 32,
+        "rundown": true,
+        "data_classes": [
+          "gc",
+          "suspension",
+          "counters",
+          "markers",
+          "samples"
+        ],
+        "hash": "d739177b6dcb132392467958fa632092eae5e74ae4564373ce7c1d73fd7e2b8a"
+      }
+    },
+    {
+      "name": "allocation-diagnostic",
+      "capability": "managed",
+      "manifest": {
+        "name": "allocation-diagnostic",
+        "version": "net10/1",
+        "providers": [
+          {
+            "name": "Microsoft-Windows-DotNETRuntime",
+            "keywords": "1",
+            "level": 5,
+            "arguments": {}
+          },
+          {
+            "name": "Tedd.DotNetLab-Harness",
+            "keywords": "-1",
+            "level": 4,
+            "arguments": {}
+          },
+          {
+            "name": "System.Runtime",
+            "keywords": "0",
+            "level": 4,
+            "arguments": {
+              "EventCounterIntervalSec": "1"
+            }
+          }
+        ],
+        "buffer_mi_b": 32,
+        "rundown": false,
+        "data_classes": [
+          "gc",
+          "suspension",
+          "counters",
+          "markers",
+          "allocation_samples"
+        ],
+        "hash": "1eac41ca0fcde7bbd4e22965e8ce3e4bea042c5259dbb9cfd0f47280ebf24128"
+      }
+    },
+    {
+      "name": "targeted-probes",
+      "capability": "requires_verified_probe_plan",
+      "manifest": {
+        "name": "targeted-probes",
+        "version": "selected-probes/net10/1",
+        "providers": [],
+        "buffer_mi_b": 32,
+        "rundown": false,
+        "data_classes": [
+          "harness",
+          "selected_probes"
+        ],
+        "hash": "afa3ee06fe71b85d92fdcc3a2eb189150844fbc8c4d0a03264d664a6e02fa6f8"
+      }
+    },
+    {
+      "name": "runtime-metrics-context",
+      "capability": "managed",
+      "manifest": {
+        "name": "runtime-metrics-context",
+        "version": "net10/metrics/1",
+        "providers": [
+          {
+            "name": "System.Diagnostics.Metrics",
+            "keywords": "6",
+            "level": 4,
+            "arguments": {
+              "Metrics": "System.Runtime",
+              "RefreshInterval": "1",
+              "MaxTimeSeries": "1000",
+              "MaxHistograms": "20"
+            }
+          },
+          {
+            "name": "Tedd.DotNetLab-Harness",
+            "keywords": "-1",
+            "level": 4,
+            "arguments": {}
+          }
+        ],
+        "buffer_mi_b": 32,
+        "rundown": false,
+        "data_classes": [
+          "counters",
+          "modern_runtime_metrics",
+          "markers"
+        ],
+        "hash": "397f3a9a7dcdb1fd3c33c90b2b1a1214f7a87e4262830da7aec9f46a43b4e675"
+      }
+    }
+  ],
+  "code": null,
+  "message": null,
+  "recovery": null
+}

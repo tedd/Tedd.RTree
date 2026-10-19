@@ -1,0 +1,974 @@
+[
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 99604,
+    "started_ns": 1792394192881879600,
+    "validation": "validated=128;sink=28142",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 62484,
+    "started_ns": 1792394197067972200,
+    "validation": "validated=128;sink=9534",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 106096,
+    "started_ns": 1792394201426999400,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 109576,
+    "started_ns": 1792394203598793800,
+    "validation": "validated=128;sink=28142",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 61864,
+    "started_ns": 1792394207669608900,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 58752,
+    "started_ns": 1792394209967628300,
+    "validation": "validated=128;sink=32608",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 47148,
+    "started_ns": 1792394214205933600,
+    "validation": "validated=128;sink=157885",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 98452,
+    "started_ns": 1792394218599591600,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 89060,
+    "started_ns": 1792394220977220700,
+    "validation": "validated=128;sink=157885",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 79420,
+    "started_ns": 1792394225617915500,
+    "validation": "validated=128;sink=14050",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 85580,
+    "started_ns": 1792394229971985800,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 64152,
+    "started_ns": 1792394232629489700,
+    "validation": "validated=128;sink=109185",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 74596,
+    "started_ns": 1792394237164074100,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 106516,
+    "started_ns": 1792394239723492500,
+    "validation": "validated=128;sink=9534",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 115552,
+    "started_ns": 1792394243968776100,
+    "validation": "validated=128;sink=32608",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 53600,
+    "started_ns": 1792394248241018900,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 86412,
+    "started_ns": 1792394250723639700,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 29540,
+    "started_ns": 1792394253184778500,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 98444,
+    "started_ns": 1792394255497953800,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 79788,
+    "started_ns": 1792394257890905200,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 76012,
+    "started_ns": 1792394259905708100,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 52076,
+    "started_ns": 1792394262139821500,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 94960,
+    "started_ns": 1792394264498481000,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 81384,
+    "started_ns": 1792394266769214500,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 15620,
+    "started_ns": 1792394269024955500,
+    "validation": "validated=128;sink=109185",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 10020,
+    "started_ns": 1792394273815975900,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 47560,
+    "started_ns": 1792394276098777600,
+    "validation": "validated=128;sink=28142",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 14132,
+    "started_ns": 1792394279993422400,
+    "validation": "validated=64;sink=2092999",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 14228,
+    "started_ns": 1792394282224553000,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 32732,
+    "started_ns": 1792394284575750800,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 8820,
+    "started_ns": 1792394286835927600,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 88440,
+    "started_ns": 1792394289144826000,
+    "validation": "validated=128;sink=14050",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 79524,
+    "started_ns": 1792394292848317900,
+    "validation": "validated=128;sink=9534",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 38704,
+    "started_ns": 1792394297301152600,
+    "validation": "validated=128;sink=157885",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 81784,
+    "started_ns": 1792394301687880600,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 103140,
+    "started_ns": 1792394304021337600,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 85608,
+    "started_ns": 1792394306607257400,
+    "validation": "validated=128;sink=109185",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 92176,
+    "started_ns": 1792394311329957800,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 117684,
+    "started_ns": 1792394313714711000,
+    "validation": "validated=64;sink=145919598",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 62488,
+    "started_ns": 1792394316264584600,
+    "validation": "validated=128;sink=14050",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-uniform.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 110764,
+    "started_ns": 1792394320331470800,
+    "validation": "validated=128;sink=32608",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "mutable"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 106800,
+    "started_ns": 1792394324450167200,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 66364,
+    "started_ns": 1792394326860096500,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "flat-simd",
+    "pid": 106820,
+    "started_ns": 1792394329412027000,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 91808,
+    "started_ns": 1792394331670525100,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 55968,
+    "started_ns": 1792394333918677200,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 26476,
+    "started_ns": 1792394336438633600,
+    "validation": "validated=64;sink=188633216",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-10000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 71152,
+    "started_ns": 1792394338730538300,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 89060,
+    "started_ns": 1792394341058223300,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 65364,
+    "started_ns": 1792394343175470500,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "flat",
+    "pid": 114032,
+    "started_ns": 1792394345494313200,
+    "validation": "validated=64;sink=25256503735",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-uniform.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "flat",
+    "pid": 90804,
+    "started_ns": 1792394347818746500,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "flat"
+    ]
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 24804,
+    "started_ns": 1792394350411575500,
+    "validation": "validated=64;sink=2724143",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-1000-clustered.txt",
+      "flat-simd"
+    ]
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "flat-simd",
+    "pid": 103256,
+    "started_ns": 1792394352702475200,
+    "validation": "validated=64;sink=20455734566",
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-specialization-20261019\\retained\\fixture-100000-clustered.txt",
+      "flat-simd"
+    ]
+  }
+]

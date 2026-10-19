@@ -1,0 +1,27 @@
+{"tool": "lab.discover", "arguments": {"request": {"action": "workspace"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "profiles"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "targets", "limit": 100}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "scenarios", "target_id": "target-32133a96fd158ae476bffed3"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "capabilities", "target_id": "target-32133a96fd158ae476bffed3"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "compatibility", "target_id": "target-32133a96fd158ae476bffed3"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "start_capture", "target_id": "target-32133a96fd158ae476bffed3", "expected_target_epoch": "0", "profile": "cpu-diagnostic", "duration_seconds": 5, "grant_id": "grant-c0f42210501548dba97549f00518cb78", "idempotency_key": "mutable-6c0b474a6fec-build-cpu-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-de9aacd42d4b49a5aeb9302136318386"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "cap-2e287df1607144208d6160b8883a062d"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "analyze_stacks", "capture_id": "cap-2e287df1607144208d6160b8883a062d", "idempotency_key": "mutable-6c0b474a6fec-build-stacks-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-28a366f1c4f04f3d8c0942d6ee6a71e2"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-28a366f1c4f04f3d8c0942d6ee6a71e2"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "cap-2e287df1607144208d6160b8883a062d"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "stack-analysis-440682d22e1e4fd1b097451b0673b3ff"}}}
+{"tool": "lab.query", "arguments": {"request": {"view": "hotspots", "result_id": "stack-analysis-440682d22e1e4fd1b097451b0673b3ff", "ranking": "self", "limit": 15}}}
+{"tool": "lab.experiment", "arguments": {"request": {"action": "create_hypothesis", "mechanism": "Scalar bounding-box traversal uses several comparisons and branches per entry; broad matches traverse contained leaves and copy output.", "prediction": "Vector comparison or scalar conjunction reduces complete-query cost only if predicate work remains material; preserve scalar fallback, exact inclusive geometry, node shape, and mutation costs.", "evidence_ids": ["cap-2e287df1607144208d6160b8883a062d", "stack-analysis-440682d22e1e4fd1b097451b0673b3ff"]}}}

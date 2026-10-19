@@ -1,0 +1,27 @@
+{"tool": "lab.discover", "arguments": {"request": {"action": "workspace"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "profiles"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "targets", "limit": 100}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "scenarios", "target_id": "target-d22911e76f95be833b6fa3e0"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "capabilities", "target_id": "target-d22911e76f95be833b6fa3e0"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "compatibility", "target_id": "target-d22911e76f95be833b6fa3e0"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "start_capture", "target_id": "target-d22911e76f95be833b6fa3e0", "expected_target_epoch": "0", "profile": "cpu-diagnostic", "duration_seconds": 5, "grant_id": "grant-8806d9c885ba49d09035ff3d9de1a518", "idempotency_key": "packed-6c0b474a6fec-query-cpu-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-149d545298f443c48f20391c36f4ed10"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "cap-1b2144ed2e6c4cfaaf306181ed1fbcbc"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "analyze_stacks", "capture_id": "cap-1b2144ed2e6c4cfaaf306181ed1fbcbc", "idempotency_key": "packed-6c0b474a6fec-query-stacks-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-6a7e692794ad4c37b3a10d364f4f76af"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-6a7e692794ad4c37b3a10d364f4f76af"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "cap-1b2144ed2e6c4cfaaf306181ed1fbcbc"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "stack-analysis-c4c955e907ee4ac1bcc075a5efec5111"}}}
+{"tool": "lab.query", "arguments": {"request": {"view": "hotspots", "result_id": "stack-analysis-c4c955e907ee4ac1bcc075a5efec5111", "ranking": "self", "limit": 15}}}
+{"tool": "lab.experiment", "arguments": {"request": {"action": "create_hypothesis", "mechanism": "Immutable flat bounds and payload arrays use integer ranges instead of node objects; fully contained subtrees copy one owned contiguous range.", "prediction": "Complete materialized queries improve through fewer collector visits and copies while preserving exact geometry and owned immutable storage.", "evidence_ids": ["cap-1b2144ed2e6c4cfaaf306181ed1fbcbc", "stack-analysis-c4c955e907ee4ac1bcc075a5efec5111"]}}}

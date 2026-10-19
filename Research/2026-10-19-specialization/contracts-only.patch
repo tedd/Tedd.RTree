@@ -1,0 +1,970 @@
+--- a/src/Tedd.RTree/ConcurrentRTree.cs
++++ b/src/Tedd.RTree/ConcurrentRTree.cs
+@@ -7,7 +7,7 @@
+ /// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
+ /// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
+ /// </remarks>
+-public sealed class ConcurrentRTree<T> : IDisposable where T : notnull
++public sealed class ConcurrentRTree<T> : IDisposable, IReadOnlySpatialIndex<Rectangle, T> where T : notnull
+ {
+     private readonly ReaderWriterLockSlim _lock = new();
+     private readonly int _maxEntries;
+--- a/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs
++++ b/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs
+@@ -1,155 +1,155 @@
+-using System.Threading;
+-
+-namespace Tedd.RTree;
+-
+-/// <summary>A thread-safe mutable R-tree with immediately visible individual moves.</summary>
+-/// <remarks>
+-/// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
+-/// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
+-/// </remarks>
+-public sealed class ConcurrentRTree2D<TCoordinate, T> : IDisposable
++using System.Threading;
++
++namespace Tedd.RTree;
++
++/// <summary>A thread-safe mutable R-tree with immediately visible individual moves.</summary>
++/// <remarks>
++/// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
++/// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
++/// </remarks>
++public sealed class ConcurrentRTree2D<TCoordinate, T> : IDisposable, IReadOnlySpatialIndex<Rectangle2D<TCoordinate>, T>
+     where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+-    where T : notnull
+-{
+-    private readonly ReaderWriterLockSlim _lock = new();
+-    private readonly int _maxEntries;
+-    private RTree2D<TCoordinate, T> _tree;
+-    private Dictionary<T, Rectangle2D<TCoordinate>> _locations = [];
+-
+-    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
+-    public ConcurrentRTree2D(int maxEntries = 16)
+-    {
+-        _tree = new RTree2D<TCoordinate, T>(maxEntries);
+-        _maxEntries = maxEntries;
+-    }
+-
+-    /// <summary>Number of indexed entries.</summary>
+-    public int Count
+-    {
+-        get
+-        {
+-            _lock.EnterReadLock();
+-            try { return _locations.Count; }
+-            finally { _lock.ExitReadLock(); }
+-        }
+-    }
+-
+-    /// <summary>Loads an initial batch. The index must be empty and values must be unique.</summary>
+-    /// <remarks>The caller must not change the input batch while this method runs.</remarks>
+-    public void BulkLoad(IReadOnlyList<SpatialEntry2D<TCoordinate, T>> items)
+-    {
+-        ArgumentNullException.ThrowIfNull(items);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (_locations.Count != 0)
+-                throw new InvalidOperationException("Bulk loading requires an empty index.");
+-            Dictionary<T, Rectangle2D<TCoordinate>> locations = new(items.Count);
+-            for (int i = 0; i < items.Count; i++)
+-                if (!locations.TryAdd(items[i].Item, items[i].Bounds))
+-                    throw new ArgumentException("Bulk loading requires unique values.", nameof(items));
+-            RTree2D<TCoordinate, T> next = new(_maxEntries);
+-            next.BulkLoad(items);
+-            _tree = next;
+-            _locations = locations;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Adds a value at the given bounds.</summary>
+-    /// <returns>False if the value is already indexed.</returns>
+-    public bool Add(Rectangle2D<TCoordinate> bounds, T item)
+-    {
+-        ArgumentNullException.ThrowIfNull(item);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (_locations.ContainsKey(item)) return false;
+-            _tree.Insert(bounds, item);
+-            _locations.Add(item, bounds);
+-            return true;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Moves one indexed value. Successful moves are visible to subsequent searches.</summary>
+-    /// <returns>False if the value is not indexed.</returns>
+-    public bool Move(T item, Rectangle2D<TCoordinate> newBounds)
+-    {
+-        ArgumentNullException.ThrowIfNull(item);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (!_locations.TryGetValue(item, out Rectangle2D<TCoordinate> oldBounds)) return false;
+-            if (oldBounds == newBounds) return true;
+-            if (!_tree.Update(oldBounds, item, newBounds))
+-                throw new InvalidOperationException("The location map and tree disagree.");
+-            _locations[item] = newBounds;
+-            return true;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Removes an indexed value.</summary>
+-    /// <returns>False if the value is not indexed.</returns>
+-    public bool Remove(T item)
+-    {
+-        ArgumentNullException.ThrowIfNull(item);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (!_locations.TryGetValue(item, out Rectangle2D<TCoordinate> bounds)) return false;
+-            if (!_tree.Remove(bounds, item))
+-                throw new InvalidOperationException("The location map and tree disagree.");
+-            _locations.Remove(item);
+-            return true;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Appends intersecting values to <paramref name="results"/> and returns the number appended.</summary>
+-    /// <remarks>Each concurrent search must use a separate result list.</remarks>
+-    public int Search(Rectangle2D<TCoordinate> bounds, List<T> results)
+-    {
+-        _lock.EnterReadLock();
+-        try { return _tree.Search(bounds, results); }
+-        finally { _lock.ExitReadLock(); }
+-    }
+-
+-    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+-    /// <returns>The total number of matches appended across all queries.</returns>
+-    /// <remarks>
+-    /// Results must have one non-null list per query; counts must have at least one slot per query.
+-    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
+-    /// The whole batch holds one read lock, so writers wait until the batch completes.
+-    /// </remarks>
+-    public long SearchBatch(ReadOnlySpan<Rectangle2D<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
+-    {
+-        _lock.EnterReadLock();
+-        try { return _tree.SearchBatch(queries, results, counts); }
+-        finally { _lock.ExitReadLock(); }
+-    }
+-
+-    /// <summary>Returns intersecting values in a new list.</summary>
+-    public List<T> Search(Rectangle2D<TCoordinate> bounds)
+-    {
+-        _lock.EnterReadLock();
+-        try { return _tree.Search(bounds); }
+-        finally { _lock.ExitReadLock(); }
+-    }
+-
+-    /// <summary>Removes all indexed values.</summary>
+-    public void Clear()
+-    {
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            _tree.Clear();
+-            _locations.Clear();
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Releases the synchronization object after callers have stopped using this index.</summary>
+-    public void Dispose() => _lock.Dispose();
+-}
++    where T : notnull
++{
++    private readonly ReaderWriterLockSlim _lock = new();
++    private readonly int _maxEntries;
++    private RTree2D<TCoordinate, T> _tree;
++    private Dictionary<T, Rectangle2D<TCoordinate>> _locations = [];
++
++    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
++    public ConcurrentRTree2D(int maxEntries = 16)
++    {
++        _tree = new RTree2D<TCoordinate, T>(maxEntries);
++        _maxEntries = maxEntries;
++    }
++
++    /// <summary>Number of indexed entries.</summary>
++    public int Count
++    {
++        get
++        {
++            _lock.EnterReadLock();
++            try { return _locations.Count; }
++            finally { _lock.ExitReadLock(); }
++        }
++    }
++
++    /// <summary>Loads an initial batch. The index must be empty and values must be unique.</summary>
++    /// <remarks>The caller must not change the input batch while this method runs.</remarks>
++    public void BulkLoad(IReadOnlyList<SpatialEntry2D<TCoordinate, T>> items)
++    {
++        ArgumentNullException.ThrowIfNull(items);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (_locations.Count != 0)
++                throw new InvalidOperationException("Bulk loading requires an empty index.");
++            Dictionary<T, Rectangle2D<TCoordinate>> locations = new(items.Count);
++            for (int i = 0; i < items.Count; i++)
++                if (!locations.TryAdd(items[i].Item, items[i].Bounds))
++                    throw new ArgumentException("Bulk loading requires unique values.", nameof(items));
++            RTree2D<TCoordinate, T> next = new(_maxEntries);
++            next.BulkLoad(items);
++            _tree = next;
++            _locations = locations;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Adds a value at the given bounds.</summary>
++    /// <returns>False if the value is already indexed.</returns>
++    public bool Add(Rectangle2D<TCoordinate> bounds, T item)
++    {
++        ArgumentNullException.ThrowIfNull(item);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (_locations.ContainsKey(item)) return false;
++            _tree.Insert(bounds, item);
++            _locations.Add(item, bounds);
++            return true;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Moves one indexed value. Successful moves are visible to subsequent searches.</summary>
++    /// <returns>False if the value is not indexed.</returns>
++    public bool Move(T item, Rectangle2D<TCoordinate> newBounds)
++    {
++        ArgumentNullException.ThrowIfNull(item);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (!_locations.TryGetValue(item, out Rectangle2D<TCoordinate> oldBounds)) return false;
++            if (oldBounds == newBounds) return true;
++            if (!_tree.Update(oldBounds, item, newBounds))
++                throw new InvalidOperationException("The location map and tree disagree.");
++            _locations[item] = newBounds;
++            return true;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Removes an indexed value.</summary>
++    /// <returns>False if the value is not indexed.</returns>
++    public bool Remove(T item)
++    {
++        ArgumentNullException.ThrowIfNull(item);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (!_locations.TryGetValue(item, out Rectangle2D<TCoordinate> bounds)) return false;
++            if (!_tree.Remove(bounds, item))
++                throw new InvalidOperationException("The location map and tree disagree.");
++            _locations.Remove(item);
++            return true;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Appends intersecting values to <paramref name="results"/> and returns the number appended.</summary>
++    /// <remarks>Each concurrent search must use a separate result list.</remarks>
++    public int Search(Rectangle2D<TCoordinate> bounds, List<T> results)
++    {
++        _lock.EnterReadLock();
++        try { return _tree.Search(bounds, results); }
++        finally { _lock.ExitReadLock(); }
++    }
++
++    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
++    /// <returns>The total number of matches appended across all queries.</returns>
++    /// <remarks>
++    /// Results must have one non-null list per query; counts must have at least one slot per query.
++    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
++    /// The whole batch holds one read lock, so writers wait until the batch completes.
++    /// </remarks>
++    public long SearchBatch(ReadOnlySpan<Rectangle2D<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
++    {
++        _lock.EnterReadLock();
++        try { return _tree.SearchBatch(queries, results, counts); }
++        finally { _lock.ExitReadLock(); }
++    }
++
++    /// <summary>Returns intersecting values in a new list.</summary>
++    public List<T> Search(Rectangle2D<TCoordinate> bounds)
++    {
++        _lock.EnterReadLock();
++        try { return _tree.Search(bounds); }
++        finally { _lock.ExitReadLock(); }
++    }
++
++    /// <summary>Removes all indexed values.</summary>
++    public void Clear()
++    {
++        _lock.EnterWriteLock();
++        try
++        {
++            _tree.Clear();
++            _locations.Clear();
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Releases the synchronization object after callers have stopped using this index.</summary>
++    public void Dispose() => _lock.Dispose();
++}
+--- a/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs
++++ b/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs
+@@ -1,155 +1,155 @@
+-using System.Threading;
+-
+-namespace Tedd.RTree;
+-
+-/// <summary>A thread-safe mutable R-tree with immediately visible individual moves.</summary>
+-/// <remarks>
+-/// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
+-/// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
+-/// </remarks>
+-public sealed class ConcurrentRTree3D<TCoordinate, T> : IDisposable
++using System.Threading;
++
++namespace Tedd.RTree;
++
++/// <summary>A thread-safe mutable R-tree with immediately visible individual moves.</summary>
++/// <remarks>
++/// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
++/// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
++/// </remarks>
++public sealed class ConcurrentRTree3D<TCoordinate, T> : IDisposable, IReadOnlySpatialIndex<Box<TCoordinate>, T>
+     where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+-    where T : notnull
+-{
+-    private readonly ReaderWriterLockSlim _lock = new();
+-    private readonly int _maxEntries;
+-    private RTree3D<TCoordinate, T> _tree;
+-    private Dictionary<T, Box<TCoordinate>> _locations = [];
+-
+-    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
+-    public ConcurrentRTree3D(int maxEntries = 16)
+-    {
+-        _tree = new RTree3D<TCoordinate, T>(maxEntries);
+-        _maxEntries = maxEntries;
+-    }
+-
+-    /// <summary>Number of indexed entries.</summary>
+-    public int Count
+-    {
+-        get
+-        {
+-            _lock.EnterReadLock();
+-            try { return _locations.Count; }
+-            finally { _lock.ExitReadLock(); }
+-        }
+-    }
+-
+-    /// <summary>Loads an initial batch. The index must be empty and values must be unique.</summary>
+-    /// <remarks>The caller must not change the input batch while this method runs.</remarks>
+-    public void BulkLoad(IReadOnlyList<SpatialEntry3D<TCoordinate, T>> items)
+-    {
+-        ArgumentNullException.ThrowIfNull(items);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (_locations.Count != 0)
+-                throw new InvalidOperationException("Bulk loading requires an empty index.");
+-            Dictionary<T, Box<TCoordinate>> locations = new(items.Count);
+-            for (int i = 0; i < items.Count; i++)
+-                if (!locations.TryAdd(items[i].Item, items[i].Bounds))
+-                    throw new ArgumentException("Bulk loading requires unique values.", nameof(items));
+-            RTree3D<TCoordinate, T> next = new(_maxEntries);
+-            next.BulkLoad(items);
+-            _tree = next;
+-            _locations = locations;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Adds a value at the given bounds.</summary>
+-    /// <returns>False if the value is already indexed.</returns>
+-    public bool Add(Box<TCoordinate> bounds, T item)
+-    {
+-        ArgumentNullException.ThrowIfNull(item);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (_locations.ContainsKey(item)) return false;
+-            _tree.Insert(bounds, item);
+-            _locations.Add(item, bounds);
+-            return true;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Moves one indexed value. Successful moves are visible to subsequent searches.</summary>
+-    /// <returns>False if the value is not indexed.</returns>
+-    public bool Move(T item, Box<TCoordinate> newBounds)
+-    {
+-        ArgumentNullException.ThrowIfNull(item);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (!_locations.TryGetValue(item, out Box<TCoordinate> oldBounds)) return false;
+-            if (oldBounds == newBounds) return true;
+-            if (!_tree.Update(oldBounds, item, newBounds))
+-                throw new InvalidOperationException("The location map and tree disagree.");
+-            _locations[item] = newBounds;
+-            return true;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Removes an indexed value.</summary>
+-    /// <returns>False if the value is not indexed.</returns>
+-    public bool Remove(T item)
+-    {
+-        ArgumentNullException.ThrowIfNull(item);
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            if (!_locations.TryGetValue(item, out Box<TCoordinate> bounds)) return false;
+-            if (!_tree.Remove(bounds, item))
+-                throw new InvalidOperationException("The location map and tree disagree.");
+-            _locations.Remove(item);
+-            return true;
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Appends intersecting values to <paramref name="results"/> and returns the number appended.</summary>
+-    /// <remarks>Each concurrent search must use a separate result list.</remarks>
+-    public int Search(Box<TCoordinate> bounds, List<T> results)
+-    {
+-        _lock.EnterReadLock();
+-        try { return _tree.Search(bounds, results); }
+-        finally { _lock.ExitReadLock(); }
+-    }
+-
+-    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+-    /// <returns>The total number of matches appended across all queries.</returns>
+-    /// <remarks>
+-    /// Results must have one non-null list per query; counts must have at least one slot per query.
+-    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
+-    /// The whole batch holds one read lock, so writers wait until the batch completes.
+-    /// </remarks>
+-    public long SearchBatch(ReadOnlySpan<Box<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
+-    {
+-        _lock.EnterReadLock();
+-        try { return _tree.SearchBatch(queries, results, counts); }
+-        finally { _lock.ExitReadLock(); }
+-    }
+-
+-    /// <summary>Returns intersecting values in a new list.</summary>
+-    public List<T> Search(Box<TCoordinate> bounds)
+-    {
+-        _lock.EnterReadLock();
+-        try { return _tree.Search(bounds); }
+-        finally { _lock.ExitReadLock(); }
+-    }
+-
+-    /// <summary>Removes all indexed values.</summary>
+-    public void Clear()
+-    {
+-        _lock.EnterWriteLock();
+-        try
+-        {
+-            _tree.Clear();
+-            _locations.Clear();
+-        }
+-        finally { _lock.ExitWriteLock(); }
+-    }
+-
+-    /// <summary>Releases the synchronization object after callers have stopped using this index.</summary>
+-    public void Dispose() => _lock.Dispose();
+-}
++    where T : notnull
++{
++    private readonly ReaderWriterLockSlim _lock = new();
++    private readonly int _maxEntries;
++    private RTree3D<TCoordinate, T> _tree;
++    private Dictionary<T, Box<TCoordinate>> _locations = [];
++
++    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
++    public ConcurrentRTree3D(int maxEntries = 16)
++    {
++        _tree = new RTree3D<TCoordinate, T>(maxEntries);
++        _maxEntries = maxEntries;
++    }
++
++    /// <summary>Number of indexed entries.</summary>
++    public int Count
++    {
++        get
++        {
++            _lock.EnterReadLock();
++            try { return _locations.Count; }
++            finally { _lock.ExitReadLock(); }
++        }
++    }
++
++    /// <summary>Loads an initial batch. The index must be empty and values must be unique.</summary>
++    /// <remarks>The caller must not change the input batch while this method runs.</remarks>
++    public void BulkLoad(IReadOnlyList<SpatialEntry3D<TCoordinate, T>> items)
++    {
++        ArgumentNullException.ThrowIfNull(items);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (_locations.Count != 0)
++                throw new InvalidOperationException("Bulk loading requires an empty index.");
++            Dictionary<T, Box<TCoordinate>> locations = new(items.Count);
++            for (int i = 0; i < items.Count; i++)
++                if (!locations.TryAdd(items[i].Item, items[i].Bounds))
++                    throw new ArgumentException("Bulk loading requires unique values.", nameof(items));
++            RTree3D<TCoordinate, T> next = new(_maxEntries);
++            next.BulkLoad(items);
++            _tree = next;
++            _locations = locations;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Adds a value at the given bounds.</summary>
++    /// <returns>False if the value is already indexed.</returns>
++    public bool Add(Box<TCoordinate> bounds, T item)
++    {
++        ArgumentNullException.ThrowIfNull(item);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (_locations.ContainsKey(item)) return false;
++            _tree.Insert(bounds, item);
++            _locations.Add(item, bounds);
++            return true;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Moves one indexed value. Successful moves are visible to subsequent searches.</summary>
++    /// <returns>False if the value is not indexed.</returns>
++    public bool Move(T item, Box<TCoordinate> newBounds)
++    {
++        ArgumentNullException.ThrowIfNull(item);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (!_locations.TryGetValue(item, out Box<TCoordinate> oldBounds)) return false;
++            if (oldBounds == newBounds) return true;
++            if (!_tree.Update(oldBounds, item, newBounds))
++                throw new InvalidOperationException("The location map and tree disagree.");
++            _locations[item] = newBounds;
++            return true;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Removes an indexed value.</summary>
++    /// <returns>False if the value is not indexed.</returns>
++    public bool Remove(T item)
++    {
++        ArgumentNullException.ThrowIfNull(item);
++        _lock.EnterWriteLock();
++        try
++        {
++            if (!_locations.TryGetValue(item, out Box<TCoordinate> bounds)) return false;
++            if (!_tree.Remove(bounds, item))
++                throw new InvalidOperationException("The location map and tree disagree.");
++            _locations.Remove(item);
++            return true;
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Appends intersecting values to <paramref name="results"/> and returns the number appended.</summary>
++    /// <remarks>Each concurrent search must use a separate result list.</remarks>
++    public int Search(Box<TCoordinate> bounds, List<T> results)
++    {
++        _lock.EnterReadLock();
++        try { return _tree.Search(bounds, results); }
++        finally { _lock.ExitReadLock(); }
++    }
++
++    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
++    /// <returns>The total number of matches appended across all queries.</returns>
++    /// <remarks>
++    /// Results must have one non-null list per query; counts must have at least one slot per query.
++    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
++    /// The whole batch holds one read lock, so writers wait until the batch completes.
++    /// </remarks>
++    public long SearchBatch(ReadOnlySpan<Box<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
++    {
++        _lock.EnterReadLock();
++        try { return _tree.SearchBatch(queries, results, counts); }
++        finally { _lock.ExitReadLock(); }
++    }
++
++    /// <summary>Returns intersecting values in a new list.</summary>
++    public List<T> Search(Box<TCoordinate> bounds)
++    {
++        _lock.EnterReadLock();
++        try { return _tree.Search(bounds); }
++        finally { _lock.ExitReadLock(); }
++    }
++
++    /// <summary>Removes all indexed values.</summary>
++    public void Clear()
++    {
++        _lock.EnterWriteLock();
++        try
++        {
++            _tree.Clear();
++            _locations.Clear();
++        }
++        finally { _lock.ExitWriteLock(); }
++    }
++
++    /// <summary>Releases the synchronization object after callers have stopped using this index.</summary>
++    public void Dispose() => _lock.Dispose();
++}
+--- /dev/null
++++ b/src/Tedd.RTree/IReadOnlySpatialIndex.cs
+@@ -0,0 +1,34 @@
++namespace Tedd.RTree;
++
++/// <summary>Read operations shared by mutable, immutable and synchronized spatial indexes.</summary>
++/// <remarks>Read-only access does not imply that the underlying index is immutable or safe for concurrent mutation.</remarks>
++public interface IReadOnlySpatialIndex<TBounds, T> where TBounds : struct
++{
++    /// <summary>Number of indexed items.</summary>
++    int Count { get; }
++
++    /// <summary>Appends intersecting items and returns the number appended.</summary>
++    int Search(TBounds bounds, List<T> results);
++
++    /// <summary>Returns a new list containing intersecting items.</summary>
++    List<T> Search(TBounds bounds);
++
++    /// <summary>Appends each query's matches to its result list and writes the appended counts.</summary>
++    long SearchBatch(ReadOnlySpan<TBounds> queries, ReadOnlySpan<List<T>> results, Span<int> counts);
++}
++
++/// <summary>A spatial index supporting individual changes in addition to the shared read operations.</summary>
++public interface IMutableSpatialIndex<TBounds, T> : IReadOnlySpatialIndex<TBounds, T> where TBounds : struct
++{
++    /// <summary>Inserts an item; duplicate values and bounds are permitted.</summary>
++    void Insert(TBounds bounds, T item);
++
++    /// <summary>Removes one entry matching both bounds and value.</summary>
++    bool Remove(TBounds bounds, T item);
++
++    /// <summary>Moves one matching entry to new bounds.</summary>
++    bool Update(TBounds oldBounds, T item, TBounds newBounds);
++
++    /// <summary>Removes all indexed items.</summary>
++    void Clear();
++}
+--- a/src/Tedd.RTree/RTree.cs
++++ b/src/Tedd.RTree/RTree.cs
+@@ -2,7 +2,7 @@
+ 
+ /// <summary>A mutable two-dimensional R-tree with incremental updates and packed bulk loading.</summary>
+ /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
+-public sealed class RTree<T>
++public sealed class RTree<T> : IMutableSpatialIndex<Rectangle, T>
+ {
+     private sealed class Node(bool leaf, int capacity)
+     {
+--- a/src/Tedd.RTree/RTree2D.Generic.cs
++++ b/src/Tedd.RTree/RTree2D.Generic.cs
+@@ -5,7 +5,7 @@
+ 
+ /// <summary>A mutable two-dimensional R-tree with incremental updates and packed bulk loading.</summary>
+ /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
+-public sealed class RTree2D<TCoordinate, T>
++public sealed class RTree2D<TCoordinate, T> : IMutableSpatialIndex<Rectangle2D<TCoordinate>, T>
+     where TCoordinate : struct, INumber<TCoordinate>
+ {
+     private sealed class Node(bool leaf, int capacity)
+--- a/src/Tedd.RTree/RTree3D.Generic.cs
++++ b/src/Tedd.RTree/RTree3D.Generic.cs
+@@ -5,7 +5,7 @@
+ 
+ /// <summary>A mutable three-dimensional R-tree with incremental updates and packed bulk loading.</summary>
+ /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
+-public sealed class RTree3D<TCoordinate, T>
++public sealed class RTree3D<TCoordinate, T> : IMutableSpatialIndex<Box<TCoordinate>, T>
+     where TCoordinate : struct, INumber<TCoordinate>
+ {
+     private sealed class Node(bool leaf, int capacity)
+--- a/src/Tedd.RTree/SnapshotRTree.cs
++++ b/src/Tedd.RTree/SnapshotRTree.cs
+@@ -8,7 +8,7 @@
+ /// The previous tree may remain alive while a search is using it. Concurrent replacements
+ /// are serialized; the last completed replacement becomes current.
+ /// </remarks>
+-public sealed class SnapshotRTree<T>
++public sealed class SnapshotRTree<T> : IReadOnlySpatialIndex<Rectangle, T>
+ {
+     private readonly int _maxEntries;
+     private readonly Lock _writer = new();
+--- a/src/Tedd.RTree/SnapshotRTree2D.Generic.cs
++++ b/src/Tedd.RTree/SnapshotRTree2D.Generic.cs
+@@ -1,62 +1,62 @@
+-using System.Threading;
+-
+-namespace Tedd.RTree;
+-
+-/// <summary>A thread-safe R-tree for replacing a complete batch of moving entries.</summary>
+-/// <remarks>
+-/// Searches use one complete published tree and do not wait for a replacement build.
+-/// The previous tree may remain alive while a search is using it. Concurrent replacements
+-/// are serialized; the last completed replacement becomes current.
+-/// </remarks>
+-public sealed class SnapshotRTree2D<TCoordinate, T>
+-    where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+-{
+-    private readonly int _maxEntries;
+-    private readonly Lock _writer = new();
+-    private readonly BulkLoadWorkspace _workspace = new();
+-    private RTree2D<TCoordinate, T> _current;
+-
+-    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
+-    public SnapshotRTree2D(int maxEntries = 16)
+-    {
+-        _current = new RTree2D<TCoordinate, T>(maxEntries);
+-        _maxEntries = maxEntries;
+-    }
+-
+-    /// <summary>Number of entries in the current published tree.</summary>
+-    public int Count => Volatile.Read(ref _current).Count;
+-
+-    /// <summary>
+-    /// Builds and publishes a complete replacement. The input must not be changed while this method runs.
+-    /// Searches already in progress continue on the previous version.
+-    /// </summary>
+-    public void ReplaceAll(IReadOnlyList<SpatialEntry2D<TCoordinate, T>> items)
+-    {
+-        ArgumentNullException.ThrowIfNull(items);
+-        lock (_writer)
+-        {
+-            RTree2D<TCoordinate, T> next = new(_maxEntries);
+-            next.BulkLoad(items, _workspace);
+-            Volatile.Write(ref _current, next);
+-        }
+-    }
+-
+-    /// <summary>Appends intersecting items from one published version to <paramref name="results"/>.</summary>
+-    /// <remarks>Each concurrent search must use a separate result list.</remarks>
+-    public int Search(Rectangle2D<TCoordinate> bounds, List<T> results)
+-        => Volatile.Read(ref _current).Search(bounds, results);
+-
+-    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+-    /// <returns>The total number of matches appended across all queries.</returns>
+-    /// <remarks>
+-    /// Results must have one non-null list per query; counts must have at least one slot per query.
+-    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
+-    /// All queries use one published version, including during concurrent replacements.
+-    /// </remarks>
+-    public long SearchBatch(ReadOnlySpan<Rectangle2D<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
+-        => Volatile.Read(ref _current).SearchBatch(queries, results, counts);
+-
+-    /// <summary>Returns intersecting items from one published version in a new list.</summary>
+-    public List<T> Search(Rectangle2D<TCoordinate> bounds)
+-        => Volatile.Read(ref _current).Search(bounds);
+-}
++using System.Threading;
++
++namespace Tedd.RTree;
++
++/// <summary>A thread-safe R-tree for replacing a complete batch of moving entries.</summary>
++/// <remarks>
++/// Searches use one complete published tree and do not wait for a replacement build.
++/// The previous tree may remain alive while a search is using it. Concurrent replacements
++/// are serialized; the last completed replacement becomes current.
++/// </remarks>
++public sealed class SnapshotRTree2D<TCoordinate, T> : IReadOnlySpatialIndex<Rectangle2D<TCoordinate>, T>
++    where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
++{
++    private readonly int _maxEntries;
++    private readonly Lock _writer = new();
++    private readonly BulkLoadWorkspace _workspace = new();
++    private RTree2D<TCoordinate, T> _current;
++
++    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
++    public SnapshotRTree2D(int maxEntries = 16)
++    {
++        _current = new RTree2D<TCoordinate, T>(maxEntries);
++        _maxEntries = maxEntries;
++    }
++
++    /// <summary>Number of entries in the current published tree.</summary>
++    public int Count => Volatile.Read(ref _current).Count;
++
++    /// <summary>
++    /// Builds and publishes a complete replacement. The input must not be changed while this method runs.
++    /// Searches already in progress continue on the previous version.
++    /// </summary>
++    public void ReplaceAll(IReadOnlyList<SpatialEntry2D<TCoordinate, T>> items)
++    {
++        ArgumentNullException.ThrowIfNull(items);
++        lock (_writer)
++        {
++            RTree2D<TCoordinate, T> next = new(_maxEntries);
++            next.BulkLoad(items, _workspace);
++            Volatile.Write(ref _current, next);
++        }
++    }
++
++    /// <summary>Appends intersecting items from one published version to <paramref name="results"/>.</summary>
++    /// <remarks>Each concurrent search must use a separate result list.</remarks>
++    public int Search(Rectangle2D<TCoordinate> bounds, List<T> results)
++        => Volatile.Read(ref _current).Search(bounds, results);
++
++    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
++    /// <returns>The total number of matches appended across all queries.</returns>
++    /// <remarks>
++    /// Results must have one non-null list per query; counts must have at least one slot per query.
++    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
++    /// All queries use one published version, including during concurrent replacements.
++    /// </remarks>
++    public long SearchBatch(ReadOnlySpan<Rectangle2D<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
++        => Volatile.Read(ref _current).SearchBatch(queries, results, counts);
++
++    /// <summary>Returns intersecting items from one published version in a new list.</summary>
++    public List<T> Search(Rectangle2D<TCoordinate> bounds)
++        => Volatile.Read(ref _current).Search(bounds);
++}
+--- a/src/Tedd.RTree/SnapshotRTree3D.Generic.cs
++++ b/src/Tedd.RTree/SnapshotRTree3D.Generic.cs
+@@ -1,62 +1,62 @@
+-using System.Threading;
+-
+-namespace Tedd.RTree;
+-
+-/// <summary>A thread-safe R-tree for replacing a complete batch of moving entries.</summary>
+-/// <remarks>
+-/// Searches use one complete published tree and do not wait for a replacement build.
+-/// The previous tree may remain alive while a search is using it. Concurrent replacements
+-/// are serialized; the last completed replacement becomes current.
+-/// </remarks>
+-public sealed class SnapshotRTree3D<TCoordinate, T>
+-    where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+-{
+-    private readonly int _maxEntries;
+-    private readonly Lock _writer = new();
+-    private readonly BulkLoadWorkspace _workspace = new();
+-    private RTree3D<TCoordinate, T> _current;
+-
+-    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
+-    public SnapshotRTree3D(int maxEntries = 16)
+-    {
+-        _current = new RTree3D<TCoordinate, T>(maxEntries);
+-        _maxEntries = maxEntries;
+-    }
+-
+-    /// <summary>Number of entries in the current published tree.</summary>
+-    public int Count => Volatile.Read(ref _current).Count;
+-
+-    /// <summary>
+-    /// Builds and publishes a complete replacement. The input must not be changed while this method runs.
+-    /// Searches already in progress continue on the previous version.
+-    /// </summary>
+-    public void ReplaceAll(IReadOnlyList<SpatialEntry3D<TCoordinate, T>> items)
+-    {
+-        ArgumentNullException.ThrowIfNull(items);
+-        lock (_writer)
+-        {
+-            RTree3D<TCoordinate, T> next = new(_maxEntries);
+-            next.BulkLoad(items, _workspace);
+-            Volatile.Write(ref _current, next);
+-        }
+-    }
+-
+-    /// <summary>Appends intersecting items from one published version to <paramref name="results"/>.</summary>
+-    /// <remarks>Each concurrent search must use a separate result list.</remarks>
+-    public int Search(Box<TCoordinate> bounds, List<T> results)
+-        => Volatile.Read(ref _current).Search(bounds, results);
+-
+-    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
+-    /// <returns>The total number of matches appended across all queries.</returns>
+-    /// <remarks>
+-    /// Results must have one non-null list per query; counts must have at least one slot per query.
+-    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
+-    /// All queries use one published version, including during concurrent replacements.
+-    /// </remarks>
+-    public long SearchBatch(ReadOnlySpan<Box<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
+-        => Volatile.Read(ref _current).SearchBatch(queries, results, counts);
+-
+-    /// <summary>Returns intersecting items from one published version in a new list.</summary>
+-    public List<T> Search(Box<TCoordinate> bounds)
+-        => Volatile.Read(ref _current).Search(bounds);
+-}
++using System.Threading;
++
++namespace Tedd.RTree;
++
++/// <summary>A thread-safe R-tree for replacing a complete batch of moving entries.</summary>
++/// <remarks>
++/// Searches use one complete published tree and do not wait for a replacement build.
++/// The previous tree may remain alive while a search is using it. Concurrent replacements
++/// are serialized; the last completed replacement becomes current.
++/// </remarks>
++public sealed class SnapshotRTree3D<TCoordinate, T> : IReadOnlySpatialIndex<Box<TCoordinate>, T>
++    where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
++{
++    private readonly int _maxEntries;
++    private readonly Lock _writer = new();
++    private readonly BulkLoadWorkspace _workspace = new();
++    private RTree3D<TCoordinate, T> _current;
++
++    /// <param name="maxEntries">Maximum entries per node, from 4 to 128.</param>
++    public SnapshotRTree3D(int maxEntries = 16)
++    {
++        _current = new RTree3D<TCoordinate, T>(maxEntries);
++        _maxEntries = maxEntries;
++    }
++
++    /// <summary>Number of entries in the current published tree.</summary>
++    public int Count => Volatile.Read(ref _current).Count;
++
++    /// <summary>
++    /// Builds and publishes a complete replacement. The input must not be changed while this method runs.
++    /// Searches already in progress continue on the previous version.
++    /// </summary>
++    public void ReplaceAll(IReadOnlyList<SpatialEntry3D<TCoordinate, T>> items)
++    {
++        ArgumentNullException.ThrowIfNull(items);
++        lock (_writer)
++        {
++            RTree3D<TCoordinate, T> next = new(_maxEntries);
++            next.BulkLoad(items, _workspace);
++            Volatile.Write(ref _current, next);
++        }
++    }
++
++    /// <summary>Appends intersecting items from one published version to <paramref name="results"/>.</summary>
++    /// <remarks>Each concurrent search must use a separate result list.</remarks>
++    public int Search(Box<TCoordinate> bounds, List<T> results)
++        => Volatile.Read(ref _current).Search(bounds, results);
++
++    /// <summary>Appends matches for each query to its result list and writes the appended counts.</summary>
++    /// <returns>The total number of matches appended across all queries.</returns>
++    /// <remarks>
++    /// Results must have one non-null list per query; counts must have at least one slot per query.
++    /// Existing list contents are preserved. Inputs and output storage must not be changed concurrently.
++    /// All queries use one published version, including during concurrent replacements.
++    /// </remarks>
++    public long SearchBatch(ReadOnlySpan<Box<TCoordinate>> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
++        => Volatile.Read(ref _current).SearchBatch(queries, results, counts);
++
++    /// <summary>Returns intersecting items from one published version in a new list.</summary>
++    public List<T> Search(Box<TCoordinate> bounds)
++        => Volatile.Read(ref _current).Search(bounds);
++}
