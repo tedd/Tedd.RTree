@@ -1,0 +1,602 @@
+[
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "list",
+    "operation": "build",
+    "median_us": 21.98292236328125,
+    "min_us": 21.8751953125,
+    "max_us": 22.511877441406252,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "list",
+    "operation": "queries",
+    "median_us": 15.45679473876953,
+    "min_us": 15.428620147705077,
+    "max_us": 15.47860336303711,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "simd",
+    "operation": "build",
+    "median_us": 22.0815185546875,
+    "min_us": 22.02322998046875,
+    "max_us": 22.15404052734375,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "simd",
+    "operation": "queries",
+    "median_us": 13.205248260498045,
+    "min_us": 13.194224548339843,
+    "max_us": 13.43123779296875,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "tuned",
+    "operation": "build",
+    "median_us": 22.05609130859375,
+    "min_us": 21.966101074218752,
+    "max_us": 24.55218505859375,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "tuned",
+    "operation": "queries",
+    "median_us": 14.563185882568359,
+    "min_us": 14.556282043457031,
+    "max_us": 17.32097473144531,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "tuned-simd",
+    "operation": "build",
+    "median_us": 21.82108154296875,
+    "min_us": 21.666394042968747,
+    "max_us": 88.22834472656251,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "tuned-simd",
+    "operation": "queries",
+    "median_us": 12.355976104736328,
+    "min_us": 12.218315124511719,
+    "max_us": 12.360235595703125,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 16.906640624999998,
+    "min_us": 16.811328125,
+    "max_us": 20.63829345703125,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 11.836133193969728,
+    "min_us": 11.671358489990235,
+    "max_us": 11.87840919494629,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "list",
+    "operation": "build",
+    "median_us": 22.10079345703125,
+    "min_us": 22.08402099609375,
+    "max_us": 22.833544921875,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "list",
+    "operation": "queries",
+    "median_us": 9.074357414245604,
+    "min_us": 9.021050453186035,
+    "max_us": 9.11099853515625,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "simd",
+    "operation": "build",
+    "median_us": 21.2424560546875,
+    "min_us": 21.055273437500002,
+    "max_us": 22.236962890625,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "simd",
+    "operation": "queries",
+    "median_us": 6.149018096923828,
+    "min_us": 6.129772758483886,
+    "max_us": 6.174572372436523,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "tuned",
+    "operation": "build",
+    "median_us": 21.571154785156253,
+    "min_us": 21.085913085937502,
+    "max_us": 27.2532470703125,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "tuned",
+    "operation": "queries",
+    "median_us": 8.994257736206055,
+    "min_us": 8.884078788757325,
+    "max_us": 9.466592407226562,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "tuned-simd",
+    "operation": "build",
+    "median_us": 21.58250732421875,
+    "min_us": 21.40390625,
+    "max_us": 22.31400146484375,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "tuned-simd",
+    "operation": "queries",
+    "median_us": 5.995960235595703,
+    "min_us": 5.992351722717285,
+    "max_us": 6.003226852416993,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 20.264990234375,
+    "min_us": 20.18369140625,
+    "max_us": 21.942907714843752,
+    "count": 3
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 10.53802137374878,
+    "min_us": 10.476559734344482,
+    "max_us": 10.566868591308594,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "list",
+    "operation": "build",
+    "median_us": 465.75117187499995,
+    "min_us": 385.95234374999995,
+    "max_us": 553.0945312499999,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "list",
+    "operation": "queries",
+    "median_us": 70.22288055419922,
+    "min_us": 70.01715240478515,
+    "max_us": 71.06468200683594,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "simd",
+    "operation": "build",
+    "median_us": 510.1671875,
+    "min_us": 449.59296875,
+    "max_us": 667.869921875,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "simd",
+    "operation": "queries",
+    "median_us": 51.68661041259766,
+    "min_us": 51.61776580810547,
+    "max_us": 52.061126708984375,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "tuned",
+    "operation": "build",
+    "median_us": 430.466796875,
+    "min_us": 386.690625,
+    "max_us": 439.768359375,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "tuned",
+    "operation": "queries",
+    "median_us": 63.16830596923828,
+    "min_us": 62.581101989746095,
+    "max_us": 63.86589050292969,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "tuned-simd",
+    "operation": "build",
+    "median_us": 441.131640625,
+    "min_us": 381.487890625,
+    "max_us": 460.52265625,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "tuned-simd",
+    "operation": "queries",
+    "median_us": 44.60693511962891,
+    "min_us": 44.142633056640626,
+    "max_us": 44.639794921875,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 650.869140625,
+    "min_us": 643.1476562500001,
+    "max_us": 654.43984375,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 79.7174072265625,
+    "min_us": 79.63255157470704,
+    "max_us": 261.0968994140625,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "list",
+    "operation": "build",
+    "median_us": 423.563671875,
+    "min_us": 375.8046875,
+    "max_us": 443.80078125,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "list",
+    "operation": "queries",
+    "median_us": 38.38236351013184,
+    "min_us": 38.270226669311526,
+    "max_us": 38.6531623840332,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "simd",
+    "operation": "build",
+    "median_us": 370.54765625000005,
+    "min_us": 359.07109375,
+    "max_us": 428.01289062499995,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "simd",
+    "operation": "queries",
+    "median_us": 19.76415138244629,
+    "min_us": 19.72413024902344,
+    "max_us": 19.831813430786134,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "tuned",
+    "operation": "build",
+    "median_us": 422.576953125,
+    "min_us": 365.61640625,
+    "max_us": 492.6375,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "tuned",
+    "operation": "queries",
+    "median_us": 37.22883262634277,
+    "min_us": 37.17427406311035,
+    "max_us": 37.34925994873047,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "tuned-simd",
+    "operation": "build",
+    "median_us": 410.79375,
+    "min_us": 408.38671875,
+    "max_us": 413.8171875,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "tuned-simd",
+    "operation": "queries",
+    "median_us": 18.308744430541992,
+    "min_us": 18.14709930419922,
+    "max_us": 18.606320190429688,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 570.883203125,
+    "min_us": 569.9562500000001,
+    "max_us": 583.791015625,
+    "count": 3
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 66.61776390075684,
+    "min_us": 66.49038181304931,
+    "max_us": 68.14727191925049,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "list",
+    "operation": "build",
+    "median_us": 3126.0,
+    "min_us": 3087.128125,
+    "max_us": 3530.4156249999996,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "list",
+    "operation": "queries",
+    "median_us": 613.8335250854492,
+    "min_us": 610.2966567993165,
+    "max_us": 618.5894973754883,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "simd",
+    "operation": "build",
+    "median_us": 3116.1281249999997,
+    "min_us": 3068.16875,
+    "max_us": 3175.828125,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "simd",
+    "operation": "queries",
+    "median_us": 359.78255767822264,
+    "min_us": 357.017839050293,
+    "max_us": 361.91249389648436,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "tuned",
+    "operation": "build",
+    "median_us": 3200.478125,
+    "min_us": 2967.26875,
+    "max_us": 3322.65,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "tuned",
+    "operation": "queries",
+    "median_us": 580.0735580444336,
+    "min_us": 567.6115783691406,
+    "max_us": 653.6941177368165,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "tuned-simd",
+    "operation": "build",
+    "median_us": 3093.1593749999997,
+    "min_us": 3086.3187500000004,
+    "max_us": 3138.8625,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "tuned-simd",
+    "operation": "queries",
+    "median_us": 311.2417419433594,
+    "min_us": 307.3022705078125,
+    "max_us": 340.659602355957,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 7817.843749999999,
+    "min_us": 7674.337500000001,
+    "max_us": 7835.275,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 1231.706118774414,
+    "min_us": 1224.5856231689452,
+    "max_us": 1236.6681457519533,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "list",
+    "operation": "build",
+    "median_us": 3140.0765625,
+    "min_us": 3058.4718749999997,
+    "max_us": 3369.13125,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "list",
+    "operation": "queries",
+    "median_us": 476.51129722595215,
+    "min_us": 473.59973602294923,
+    "max_us": 481.38104858398435,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "simd",
+    "operation": "build",
+    "median_us": 3156.6531250000003,
+    "min_us": 3038.99375,
+    "max_us": 3377.96875,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "simd",
+    "operation": "queries",
+    "median_us": 197.93786964416503,
+    "min_us": 197.91618232727052,
+    "max_us": 198.98044586181643,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "tuned",
+    "operation": "build",
+    "median_us": 3102.96875,
+    "min_us": 3068.671875,
+    "max_us": 3106.7296875,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "tuned",
+    "operation": "queries",
+    "median_us": 465.56715507507323,
+    "min_us": 464.2801483154297,
+    "max_us": 480.10031929016117,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "tuned-simd",
+    "operation": "build",
+    "median_us": 3262.4187500000003,
+    "min_us": 3055.5234375,
+    "max_us": 3383.534375,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "tuned-simd",
+    "operation": "queries",
+    "median_us": 185.21082611083983,
+    "min_us": 183.48188896179198,
+    "max_us": 187.50891304016113,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 6814.1125,
+    "min_us": 6744.7625,
+    "max_us": 6826.662499999999,
+    "count": 3
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 1282.0629171371459,
+    "min_us": 1280.5758890151976,
+    "max_us": 1282.7351476669312,
+    "count": 3
+  }
+]

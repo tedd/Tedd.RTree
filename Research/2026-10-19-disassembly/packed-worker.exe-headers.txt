@@ -1,0 +1,202 @@
+
+D:\Workspaces\AI\rtree-disassembly-20261019\retained\native\target\release\packed-worker.exe:	file format coff-x86-64
+Characteristics 0x22
+	executable
+	large address aware
+
+Time/Date               Sun Oct 18 20:05:33 2026
+Magic                   020b	(PE32+)
+MajorLinkerVersion      14
+MinorLinkerVersion      52
+SizeOfCode              000000000002c600
+SizeOfInitializedData   0000000000010200
+SizeOfUninitializedData 0000000000000000
+AddressOfEntryPoint     000000000002b2c0
+BaseOfCode              0000000000001000
+ImageBase               0000000140000000
+SectionAlignment        00001000
+FileAlignment           00000200
+MajorOSystemVersion     6
+MinorOSystemVersion     0
+MajorImageVersion       0
+MinorImageVersion       0
+MajorSubsystemVersion   6
+MinorSubsystemVersion   0
+Win32Version            00000000
+SizeOfImage             00041000
+SizeOfHeaders           00000400
+CheckSum                00000000
+Subsystem               00000003	(Windows CUI)
+DllCharacteristics      00008160
+					HIGH_ENTROPY_VA
+					DYNAMIC_BASE
+					NX_COMPAT
+					TERMINAL_SERVER_AWARE
+SizeOfStackReserve      0000000000100000
+SizeOfStackCommit       0000000000001000
+SizeOfHeapReserve       0000000000100000
+SizeOfHeapCommit        0000000000001000
+LoaderFlags             00000000
+NumberOfRvaAndSizes     00000010
+
+The Data Directory
+Entry 0 0000000000000000 00000000 Export Directory [.edata (or where ever we found it)]
+Entry 1 000000000003b56c 000000c8 Import Directory [parts of .idata]
+Entry 2 0000000000000000 00000000 Resource Directory [.rsrc]
+Entry 3 000000000003e000 00001410 Exception Directory [.pdata]
+Entry 4 0000000000000000 00000000 Security Directory
+Entry 5 0000000000040000 00000430 Base Relocation Directory [.reloc]
+Entry 6 0000000000038410 00000054 Debug Directory
+Entry 7 0000000000000000 00000000 Description Directory
+Entry 8 0000000000000000 00000000 Special Directory
+Entry 9 0000000000038480 00000028 Thread Storage Directory [.tls]
+Entry a 00000000000382d0 00000140 Load Configuration Directory
+Entry b 0000000000000000 00000000 Bound Import Directory
+Entry c 000000000002e000 000002e8 Import Address Table Directory
+Entry d 0000000000000000 00000000 Delay Import Directory
+Entry e 0000000000000000 00000000 CLR Runtime Header
+Entry f 0000000000000000 00000000 Reserved
+TLS directory:
+  StartAddressOfRawData: 0x000001400388c8
+  EndAddressOfRawData: 0x00000140038920
+  AddressOfIndex: 0x0000014003d220
+  AddressOfCallBacks: 0x0000014002e360
+  SizeOfZeroFill: 0
+  Characteristics: 4194304
+  Alignment: 8
+
+
+The Import Tables:
+  lookup 0003b808 time 00000000 fwd 00000000 name 0003b96a addr 0002e1c0
+
+    DLL Name: api-ms-win-core-synch-l1-2-0.dll
+    Hint/Ord  Name
+           0  WakeByAddressAll
+           0  WakeByAddressSingle
+           0  WaitOnAddress
+
+  lookup 0003b648 time 00000000 fwd 00000000 name 0003bcda addr 0002e000
+
+    DLL Name: KERNEL32.dll
+    Hint/Ord  Name
+         952  IsProcessorFeaturePresent
+         794  GetSystemTimeAsFileTime
+         922  InitializeSListHead
+         740  GetProcessHeap
+         896  HeapFree
+         899  HeapReAlloc
+        1678  lstrlenW
+         577  GetCurrentProcess
+         733  GetProcAddress
+        1612  WideCharToMultiByte
+        1574  WaitForSingleObjectEx
+        1012  LoadLibraryA
+         578  GetCurrentProcessId
+         243  CreateMutexA
+         157  CloseHandle
+        1254  ReleaseMutex
+        1400  SetLastError
+         645  GetFullPathNameW
+         653  GetLastError
+         230  CreateFileW
+         626  GetFileInformationByHandle
+         627  GetFileInformationByHandleEx
+        1573  WaitForSingleObject
+          20  AddVectoredExceptionHandler
+        1451  SetThreadStackGuarantee
+         581  GetCurrentThread
+         570  GetCurrentDirectoryW
+         612  GetEnvironmentVariableW
+         512  GetCommandLineW
+         673  GetModuleFileNameW
+         674  GetModuleHandleA
+         677  GetModuleHandleW
+         464  FormatMessageW
+        1154  QueryPerformanceFrequency
+         892  HeapAlloc
+        1059  MultiByteToWideChar
+        1631  WriteConsoleW
+         771  GetStdHandle
+         549  GetConsoleMode
+         553  GetConsoleOutputCP
+        1153  QueryPerformanceCounter
+         582  GetCurrentThreadId
+        1289  RtlCaptureContext
+        1297  RtlLookupFunctionEntry
+        1304  RtlVirtualUnwind
+        1464  SetUnhandledExceptionFilter
+
+  lookup 0003b910 time 00000000 fwd 00000000 name 0003bd1c addr 0002e2c8
+
+    DLL Name: ntdll.dll
+    Hint/Ord  Name
+         536  NtReadFile
+        1324  RtlNtStatusToDosError
+         679  NtWriteFile
+
+  lookup 0003b7c0 time 00000000 fwd 00000000 name 0003bdb0 addr 0002e178
+
+    DLL Name: VCRUNTIME140.dll
+    Hint/Ord  Name
+          28  __current_exception_context
+          27  __current_exception
+          60  memcpy
+          14  __CxxFrameHandler3
+          62  memset
+          59  memcmp
+          61  memmove
+           8  __C_specific_handler
+
+  lookup 0003b860 time 00000000 fwd 00000000 name 0003bf7c addr 0002e218
+
+    DLL Name: api-ms-win-crt-runtime-l1-1-0.dll
+    Hint/Ord  Name
+          85  exit
+          35  _exit
+          55  _initterm_e
+           4  __p___argc
+           5  __p___argv
+          22  _cexit
+          21  _c_exit
+          61  _register_thread_local_exe_atexit_callback
+          54  _initterm
+          24  _configure_narrow_argv
+          64  _seh_filter_exe
+          52  _initialize_onexit_table
+          60  _register_onexit_function
+          30  _crt_atexit
+         103  terminate
+          51  _initialize_narrow_environment
+          66  _set_app_type
+          40  _get_initial_narrow_environment
+
+  lookup 0003b850 time 00000000 fwd 00000000 name 0003bf9e addr 0002e208
+
+    DLL Name: api-ms-win-crt-math-l1-1-0.dll
+    Hint/Ord  Name
+           9  __setusermatherr
+
+  lookup 0003b8f8 time 00000000 fwd 00000000 name 0003bfbe addr 0002e2b0
+
+    DLL Name: api-ms-win-crt-stdio-l1-1-0.dll
+    Hint/Ord  Name
+           1  __p__commode
+          84  _set_fmode
+
+  lookup 0003b840 time 00000000 fwd 00000000 name 0003bfde addr 0002e1f8
+
+    DLL Name: api-ms-win-crt-locale-l1-1-0.dll
+    Hint/Ord  Name
+           8  _configthreadlocale
+
+  lookup 0003b828 time 00000000 fwd 00000000 name 0003c000 addr 0002e1e0
+
+    DLL Name: api-ms-win-crt-heap-l1-1-0.dll
+    Hint/Ord  Name
+          24  free
+          22  _set_new_mode
+
+
+SYMBOL TABLE:
+
+STDERR:

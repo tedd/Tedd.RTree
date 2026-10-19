@@ -1,0 +1,160 @@
+
+D:\Workspaces\AI\rtree-disassembly-20261019\retained\native\target\release\packed_native.dll:	file format coff-x86-64
+Characteristics 0x2022
+	executable
+	large address aware
+	DLL
+
+Time/Date               Sun Oct 18 20:05:31 2026
+Magic                   020b	(PE32+)
+MajorLinkerVersion      14
+MinorLinkerVersion      52
+SizeOfCode              000000000001da00
+SizeOfInitializedData   0000000000008400
+SizeOfUninitializedData 0000000000000000
+AddressOfEntryPoint     000000000001ca30
+BaseOfCode              0000000000001000
+ImageBase               0000000180000000
+SectionAlignment        00001000
+FileAlignment           00000200
+MajorOSystemVersion     6
+MinorOSystemVersion     0
+MajorImageVersion       0
+MinorImageVersion       0
+MajorSubsystemVersion   6
+MinorSubsystemVersion   0
+Win32Version            00000000
+SizeOfImage             00029000
+SizeOfHeaders           00000400
+CheckSum                00000000
+Subsystem               00000002	(Windows GUI)
+DllCharacteristics      00000160
+					HIGH_ENTROPY_VA
+					DYNAMIC_BASE
+					NX_COMPAT
+SizeOfStackReserve      0000000000100000
+SizeOfStackCommit       0000000000001000
+SizeOfHeapReserve       0000000000100000
+SizeOfHeapCommit        0000000000001000
+LoaderFlags             00000000
+NumberOfRvaAndSizes     00000010
+
+The Data Directory
+Entry 0 0000000000025430 000000b4 Export Directory [.edata (or where ever we found it)]
+Entry 1 00000000000254e4 00000078 Import Directory [parts of .idata]
+Entry 2 0000000000000000 00000000 Resource Directory [.rsrc]
+Entry 3 0000000000027000 00000e70 Exception Directory [.pdata]
+Entry 4 0000000000000000 00000000 Security Directory
+Entry 5 0000000000028000 00000290 Base Relocation Directory [.reloc]
+Entry 6 0000000000023640 00000054 Debug Directory
+Entry 7 0000000000000000 00000000 Description Directory
+Entry 8 0000000000000000 00000000 Special Directory
+Entry 9 0000000000023700 00000028 Thread Storage Directory [.tls]
+Entry a 0000000000023500 00000140 Load Configuration Directory
+Entry b 0000000000000000 00000000 Bound Import Directory
+Entry c 000000000001f000 000001d0 Import Address Table Directory
+Entry d 0000000000000000 00000000 Delay Import Directory
+Entry e 0000000000000000 00000000 CLR Runtime Header
+Entry f 0000000000000000 00000000 Reserved
+TLS directory:
+  StartAddressOfRawData: 0x00000180023a80
+  EndAddressOfRawData: 0x00000180023ad8
+  AddressOfIndex: 0x00000180026174
+  AddressOfCallBacks: 0x0000018001f230
+  SizeOfZeroFill: 0
+  Characteristics: 4194304
+  Alignment: 8
+
+
+The Import Tables:
+  lookup 000256d8 time 00000000 fwd 00000000 name 00025792 addr 0001f150
+
+    DLL Name: api-ms-win-core-synch-l1-2-0.dll
+    Hint/Ord  Name
+           0  WaitOnAddress
+           0  WakeByAddressAll
+           0  WakeByAddressSingle
+
+  lookup 00025588 time 00000000 fwd 00000000 name 000259d8 addr 0001f000
+
+    DLL Name: KERNEL32.dll
+    Hint/Ord  Name
+         922  InitializeSListHead
+         322  DisableThreadLibraryCalls
+         794  GetSystemTimeAsFileTime
+         740  GetProcessHeap
+         896  HeapFree
+         899  HeapReAlloc
+         157  CloseHandle
+        1678  lstrlenW
+         577  GetCurrentProcess
+         733  GetProcAddress
+        1612  WideCharToMultiByte
+        1574  WaitForSingleObjectEx
+        1012  LoadLibraryA
+         578  GetCurrentProcessId
+         243  CreateMutexA
+        1254  ReleaseMutex
+         653  GetLastError
+        1573  WaitForSingleObject
+        1400  SetLastError
+         570  GetCurrentDirectoryW
+         612  GetEnvironmentVariableW
+         549  GetConsoleMode
+         892  HeapAlloc
+        1059  MultiByteToWideChar
+        1631  WriteConsoleW
+         771  GetStdHandle
+         553  GetConsoleOutputCP
+         952  IsProcessorFeaturePresent
+        1153  QueryPerformanceCounter
+         582  GetCurrentThreadId
+        1289  RtlCaptureContext
+        1297  RtlLookupFunctionEntry
+        1304  RtlVirtualUnwind
+
+  lookup 00025740 time 00000000 fwd 00000000 name 00025a0c addr 0001f1b8
+
+    DLL Name: ntdll.dll
+    Hint/Ord  Name
+        1324  RtlNtStatusToDosError
+         679  NtWriteFile
+
+  lookup 00025698 time 00000000 fwd 00000000 name 00025a8c addr 0001f110
+
+    DLL Name: VCRUNTIME140.dll
+    Hint/Ord  Name
+           8  __C_specific_handler
+          59  memcmp
+          61  memmove
+          37  __std_type_info_destroy_list
+          60  memcpy
+          62  memset
+          14  __CxxFrameHandler3
+
+  lookup 000256f8 time 00000000 fwd 00000000 name 00025b44 addr 0001f170
+
+    DLL Name: api-ms-win-crt-runtime-l1-1-0.dll
+    Hint/Ord  Name
+          54  _initterm
+          55  _initterm_e
+          63  _seh_filter_dll
+          24  _configure_narrow_argv
+          51  _initialize_narrow_environment
+          52  _initialize_onexit_table
+          34  _execute_onexit_table
+          22  _cexit
+
+Export Table:
+ DLL name: packed_native.dll
+ Ordinal base: 1
+ Ordinal      RVA  Name
+       1   0xaae0  index_create
+       2   0xab70  index_destroy
+       3   0xac50  index_query
+       4   0xac50  index_query_leaf
+       5   0xac60  index_result
+
+SYMBOL TABLE:
+
+STDERR:
