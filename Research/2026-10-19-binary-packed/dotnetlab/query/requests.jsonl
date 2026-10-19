@@ -1,0 +1,27 @@
+{"tool": "lab.discover", "arguments": {"request": {"action": "workspace"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "profiles"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "targets", "limit": 100}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "scenarios", "target_id": "target-bf908a04b18c4cd3e8493533"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "capabilities", "target_id": "target-bf908a04b18c4cd3e8493533"}}}
+{"tool": "lab.discover", "arguments": {"request": {"action": "compatibility", "target_id": "target-bf908a04b18c4cd3e8493533"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "start_capture", "target_id": "target-bf908a04b18c4cd3e8493533", "expected_target_epoch": "0", "profile": "cpu-diagnostic", "duration_seconds": 5, "grant_id": "grant-38ee20048c204eee9d65de81b42217b4", "idempotency_key": "packed-c5792249e982-query-cpu-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e21b6dd0d8e94a56b463023571828e6c"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "cap-7c8efc606789430d8b89d21ca68f8e59"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "analyze_stacks", "capture_id": "cap-7c8efc606789430d8b89d21ca68f8e59", "idempotency_key": "packed-c5792249e982-query-stacks-v1"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e5c01c2d08914b2ab07662bd12cdd665"}}}
+{"tool": "lab.run", "arguments": {"request": {"action": "status", "operation_id": "op-e5c01c2d08914b2ab07662bd12cdd665"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "cap-7c8efc606789430d8b89d21ca68f8e59"}}}
+{"tool": "lab.inspect", "arguments": {"request": {"action": "record", "id": "stack-analysis-987287f2be594365bb8011f4511ec119"}}}
+{"tool": "lab.query", "arguments": {"request": {"view": "hotspots", "result_id": "stack-analysis-987287f2be594365bb8011f4511ec119", "ranking": "self", "limit": 15}}}
+{"tool": "lab.experiment", "arguments": {"request": {"action": "create_hypothesis", "mechanism": "PackedKeyEncoding vectorizes normalization and Hilbert keys; scalar recursive traversal has an explicit NoInlining boundary and contiguous contained-subtree copying.", "prediction": "Construction activity can remain in key generation and sorting; query activity can remain in traversal and consumption. Samples do not establish instruction-level causes or per-call costs.", "evidence_ids": ["cap-7c8efc606789430d8b89d21ca68f8e59", "stack-analysis-987287f2be594365bb8011f4511ec119"]}}}

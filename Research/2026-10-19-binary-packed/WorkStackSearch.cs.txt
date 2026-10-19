@@ -1,0 +1,40 @@
+    private int SearchLevel(int level, int start, int end, in Rectangle bounds, List<T> results)
+    {
+        int initialCount=results.Count;
+        // A depth-first work stack holds at most (fanout-1)*height pending siblings.
+        Span<int> stack=stackalloc int[2*(_starts.Length*(_capacity-1)+1)];
+        int depth=0;
+        while(true)
+        {
+            if(level==0)
+            {
+                for(int i=start;i<end;i++)
+                    if(_boxes[i].Intersects(bounds))results.Add(_values[i]);
+            }
+            else
+            {
+                int lowerStart=_starts[level-1],lowerEnd=_starts[level];
+                for(int i=start;i<end;i++)
+                {
+                    ref readonly Rectangle box=ref _boxes[i];
+                    if(!box.Intersects(bounds))continue;
+                    int local=i-lowerEnd;
+                    if(bounds.Contains(box))
+                    {
+                        int valueStart=local*_spans[level];
+                        results.AddRange(_values.AsSpan(valueStart,Math.Min(_spans[level],Count-valueStart)));
+                    }
+                    else
+                    {
+                        stack[depth++]=lowerStart+local*_capacity;
+                        stack[depth++]=level-1;
+                    }
+                }
+            }
+            if(depth==0)return results.Count-initialCount;
+            level=stack[--depth];start=stack[--depth];
+            int levelEnd=level+1<_starts.Length?_starts[level+1]:_boxes.Length;
+            end=start+Math.Min(_capacity,levelEnd-start);
+        }
+    }
+

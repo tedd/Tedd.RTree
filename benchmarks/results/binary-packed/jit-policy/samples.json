@@ -1,0 +1,1802 @@
+[
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "build",
+    "us": 421.9953125,
+    "repetitions": 256,
+    "allocated": 626864.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query0",
+    "us": 1.54039306640625,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query1",
+    "us": 2.0791473388671875,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query2",
+    "us": 19.802001953125,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query3",
+    "us": 53.579248046875,
+    "repetitions": 2048,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutation",
+    "us": 3278.4,
+    "repetitions": 1,
+    "allocated": 602288.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated0",
+    "us": 1.5222953796386718,
+    "repetitions": 131072,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated1",
+    "us": 2.4714508056640625,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated2",
+    "us": 24.8152099609375,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated3",
+    "us": 71.00869140625,
+    "repetitions": 2048,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "build",
+    "us": 446.109765625,
+    "repetitions": 256,
+    "allocated": 626864.15625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query0",
+    "us": 1.6233154296875,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query1",
+    "us": 2.2195159912109377,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query2",
+    "us": 21.37696533203125,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query3",
+    "us": 56.13408203125,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutation",
+    "us": 7784.2,
+    "repetitions": 1,
+    "allocated": 602288.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated0",
+    "us": 1.604681396484375,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated1",
+    "us": 2.5339279174804688,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated2",
+    "us": 25.658984375,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated3",
+    "us": 72.0986328125,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "build",
+    "us": 527.918359375,
+    "repetitions": 256,
+    "allocated": 501772.25
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query0",
+    "us": 1.85538330078125,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query1",
+    "us": 2.5791305541992187,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query2",
+    "us": 21.082666015625,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query3",
+    "us": 46.66484375,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "build",
+    "us": 353.659375,
+    "repetitions": 512,
+    "allocated": 501795.15625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query0",
+    "us": 1.7583099365234376,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query1",
+    "us": 2.280712890625,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query2",
+    "us": 19.84322509765625,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query3",
+    "us": 45.52890625,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "build",
+    "us": 351.2638671875,
+    "repetitions": 512,
+    "allocated": 501810.234375
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query0",
+    "us": 1.75718994140625,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query1",
+    "us": 2.27486572265625,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query2",
+    "us": 19.991015625,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query3",
+    "us": 45.28623046875,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "build",
+    "us": 631.865234375,
+    "repetitions": 256,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query0",
+    "us": 1.3282722473144533,
+    "repetitions": 131072,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query1",
+    "us": 1.6228439331054687,
+    "repetitions": 65536,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query2",
+    "us": 15.997045898437499,
+    "repetitions": 8192,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query3",
+    "us": 59.771826171875,
+    "repetitions": 2048,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "build",
+    "us": 629.50546875,
+    "repetitions": 256,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query0",
+    "us": 1.3329887390136719,
+    "repetitions": 131072,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query1",
+    "us": 1.6050140380859375,
+    "repetitions": 65536,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query2",
+    "us": 16.02044677734375,
+    "repetitions": 8192,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query3",
+    "us": 61.18139648437501,
+    "repetitions": 2048,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "build",
+    "us": 627.9164062499999,
+    "repetitions": 256,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query0",
+    "us": 1.3219406127929687,
+    "repetitions": 131072,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query1",
+    "us": 1.6070205688476562,
+    "repetitions": 65536,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query2",
+    "us": 16.084374999999998,
+    "repetitions": 8192,
+    "allocated": null
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query3",
+    "us": 60.497509765625004,
+    "repetitions": 2048,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "build",
+    "us": 385.216015625,
+    "repetitions": 512,
+    "allocated": 501752.625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query0",
+    "us": 1.765631103515625,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query1",
+    "us": 2.48167724609375,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query2",
+    "us": 21.78157958984375,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query3",
+    "us": 49.4841796875,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "build",
+    "us": 372.6498046875,
+    "repetitions": 512,
+    "allocated": 501757.390625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query0",
+    "us": 1.628662109375,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query1",
+    "us": 2.3346633911132812,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query2",
+    "us": 21.7552734375,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query3",
+    "us": 47.5210693359375,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "build",
+    "us": 346.510546875,
+    "repetitions": 512,
+    "allocated": 501793.515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query0",
+    "us": 1.7630096435546876,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query1",
+    "us": 2.2789901733398437,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query2",
+    "us": 19.86524658203125,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query3",
+    "us": 45.268896484375,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "build",
+    "us": 445.521484375,
+    "repetitions": 256,
+    "allocated": 626864.15625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query0",
+    "us": 1.682147216796875,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query1",
+    "us": 2.3675201416015623,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query2",
+    "us": 21.9200439453125,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query3",
+    "us": 57.133056640625,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutation",
+    "us": 7845.1,
+    "repetitions": 1,
+    "allocated": 602288.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated0",
+    "us": 2.1060104370117188,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated1",
+    "us": 2.721546936035156,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated2",
+    "us": 28.0898681640625,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated3",
+    "us": 70.778125,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "build",
+    "us": 352.646875,
+    "repetitions": 256,
+    "allocated": 501811.21875
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query0",
+    "us": 1.7603775024414063,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query1",
+    "us": 2.2775192260742188,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query2",
+    "us": 19.94268798828125,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query3",
+    "us": 45.3916748046875,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "build",
+    "us": 644.85234375,
+    "repetitions": 256,
+    "allocated": 501830.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query0",
+    "us": 1.7684219360351563,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query1",
+    "us": 2.2822891235351563,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query2",
+    "us": 19.9705322265625,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query3",
+    "us": 45.2584716796875,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "build",
+    "us": 358.8568359375,
+    "repetitions": 512,
+    "allocated": 501784.109375
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query0",
+    "us": 1.7566619873046876,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query1",
+    "us": 2.289361572265625,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query2",
+    "us": 19.84708251953125,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-fullopts",
+    "operation": "query3",
+    "us": 45.153125,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "build",
+    "us": 339.559765625,
+    "repetitions": 512,
+    "allocated": 501757.15625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query0",
+    "us": 1.7583236694335938,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query1",
+    "us": 2.366627502441406,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query2",
+    "us": 22.3914306640625,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query3",
+    "us": 66.6142578125,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "build",
+    "us": 631.022265625,
+    "repetitions": 256,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query0",
+    "us": 1.33214111328125,
+    "repetitions": 131072,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query1",
+    "us": 1.6179031372070312,
+    "repetitions": 65536,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query2",
+    "us": 15.977355957031248,
+    "repetitions": 8192,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-tiered",
+    "operation": "query3",
+    "us": 61.86787109375,
+    "repetitions": 2048,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "build",
+    "us": 435.0828125,
+    "repetitions": 512,
+    "allocated": 501746.09375
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query0",
+    "us": 1.67225341796875,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query1",
+    "us": 2.3558700561523436,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query2",
+    "us": 20.85499267578125,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-tiered",
+    "operation": "query3",
+    "us": 51.709228515625,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "build",
+    "us": 352.640234375,
+    "repetitions": 256,
+    "allocated": 501818.125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query0",
+    "us": 1.7599746704101562,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query1",
+    "us": 2.2780410766601564,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query2",
+    "us": 19.85352783203125,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query3",
+    "us": 45.2815673828125,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "build",
+    "us": 343.8919921875,
+    "repetitions": 512,
+    "allocated": 501766.453125
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query0",
+    "us": 1.7337875366210938,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query1",
+    "us": 2.37972412109375,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query2",
+    "us": 21.02237548828125,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query3",
+    "us": 47.2181884765625,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "build",
+    "us": 339.6103515625,
+    "repetitions": 512,
+    "allocated": 501762.234375
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query0",
+    "us": 1.7230911254882812,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query1",
+    "us": 2.331585693359375,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query2",
+    "us": 21.1549560546875,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query3",
+    "us": 47.2431640625,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "build",
+    "us": 347.8623046875,
+    "repetitions": 512,
+    "allocated": 501783.109375
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query0",
+    "us": 1.77469482421875,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query1",
+    "us": 2.3107345581054686,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query2",
+    "us": 20.1693115234375,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "selected-fullopts",
+    "operation": "query3",
+    "us": 45.566943359375,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "build",
+    "us": 414.828125,
+    "repetitions": 256,
+    "allocated": 626864.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query0",
+    "us": 1.5401336669921875,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query1",
+    "us": 2.1041580200195313,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query2",
+    "us": 20.26956787109375,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query3",
+    "us": 54.66806640625,
+    "repetitions": 2048,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutation",
+    "us": 3267.7,
+    "repetitions": 1,
+    "allocated": 602288.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated0",
+    "us": 1.5294998168945313,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated1",
+    "us": 2.3332778930664064,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated2",
+    "us": 34.1209228515625,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated3",
+    "us": 89.6267578125,
+    "repetitions": 1024,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "build",
+    "us": 639.21171875,
+    "repetitions": 256,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query0",
+    "us": 1.3336997985839845,
+    "repetitions": 131072,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query1",
+    "us": 1.6198501586914062,
+    "repetitions": 65536,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query2",
+    "us": 16.17464599609375,
+    "repetitions": 8192,
+    "allocated": null
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query3",
+    "us": 62.229785156249996,
+    "repetitions": 2048,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "build",
+    "us": 446.621875,
+    "repetitions": 256,
+    "allocated": 626864.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query0",
+    "us": 1.541766357421875,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query1",
+    "us": 2.1026123046875,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query2",
+    "us": 20.1253662109375,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "query3",
+    "us": 54.221484375,
+    "repetitions": 2048,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutation",
+    "us": 3305.4,
+    "repetitions": 1,
+    "allocated": 602288.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated0",
+    "us": 1.5292037963867187,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated1",
+    "us": 2.321575927734375,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated2",
+    "us": 25.32156982421875,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-fullopts",
+    "operation": "mutated3",
+    "us": 72.518115234375,
+    "repetitions": 2048,
+    "allocated": 0.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "build",
+    "us": 414.60625,
+    "repetitions": 256,
+    "allocated": 626864.15625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query0",
+    "us": 1.7015121459960938,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query1",
+    "us": 2.2889678955078123,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query2",
+    "us": 22.52852783203125,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "query3",
+    "us": 56.987841796875,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutation",
+    "us": 8255.9,
+    "repetitions": 1,
+    "allocated": 602288.0
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated0",
+    "us": 1.6123031616210937,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated1",
+    "us": 2.558941650390625,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated2",
+    "us": 26.8466796875,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable-tiered",
+    "operation": "mutated3",
+    "us": 72.911767578125,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "build",
+    "us": 312.695703125,
+    "repetitions": 512,
+    "allocated": 501760.75
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query0",
+    "us": 1.798712158203125,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query1",
+    "us": 2.3201889038085937,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query2",
+    "us": 22.3934326171875,
+    "repetitions": 8192,
+    "allocated": 0.0048828125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "private-opt-tiered",
+    "operation": "query3",
+    "us": 49.433984375,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "build",
+    "us": 351.830078125,
+    "repetitions": 256,
+    "allocated": 501783.78125
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query0",
+    "us": 1.762847900390625,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query1",
+    "us": 2.2908248901367188,
+    "repetitions": 65536,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query2",
+    "us": 19.9130859375,
+    "repetitions": 8192,
+    "allocated": 0.0
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-fullopts",
+    "operation": "query3",
+    "us": 45.1830322265625,
+    "repetitions": 4096,
+    "allocated": 0.0
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "build",
+    "us": 478.35234375,
+    "repetitions": 256,
+    "allocated": 501806.90625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query0",
+    "us": 1.8099685668945313,
+    "repetitions": 65536,
+    "allocated": 0.0006103515625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query1",
+    "us": 2.6537933349609375,
+    "repetitions": 32768,
+    "allocated": 0.001220703125
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query2",
+    "us": 24.024560546875,
+    "repetitions": 4096,
+    "allocated": 0.009765625
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "public-opt-tiered",
+    "operation": "query3",
+    "us": 61.968798828125,
+    "repetitions": 2048,
+    "allocated": 0.01953125
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "build",
+    "us": 642.1328125,
+    "repetitions": 256,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query0",
+    "us": 1.3352409362792967,
+    "repetitions": 131072,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query1",
+    "us": 1.6076339721679689,
+    "repetitions": 65536,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query2",
+    "us": 15.669628906249999,
+    "repetitions": 8192,
+    "allocated": null
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust-fullopts",
+    "operation": "query3",
+    "us": 60.022216796875,
+    "repetitions": 2048,
+    "allocated": null
+  }
+]

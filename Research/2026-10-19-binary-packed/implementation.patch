@@ -1,0 +1,558 @@
+--- a/README.md
++++ b/README.md
+@@ -1,8 +1,8 @@
+ # Tedd.RTree
+ 
+-A mutable 2D and 3D R-tree library for .NET 10. It indexes axis-aligned rectangles or boxes and returns items whose bounds intersect a query. Boundary contact counts as intersection.
++A .NET 10 spatial index library with mutable 2D and 3D R-trees and an immutable packed 2D index. It indexes axis-aligned rectangles or boxes and returns items whose bounds intersect a query. Boundary contact counts as intersection.
+ 
+-In the [published five-package comparison](benchmarks/PACKAGE-COMPARISON.md), Tedd.RTree had the fastest measured mean for both bulk construction and aggregate intersection queries in all four tested 2D `double` fixtures (1,000 and 10,000 entries, uniform and clustered). These results describe that workload, not every query size or API variant. The tree uses Sort-Tile-Recursive bulk packing, least-enlargement insertion with quadratic node splits, and bounding-box pruning during search. Caller-owned result lists and reusable bulk-load workspaces reduce repeated allocation.
++In the [published five-package comparison](benchmarks/PACKAGE-COMPARISON.md), Tedd.RTree had the fastest measured mean for both bulk construction and aggregate intersection queries in all four tested 2D `double` fixtures (1,000 and 10,000 entries, uniform and clustered). These results describe that workload, not every query size or API variant. The 2D trees use Hilbert ordering for bulk packing, least-enlargement insertion with quadratic node splits, and bounding-box pruning during search. Caller-owned result lists and reusable bulk-load workspaces reduce repeated allocation.
+ 
+ [Documentation, examples, and benchmark comparison](https://tedd.no/Tedd.RTree/).
+ 
+@@ -30,6 +30,22 @@
+ ```
+ 
+ `Search` appends to the supplied list and returns the number appended. `Search(bounds)` creates and returns a list. Result order is unspecified. Entries may have duplicate bounds or values. Coordinates must be finite and ordered. `Clear` discards the index. `BulkLoad` uses Hilbert ordering and bottom-up packing on an empty tree; later individual inserts, removals, and moves are supported. `Remove(bounds, item)` removes one matching entry; `Update(oldBounds, item, newBounds)` moves one matching entry. Concurrent searches on an unchanged tree are safe when each search uses its own result list. Mutation during a search is not safe.
++
++## Immutable indexes
++
++Use `PackedRTree<T>` for a batch of 2D `Rectangle` bounds that remains unchanged. Its constructor copies entries into owned storage. Input arrays and an optional `BulkLoadWorkspace` can be reused after construction. Concurrent searches require separate result lists.
++
++```csharp
++SpatialEntry<string>[] entries =
++[
++    new(new Rectangle(0, 0, 10, 10), "A"),
++    new(new Rectangle(20, 20, 30, 30), "B")
++];
++IReadOnlySpatialIndex<Rectangle, string> index = new PackedRTree<string>(entries);
++List<string> matches = index.Search(new Rectangle(5, 5, 25, 25));
++```
++
++`IReadOnlySpatialIndex<TBounds, T>` shares `Count`, `Search`, and `SearchBatch` across the packed, mutable, snapshot, and concurrent indexes. `IMutableSpatialIndex<TBounds, T>` adds `Insert`, `Remove`, `Update`, and `Clear` on the plain mutable trees. A read-only interface does not make a mutable implementation immutable or synchronize access. Use `RTree<T>` for individual changes; use the coordinate-generic trees for other coordinate types or 3D bounds.
+ 
+ ## Batch searches
+ 
+--- a/src/Tedd.RTree/ConcurrentRTree.cs
++++ b/src/Tedd.RTree/ConcurrentRTree.cs
+@@ -7,7 +7,7 @@
+ /// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
+ /// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
+ /// </remarks>
+-public sealed class ConcurrentRTree<T> : IDisposable where T : notnull
++public sealed class ConcurrentRTree<T> : IDisposable, IReadOnlySpatialIndex<Rectangle, T> where T : notnull
+ {
+     private readonly ReaderWriterLockSlim _lock = new();
+     private readonly int _maxEntries;
+--- a/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs
++++ b/src/Tedd.RTree/ConcurrentRTree2D.Generic.cs
+@@ -7,7 +7,7 @@
+ /// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
+ /// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
+ /// </remarks>
+-public sealed class ConcurrentRTree2D<TCoordinate, T> : IDisposable
++public sealed class ConcurrentRTree2D<TCoordinate, T> : IDisposable, IReadOnlySpatialIndex<Rectangle2D<TCoordinate>, T>
+     where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+     where T : notnull
+ {
+--- a/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs
++++ b/src/Tedd.RTree/ConcurrentRTree3D.Generic.cs
+@@ -7,7 +7,7 @@
+ /// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
+ /// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
+ /// </remarks>
+-public sealed class ConcurrentRTree3D<TCoordinate, T> : IDisposable
++public sealed class ConcurrentRTree3D<TCoordinate, T> : IDisposable, IReadOnlySpatialIndex<Box<TCoordinate>, T>
+     where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+     where T : notnull
+ {
+--- /dev/null
++++ b/src/Tedd.RTree/IReadOnlySpatialIndex.cs
+@@ -0,0 +1,34 @@
++namespace Tedd.RTree;
++
++/// <summary>Read operations shared by mutable, immutable and synchronized spatial indexes.</summary>
++/// <remarks>Read-only access does not imply that the underlying index is immutable or safe for concurrent mutation.</remarks>
++public interface IReadOnlySpatialIndex<TBounds, T> where TBounds : struct
++{
++    /// <summary>Number of indexed items.</summary>
++    int Count { get; }
++
++    /// <summary>Appends intersecting items and returns the number appended.</summary>
++    int Search(TBounds bounds, List<T> results);
++
++    /// <summary>Returns a new list containing intersecting items.</summary>
++    List<T> Search(TBounds bounds);
++
++    /// <summary>Appends each query's matches to its result list and writes the appended counts.</summary>
++    long SearchBatch(ReadOnlySpan<TBounds> queries, ReadOnlySpan<List<T>> results, Span<int> counts);
++}
++
++/// <summary>A spatial index supporting individual changes in addition to the shared read operations.</summary>
++public interface IMutableSpatialIndex<TBounds, T> : IReadOnlySpatialIndex<TBounds, T> where TBounds : struct
++{
++    /// <summary>Inserts an item; duplicate values and bounds are permitted.</summary>
++    void Insert(TBounds bounds, T item);
++
++    /// <summary>Removes one entry matching both bounds and value.</summary>
++    bool Remove(TBounds bounds, T item);
++
++    /// <summary>Moves one matching entry to new bounds.</summary>
++    bool Update(TBounds oldBounds, T item, TBounds newBounds);
++
++    /// <summary>Removes all indexed items.</summary>
++    void Clear();
++}
+--- /dev/null
++++ b/src/Tedd.RTree/PackedHilbertOrder.cs
+@@ -0,0 +1,40 @@
++using System.Runtime.Intrinsics;
++
++namespace Tedd.RTree;
++
++// Eight-lane form of the public-domain Hilbert transform used by HilbertOrder.
++internal static class PackedHilbertOrder
++{
++    internal static Vector256<uint> Encode(Vector256<uint> x, Vector256<uint> y)
++    {
++        Vector256<uint> a = x ^ y, b = Vector256.Create(0xFFFFu) ^ a, c = Vector256.Create(0xFFFFu) ^ (x | y), d = x & (y ^ Vector256.Create(0xFFFFu));
++        Vector256<uint> A = a | (b >> 1), B = (a >> 1) ^ a;
++        Vector256<uint> C = ((c >> 1) ^ (b & (d >> 1))) ^ c;
++        Vector256<uint> D = ((a & (c >> 1)) ^ (d >> 1)) ^ d;
++        a = A; b = B; c = C; d = D;
++        A = (a & (a >> 2)) ^ (b & (b >> 2));
++        B = (a & (b >> 2)) ^ (b & ((a ^ b) >> 2));
++        C ^= (a & (c >> 2)) ^ (b & (d >> 2));
++        D ^= (b & (c >> 2)) ^ ((a ^ b) & (d >> 2));
++        a = A; b = B; c = C; d = D;
++        A = (a & (a >> 4)) ^ (b & (b >> 4));
++        B = (a & (b >> 4)) ^ (b & ((a ^ b) >> 4));
++        C ^= (a & (c >> 4)) ^ (b & (d >> 4));
++        D ^= (b & (c >> 4)) ^ ((a ^ b) & (d >> 4));
++        a = A; b = B; c = C; d = D;
++        C ^= (a & (c >> 8)) ^ (b & (d >> 8));
++        D ^= (b & (c >> 8)) ^ ((a ^ b) & (d >> 8));
++        a = C ^ (C >> 1); b = D ^ (D >> 1);
++        Vector256<uint> i0 = x ^ y, i1 = b | (Vector256.Create(0xFFFFu) ^ (i0 | a));
++        i0 = Spread(i0); i1 = Spread(i1);
++        return (i1 << 1) | i0;
++    }
++
++    private static Vector256<uint> Spread(Vector256<uint> x)
++    {
++        x = (x | (x << 8)) & Vector256.Create(0x00FF00FFu);
++        x = (x | (x << 4)) & Vector256.Create(0x0F0F0F0Fu);
++        x = (x | (x << 2)) & Vector256.Create(0x33333333u);
++        return (x | (x << 1)) & Vector256.Create(0x55555555u);
++    }
++}
+--- /dev/null
++++ b/src/Tedd.RTree/PackedKeyEncoding.cs
+@@ -0,0 +1,65 @@
++using System.Runtime.CompilerServices;
++using System.Runtime.InteropServices;
++using System.Runtime.Intrinsics;
++using System.Runtime.Intrinsics.X86;
++
++namespace Tedd.RTree;
++
++// Inputs are owned/exclusively leased spans of equal length. Vector loops only access
++// complete four/eight-entry blocks; scalar tails preserve the public numeric contract.
++internal static class PackedKeyEncoding
++{
++    internal static void Fill<T>(ReadOnlySpan<SpatialEntry<T>> source, Span<uint> keys, Span<int> order,
++        double minX, double minY, double width, double height, double scaleX, double scaleY)
++    {
++        int i = 0;
++        bool finiteX = double.IsFinite(scaleX), finiteY = double.IsFinite(scaleY);
++        if (Avx.IsSupported && width > 0 && height > 0 && finiteX && finiteY)
++        {
++            var quarter = Vector256.Create(0.25);
++            var originX = Vector256.Create(minX); var originY = Vector256.Create(minY);
++            var sx = Vector256.Create(scaleX); var sy = Vector256.Create(scaleY);
++            var zero = Vector256<double>.Zero; var maximum = Vector256.Create(65535.0);
++            int end = source.Length & ~3;
++            for (; i < end; i += 4)
++            {
++                Rectangle a = source[i].Bounds, b = source[i+1].Bounds, c = source[i+2].Bounds, d = source[i+3].Bounds;
++                var va = Vector256.LoadUnsafe(ref Unsafe.As<Rectangle,double>(ref a));
++                var vb = Vector256.LoadUnsafe(ref Unsafe.As<Rectangle,double>(ref b));
++                var vc = Vector256.LoadUnsafe(ref Unsafe.As<Rectangle,double>(ref c));
++                var vd = Vector256.LoadUnsafe(ref Unsafe.As<Rectangle,double>(ref d));
++                var xab = Avx.UnpackLow(va,vb); var xcd = Avx.UnpackLow(vc,vd);
++                var yab = Avx.UnpackHigh(va,vb); var ycd = Avx.UnpackHigh(vc,vd);
++                var x0 = Avx.Permute2x128(xab,xcd,0x20); var x1 = Avx.Permute2x128(xab,xcd,0x31);
++                var y0 = Avx.Permute2x128(yab,ycd,0x20); var y1 = Avx.Permute2x128(yab,ycd,0x31);
++                // Preserve the scalar operation order, including overflow-safe quarter centers.
++                var x = ((x0 * quarter + x1 * quarter) - originX) * sx;
++                var y = ((y0 * quarter + y1 * quarter) - originY) * sy;
++                x = Avx.Min(Avx.Max(x,zero),maximum); y = Avx.Min(Avx.Max(y,zero),maximum);
++                var ix = Avx.ConvertToVector128Int32WithTruncation(x).AsUInt32();
++                var iy = Avx.ConvertToVector128Int32WithTruncation(y).AsUInt32();
++                var packed = ix | (iy << 16);
++                packed.StoreUnsafe(ref MemoryMarshal.GetReference(keys),(nuint)i);
++                order[i]=i; order[i+1]=i+1; order[i+2]=i+2; order[i+3]=i+3;
++            }
++        }
++        for (; i < source.Length; i++)
++        {
++            Rectangle b=source[i].Bounds;
++            double x=b.MinX*0.25+b.MaxX*0.25-minX, y=b.MinY*0.25+b.MaxY*0.25-minY;
++            uint ix=width>0?(uint)Math.Clamp(finiteX?x*scaleX:x/width*65535,0,65535):0;
++            uint iy=height>0?(uint)Math.Clamp(finiteY?y*scaleY:y/height*65535,0,65535):0;
++            keys[i]=ix|(iy<<16);order[i]=i;
++        }
++        int vectorEnd=Vector256.IsHardwareAccelerated?source.Length&~7:0;
++        for(i=0;i<vectorEnd;i+=8)
++        {
++            var xy=Vector256.LoadUnsafe(ref MemoryMarshal.GetReference(keys),(nuint)i);
++            PackedHilbertOrder.Encode(xy&Vector256.Create(65535u),xy>>>16).StoreUnsafe(ref MemoryMarshal.GetReference(keys),(nuint)i);
++        }
++        for(;i<source.Length;i++)
++        {
++            uint xy=keys[i];keys[i]=HilbertOrder.Encode(xy&65535,xy>>16);
++        }
++    }
++}
+--- /dev/null
++++ b/src/Tedd.RTree/PackedRTree.cs
+@@ -0,0 +1,148 @@
++using System.Runtime.Intrinsics;
++
++namespace Tedd.RTree;
++
++/// <summary>An immutable, packed two-dimensional spatial index with double coordinates.</summary>
++/// <remarks>Construction copies entries into owned storage. Concurrent searches require separate result lists.
++/// An optional workspace is exclusive scratch storage during construction and is not retained.</remarks>
++/// <typeparam name="T">The indexed value type.</typeparam>
++public sealed class PackedRTree<T> : IReadOnlySpatialIndex<Rectangle, T>
++{
++    private readonly Rectangle[] _boxes;
++    private readonly T[] _values;
++    private readonly int[] _starts, _spans;
++    private readonly int _capacity;
++    private readonly Rectangle _extent;
++    /// <summary>Gets the number of indexed entries, including duplicates.</summary>
++    public int Count { get; }
++
++    /// <summary>Builds an immutable index from the supplied entries.</summary>
++    /// <param name="items">Entries to copy; duplicates are retained.</param>
++    /// <param name="maxEntries">Maximum entries per node, from 4 through 128.</param>
++    /// <param name="workspace">Optional exclusive scratch space, reusable after construction.</param>
++    public PackedRTree(IReadOnlyList<SpatialEntry<T>> items, int maxEntries = 16,
++        BulkLoadWorkspace? workspace = null)
++    {
++        ArgumentNullException.ThrowIfNull(items);
++        if (maxEntries is < 4 or > 128) throw new ArgumentOutOfRangeException(nameof(maxEntries));
++        _capacity = maxEntries;
++        Count = items.Count;
++        if (Count == 0) { _boxes = []; _values = []; _starts = []; _spans = []; return; }
++        SpatialEntry<T>[]? copy = null;
++        if (items is not SpatialEntry<T>[])
++        {
++            copy = new SpatialEntry<T>[Count];
++            for (int i = 0; i < copy.Length; i++) copy[i] = items[i];
++        }
++        ReadOnlySpan<SpatialEntry<T>> source = copy ?? (SpatialEntry<T>[])items;
++        workspace?.EnsureCapacity(Count);
++        Span<int> order = workspace is null ? new int[Count] : workspace.Order.AsSpan(0, Count);
++        Span<uint> keys = workspace is null ? new uint[Count] : workspace.HilbertKeys(Count);
++        Rectangle extent = source[0].Bounds;
++        for (int i = 1; i < source.Length; i++) extent = Rectangle.Union(extent, source[i].Bounds);
++        _extent = extent;
++        double minX = extent.MinX * 0.5, minY = extent.MinY * 0.5;
++        double width = extent.MaxX * 0.5 - minX, height = extent.MaxY * 0.5 - minY;
++        double scaleX = width > 0 ? 65535 / width : 0, scaleY = height > 0 ? 65535 / height : 0;
++        PackedKeyEncoding.Fill(source, keys, order, minX, minY, width, height, scaleX, scaleY);
++        if (Count < 2048) keys.Sort(order);
++        else
++        {
++            Span<int> scratch = workspace is null ? new int[Count] : workspace.HilbertScatter(Count);
++            HilbertOrder.SortIndices(keys, order, scratch);
++        }
++        Span<int> starts = stackalloc int[32], spans = stackalloc int[32];
++        int levels = 1, total = Count, children = Count, span = 1;
++        starts[0] = 0; spans[0] = 1;
++        while (children > _capacity)
++        {
++            starts[levels] = total;
++            span = checked(span * _capacity);
++            spans[levels++] = span;
++            children = (children - 1) / _capacity + 1;
++            total = checked(total + children);
++        }
++        _starts = starts[..levels].ToArray();
++        _spans = spans[..levels].ToArray();
++        _boxes = new Rectangle[total];
++        _values = new T[Count];
++        for (int i = 0; i < Count; i++)
++        {
++            SpatialEntry<T> entry = source[order[i]];
++            _boxes[i] = entry.Bounds;
++            _values[i] = entry.Item;
++        }
++        for (int level = 1; level < levels; level++)
++        {
++            int lowerStart = _starts[level - 1], lowerEnd = _starts[level];
++            for (int first = lowerStart, destination = _starts[level]; first < lowerEnd; first += _capacity, destination++)
++            {
++                int end = first + Math.Min(_capacity, lowerEnd - first);
++                Rectangle bounds = _boxes[first];
++                for (int i = first + 1; i < end; i++) bounds = Rectangle.Union(bounds, _boxes[i]);
++                _boxes[destination] = bounds;
++            }
++        }
++    }
++
++    /// <inheritdoc/>
++    public int Search(Rectangle bounds, List<T> results)
++    {
++        ArgumentNullException.ThrowIfNull(results);
++        if (Count == 0 || !_extent.Intersects(bounds)) return 0;
++        if (bounds.Contains(_extent)) { results.AddRange(_values.AsSpan()); return Count; }
++        int level = _starts.Length - 1;
++        return SearchLevel(level, _starts[level], _boxes.Length, bounds, results);
++    }
++
++    // Keep recursive traversal from expanding into its callers under profile-guided inlining.
++    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
++    private int SearchLevel(int level, int start, int end, in Rectangle bounds, List<T> results)
++    {
++        ReadOnlySpan<Rectangle> boxes = _boxes.AsSpan(start, end - start);
++        int found = 0;
++        if (level == 0)
++        {
++            for (int j = 0; j < boxes.Length; j++)
++                if (boxes[j].Intersects(bounds)) { results.Add(_values[start + j]); found++; }
++        }
++        else
++        {
++            int lowerStart = _starts[level - 1], lowerEnd = _starts[level];
++            for (int j = 0; j < boxes.Length; j++)
++            {
++                ref readonly Rectangle box = ref boxes[j];
++                if (!box.Intersects(bounds)) continue;
++                int local = start + j - lowerEnd;
++                if (bounds.Contains(box))
++                {
++                    int first = local * _spans[level];
++                    int count = Math.Min(_spans[level], Count - first);
++                    results.AddRange(_values.AsSpan(first, count));
++                    found += count;
++                }
++                else
++                {
++                    int first = lowerStart + local * _capacity;
++                    found += SearchLevel(level - 1, first, first + Math.Min(_capacity, lowerEnd - first), bounds, results);
++                }
++            }
++        }
++        return found;
++    }
++
++    /// <inheritdoc/>
++    public List<T> Search(Rectangle bounds) { List<T> results = []; Search(bounds, results); return results; }
++
++    /// <inheritdoc/>
++    public long SearchBatch(ReadOnlySpan<Rectangle> queries, ReadOnlySpan<List<T>> results, Span<int> counts)
++    {
++        if (results.Length != queries.Length) throw new ArgumentException("Provide one result list per query.", nameof(results));
++        if (counts.Length < queries.Length) throw new ArgumentException("Provide at least one count slot per query.", nameof(counts));
++        for (int i = 0; i < results.Length; i++)
++            if (results[i] is null) throw new ArgumentException("Result lists must not be null.", nameof(results));
++        long found = 0;
++        for (int i = 0; i < queries.Length; i++) { counts[i] = Search(queries[i], results[i]); found += counts[i]; }
++        return found;
++    }
++}
+--- a/src/Tedd.RTree/RTree.cs
++++ b/src/Tedd.RTree/RTree.cs
+@@ -2,7 +2,7 @@
+ 
+ /// <summary>A mutable two-dimensional R-tree with incremental updates and packed bulk loading.</summary>
+ /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
+-public sealed class RTree<T>
++public sealed class RTree<T> : IMutableSpatialIndex<Rectangle, T>
+ {
+     private sealed class Node(bool leaf, int capacity)
+     {
+--- a/src/Tedd.RTree/RTree2D.Generic.cs
++++ b/src/Tedd.RTree/RTree2D.Generic.cs
+@@ -5,7 +5,7 @@
+ 
+ /// <summary>A mutable two-dimensional R-tree with incremental updates and packed bulk loading.</summary>
+ /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
+-public sealed class RTree2D<TCoordinate, T>
++public sealed class RTree2D<TCoordinate, T> : IMutableSpatialIndex<Rectangle2D<TCoordinate>, T>
+     where TCoordinate : struct, INumber<TCoordinate>
+ {
+     private sealed class Node(bool leaf, int capacity)
+--- a/src/Tedd.RTree/RTree3D.Generic.cs
++++ b/src/Tedd.RTree/RTree3D.Generic.cs
+@@ -5,7 +5,7 @@
+ 
+ /// <summary>A mutable three-dimensional R-tree with incremental updates and packed bulk loading.</summary>
+ /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
+-public sealed class RTree3D<TCoordinate, T>
++public sealed class RTree3D<TCoordinate, T> : IMutableSpatialIndex<Box<TCoordinate>, T>
+     where TCoordinate : struct, INumber<TCoordinate>
+ {
+     private sealed class Node(bool leaf, int capacity)
+--- a/src/Tedd.RTree/SnapshotRTree.cs
++++ b/src/Tedd.RTree/SnapshotRTree.cs
+@@ -8,7 +8,7 @@
+ /// The previous tree may remain alive while a search is using it. Concurrent replacements
+ /// are serialized; the last completed replacement becomes current.
+ /// </remarks>
+-public sealed class SnapshotRTree<T>
++public sealed class SnapshotRTree<T> : IReadOnlySpatialIndex<Rectangle, T>
+ {
+     private readonly int _maxEntries;
+     private readonly Lock _writer = new();
+--- a/src/Tedd.RTree/SnapshotRTree2D.Generic.cs
++++ b/src/Tedd.RTree/SnapshotRTree2D.Generic.cs
+@@ -8,7 +8,7 @@
+ /// The previous tree may remain alive while a search is using it. Concurrent replacements
+ /// are serialized; the last completed replacement becomes current.
+ /// </remarks>
+-public sealed class SnapshotRTree2D<TCoordinate, T>
++public sealed class SnapshotRTree2D<TCoordinate, T> : IReadOnlySpatialIndex<Rectangle2D<TCoordinate>, T>
+     where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+ {
+     private readonly int _maxEntries;
+--- a/src/Tedd.RTree/SnapshotRTree3D.Generic.cs
++++ b/src/Tedd.RTree/SnapshotRTree3D.Generic.cs
+@@ -8,7 +8,7 @@
+ /// The previous tree may remain alive while a search is using it. Concurrent replacements
+ /// are serialized; the last completed replacement becomes current.
+ /// </remarks>
+-public sealed class SnapshotRTree3D<TCoordinate, T>
++public sealed class SnapshotRTree3D<TCoordinate, T> : IReadOnlySpatialIndex<Box<TCoordinate>, T>
+     where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
+ {
+     private readonly int _maxEntries;
+--- a/src/Tedd.RTree/Tedd.RTree.csproj
++++ b/src/Tedd.RTree/Tedd.RTree.csproj
+@@ -8,7 +8,7 @@
+     <Version>1.0.0</Version>
+     <PackageId>Tedd.RTree</PackageId>
+     <Authors>Tedd Hansen</Authors>
+-    <Description>Highly optimized mutable 2D and 3D R-trees for .NET 10. Hilbert ordering in 2D, three-axis Morton ordering in 3D, radix sorting, compact nodes, bulk result copying, reusable workspaces, quadratic node splits, batch search, and snapshot and concurrent APIs. Supports int, long, float, and double coordinates.</Description>
++    <Description>Mutable 2D and 3D R-trees and an immutable packed 2D index for .NET 10. Hilbert ordering in 2D, three-axis Morton ordering in 3D, radix sorting, compact nodes, bulk result copying, reusable workspaces, quadratic node splits, batch search, and snapshot and concurrent APIs. Supports int, long, float, and double coordinates.</Description>
+     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+     <PackageReadmeFile>README.md</PackageReadmeFile>
+     <PackageProjectUrl>https://github.com/tedd/Tedd.RTree</PackageProjectUrl>
+--- /dev/null
++++ b/tests/Tedd.RTree.Tests/PackedRTreeChecks.cs
+@@ -0,0 +1,101 @@
++using Tedd.RTree;
++
++internal static class PackedRTreeChecks
++{
++    internal static IReadOnlySpatialIndex<Rectangle,T> Build<T>(string mode,IReadOnlyList<SpatialEntry<T>> entries,int capacity=16,BulkLoadWorkspace? workspace=null)
++        => new PackedRTree<T>(entries,capacity,workspace);
++    internal static string[] Modes=["packed"];
++
++    internal static void Run()
++    {
++        foreach (int capacity in new[] {4,5,8,16,17,32,127,128})
++        foreach (int n in new[] {0,1,3,4,7,8,9,15,16,17,31,63,127,128,129,257,1001,2047,2048,2049,4099})
++        {
++            var rng = new Random(90171 + n * 7 + capacity);
++            var entries = Enumerable.Range(0,n).Select(i => {
++                double x=rng.Next(100),y=rng.Next(100);
++                return new SpatialEntry<int>(new(x,y,x+i%11,y+i%7),i%31);
++            }).ToArray();
++            var original=entries.ToArray();
++            foreach (string mode in Modes)
++            {
++                var workspace=new BulkLoadWorkspace(n+11);
++                var tree=Build(mode,new IndexedOnly<int>(entries),capacity,workspace);
++                Array.Clear(entries);
++                _=Build(mode,original,capacity,workspace);
++                for(int q=0;q<24;q++)
++                {
++                    double x=rng.Next(120)-10,y=rng.Next(120)-10,w=new[]{0,1,20,200}[q%4];
++                    Assert(tree,original,new(x,y,x+w,y+w));
++                }
++                Rectangle all=new(-1,-1,200,200);
++                var lists=new[]{new List<int>{-1},new List<int>()};var counts=new int[3];
++                if(tree.SearchBatch([all,all],lists,counts)!=2L*n||counts[0]!=n||counts[1]!=n||counts[2]!=0||lists[0][0]!=-1)
++                    throw new Exception("Batch counts/appending differ");
++                Assert(Build(mode,original,capacity),original,all);
++                original.CopyTo(entries,0);
++            }
++        }
++        foreach(string mode in Modes)
++        {
++            foreach(Rectangle box in new[]{new Rectangle(-double.MaxValue,-1,double.MaxValue,1),new Rectangle(0,0,double.Epsilon,double.Epsilon),new Rectangle(1,1,1,1)})
++            {
++                var entries=Enumerable.Range(0,1003).Select(i=>new SpatialEntry<int>(box,i)).ToArray();
++                Assert(Build(mode,entries),entries,box);
++                Assert(Build(mode,entries),entries,new(-1,-1,1,1));
++            }
++            // Mixed signs/extremes, small exponents and repeated centers produce common prefixes and ties.
++            var rng=new Random(7731);
++            var mixed=Enumerable.Range(0,1003).Select(i=>{
++                double x=Math.ScaleB((rng.NextDouble()-.5),rng.Next(-1070,1024));
++                double y=Math.ScaleB((rng.NextDouble()-.5),rng.Next(-1070,1024));
++                return new SpatialEntry<int>(new(x,y,x,y),i);
++            }).ToArray();
++            var tree=Build(mode,mixed);
++            foreach(var entry in mixed.Where((_,i)=>i%11==0))Assert(tree,mixed,entry.Bounds);
++            var thin=Enumerable.Range(0,1003).Select(i=>new SpatialEntry<int>(new(i%17,-1000,i%17,1000),i)).ToArray();
++            foreach(Rectangle query in new[]{new Rectangle(4,0,4,0),new Rectangle(-1,-2000,20,2000),new Rectangle(200,0,200,0)})
++                Assert(Build(mode,thin),thin,query);
++            var noHitOutput=new List<int>{-1};var enumerator=noHitOutput.GetEnumerator();enumerator.MoveNext();
++            if(Build(mode,thin).Search(new(4.5,0,4.5,0),noHitOutput)!=0||enumerator.MoveNext())
++                throw new Exception("No-hit append/version contract differs");
++            // Reference payloads must remain valid through moving GC and arbitrary owned swaps.
++            var objects=Enumerable.Range(0,1003).Select(i=>new SpatialEntry<Payload>(new(i%17,i%31,i%17+1,i%31+1),new(i))).ToArray();
++            var referenceTree=Build(mode,objects);
++            GC.Collect(2,GCCollectionMode.Forced,true,true);
++            var ids=referenceTree.Search(new(-1,-1,2000,2000)).Select(p=>p.Id).Order();
++            if(!ids.SequenceEqual(Enumerable.Range(0,objects.Length)))throw new Exception("Reference ownership differs");
++            Parallel.For(0,12,_=>{if(referenceTree.Search(new(-1,-1,2000,2000)).Count!=objects.Length)throw new Exception("Concurrent read differs");});
++            foreach(int capacity in new[]{3,129})
++                Throws<ArgumentOutOfRangeException>(()=>Build(mode,Array.Empty<SpatialEntry<int>>(),capacity));
++            Throws<ArgumentNullException>(()=>Build<int>(mode,null!));
++            var empty=Build(mode,Array.Empty<SpatialEntry<int>>());
++            Throws<ArgumentNullException>(()=>empty.Search(default,null!));
++            var untouched=new List<int>{42};
++            Throws<ArgumentException>(()=>empty.SearchBatch([default,default],[untouched,null!],new int[2]));
++            if(untouched.Count!=1)throw new Exception("Invalid batch partially appended");
++            Throws<ArgumentException>(()=>empty.SearchBatch([default],[],new int[1]));
++            Throws<ArgumentException>(()=>empty.SearchBatch([default],[untouched],[]));
++        }
++        Console.WriteLine("Packed index: exact IDs, boundaries, duplicates, numerical extremes, ownership, workspace reuse, indexed input, batch, GC and concurrent-read oracles pass.");
++    }
++
++    private static void Assert(IReadOnlySpatialIndex<Rectangle,int> tree,SpatialEntry<int>[] entries,Rectangle query)
++    {
++        List<int> result=[-1];int found=tree.Search(query,result);
++        if(tree.Count!=entries.Length||found!=result.Count-1||result[0]!=-1||!result.Skip(1).Order().SequenceEqual(entries.Where(e=>e.Bounds.Intersects(query)).Select(e=>e.Item).Order()))
++            throw new Exception("Independent exact-ID oracle differs");
++    }
++    private static void Throws<T>(Action action) where T:Exception
++    {
++        try{action();}catch(T){return;}throw new Exception("Expected exception absent: "+typeof(T).Name);
++    }
++    private sealed record Payload(int Id);
++    private sealed class IndexedOnly<T>(SpatialEntry<T>[] entries):IReadOnlyList<SpatialEntry<T>>
++    {
++        public int Count=>entries.Length;
++        public SpatialEntry<T> this[int i]=>entries[i];
++        public IEnumerator<SpatialEntry<T>> GetEnumerator()=>throw new Exception("Indexed input enumerated");
++        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()=>GetEnumerator();
++    }
++}
+--- a/tests/Tedd.RTree.Tests/Program.cs
++++ b/tests/Tedd.RTree.Tests/Program.cs
+@@ -1,5 +1,6 @@
+ using Tedd.RTree;
+ 
++PackedRTreeChecks.Run();
+ MutablePackedChecks.Run();
+ GenericPackedChecks.Run();
+ LocalUpdateChecks.Run();

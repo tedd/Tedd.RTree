@@ -1,0 +1,1875 @@
+; Assembly listing for method System.Linq.Enumerable+ArraySelectIterator`2[System.__Canon,double]:Fill(System.ReadOnlySpan`1[System.__Canon],System.Span`1[double],System.Func`2[System.__Canon,double]) (FullOpts)
+; Emitting BLENDED_CODE for generic X64 + VEX on Windows
+; FullOpts code
+; optimized code
+; rsp based frame
+; partially interruptible
+; No PGO data
+
+G_M000_IG01:                ;; offset=0x0000
+       push     r15
+       push     r14
+       push     rdi
+       push     rsi
+       push     rbp
+       push     rbx
+       sub      rsp, 40
+       mov      rbx, rdx
+       mov      rsi, r9
+ 
+G_M000_IG02:                ;; offset=0x0012
+       mov      rdi, bword ptr [r8]
+       mov      ebp, dword ptr [r8+0x08]
+       xor      r14d, r14d
+       test     ebp, ebp
+       jle      SHORT G_M000_IG04
+ 
+G_M000_IG03:                ;; offset=0x0020
+       mov      r15d, r14d
+       cmp      r14d, dword ptr [rbx+0x08]
+       jae      SHORT G_M000_IG05
+       mov      rdx, bword ptr [rbx]
+       mov      rdx, gword ptr [rdx+8*r15]
+       mov      rcx, gword ptr [rsi+0x08]
+       call     [rsi+0x18]System.Func`2[System.__Canon,double]:Invoke(System.__Canon):double:this
+       vmovsd   qword ptr [rdi+8*r15], xmm0
+       inc      r14d
+       cmp      r14d, ebp
+       jl       SHORT G_M000_IG03
+ 
+G_M000_IG04:                ;; offset=0x0045
+       add      rsp, 40
+       pop      rbx
+       pop      rbp
+       pop      rsi
+       pop      rdi
+       pop      r14
+       pop      r15
+       ret      
+ 
+G_M000_IG05:                ;; offset=0x0052
+       call     CORINFO_HELP_RNGCHKFAIL
+       int3     
+ 
+; Total bytes of code 88
+
+; Assembly listing for method Tedd.RTree.Rectangle:.ctor(double,double,double,double):this (FullOpts)
+; Emitting BLENDED_CODE for generic X64 + VEX on Windows
+; FullOpts code
+; optimized code
+; rsp based frame
+; partially interruptible
+; No PGO data
+; 0 inlinees with PGO data; 4 single block inlinees; 0 inlinees without PGO data
+
+G_M000_IG01:                ;; offset=0x0000
+       push     rsi
+       push     rbx
+       sub      rsp, 40
+       vmovsd   xmm0, qword ptr [rsp+0x60]
+ 
+G_M000_IG02:                ;; offset=0x000C
+       vmovq    rax, xmm1
+       mov      rdx, 0x7FF0000000000000
+       andn     rax, rax, rdx
+       je       SHORT G_M000_IG04
+       vmovq    rax, xmm2
+       mov      rdx, 0x7FF0000000000000
+       andn     rax, rax, rdx
+       je       SHORT G_M000_IG04
+       vmovq    rax, xmm3
+       mov      rdx, 0x7FF0000000000000
+       andn     rax, rax, rdx
+       je       SHORT G_M000_IG04
+       vmovq    rax, xmm0
+       mov      rdx, 0x7FF0000000000000
+       andn     rax, rax, rdx
+       je       SHORT G_M000_IG04
+       vucomisd xmm1, xmm3
+       ja       SHORT G_M000_IG04
+       vucomisd xmm2, xmm0
+       ja       SHORT G_M000_IG04
+       vmovsd   qword ptr [rcx], xmm1
+       vmovsd   qword ptr [rcx+0x08], xmm2
+       vmovsd   qword ptr [rcx+0x10], xmm3
+       vmovsd   qword ptr [rcx+0x18], xmm0
+ 
+G_M000_IG03:                ;; offset=0x0083
+       add      rsp, 40
+       pop      rbx
+       pop      rsi
+       ret      
+ 
+G_M000_IG04:                ;; offset=0x008A
+       mov      rcx, 0x7FFC6567F218
+       call     CORINFO_HELP_NEWSFAST
+       mov      rbx, rax
+       mov      ecx, 283
+       mov      rdx, 0x7FFC65760F98
+       call     [CORINFO_HELP_STRCNS]
+       mov      rsi, rax
+       mov      ecx, 293
+       mov      rdx, 0x7FFC65760F98
+       call     [CORINFO_HELP_STRCNS]
+       mov      r8, rax
+       mov      rdx, rsi
+       mov      rcx, rbx
+       call     [System.ArgumentOutOfRangeException:.ctor(System.String,System.String):this]
+       mov      rcx, rbx
+       call     CORINFO_HELP_THROW
+       int3     
+ 
+; Total bytes of code 225
+
+; Assembly listing for method System.Buffers.SharedArrayPool`1[Tedd.RTree.SpatialEntry`1[int]]:.ctor():this (FullOpts)
+; Emitting BLENDED_CODE for generic X64 + VEX on Windows
+; FullOpts code
+; optimized code
+; rsp based frame
+; partially interruptible
+; No PGO data
+; 0 inlinees with PGO data; 2 single block inlinees; 0 inlinees without PGO data
+
+G_M000_IG01:                ;; offset=0x0000
+       push     rsi
+       push     rbx
+       sub      rsp, 40
+       mov      rbx, rcx
+ 
+G_M000_IG02:                ;; offset=0x0009
+       mov      rcx, 0x7FFC657D29E0
+       call     CORINFO_HELP_NEWSFAST
+       mov      rsi, rax
+       mov      rcx, rsi
+       call     [System.Runtime.CompilerServices.ConditionalWeakTable`2[System.__Canon,System.__Canon]:.ctor():this]
+       lea      rcx, bword ptr [rbx+0x08]
+       mov      rdx, rsi
+       call     CORINFO_HELP_ASSIGN_REF
+       mov      rcx, 0x7FFC657D2D90
+       mov      edx, 27
+       call     CORINFO_HELP_NEWARR_1_PTR
+       lea      rcx, bword ptr [rbx+0x10]
+       mov      rdx, rax
+       call     CORINFO_HELP_ASSIGN_REF
+       nop      
+ 
+G_M000_IG03:                ;; offset=0x0051
+       add      rsp, 40
+       pop      rbx
+       pop      rsi
+       ret      
+ 
+; Total bytes of code 88
+
+; Assembly listing for method Tedd.RTree.StackPackedRTree`1[int]:.ctor(System.Collections.Generic.IReadOnlyList`1[Tedd.RTree.SpatialEntry`1[int]],int,Tedd.RTree.BulkLoadWorkspace):this (FullOpts)
+; Emitting BLENDED_CODE for generic X64 + VEX on Windows
+; FullOpts code
+; optimized code
+; rbp based frame
+; fully interruptible
+; No PGO data
+; 14 inlinees with PGO data; 86 single block inlinees; 14 inlinees without PGO data
+
+G_M000_IG01:                ;; offset=0x0000
+       push     rbp
+       push     r15
+       push     r14
+       push     r13
+       push     r12
+       push     rdi
+       push     rsi
+       push     rbx
+       sub      rsp, 584
+       vmovaps  xmmword ptr [rsp+0x230], xmm6
+       vmovaps  xmmword ptr [rsp+0x220], xmm7
+       vmovaps  xmmword ptr [rsp+0x210], xmm8
+       vmovaps  xmmword ptr [rsp+0x200], xmm9
+       vmovaps  xmmword ptr [rsp+0x1F0], xmm10
+       vmovaps  xmmword ptr [rsp+0x1E0], xmm11
+       vmovaps  xmmword ptr [rsp+0x1D0], xmm12
+       lea      rbp, [rsp+0x20]
+       vxorps   xmm4, xmm4, xmm4
+       vmovdqa  xmmword ptr [rbp+0x30], xmm4
+       vmovdqa  xmmword ptr [rbp+0x40], xmm4
+       mov      rax, -336
+       vmovdqa  xmmword ptr [rbp+rax+0x1A0], xmm4
+       vmovdqa  xmmword ptr [rbp+rax+0x1B0], xmm4
+       vmovdqa  xmmword ptr [rbp+rax+0x1C0], xmm4
+       add      rax, 48
+       jne      SHORT  -5 instr
+       mov      qword ptr [rbp+0x1A0], rax
+       mov      rax, 0xE08A62BB9BAD
+       mov      qword ptr [rbp+0x1A8], rax
+ 
+G_M000_IG02:                ;; offset=0x00A8
+       mov      rbx, r9
+       mov      gword ptr [rbp], rbx
+       mov      rsi, rdx
+       mov      rdi, rcx
+       test     rsi, rsi
+       je       G_M000_IG93
+       mov      ecx, r8d
+       sub      ecx, 4
+       cmp      ecx, 124
+       ja       G_M000_IG94
+       mov      dword ptr [rdi+0x28], r8d
+       mov      rcx, rsi
+       mov      r11, 0x7FFC654600E0
+       call     [r11]System.Collections.Generic.IReadOnlyCollection`1[Tedd.RTree.SpatialEntry`1[int]]:get_Count():int:this
+       mov      dword ptr [rdi+0x2C], eax
+       mov      r14d, dword ptr [rdi+0x2C]
+       test     r14d, r14d
+       je       G_M000_IG68
+ 
+G_M000_IG03:                ;; offset=0x00F1
+       xor      r15, r15
+       mov      rdx, rsi
+       mov      rcx, 0x7FFC657687E0
+       cmp      qword ptr [rdx], rcx
+       je       SHORT G_M000_IG05
+ 
+G_M000_IG04:                ;; offset=0x0106
+       xor      rdx, rdx
+ 
+G_M000_IG05:                ;; offset=0x0108
+       test     rdx, rdx
+       jne      SHORT G_M000_IG07
+       movsxd   rdx, r14d
+       mov      rcx, 0x7FFC657687E0
+       call     CORINFO_HELP_NEWARR_1_VC
+       mov      r15, rax
+       xor      r13d, r13d
+       test     r14d, r14d
+       jle      SHORT G_M000_IG07
+ 
+G_M000_IG06:                ;; offset=0x012A
+       lea      rdx, [rbp+0xC8]
+       mov      rcx, rsi
+       mov      r8d, r13d
+       mov      r11, 0x7FFC654600E8
+       call     [r11]System.Collections.Generic.IReadOnlyList`1[Tedd.RTree.SpatialEntry`1[int]]:get_Item(int):Tedd.RTree.SpatialEntry`1[int]:this
+       lea      rdx, [r13+4*r13]
+       vmovdqu  ymm0, ymmword ptr [rbp+0xC8]
+       vmovdqu  ymmword ptr [r15+8*rdx+0x10], ymm0
+       mov      rcx, qword ptr [rbp+0xE8]
+       mov      qword ptr [r15+8*rdx+0x30], rcx
+       inc      r13d
+       cmp      r14d, r13d
+       jg       SHORT G_M000_IG06
+ 
+G_M000_IG07:                ;; offset=0x016C
+       test     r15, r15
+       jne      SHORT G_M000_IG10
+ 
+G_M000_IG08:                ;; offset=0x0171
+       mov      r15, rsi
+       mov      rcx, 0x7FFC657687E0
+       cmp      qword ptr [r15], rcx
+       je       SHORT G_M000_IG10
+ 
+G_M000_IG09:                ;; offset=0x0183
+       mov      rdx, rsi
+       call     CORINFO_HELP_CHKCASTARRAY
+       mov      r15, rax
+ 
+G_M000_IG10:                ;; offset=0x018E
+       lea      rsi, bword ptr [r15+0x10]
+       mov      r14d, dword ptr [r15+0x08]
+       test     rbx, rbx
+       jne      SHORT G_M000_IG11
+       mov      r15d, dword ptr [rdi+0x2C]
+       movsxd   rdx, r15d
+       mov      rcx, 0x7FFC6554A7D0
+       call     CORINFO_HELP_NEWARR_1_VC
+       add      rax, 16
+       mov      r13d, r15d
+       mov      r12, rax
+       jmp      SHORT G_M000_IG12
+       align    [0 bytes for IG16]
+ 
+G_M000_IG11:                ;; offset=0x01BD
+       mov      edx, dword ptr [rdi+0x2C]
+       mov      rcx, rbx
+       call     [Tedd.RTree.BulkLoadWorkspace:EnsureCapacity(int):this]
+       mov      r12, gword ptr [rbx+0x08]
+       mov      r15d, dword ptr [rdi+0x2C]
+       mov      r13d, r15d
+       test     r12, r12
+       je       G_M000_IG97
+       cmp      dword ptr [r12+0x08], r13d
+       jb       G_M000_IG102
+       add      r12, 16
+ 
+G_M000_IG12:                ;; offset=0x01EC
+       test     rbx, rbx
+       jne      SHORT G_M000_IG13
+       movsxd   rdx, r15d
+       mov      rcx, 0x7FFC657DE028
+       call     CORINFO_HELP_NEWARR_1_VC
+       add      rax, 16
+       mov      r10d, r15d
+       jmp      SHORT G_M000_IG15
+ 
+G_M000_IG13:                ;; offset=0x020C
+       mov      r10d, r15d
+       mov      rax, gword ptr [rbx+0x10]
+       test     rax, rax
+       je       G_M000_IG98
+       cmp      dword ptr [rax+0x08], r10d
+       jb       G_M000_IG102
+       add      rax, 16
+ 
+G_M000_IG14:                ;; offset=0x022A
+       mov      rbx, gword ptr [rbp]
+ 
+G_M000_IG15:                ;; offset=0x022E
+       mov      bword ptr [rbp+0x18], rax
+       mov      dword ptr [rbp+0xC4], r10d
+       test     r14d, r14d
+       je       G_M000_IG104
+       vmovsd   xmm0, qword ptr [rsi]
+       vmovsd   xmm1, qword ptr [rsi+0x08]
+       vmovsd   xmm2, qword ptr [rsi+0x10]
+       vmovsd   xmm3, qword ptr [rsi+0x18]
+       mov      edx, 1
+       cmp      edx, r14d
+       jge      G_M000_IG17
+ 
+G_M000_IG16:                ;; offset=0x0263
+       lea      r8, [rdx+4*rdx]
+       lea      r8, bword ptr [rsi+8*r8]
+       vmovsd   xmm4, qword ptr [r8]
+       vmovsd   xmm5, qword ptr [r8+0x08]
+       vmovsd   xmm6, qword ptr [r8+0x10]
+       vmovsd   xmm7, qword ptr [r8+0x18]
+       vcmpeqpd xmm8, xmm0, xmm4
+       vxorps   xmm9, xmm9, xmm9
+       vpcmpgtq xmm9, xmm9, xmm0
+       vandpd   xmm8, xmm9, xmm8
+       vcmpneqpd xmm9, xmm0, xmm0
+       vorpd    xmm8, xmm9, xmm8
+       vcmpltpd xmm9, xmm0, xmm4
+       vorpd    xmm8, xmm9, xmm8
+       vblendvpd xmm0, xmm4, xmm0, xmm8
+       vcmpeqpd xmm4, xmm1, xmm5
+       vxorps   xmm8, xmm8, xmm8
+       vpcmpgtq xmm8, xmm8, xmm1
+       vandpd   xmm4, xmm8, xmm4
+       vcmpneqpd xmm8, xmm1, xmm1
+       vorpd    xmm4, xmm8, xmm4
+       vcmpltpd xmm8, xmm1, xmm5
+       vorpd    xmm4, xmm8, xmm4
+       vblendvpd xmm1, xmm5, xmm1, xmm4
+       vcmpeqpd xmm4, xmm2, xmm6
+       vxorps   xmm5, xmm5, xmm5
+       vpcmpgtq xmm5, xmm5, xmm6
+       vandpd   xmm4, xmm5, xmm4
+       vcmpneqpd xmm5, xmm2, xmm2
+       vorpd    xmm4, xmm5, xmm4
+       vcmpltpd xmm5, xmm6, xmm2
+       vorpd    xmm4, xmm5, xmm4
+       vblendvpd xmm2, xmm6, xmm2, xmm4
+       vcmpeqpd xmm4, xmm3, xmm7
+       vxorps   xmm5, xmm5, xmm5
+       vpcmpgtq xmm5, xmm5, xmm7
+       vandpd   xmm4, xmm5, xmm4
+       vcmpneqpd xmm5, xmm3, xmm3
+       vorpd    xmm4, xmm5, xmm4
+       vcmpltpd xmm5, xmm7, xmm3
+       vorpd    xmm4, xmm5, xmm4
+       vblendvpd xmm3, xmm7, xmm3, xmm4
+       inc      edx
+       cmp      edx, r14d
+       jl       G_M000_IG16
+ 
+G_M000_IG17:                ;; offset=0x033A
+       vmovsd   qword ptr [rdi+0x30], xmm0
+       vmovsd   qword ptr [rdi+0x38], xmm1
+       vmovsd   qword ptr [rdi+0x40], xmm2
+       vmovsd   qword ptr [rdi+0x48], xmm3
+       vmovsd   xmm4, qword ptr [reloc @RWD00]
+       vmulsd   xmm6, xmm0, xmm4
+       vmulsd   xmm7, xmm1, xmm4
+       vmulsd   xmm0, xmm2, xmm4
+       vsubsd   xmm8, xmm0, xmm6
+       vmulsd   xmm0, xmm3, xmm4
+       vsubsd   xmm9, xmm0, xmm7
+       vxorps   xmm0, xmm0, xmm0
+       vucomisd xmm8, xmm0
+       jbe      SHORT G_M000_IG18
+       vmovsd   xmm10, qword ptr [reloc @RWD08]
+       vdivsd   xmm10, xmm10, xmm8
+       jmp      SHORT G_M000_IG19
+ 
+G_M000_IG18:                ;; offset=0x0387
+       vxorps   xmm10, xmm10, xmm10
+ 
+G_M000_IG19:                ;; offset=0x038C
+       vxorps   xmm0, xmm0, xmm0
+       vucomisd xmm9, xmm0
+       jbe      SHORT G_M000_IG20
+       vmovsd   xmm0, qword ptr [reloc @RWD08]
+       vdivsd   xmm11, xmm0, xmm9
+       jmp      SHORT G_M000_IG21
+ 
+G_M000_IG20:                ;; offset=0x03A5
+       vxorps   xmm11, xmm11, xmm11
+ 
+G_M000_IG21:                ;; offset=0x03AA
+       vmovq    rdx, xmm10
+       mov      r8, 0x7FF0000000000000
+       andn     rdx, rdx, r8
+       setne    r9b
+       movzx    r9, r9b
+       mov      dword ptr [rbp+0x164], r9d
+       vmovq    rdx, xmm11
+       andn     rdx, rdx, r8
+       setne    r11b
+       movzx    r11, r11b
+       mov      dword ptr [rbp+0x160], r11d
+       lea      rcx, [rbp+0x188]
+       mov      bword ptr [rbp+0x10], rcx
+       lea      r8, [rbp+0x168]
+       mov      bword ptr [rbp+0x08], r8
+       and      r15d, -8
+       mov      dword ptr [rbp+0x15C], r15d
+       xor      edx, edx
+       cmp      edx, r15d
+       jl       G_M000_IG92
+ 
+G_M000_IG22:                ;; offset=0x0412
+       mov      eax, dword ptr [rbp+0xC4]
+       mov      r15d, dword ptr [rbp+0x15C]
+ 
+G_M000_IG23:                ;; offset=0x041F
+       mov      ebx, r15d
+       jmp      G_M000_IG38
+ 
+G_M000_IG24:                ;; offset=0x0427
+       vdivsd   xmm2, xmm0, xmm8
+       vmovsd   xmm0, qword ptr [reloc @RWD08]
+       vmulsd   xmm2, xmm2, xmm0
+ 
+G_M000_IG25:                ;; offset=0x0438
+       vxorps   xmm0, xmm0, xmm0
+       vucomisd xmm0, xmm2
+       ja       SHORT G_M000_IG27
+       vmovsd   xmm0, qword ptr [reloc @RWD08]
+       vucomisd xmm2, xmm0
+       ja       SHORT G_M000_IG26
+       jmp      SHORT G_M000_IG28
+ 
+G_M000_IG26:                ;; offset=0x0452
+       vmovaps  xmm2, xmm0
+       jmp      SHORT G_M000_IG28
+ 
+G_M000_IG27:                ;; offset=0x0458
+       vxorps   xmm2, xmm2, xmm2
+ 
+G_M000_IG28:                ;; offset=0x045C
+       vxorps   xmm0, xmm0, xmm0
+       vmaxsd   xmm0, xmm2, xmm0
+       mov      ecx, 0xFFFFFFFF
+       vcvttsd2si rdx, xmm0
+       vucomisd xmm2, qword ptr [reloc @RWD16]
+       cmovb    ecx, edx
+       jmp      SHORT G_M000_IG30
+ 
+G_M000_IG29:                ;; offset=0x047B
+       xor      ecx, ecx
+ 
+G_M000_IG30:                ;; offset=0x047D
+       vxorps   xmm0, xmm0, xmm0
+       vucomisd xmm9, xmm0
+       jbe      G_M000_IG40
+ 
+G_M000_IG31:                ;; offset=0x048B
+       cmp      dword ptr [rbp+0x160], 0
+       je       SHORT G_M000_IG32
+       vmulsd   xmm0, xmm1, xmm11
+       jmp      SHORT G_M000_IG33
+ 
+G_M000_IG32:                ;; offset=0x049B
+       vdivsd   xmm0, xmm1, xmm9
+       vmovsd   xmm1, qword ptr [reloc @RWD08]
+       vmulsd   xmm0, xmm0, xmm1
+ 
+G_M000_IG33:                ;; offset=0x04AC
+       vxorps   xmm1, xmm1, xmm1
+       vucomisd xmm1, xmm0
+       ja       SHORT G_M000_IG35
+       vmovsd   xmm1, qword ptr [reloc @RWD08]
+       vucomisd xmm0, xmm1
+       ja       SHORT G_M000_IG34
+       jmp      SHORT G_M000_IG36
+ 
+G_M000_IG34:                ;; offset=0x04C6
+       vmovaps  xmm0, xmm1
+       jmp      SHORT G_M000_IG36
+ 
+G_M000_IG35:                ;; offset=0x04CC
+       vxorps   xmm0, xmm0, xmm0
+ 
+G_M000_IG36:                ;; offset=0x04D0
+       vxorps   xmm1, xmm1, xmm1
+       vmaxsd   xmm1, xmm0, xmm1
+       mov      edx, 0xFFFFFFFF
+       vcvttsd2si r9, xmm1
+       vucomisd xmm0, qword ptr [reloc @RWD16]
+       cmovb    edx, r9d
+ 
+G_M000_IG37:                ;; offset=0x04EE
+       cmp      ebx, eax
+       jae      G_M000_IG104
+       call     [Tedd.RTree.HilbertOrder:Encode(uint,uint):uint]
+       mov      r8, bword ptr [rbp+0x18]
+       mov      dword ptr [r8+4*rbx], eax
+       cmp      ebx, r13d
+       jae      G_M000_IG104
+       mov      dword ptr [r12+4*rbx], ebx
+       inc      ebx
+       mov      eax, dword ptr [rbp+0xC4]
+ 
+G_M000_IG38:                ;; offset=0x0519
+       cmp      ebx, dword ptr [rdi+0x2C]
+       jge      G_M000_IG41
+       cmp      ebx, r14d
+       jae      G_M000_IG104
+       lea      rcx, [rbx+4*rbx]
+       lea      rcx, bword ptr [rsi+8*rcx]
+       vmovsd   xmm0, qword ptr [rcx]
+       vmovsd   xmm1, qword ptr [rcx+0x08]
+       vmovsd   xmm2, qword ptr [rcx+0x10]
+       vmovsd   xmm3, qword ptr [rcx+0x18]
+       vmovsd   xmm12, qword ptr [reloc @RWD24]
+       vmulsd   xmm0, xmm0, xmm12
+       vmulsd   xmm2, xmm2, xmm12
+       vaddsd   xmm0, xmm0, xmm2
+       vsubsd   xmm0, xmm0, xmm6
+       vmulsd   xmm1, xmm1, xmm12
+       vmulsd   xmm2, xmm3, xmm12
+       vaddsd   xmm1, xmm1, xmm2
+       vsubsd   xmm1, xmm1, xmm7
+       vxorps   xmm2, xmm2, xmm2
+       vucomisd xmm8, xmm2
+       jbe      G_M000_IG29
+ 
+G_M000_IG39:                ;; offset=0x0580
+       mov      r15d, dword ptr [rbp+0x164]
+       test     r15d, r15d
+       je       G_M000_IG24
+       vmulsd   xmm2, xmm0, xmm10
+       jmp      G_M000_IG25
+ 
+G_M000_IG40:                ;; offset=0x059A
+       xor      edx, edx
+       jmp      G_M000_IG37
+ 
+G_M000_IG41:                ;; offset=0x05A1
+       cmp      dword ptr [rdi+0x2C], 0x800
+       jl       SHORT G_M000_IG44
+       mov      rbx, gword ptr [rbp]
+       test     rbx, rbx
+       jne      SHORT G_M000_IG42
+       movsxd   rdx, dword ptr [rdi+0x2C]
+       mov      rcx, 0x7FFC6554A7D0
+       call     CORINFO_HELP_NEWARR_1_VC
+       lea      rcx, bword ptr [rax+0x10]
+       mov      edx, dword ptr [rax+0x08]
+       jmp      SHORT G_M000_IG43
+ 
+G_M000_IG42:                ;; offset=0x05CF
+       mov      edx, dword ptr [rdi+0x2C]
+       mov      rcx, gword ptr [rbx+0x18]
+       test     rcx, rcx
+       je       G_M000_IG102
+       cmp      dword ptr [rcx+0x08], edx
+       jb       G_M000_IG102
+       add      rcx, 16
+ 
+G_M000_IG43:                ;; offset=0x05EC
+       mov      r8, bword ptr [rbp+0x18]
+       mov      bword ptr [rbp+0x60], r8
+       mov      eax, dword ptr [rbp+0xC4]
+       mov      dword ptr [rbp+0x68], eax
+       mov      bword ptr [rbp+0x50], r12
+       mov      dword ptr [rbp+0x58], r13d
+       mov      bword ptr [rbp+0x40], rcx
+       mov      dword ptr [rbp+0x48], edx
+       lea      rcx, [rbp+0x60]
+       lea      rdx, [rbp+0x50]
+       lea      r8, [rbp+0x40]
+       call     [Tedd.RTree.HilbertOrder:SortIndices(System.ReadOnlySpan`1[uint],System.Span`1[int],System.Span`1[int])]
+       jmp      SHORT G_M000_IG46
+ 
+G_M000_IG44:                ;; offset=0x0620
+       cmp      eax, r13d
+       jne      G_M000_IG99
+       cmp      r13d, 1
+       jle      SHORT G_M000_IG46
+       test     byte  ptr [(reloc 0x7ffc65803ea8)], 1
+       je       G_M000_IG100
+ 
+G_M000_IG45:                ;; offset=0x063C
+       mov      rcx, 0x1BD42000D50
+       mov      rcx, gword ptr [rcx]
+       mov      r8, bword ptr [rbp+0x18]
+       mov      bword ptr [rbp+0x30], r8
+       mov      dword ptr [rbp+0x38], r13d
+       mov      bword ptr [rbp+0x50], r12
+       mov      dword ptr [rbp+0x58], r13d
+       lea      r8, [rbp+0x50]
+       lea      rdx, [rbp+0x30]
+       mov      r11, 0x7FFC654600F0
+       xor      r9, r9
+       call     [r11]System.Collections.Generic.IArraySortHelper`2[uint,int]:Sort(System.Span`1[uint],System.Span`1[int],System.Collections.Generic.IComparer`1[uint]):this
+ 
+G_M000_IG46:                ;; offset=0x0675
+       test     dword ptr [rsp], esp
+       sub      rsp, 128
+       lea      rax, [rsp+0x20]
+       vxorps   ymm0, ymm0, ymm0
+       vmovdqu  ymmword ptr [rax], ymm0
+       vmovdqu  ymmword ptr [rax+0x20], ymm0
+       vmovdqu  ymmword ptr [rax+0x40], ymm0
+       vmovdqu  ymmword ptr [rax+0x60], ymm0
+       mov      rbx, rax
+       test     dword ptr [rsp], esp
+       sub      rsp, 128
+       lea      rax, [rsp+0x20]
+       vxorps   ymm0, ymm0, ymm0
+       vmovdqu  ymmword ptr [rax], ymm0
+       vmovdqu  ymmword ptr [rax+0x20], ymm0
+       vmovdqu  ymmword ptr [rax+0x40], ymm0
+       vmovdqu  ymmword ptr [rax+0x60], ymm0
+       mov      r15, rax
+       mov      r8d, 1
+       mov      ecx, 1
+       mov      eax, dword ptr [rdi+0x2C]
+       mov      r10d, eax
+       mov      r9d, 1
+       xor      edx, edx
+       mov      dword ptr [rbx], edx
+       mov      dword ptr [r15], 1
+       cmp      eax, dword ptr [rdi+0x28]
+       jg       SHORT G_M000_IG48
+ 
+G_M000_IG47:                ;; offset=0x06EE
+       mov      eax, r8d
+       jmp      SHORT G_M000_IG50
+       align    [0 bytes for IG48]
+ 
+G_M000_IG48:                ;; offset=0x06F3
+       cmp      ecx, 32
+       jae      G_M000_IG104
+       mov      dword ptr [rbx+4*rcx], r10d
+       imul     r9d, dword ptr [rdi+0x28]
+       jo       G_M000_IG105
+       lea      edx, [rcx+0x01]
+       mov      r8, rdx
+       mov      edx, ecx
+       mov      dword ptr [r15+4*rdx], r9d
+       dec      eax
+       cdq      
+       idiv     edx:eax, dword ptr [rdi+0x28]
+       inc      eax
+       add      r10d, eax
+       jo       G_M000_IG105
+       mov      dword ptr [rbp+0x154], r10d
+       cmp      eax, dword ptr [rdi+0x28]
+       mov      rcx, r8
+       mov      r10d, dword ptr [rbp+0x154]
+       jg       SHORT G_M000_IG48
+ 
+G_M000_IG49:                ;; offset=0x073E
+       mov      r8d, ecx
+       mov      eax, r8d
+ 
+G_M000_IG50:                ;; offset=0x0744
+       cmp      eax, 32
+       ja       G_M000_IG102
+       test     eax, eax
+       je       SHORT G_M000_IG51
+       mov      dword ptr [rbp+0x154], r10d
+       mov      dword ptr [rbp+0x158], eax
+       mov      edx, eax
+       mov      rcx, 0x7FFC6554A7D0
+       call     CORINFO_HELP_NEWARR_1_VC
+       mov      rdx, rax
+       mov      gword ptr [rbp+0x28], rdx
+       mov      r8d, dword ptr [rbp+0x158]
+       shl      r8, 2
+       lea      rcx, bword ptr [rdx+0x10]
+       mov      rdx, rbx
+       call     [System.SpanHelpers:Memmove(byref,byref,nuint)]
+       mov      rbx, gword ptr [rbp+0x28]
+       jmp      SHORT G_M000_IG53
+       align    [0 bytes for IG57]
+ 
+G_M000_IG51:                ;; offset=0x0794
+       test     byte  ptr [(reloc 0x7ffc657f5640)], 1
+       je       G_M000_IG101
+ 
+G_M000_IG52:                ;; offset=0x07A1
+       mov      rcx, 0x1BD42000D48
+       mov      rbx, gword ptr [rcx]
+       mov      dword ptr [rbp+0x154], r10d
+       mov      dword ptr [rbp+0x158], eax
+ 
+G_M000_IG53:                ;; offset=0x07BB
+       lea      rcx, bword ptr [rdi+0x18]
+       mov      rdx, rbx
+       call     CORINFO_HELP_ASSIGN_REF
+       mov      ebx, dword ptr [rbp+0x158]
+       test     ebx, ebx
+       je       SHORT G_M000_IG54
+       mov      edx, ebx
+       mov      rcx, 0x7FFC6554A7D0
+       call     CORINFO_HELP_NEWARR_1_VC
+       mov      rdx, rax
+       mov      gword ptr [rbp+0x20], rdx
+       mov      r8d, ebx
+       shl      r8, 2
+       lea      rcx, bword ptr [rdx+0x10]
+       mov      rdx, r15
+       call     [System.SpanHelpers:Memmove(byref,byref,nuint)]
+       mov      r15, gword ptr [rbp+0x20]
+       jmp      SHORT G_M000_IG56
+ 
+G_M000_IG54:                ;; offset=0x0803
+       test     byte  ptr [(reloc 0x7ffc657f5640)], 1
+       je       G_M000_IG103
+ 
+G_M000_IG55:                ;; offset=0x0810
+       mov      rcx, 0x1BD42000D48
+       mov      r15, gword ptr [rcx]
+ 
+G_M000_IG56:                ;; offset=0x081D
+       lea      rcx, bword ptr [rdi+0x20]
+       mov      rdx, r15
+       call     CORINFO_HELP_ASSIGN_REF
+       movsxd   rdx, dword ptr [rbp+0x154]
+       mov      rcx, 0x7FFC65767968
+       call     CORINFO_HELP_NEWARR_1_VC
+       lea      rcx, bword ptr [rdi+0x08]
+       mov      rdx, rax
+       call     CORINFO_HELP_ASSIGN_REF
+       movsxd   rdx, dword ptr [rdi+0x2C]
+       mov      rcx, 0x7FFC6554A7D0
+       call     CORINFO_HELP_NEWARR_1_VC
+       lea      rcx, bword ptr [rdi+0x10]
+       mov      rdx, rax
+       call     CORINFO_HELP_ASSIGN_REF
+       xor      eax, eax
+       mov      ecx, dword ptr [rdi+0x2C]
+       test     ecx, ecx
+       jle      SHORT G_M000_IG58
+ 
+G_M000_IG57:                ;; offset=0x0873
+       cmp      eax, r13d
+       jae      G_M000_IG104
+       mov      edx, dword ptr [r12+4*rax]
+       cmp      edx, r14d
+       jae      G_M000_IG104
+       lea      rdx, [rdx+4*rdx]
+       lea      rdx, bword ptr [rsi+8*rdx]
+       mov      r8d, dword ptr [rdx+0x20]
+       vmovups  ymm0, ymmword ptr [rdx]
+       vmovups  ymmword ptr [rbp+0x128], ymm0
+       mov      rdx, gword ptr [rdi+0x08]
+       cmp      eax, dword ptr [rdx+0x08]
+       jae      G_M000_IG104
+       mov      r10, rax
+       shl      r10, 5
+       vmovdqu  ymm0, ymmword ptr [rbp+0x128]
+       vmovdqu  ymmword ptr [rdx+r10+0x10], ymm0
+       mov      rdx, gword ptr [rdi+0x10]
+       cmp      eax, ecx
+       jae      G_M000_IG104
+       mov      dword ptr [rdx+4*rax+0x10], r8d
+       inc      eax
+       cmp      eax, ecx
+       jl       SHORT G_M000_IG57
+ 
+G_M000_IG58:                ;; offset=0x08DB
+       mov      eax, 1
+       cmp      eax, ebx
+       jge      G_M000_IG65
+ 
+G_M000_IG59:                ;; offset=0x08E8
+       mov      rcx, gword ptr [rdi+0x18]
+       mov      rdx, rcx
+       lea      r8d, [rax-0x01]
+       cmp      r8d, dword ptr [rdx+0x08]
+       jae      G_M000_IG104
+       lea      r8d, [rax-0x01]
+       mov      edx, dword ptr [rdx+4*r8+0x10]
+       cmp      eax, dword ptr [rcx+0x08]
+       jae      G_M000_IG104
+       mov      ecx, dword ptr [rcx+4*rax+0x10]
+       mov      r8d, ecx
+       cmp      edx, r8d
+       jge      G_M000_IG64
+ 
+G_M000_IG60:                ;; offset=0x091F
+       mov      r10d, dword ptr [rdi+0x28]
+       mov      r9d, r10d
+       mov      r11d, r8d
+       sub      r11d, edx
+       cmp      r9d, r11d
+       jg       G_M000_IG71
+ 
+G_M000_IG61:                ;; offset=0x0935
+       add      r9d, edx
+       mov      r11, gword ptr [rdi+0x08]
+       mov      esi, dword ptr [r11+0x08]
+       cmp      edx, esi
+       jae      G_M000_IG104
+       mov      r14d, edx
+       shl      r14, 5
+       lea      r11, bword ptr [r11+r14+0x10]
+       vmovsd   xmm0, qword ptr [r11]
+       vmovsd   xmm1, qword ptr [r11+0x08]
+       vmovsd   xmm2, qword ptr [r11+0x10]
+       vmovsd   xmm3, qword ptr [r11+0x18]
+       lea      r11d, [rdx+0x01]
+       cmp      r11d, r9d
+       jge      G_M000_IG63
+       align    [0 bytes for IG62]
+ 
+G_M000_IG62:                ;; offset=0x0978
+       mov      r14, gword ptr [rdi+0x08]
+       cmp      r11d, esi
+       jae      G_M000_IG104
+       mov      r15, r11
+       shl      r15, 5
+       lea      r14, bword ptr [r14+r15+0x10]
+       vmovsd   xmm4, qword ptr [r14]
+       vcmpeqpd xmm5, xmm0, xmm4
+       vxorps   xmm6, xmm6, xmm6
+       vpcmpgtq xmm6, xmm6, xmm0
+       vandpd   xmm5, xmm6, xmm5
+       vcmpneqpd xmm6, xmm0, xmm0
+       vorpd    xmm5, xmm6, xmm5
+       vcmpltpd xmm6, xmm0, xmm4
+       vorpd    xmm5, xmm6, xmm5
+       vblendvpd xmm0, xmm4, xmm0, xmm5
+       vmovsd   xmm4, qword ptr [r14+0x08]
+       vcmpeqpd xmm5, xmm1, xmm4
+       vxorps   xmm6, xmm6, xmm6
+       vpcmpgtq xmm6, xmm6, xmm1
+       vandpd   xmm5, xmm6, xmm5
+       vcmpneqpd xmm6, xmm1, xmm1
+       vorpd    xmm5, xmm6, xmm5
+       vcmpltpd xmm6, xmm1, xmm4
+       vorpd    xmm5, xmm6, xmm5
+       vblendvpd xmm1, xmm4, xmm1, xmm5
+       vmovsd   xmm4, qword ptr [r14+0x10]
+       vcmpeqpd xmm5, xmm2, xmm4
+       vxorps   xmm6, xmm6, xmm6
+       vpcmpgtq xmm6, xmm6, xmm4
+       vandpd   xmm5, xmm6, xmm5
+       vcmpneqpd xmm6, xmm2, xmm2
+       vorpd    xmm5, xmm6, xmm5
+       vcmpltpd xmm6, xmm4, xmm2
+       vorpd    xmm5, xmm6, xmm5
+       vblendvpd xmm2, xmm4, xmm2, xmm5
+       vmovsd   xmm4, qword ptr [r14+0x18]
+       vcmpeqpd xmm5, xmm3, xmm4
+       vxorps   xmm6, xmm6, xmm6
+       vpcmpgtq xmm6, xmm6, xmm4
+       vandpd   xmm5, xmm6, xmm5
+       vcmpneqpd xmm6, xmm3, xmm3
+       vorpd    xmm5, xmm6, xmm5
+       vcmpltpd xmm6, xmm4, xmm3
+       vorpd    xmm5, xmm6, xmm5
+       vblendvpd xmm3, xmm4, xmm3, xmm5
+       inc      r11d
+       cmp      r11d, r9d
+       jl       G_M000_IG62
+ 
+G_M000_IG63:                ;; offset=0x0A5C
+       mov      r9, gword ptr [rdi+0x08]
+       cmp      ecx, esi
+       jae      G_M000_IG104
+       mov      r11, rcx
+       shl      r11, 5
+       lea      r9, bword ptr [r9+r11+0x10]
+       vmovsd   qword ptr [r9], xmm0
+       vmovsd   qword ptr [r9+0x08], xmm1
+       vmovsd   qword ptr [r9+0x10], xmm2
+       vmovsd   qword ptr [r9+0x18], xmm3
+       add      edx, r10d
+       inc      ecx
+       cmp      edx, r8d
+       jl       G_M000_IG60
+ 
+G_M000_IG64:                ;; offset=0x0A99
+       inc      eax
+       cmp      eax, ebx
+       jl       G_M000_IG59
+ 
+G_M000_IG65:                ;; offset=0x0AA3
+       mov      r8, 0xE08A62BB9BAD
+       cmp      qword ptr [rbp+0x1A8], r8
+       je       SHORT G_M000_IG66
+       call     CORINFO_HELP_FAIL_FAST
+ 
+G_M000_IG66:                ;; offset=0x0ABB
+       nop      
+ 
+G_M000_IG67:                ;; offset=0x0ABC
+       vzeroupper 
+       vmovaps  xmm6, xmmword ptr [rbp+0x210]
+       vmovaps  xmm7, xmmword ptr [rbp+0x200]
+       vmovaps  xmm8, xmmword ptr [rbp+0x1F0]
+       vmovaps  xmm9, xmmword ptr [rbp+0x1E0]
+       vmovaps  xmm10, xmmword ptr [rbp+0x1D0]
+       vmovaps  xmm11, xmmword ptr [rbp+0x1C0]
+       vmovaps  xmm12, xmmword ptr [rbp+0x1B0]
+       lea      rsp, [rbp+0x228]
+       pop      rbx
+       pop      rsi
+       pop      rdi
+       pop      r12
+       pop      r13
+       pop      r14
+       pop      r15
+       pop      rbp
+       ret      
+ 
+G_M000_IG68:                ;; offset=0x0B0B
+       test     byte  ptr [(reloc 0x7ffc657c2130)], 1
+       je       G_M000_IG95
+ 
+G_M000_IG69:                ;; offset=0x0B18
+       mov      rcx, 0x1BD42000D00
+       mov      rdx, gword ptr [rcx]
+       lea      rcx, bword ptr [rdi+0x08]
+       call     CORINFO_HELP_ASSIGN_REF
+       test     byte  ptr [(reloc 0x7ffc657f5640)], 1
+       je       G_M000_IG96
+ 
+G_M000_IG70:                ;; offset=0x0B3B
+       mov      rcx, 0x1BD42000D48
+       mov      rbx, gword ptr [rcx]
+       lea      rcx, bword ptr [rdi+0x10]
+       mov      rdx, rbx
+       call     CORINFO_HELP_ASSIGN_REF
+       lea      rcx, bword ptr [rdi+0x18]
+       mov      rdx, rbx
+       call     CORINFO_HELP_ASSIGN_REF
+       lea      rcx, bword ptr [rdi+0x20]
+       mov      rdx, rbx
+       call     CORINFO_HELP_ASSIGN_REF
+       jmp      G_M000_IG65
+       align    [0 bytes for IG72]
+ 
+G_M000_IG71:                ;; offset=0x0B71
+       mov      r9d, r11d
+       jmp      G_M000_IG61
+ 
+G_M000_IG72:                ;; offset=0x0B79
+       mov      edx, dword ptr [rbp+0x150]
+ 
+G_M000_IG73:                ;; offset=0x0B7F
+       mov      dword ptr [rbp+0x150], edx
+       lea      r15d, [rdx+rbx]
+       cmp      r15d, r14d
+       jae      G_M000_IG104
+       mov      eax, r15d
+       lea      rax, [rax+4*rax]
+       lea      rax, bword ptr [rsi+8*rax]
+       vmovsd   xmm0, qword ptr [rax]
+       vmovsd   xmm1, qword ptr [rax+0x08]
+       vmovsd   xmm2, qword ptr [rax+0x10]
+       vmovsd   xmm3, qword ptr [rax+0x18]
+       vmulsd   xmm0, xmm0, xmm12
+       vmulsd   xmm2, xmm2, xmm12
+       vaddsd   xmm0, xmm0, xmm2
+       vsubsd   xmm0, xmm0, xmm6
+       vmulsd   xmm1, xmm1, xmm12
+       vmulsd   xmm2, xmm3, xmm12
+       vaddsd   xmm1, xmm1, xmm2
+       vsubsd   xmm1, xmm1, xmm7
+       vxorps   xmm2, xmm2, xmm2
+       vucomisd xmm8, xmm2
+       jbe      SHORT G_M000_IG80
+ 
+G_M000_IG74:                ;; offset=0x0BDE
+       test     r9d, r9d
+       je       SHORT G_M000_IG75
+       vmulsd   xmm0, xmm0, xmm10
+       jmp      SHORT G_M000_IG76
+ 
+G_M000_IG75:                ;; offset=0x0BEA
+       vdivsd   xmm0, xmm0, xmm8
+       vmovsd   xmm2, qword ptr [reloc @RWD08]
+       vmulsd   xmm0, xmm0, xmm2
+ 
+G_M000_IG76:                ;; offset=0x0BFB
+       vxorps   xmm2, xmm2, xmm2
+       vucomisd xmm2, xmm0
+       ja       SHORT G_M000_IG78
+       vmovsd   xmm2, qword ptr [reloc @RWD08]
+       vucomisd xmm0, xmm2
+       ja       SHORT G_M000_IG77
+       jmp      SHORT G_M000_IG79
+ 
+G_M000_IG77:                ;; offset=0x0C15
+       vmovaps  xmm0, xmm2
+       jmp      SHORT G_M000_IG79
+ 
+G_M000_IG78:                ;; offset=0x0C1B
+       vxorps   xmm0, xmm0, xmm0
+ 
+G_M000_IG79:                ;; offset=0x0C1F
+       vxorps   xmm2, xmm2, xmm2
+       vmaxsd   xmm2, xmm0, xmm2
+       mov      eax, 0xFFFFFFFF
+       vcvttsd2si r10, xmm2
+       vucomisd xmm0, qword ptr [reloc @RWD16]
+       cmovb    eax, r10d
+       mov      r9d, dword ptr [rbp+0x164]
+       jmp      SHORT G_M000_IG81
+ 
+G_M000_IG80:                ;; offset=0x0C46
+       xor      eax, eax
+ 
+G_M000_IG81:                ;; offset=0x0C48
+       vxorps   xmm0, xmm0, xmm0
+       vucomisd xmm9, xmm0
+       jbe      SHORT G_M000_IG88
+ 
+G_M000_IG82:                ;; offset=0x0C52
+       test     r11d, r11d
+       je       SHORT G_M000_IG83
+       vmulsd   xmm0, xmm1, xmm11
+       jmp      SHORT G_M000_IG84
+ 
+G_M000_IG83:                ;; offset=0x0C5E
+       vdivsd   xmm0, xmm1, xmm9
+       vmovsd   xmm2, qword ptr [reloc @RWD08]
+       vmulsd   xmm0, xmm0, xmm2
+ 
+G_M000_IG84:                ;; offset=0x0C6F
+       vxorps   xmm2, xmm2, xmm2
+       vucomisd xmm2, xmm0
+       ja       SHORT G_M000_IG86
+       vmovsd   xmm2, qword ptr [reloc @RWD08]
+       vucomisd xmm0, xmm2
+       ja       SHORT G_M000_IG85
+       jmp      SHORT G_M000_IG87
+ 
+G_M000_IG85:                ;; offset=0x0C89
+       vmovaps  xmm0, xmm2
+       jmp      SHORT G_M000_IG87
+ 
+G_M000_IG86:                ;; offset=0x0C8F
+       vxorps   xmm0, xmm0, xmm0
+ 
+G_M000_IG87:                ;; offset=0x0C93
+       vxorps   xmm1, xmm1, xmm1
+       vmaxsd   xmm1, xmm0, xmm1
+       mov      r10d, 0xFFFFFFFF
+       vcvttsd2si r9, xmm1
+       vucomisd xmm0, qword ptr [reloc @RWD16]
+       cmovb    r10d, r9d
+       mov      r9d, dword ptr [rbp+0x164]
+       mov      r11d, dword ptr [rbp+0x160]
+       jmp      SHORT G_M000_IG89
+ 
+G_M000_IG88:                ;; offset=0x0CC2
+       xor      r10d, r10d
+ 
+G_M000_IG89:                ;; offset=0x0CC5
+       mov      dword ptr [rcx+4*rbx], eax
+       mov      dword ptr [r8+4*rbx], r10d
+       cmp      r15d, r13d
+       jae      G_M000_IG104
+       mov      eax, r15d
+       mov      dword ptr [r12+4*rax], r15d
+       inc      ebx
+       cmp      ebx, 8
+       jl       G_M000_IG72
+ 
+G_M000_IG90:                ;; offset=0x0CE7
+       vmovups  ymm0, ymmword ptr [rcx]
+       vmovups  ymmword ptr [rbp+0x90], ymm0
+       vmovups  ymm0, ymmword ptr [r8]
+       vmovups  ymmword ptr [rbp+0x70], ymm0
+       lea      rdx, [rbp+0x90]
+       lea      r8, [rbp+0x70]
+       lea      rcx, [rbp+0xF0]
+       call     [Tedd.RTree.HilbertOrder:Encode(System.Runtime.Intrinsics.Vector256`1[uint],System.Runtime.Intrinsics.Vector256`1[uint]):System.Runtime.Intrinsics.Vector256`1[uint]]
+       mov      ebx, dword ptr [rbp+0x150]
+       mov      ecx, ebx
+       add      rcx, 8
+       mov      eax, dword ptr [rbp+0xC4]
+       mov      edx, eax
+       cmp      rcx, rdx
+       ja       G_M000_IG102
+       mov      ecx, ebx
+       mov      r8, bword ptr [rbp+0x18]
+       lea      rcx, bword ptr [r8+4*rcx]
+       vmovups  ymm0, ymmword ptr [rbp+0xF0]
+       vmovups  ymmword ptr [rcx], ymm0
+       add      ebx, 8
+       mov      r15d, dword ptr [rbp+0x15C]
+       cmp      ebx, r15d
+       mov      edx, ebx
+       mov      rcx, bword ptr [rbp+0x10]
+       mov      r8, bword ptr [rbp+0x08]
+       jge      G_M000_IG23
+ 
+G_M000_IG91:                ;; offset=0x0D65
+       mov      r9d, dword ptr [rbp+0x164]
+       mov      r11d, dword ptr [rbp+0x160]
+ 
+G_M000_IG92:                ;; offset=0x0D73
+       xor      ebx, ebx
+       vmovsd   xmm12, qword ptr [reloc @RWD24]
+       jmp      G_M000_IG73
+ 
+G_M000_IG93:                ;; offset=0x0D82
+       mov      ecx, 1
+       mov      rdx, 0x7FFC65760F98
+       call     [CORINFO_HELP_STRCNS]
+       mov      rcx, rax
+       call     [System.ArgumentNullException:Throw(System.String)]
+       int3     
+ 
+G_M000_IG94:                ;; offset=0x0DA1
+       mov      rcx, 0x7FFC6567F218
+       call     CORINFO_HELP_NEWSFAST
+       mov      rbx, rax
+       mov      ecx, 13
+       mov      rdx, 0x7FFC65760F98
+       call     [CORINFO_HELP_STRCNS]
+       mov      rdx, rax
+       mov      rcx, rbx
+       call     [System.ArgumentOutOfRangeException:.ctor(System.String):this]
+       mov      rcx, rbx
+       call     CORINFO_HELP_THROW
+       int3     
+ 
+G_M000_IG95:                ;; offset=0x0DDD
+       mov      rcx, 0x7FFC657C20A8
+       call     CORINFO_HELP_GET_GCSTATIC_BASE
+       jmp      G_M000_IG69
+ 
+G_M000_IG96:                ;; offset=0x0DF1
+       mov      rcx, 0x7FFC657F55B8
+       call     CORINFO_HELP_GET_GCSTATIC_BASE
+       jmp      G_M000_IG70
+ 
+G_M000_IG97:                ;; offset=0x0E05
+       test     r13d, r13d
+       jne      SHORT G_M000_IG102
+       xor      r12, r12
+       xor      r13d, r13d
+       jmp      G_M000_IG12
+ 
+G_M000_IG98:                ;; offset=0x0E15
+       test     r10d, r10d
+       jne      SHORT G_M000_IG102
+       xor      rax, rax
+       xor      r10d, r10d
+       jmp      G_M000_IG14
+ 
+G_M000_IG99:                ;; offset=0x0E24
+       mov      ecx, 68
+       call     [System.ThrowHelper:ThrowArgumentException(int)]
+       int3     
+ 
+G_M000_IG100:                ;; offset=0x0E30
+       mov      rcx, 0x7FFC65803D88
+       call     CORINFO_HELP_GET_GCSTATIC_BASE
+       jmp      G_M000_IG45
+ 
+G_M000_IG101:                ;; offset=0x0E44
+       mov      dword ptr [rbp+0x154], r10d
+       mov      dword ptr [rbp+0x158], eax
+       mov      rcx, 0x7FFC657F55B8
+       call     CORINFO_HELP_GET_GCSTATIC_BASE
+       mov      eax, dword ptr [rbp+0x158]
+       mov      r10d, dword ptr [rbp+0x154]
+       jmp      G_M000_IG52
+ 
+G_M000_IG102:                ;; offset=0x0E72
+       call     [System.ThrowHelper:ThrowArgumentOutOfRangeException()]
+       int3     
+ 
+G_M000_IG103:                ;; offset=0x0E79
+       mov      rcx, 0x7FFC657F55B8
+       call     CORINFO_HELP_GET_GCSTATIC_BASE
+       jmp      G_M000_IG55
+ 
+G_M000_IG104:                ;; offset=0x0E8D
+       call     CORINFO_HELP_RNGCHKFAIL
+       int3     
+ 
+G_M000_IG105:                ;; offset=0x0E93
+       call     CORINFO_HELP_OVERFLOW
+       int3     
+ 
+RWD00  	dq	3FE0000000000000h	;          0.5
+RWD08  	dq	40EFFFE000000000h	;        65535
+RWD16  	dq	41F0000000000000h
+RWD24  	dq	3FD0000000000000h	;         0.25
+
+; Total bytes of code 3737
+
+; Assembly listing for method Tedd.RTree.HilbertOrder:Encode(System.Runtime.Intrinsics.Vector256`1[uint],System.Runtime.Intrinsics.Vector256`1[uint]):System.Runtime.Intrinsics.Vector256`1[uint] (FullOpts)
+; Emitting BLENDED_CODE for generic X64 + VEX on Windows
+; FullOpts code
+; optimized code
+; rsp based frame
+; partially interruptible
+; No PGO data
+; 0 inlinees with PGO data; 2 single block inlinees; 0 inlinees without PGO data
+
+G_M000_IG01:                ;; offset=0x0000
+       sub      rsp, 104
+       vmovaps  xmmword ptr [rsp+0x50], xmm6
+       vmovaps  xmmword ptr [rsp+0x40], xmm7
+       vmovaps  xmmword ptr [rsp+0x30], xmm8
+       vmovaps  xmmword ptr [rsp+0x20], xmm9
+       vmovaps  xmmword ptr [rsp+0x10], xmm10
+       vmovaps  xmmword ptr [rsp], xmm11
+ 
+G_M000_IG02:                ;; offset=0x0027
+       vmovups  ymm0, ymmword ptr [rdx]
+       vmovups  ymm1, ymmword ptr [r8]
+       vpxor    ymm2, ymm1, ymm0
+       vmovaps  ymm3, ymm2
+       vbroadcastss ymm4, dword ptr [reloc @RWD00]
+       vpxor    ymm5, ymm4, ymm3
+       vpor     ymm6, ymm1, ymm0
+       vpxor    ymm6, ymm6, ymm4
+       vpxor    ymm1, ymm4, ymm1
+       vpand    ymm0, ymm1, ymm0
+       vpsrld   ymm1, ymm5, 1
+       vpor     ymm1, ymm1, ymm3
+       vpsrld   ymm7, ymm3, 1
+       vpxor    ymm7, ymm7, ymm3
+       vpsrld   ymm8, ymm0, 1
+       vpand    ymm5, ymm8, ymm5
+       vpsrld   ymm9, ymm6, 1
+       vpxor    ymm5, ymm5, ymm9
+       vpxor    ymm6, ymm5, ymm6
+       vpand    ymm3, ymm9, ymm3
+       vpxor    ymm3, ymm3, ymm8
+       vpxor    ymm0, ymm3, ymm0
+       vmovaps  ymm3, ymm1
+       vmovaps  ymm5, ymm7
+       vpsrld   ymm1, ymm3, 2
+       vpand    ymm1, ymm1, ymm3
+       vpsrld   ymm7, ymm5, 2
+       vpand    ymm8, ymm7, ymm5
+       vpxor    ymm1, ymm8, ymm1
+       vpand    ymm7, ymm7, ymm3
+       vpxor    ymm8, ymm3, ymm5
+       vpsrld   ymm9, ymm8, 2
+       vpand    ymm9, ymm9, ymm5
+       vpxor    ymm7, ymm9, ymm7
+       vpsrld   ymm9, ymm6, 2
+       vpand    ymm3, ymm9, ymm3
+       vpsrld   ymm10, ymm0, 2
+       vpand    ymm11, ymm10, ymm5
+       vpxor    ymm3, ymm11, ymm3
+       vpxor    ymm6, ymm3, ymm6
+       vpand    ymm5, ymm9, ymm5
+       vpand    ymm3, ymm10, ymm8
+       vpxor    ymm3, ymm3, ymm5
+       vpxor    ymm0, ymm3, ymm0
+       vmovaps  ymm3, ymm1
+       vmovaps  ymm5, ymm7
+       vpsrld   ymm1, ymm3, 4
+       vpand    ymm1, ymm1, ymm3
+       vpsrld   ymm7, ymm5, 4
+       vpand    ymm8, ymm7, ymm5
+       vpxor    ymm1, ymm8, ymm1
+       vpand    ymm7, ymm7, ymm3
+       vpxor    ymm8, ymm3, ymm5
+       vpsrld   ymm9, ymm8, 4
+       vpand    ymm9, ymm9, ymm5
+       vpxor    ymm7, ymm9, ymm7
+       vpsrld   ymm9, ymm6, 4
+       vpand    ymm3, ymm9, ymm3
+       vpsrld   ymm10, ymm0, 4
+       vpand    ymm11, ymm10, ymm5
+       vpxor    ymm3, ymm11, ymm3
+       vpxor    ymm6, ymm3, ymm6
+       vpand    ymm5, ymm9, ymm5
+       vpand    ymm3, ymm10, ymm8
+       vpxor    ymm3, ymm3, ymm5
+ 
+G_M000_IG03:                ;; offset=0x0145
+       vpxor    ymm0, ymm3, ymm0
+       vpsrld   ymm3, ymm6, 8
+       vpand    ymm5, ymm3, ymm1
+       vpsrld   ymm8, ymm0, 8
+       vpand    ymm9, ymm8, ymm7
+       vpxor    ymm5, ymm9, ymm5
+       vpxor    ymm6, ymm5, ymm6
+       vpand    ymm3, ymm3, ymm7
+       vpxor    ymm1, ymm7, ymm1
+       vpand    ymm1, ymm1, ymm8
+       vpxor    ymm1, ymm1, ymm3
+       vpxor    ymm0, ymm1, ymm0
+       vpsrld   ymm1, ymm6, 1
+       vpxor    ymm3, ymm1, ymm6
+       vpsrld   ymm1, ymm0, 1
+       vpxor    ymm5, ymm1, ymm0
+       vpor     ymm0, ymm3, ymm2
+       vpxor    ymm0, ymm0, ymm4
+       vpor     ymm0, ymm0, ymm5
+       vpslld   ymm1, ymm2, 8
+       vpor     ymm2, ymm1, ymm2
+       vbroadcastss ymm1, dword ptr [reloc @RWD04]
+       vpand    ymm2, ymm2, ymm1
+       vpslld   ymm3, ymm2, 4
+       vpor     ymm2, ymm3, ymm2
+       vbroadcastss ymm3, dword ptr [reloc @RWD08]
+       vpand    ymm2, ymm2, ymm3
+       vpslld   ymm4, ymm2, 2
+       vpor     ymm2, ymm4, ymm2
+       vbroadcastss ymm4, dword ptr [reloc @RWD12]
+       vpand    ymm2, ymm2, ymm4
+       vpslld   ymm5, ymm2, 1
+       vpor     ymm2, ymm5, ymm2
+       vbroadcastss ymm5, dword ptr [reloc @RWD16]
+       vpand    ymm2, ymm2, ymm5
+       vpslld   ymm6, ymm0, 8
+       vpor     ymm0, ymm6, ymm0
+       vpand    ymm0, ymm0, ymm1
+       vpslld   ymm1, ymm0, 4
+       vpor     ymm0, ymm1, ymm0
+       vpand    ymm0, ymm0, ymm3
+       vpslld   ymm1, ymm0, 2
+       vpor     ymm0, ymm1, ymm0
+       vpand    ymm0, ymm0, ymm4
+       vpslld   ymm1, ymm0, 1
+       vpor     ymm0, ymm1, ymm0
+       vpand    ymm0, ymm0, ymm5
+       vpslld   ymm0, ymm0, 1
+       vpor     ymm0, ymm0, ymm2
+       vmovups  ymmword ptr [rcx], ymm0
+       mov      rax, rcx
+ 
+G_M000_IG04:                ;; offset=0x0232
+       vzeroupper 
+       vmovaps  xmm6, xmmword ptr [rsp+0x50]
+       vmovaps  xmm7, xmmword ptr [rsp+0x40]
+       vmovaps  xmm8, xmmword ptr [rsp+0x30]
+       vmovaps  xmm9, xmmword ptr [rsp+0x20]
+       vmovaps  xmm10, xmmword ptr [rsp+0x10]
+       vmovaps  xmm11, xmmword ptr [rsp]
+       add      rsp, 104
+       ret      
+ 
+RWD00  	dd	0000FFFFh		; 9.18341e-41
+RWD04  	dd	00FF00FFh		; 2.34184e-38
+RWD08  	dd	0F0F0F0Fh		; 7.05334e-30
+RWD12  	dd	33333333h		; 4.17233e-08
+RWD16  	dd	55555555h		; 1.46602e+13
+
+; Total bytes of code 605
+
+; Assembly listing for method Tedd.RTree.StackPackedRTree`1[int]:Search(Tedd.RTree.Rectangle,System.Collections.Generic.List`1[int]):int:this (FullOpts)
+; Emitting BLENDED_CODE for generic X64 + VEX on Windows
+; FullOpts code
+; optimized code
+; rsp based frame
+; partially interruptible
+; No PGO data
+; 1 inlinees with PGO data; 21 single block inlinees; 3 inlinees without PGO data
+
+G_M000_IG01:                ;; offset=0x0000
+       push     rbx
+       sub      rsp, 96
+       vmovaps  xmmword ptr [rsp+0x50], xmm6
+       vmovaps  xmmword ptr [rsp+0x40], xmm7
+       xor      eax, eax
+       mov      qword ptr [rsp+0x30], rax
+       mov      qword ptr [rsp+0x38], rax
+       mov      rbx, rcx
+ 
+G_M000_IG02:                ;; offset=0x0020
+       test     r8, r8
+       je       G_M000_IG11
+       cmp      dword ptr [rbx+0x2C], 0
+       je       G_M000_IG09
+ 
+G_M000_IG03:                ;; offset=0x0033
+       lea      r9, bword ptr [rbx+0x30]
+       vmovsd   xmm0, qword ptr [r9]
+       vmovsd   xmm1, qword ptr [rdx+0x10]
+       vucomisd xmm1, xmm0
+       jb       G_M000_IG09
+       vmovsd   xmm2, qword ptr [r9+0x10]
+       vmovsd   xmm3, qword ptr [rdx]
+       vucomisd xmm2, xmm3
+       jb       G_M000_IG09
+       vmovsd   xmm4, qword ptr [r9+0x08]
+       vmovsd   xmm5, qword ptr [rdx+0x18]
+       vucomisd xmm5, xmm4
+       jb       G_M000_IG09
+       vmovsd   xmm6, qword ptr [r9+0x18]
+       vmovsd   xmm7, qword ptr [rdx+0x08]
+       vucomisd xmm6, xmm7
+       jb       G_M000_IG09
+       vucomisd xmm0, xmm3
+       jb       SHORT G_M000_IG04
+       vucomisd xmm4, xmm7
+       jb       SHORT G_M000_IG04
+       vucomisd xmm1, xmm2
+       jb       SHORT G_M000_IG04
+       vucomisd xmm5, xmm6
+       setae    r9b
+       movzx    r9, r9b
+       test     r9d, r9d
+       jne      SHORT G_M000_IG06
+ 
+G_M000_IG04:                ;; offset=0x00AC
+       mov      r9, gword ptr [rbx+0x18]
+       mov      ecx, dword ptr [r9+0x08]
+       dec      ecx
+       cmp      ecx, dword ptr [r9+0x08]
+       jae      G_M000_IG13
+       mov      eax, ecx
+       mov      r9d, dword ptr [r9+4*rax+0x10]
+       mov      bword ptr [rsp+0x20], rdx
+       mov      gword ptr [rsp+0x28], r8
+       mov      r8d, r9d
+       mov      r9, gword ptr [rbx+0x08]
+       mov      r9d, dword ptr [r9+0x08]
+       mov      edx, ecx
+       mov      rcx, rbx
+       call     [Tedd.RTree.StackPackedRTree`1[int]:SearchLevel(int,int,int,byref,System.Collections.Generic.List`1[int]):int:this]
+       nop      
+ 
+G_M000_IG05:                ;; offset=0x00E8
+       vmovaps  xmm6, xmmword ptr [rsp+0x50]
+       vmovaps  xmm7, xmmword ptr [rsp+0x40]
+       add      rsp, 96
+       pop      rbx
+       ret      
+ 
+G_M000_IG06:                ;; offset=0x00FA
+       mov      rdx, gword ptr [rbx+0x10]
+       test     rdx, rdx
+       je       SHORT G_M000_IG12
+       lea      rcx, bword ptr [rdx+0x10]
+       mov      edx, dword ptr [rdx+0x08]
+ 
+G_M000_IG07:                ;; offset=0x010A
+       mov      bword ptr [rsp+0x30], rcx
+       mov      dword ptr [rsp+0x38], edx
+       lea      rdx, [rsp+0x30]
+       mov      rcx, r8
+       call     [System.Collections.Generic.CollectionExtensions:AddRange[int](System.Collections.Generic.List`1[int],System.ReadOnlySpan`1[int])]
+       mov      eax, dword ptr [rbx+0x2C]
+ 
+G_M000_IG08:                ;; offset=0x0124
+       vmovaps  xmm6, xmmword ptr [rsp+0x50]
+       vmovaps  xmm7, xmmword ptr [rsp+0x40]
+       add      rsp, 96
+       pop      rbx
+       ret      
+ 
+G_M000_IG09:                ;; offset=0x0136
+       xor      eax, eax
+ 
+G_M000_IG10:                ;; offset=0x0138
+       vmovaps  xmm6, xmmword ptr [rsp+0x50]
+       vmovaps  xmm7, xmmword ptr [rsp+0x40]
+       add      rsp, 96
+       pop      rbx
+       ret      
+ 
+G_M000_IG11:                ;; offset=0x014A
+       mov      ecx, 35
+       mov      rdx, 0x7FFC65760F98
+       call     [CORINFO_HELP_STRCNS]
+       mov      rcx, rax
+       call     [System.ArgumentNullException:Throw(System.String)]
+       int3     
+ 
+G_M000_IG12:                ;; offset=0x0169
+       xor      rcx, rcx
+       xor      edx, edx
+       jmp      SHORT G_M000_IG07
+ 
+G_M000_IG13:                ;; offset=0x016F
+       call     CORINFO_HELP_RNGCHKFAIL
+       int3     
+ 
+; Total bytes of code 373
+
+; Assembly listing for method Tedd.RTree.StackPackedRTree`1[int]:SearchLevel(int,int,int,byref,System.Collections.Generic.List`1[int]):int:this (FullOpts)
+; Emitting BLENDED_CODE for generic X64 + VEX on Windows
+; FullOpts code
+; optimized code
+; rbp based frame
+; fully interruptible
+; No PGO data
+; 5 inlinees with PGO data; 30 single block inlinees; 3 inlinees without PGO data
+
+G_M000_IG01:                ;; offset=0x0000
+       push     rbp
+       push     r15
+       push     r14
+       push     r13
+       push     r12
+       push     rdi
+       push     rsi
+       push     rbx
+       sub      rsp, 120
+       vmovaps  xmmword ptr [rsp+0x60], xmm6
+       lea      rbp, [rsp+0x20]
+       xor      eax, eax
+       mov      qword ptr [rbp+0x20], rax
+       mov      qword ptr [rbp+0x28], rax
+       mov      rax, 0xE08A62BB9BAD
+       mov      qword ptr [rbp+0x08], rax
+       mov      rbx, rcx
+       mov      edi, edx
+       mov      r15d, r9d
+       mov      rsi, bword ptr [rbp+0xC0]
+       mov      r14, gword ptr [rbp+0xC8]
+ 
+G_M000_IG02:                ;; offset=0x0049
+       mov      r13d, dword ptr [r14+0x10]
+       mov      dword ptr [rbp+0x3C], r13d
+       mov      rax, gword ptr [rbx+0x18]
+       mov      eax, dword ptr [rax+0x08]
+       mov      edx, dword ptr [rbx+0x28]
+       dec      edx
+       imul     eax, edx
+       lea      r12d, [2*rax+0x02]
+       mov      eax, r12d
+       mov      ecx, 4
+       mul      rdx:rax, rcx
+       jb       G_M000_IG34
+       test     rax, rax
+       je       SHORT G_M000_IG04
+       add      rax, 15
+       shr      rax, 4
+       add      rsp, 32
+ 
+G_M000_IG03:                ;; offset=0x008A
+       push     0
+       push     0
+       dec      rax
+       jne      SHORT G_M000_IG03
+       sub      rsp, 32
+       lea      rax, [rsp+0x20]
+ 
+G_M000_IG04:                ;; offset=0x009C
+       test     r12d, r12d
+       jl       G_M000_IG32
+       mov      bword ptr [rbp+0x10], rax
+       xor      edx, edx
+       jmp      G_M000_IG29
+ 
+G_M000_IG05:                ;; offset=0x00B0
+       mov      edx, ecx
+       jmp      G_M000_IG28
+ 
+G_M000_IG06:                ;; offset=0x00B7
+       mov      rcx, gword ptr [rbx+0x20]
+       cmp      edi, dword ptr [rcx+0x08]
+       jae      G_M000_IG33
+       mov      r13d, edi
+       mov      ecx, dword ptr [rcx+4*r13+0x10]
+       imul     r11d, ecx
+       mov      r13, gword ptr [rbx+0x10]
+       mov      r9d, dword ptr [rbx+0x2C]
+       sub      r9d, r11d
+       cmp      ecx, r9d
+       jg       G_M000_IG13
+ 
+G_M000_IG07:                ;; offset=0x00E4
+       test     r13, r13
+       je       G_M000_IG31
+       mov      r9d, r11d
+       mov      r10d, ecx
+       add      r10, r9
+       mov      r9d, dword ptr [r13+0x08]
+       cmp      r10, r9
+       ja       G_M000_IG32
+       mov      r11d, r11d
+       lea      r10, bword ptr [r13+4*r11+0x10]
+       mov      dword ptr [rbp+0x38], edx
+ 
+G_M000_IG08:                ;; offset=0x010E
+       mov      bword ptr [rbp+0x20], r10
+       mov      dword ptr [rbp+0x28], ecx
+       lea      rdx, [rbp+0x20]
+       mov      rcx, r14
+       call     [System.Collections.Generic.CollectionExtensions:AddRange[int](System.Collections.Generic.List`1[int],System.ReadOnlySpan`1[int])]
+       mov      rax, bword ptr [rbp+0x10]
+       mov      edx, dword ptr [rbp+0x38]
+       mov      r8, qword ptr [rbp+0x18]
+       mov      r9d, dword ptr [rbp+0x30]
+       mov      r10d, dword ptr [rbp+0x34]
+ 
+G_M000_IG09:                ;; offset=0x0135
+       inc      r8d
+       mov      rcx, r8
+       cmp      ecx, r15d
+       mov      r8, rcx
+       jge      G_M000_IG19
+ 
+G_M000_IG10:                ;; offset=0x0147
+       mov      rcx, gword ptr [rbx+0x08]
+       cmp      r8d, dword ptr [rcx+0x08]
+       jae      G_M000_IG33
+       mov      r11, r8
+       shl      r11, 5
+       lea      rcx, bword ptr [rcx+r11+0x10]
+       vmovsd   xmm0, qword ptr [rcx]
+       vmovsd   xmm1, qword ptr [rsi+0x10]
+       vucomisd xmm1, xmm0
+       jb       SHORT G_M000_IG09
+ 
+G_M000_IG11:                ;; offset=0x0170
+       vmovsd   xmm0, qword ptr [rcx+0x10]
+       vmovsd   xmm1, qword ptr [rsi]
+       vucomisd xmm0, xmm1
+       jb       SHORT G_M000_IG09
+       vmovsd   xmm2, qword ptr [rcx+0x08]
+       vmovsd   xmm3, qword ptr [rsi+0x18]
+       vucomisd xmm3, xmm2
+       jb       SHORT G_M000_IG09
+       vmovsd   xmm4, qword ptr [rcx+0x18]
+       vmovsd   xmm5, qword ptr [rsi+0x08]
+       vucomisd xmm4, xmm5
+       setae    r11b
+       movzx    r11, r11b
+       test     r11d, r11d
+       je       SHORT G_M000_IG09
+       mov      qword ptr [rbp+0x18], r8
+       mov      r11d, r8d
+       sub      r11d, r9d
+       vmovsd   xmm6, qword ptr [rcx]
+       vucomisd xmm6, xmm1
+       jb       SHORT G_M000_IG12
+       vucomisd xmm2, xmm5
+       jb       SHORT G_M000_IG12
+       vmovsd   xmm1, qword ptr [rsi+0x10]
+       vucomisd xmm1, xmm0
+       jb       SHORT G_M000_IG12
+       vucomisd xmm3, xmm4
+       setae    cl
+       movzx    rcx, cl
+       test     ecx, ecx
+       jne      G_M000_IG06
+ 
+G_M000_IG12:                ;; offset=0x01E1
+       lea      ecx, [rdx+0x01]
+       cmp      edx, r12d
+       jae      G_M000_IG33
+       mov      edx, edx
+       imul     r11d, dword ptr [rbx+0x28]
+       add      r11d, r10d
+       mov      dword ptr [rax+4*rdx], r11d
+       mov      edx, ecx
+       lea      ecx, [rdx+0x01]
+       mov      dword ptr [rbp+0x38], ecx
+       cmp      edx, r12d
+       jae      G_M000_IG33
+       lea      r11d, [rdi-0x01]
+       mov      dword ptr [rax+4*rdx], r11d
+       mov      rax, bword ptr [rbp+0x10]
+       mov      edx, dword ptr [rbp+0x38]
+       mov      r8, qword ptr [rbp+0x18]
+       mov      r9d, dword ptr [rbp+0x30]
+       mov      r10d, dword ptr [rbp+0x34]
+       jmp      G_M000_IG09
+ 
+G_M000_IG13:                ;; offset=0x022C
+       mov      ecx, r9d
+       jmp      G_M000_IG07
+ 
+G_M000_IG14:                ;; offset=0x0234
+       mov      ecx, r8d
+       mov      edi, ecx
+       cmp      edi, r15d
+       jge      G_M000_IG19
+ 
+G_M000_IG15:                ;; offset=0x0242
+       mov      rcx, gword ptr [rbx+0x08]
+       cmp      edi, dword ptr [rcx+0x08]
+       jae      G_M000_IG33
+       mov      r8, rdi
+       shl      r8, 5
+       lea      rcx, bword ptr [rcx+r8+0x10]
+       vmovsd   xmm0, qword ptr [rcx]
+       vmovsd   xmm1, qword ptr [rsi+0x10]
+       vucomisd xmm1, xmm0
+       jb       SHORT G_M000_IG18
+ 
+G_M000_IG16:                ;; offset=0x026A
+       vmovsd   xmm0, qword ptr [rcx+0x10]
+       vucomisd xmm0, qword ptr [rsi]
+       jb       SHORT G_M000_IG18
+       vmovsd   xmm0, qword ptr [rcx+0x08]
+       vmovsd   xmm1, qword ptr [rsi+0x18]
+       vucomisd xmm1, xmm0
+       jb       SHORT G_M000_IG18
+       vmovsd   xmm0, qword ptr [rcx+0x18]
+       vucomisd xmm0, qword ptr [rsi+0x08]
+       setae    cl
+       movzx    rcx, cl
+       test     ecx, ecx
+       je       SHORT G_M000_IG18
+       mov      rcx, gword ptr [rbx+0x10]
+       cmp      edi, dword ptr [rcx+0x08]
+       jae      G_M000_IG33
+       mov      r8d, dword ptr [rcx+4*rdi+0x10]
+       inc      dword ptr [r14+0x14]
+       mov      rcx, gword ptr [r14+0x08]
+       mov      r10d, dword ptr [r14+0x10]
+       cmp      dword ptr [rcx+0x08], r10d
+       jbe      SHORT G_M000_IG23
+ 
+G_M000_IG17:                ;; offset=0x02BD
+       lea      r9d, [r10+0x01]
+       mov      dword ptr [r14+0x10], r9d
+       mov      r10d, r10d
+       mov      dword ptr [rcx+4*r10+0x10], r8d
+ 
+G_M000_IG18:                ;; offset=0x02CD
+       inc      edi
+       cmp      edi, r15d
+       jl       G_M000_IG15
+ 
+G_M000_IG19:                ;; offset=0x02D8
+       test     edx, edx
+       jne      SHORT G_M000_IG24
+ 
+G_M000_IG20:                ;; offset=0x02DC
+       mov      eax, dword ptr [r14+0x10]
+       sub      eax, dword ptr [rbp+0x3C]
+       mov      r8, 0xE08A62BB9BAD
+       cmp      qword ptr [rbp+0x08], r8
+       je       SHORT G_M000_IG21
+       call     CORINFO_HELP_FAIL_FAST
+ 
+G_M000_IG21:                ;; offset=0x02F8
+       nop      
+ 
+G_M000_IG22:                ;; offset=0x02F9
+       vmovaps  xmm6, xmmword ptr [rbp+0x40]
+       lea      rsp, [rbp+0x58]
+       pop      rbx
+       pop      rsi
+       pop      rdi
+       pop      r12
+       pop      r13
+       pop      r14
+       pop      r15
+       pop      rbp
+       ret      
+ 
+G_M000_IG23:                ;; offset=0x030F
+       mov      dword ptr [rbp+0x38], edx
+       mov      rcx, r14
+       mov      edx, r8d
+       call     [System.Collections.Generic.List`1[int]:AddWithResize(int):this]
+       mov      rax, bword ptr [rbp+0x10]
+       mov      edx, dword ptr [rbp+0x38]
+       jmp      SHORT G_M000_IG18
+ 
+G_M000_IG24:                ;; offset=0x0327
+       dec      edx
+       cmp      edx, r12d
+       jae      G_M000_IG33
+       mov      ecx, edx
+       mov      edi, dword ptr [rax+4*rcx]
+       dec      edx
+       mov      r15d, edx
+       cmp      r15d, r12d
+       jae      G_M000_IG33
+       mov      ecx, r15d
+       mov      r8d, dword ptr [rax+4*rcx]
+       mov      rcx, gword ptr [rbx+0x18]
+       lea      edx, [rdi+0x01]
+       cmp      dword ptr [rcx+0x08], edx
+       jle      SHORT G_M000_IG26
+ 
+G_M000_IG25:                ;; offset=0x0358
+       mov      rcx, gword ptr [rbx+0x18]
+       lea      edx, [rdi+0x01]
+       cmp      edx, dword ptr [rcx+0x08]
+       jae      G_M000_IG33
+       lea      edx, [rdi+0x01]
+       mov      ecx, dword ptr [rcx+4*rdx+0x10]
+       jmp      SHORT G_M000_IG27
+ 
+G_M000_IG26:                ;; offset=0x0371
+       mov      rcx, gword ptr [rbx+0x08]
+       mov      ecx, dword ptr [rcx+0x08]
+ 
+G_M000_IG27:                ;; offset=0x0378
+       mov      edx, dword ptr [rbx+0x28]
+       sub      ecx, r8d
+       cmp      edx, ecx
+       jg       G_M000_IG05
+ 
+G_M000_IG28:                ;; offset=0x0386
+       add      edx, r8d
+       mov      ecx, edx
+       mov      edx, r15d
+       mov      r15d, ecx
+ 
+G_M000_IG29:                ;; offset=0x0391
+       test     edi, edi
+       je       G_M000_IG14
+ 
+G_M000_IG30:                ;; offset=0x0399
+       mov      rcx, gword ptr [rbx+0x18]
+       mov      r10, rcx
+       lea      r9d, [rdi-0x01]
+       cmp      r9d, dword ptr [r10+0x08]
+       jae      SHORT G_M000_IG33
+       lea      r9d, [rdi-0x01]
+       mov      r10d, dword ptr [r10+4*r9+0x10]
+       mov      dword ptr [rbp+0x34], r10d
+       cmp      edi, dword ptr [rcx+0x08]
+       jae      SHORT G_M000_IG33
+       mov      r9d, edi
+       mov      r9d, dword ptr [rcx+4*r9+0x10]
+       mov      dword ptr [rbp+0x30], r9d
+       mov      r8d, r8d
+       cmp      r8d, r15d
+       jl       G_M000_IG10
+       jmp      G_M000_IG19
+ 
+G_M000_IG31:                ;; offset=0x03D9
+       or       r11d, ecx
+       jne      SHORT G_M000_IG32
+       xor      rcx, rcx
+       xor      r9d, r9d
+       mov      dword ptr [rbp+0x38], edx
+       mov      r10, rcx
+       mov      ecx, r9d
+       jmp      G_M000_IG08
+ 
+G_M000_IG32:                ;; offset=0x03F1
+       call     [System.ThrowHelper:ThrowArgumentOutOfRangeException()]
+       int3     
+ 
+G_M000_IG33:                ;; offset=0x03F8
+       call     CORINFO_HELP_RNGCHKFAIL
+       int3     
+ 
+G_M000_IG34:                ;; offset=0x03FE
+       call     CORINFO_HELP_OVERFLOW
+       int3     
+ 
+; Total bytes of code 1028
+

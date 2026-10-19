@@ -1,0 +1,1280 @@
+[
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 75216,
+    "started_ns": 1792410301915259900,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 97092,
+    "started_ns": 1792410303941885000,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 69104,
+    "started_ns": 1792410306051140300,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=20455734566"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 76792,
+    "started_ns": 1792410311139204400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=2747983"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 58008,
+    "started_ns": 1792410318180237000,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 16784,
+    "started_ns": 1792410320564156700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 94872,
+    "started_ns": 1792410325914322700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=25256503735"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 120676,
+    "started_ns": 1792410331499806500,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=25256395574"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 89876,
+    "started_ns": 1792410339200307400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=9534"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 63004,
+    "started_ns": 1792410346200278100,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 102036,
+    "started_ns": 1792410351556077100,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 87944,
+    "started_ns": 1792410356767416500,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=25256503735"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 17548,
+    "started_ns": 1792410362202872200,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 114168,
+    "started_ns": 1792410367423146700,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 73140,
+    "started_ns": 1792410369593784000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=2724143"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 116340,
+    "started_ns": 1792410375139158600,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 49592,
+    "started_ns": 1792410377506414400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 118256,
+    "started_ns": 1792410382785415000,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 120748,
+    "started_ns": 1792410385165632900,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 117256,
+    "started_ns": 1792410387328770800,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 65924,
+    "started_ns": 1792410389760669600,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 63068,
+    "started_ns": 1792410394801537400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=14050"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 9172,
+    "started_ns": 1792410401794486900,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=14050"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 53868,
+    "started_ns": 1792410408750082200,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 65016,
+    "started_ns": 1792410410859418400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 43684,
+    "started_ns": 1792410416173393100,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 93920,
+    "started_ns": 1792410421656973700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 55820,
+    "started_ns": 1792410426892213400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=20455734566"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 72240,
+    "started_ns": 1792410432063028200,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=145919598"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 74096,
+    "started_ns": 1792410437151371900,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 68748,
+    "started_ns": 1792410442515171600,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 114288,
+    "started_ns": 1792410447786310800,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=109185"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 85560,
+    "started_ns": 1792410455581526200,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=188633216"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 47404,
+    "started_ns": 1792410460795735500,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 37004,
+    "started_ns": 1792410466116968800,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=20455871899"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 110428,
+    "started_ns": 1792410473667842800,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 80560,
+    "started_ns": 1792410478774271400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=2064937"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 57504,
+    "started_ns": 1792410485879286700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=2747983"
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 23152,
+    "started_ns": 1792410492744010800,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=157885"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 39768,
+    "started_ns": 1792410500161226700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=2724143"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 59932,
+    "started_ns": 1792410505383250700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=32608"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 65824,
+    "started_ns": 1792410512711750100,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=157885"
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 91752,
+    "started_ns": 1792410520250571200,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=25256395574"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 71144,
+    "started_ns": 1792410527915765100,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 67260,
+    "started_ns": 1792410529935365100,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 62688,
+    "started_ns": 1792410531961642600,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 105956,
+    "started_ns": 1792410537114830400,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=145919598"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 50256,
+    "started_ns": 1792410542431770900,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 112160,
+    "started_ns": 1792410544428940700,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 44516,
+    "started_ns": 1792410547146479000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 13296,
+    "started_ns": 1792410552729998900,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 23628,
+    "started_ns": 1792410554858348200,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 2,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 106224,
+    "started_ns": 1792410556996992000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 53584,
+    "started_ns": 1792410562683017700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=0"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 106964,
+    "started_ns": 1792410568065686000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 3704,
+    "started_ns": 1792410573074751200,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=20455734566"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 94284,
+    "started_ns": 1792410578543252100,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=25256503735"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 106532,
+    "started_ns": 1792410584159583800,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=2092999"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 89064,
+    "started_ns": 1792410589509714700,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=145930380"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "pid": 50604,
+    "started_ns": 1792410596413454400,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 19504,
+    "started_ns": 1792410598866003000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=2724143"
+  },
+  {
+    "block": 2,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 88392,
+    "started_ns": 1792410604434223000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=2092999"
+  },
+  {
+    "block": 0,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "packed",
+    "pid": 89752,
+    "started_ns": 1792410609692643600,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=25256503735"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 105696,
+    "started_ns": 1792410615176658800,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=9534"
+  },
+  {
+    "block": 0,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 14524,
+    "started_ns": 1792410622420191200,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=2064937"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "mutable",
+    "pid": 23080,
+    "started_ns": 1792410629674143600,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=9534"
+  },
+  {
+    "block": 1,
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 94368,
+    "started_ns": 1792410636939141600,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-100000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 1,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "pid": 75436,
+    "started_ns": 1792410639067078000,
+    "command": [
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\native\\target\\release\\packed-worker.exe",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "static"
+    ],
+    "validation": "validated=64"
+  },
+  {
+    "block": 0,
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "control",
+    "pid": 85072,
+    "started_ns": 1792410641190487900,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-uniform.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=145919598"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "control",
+    "pid": 20416,
+    "started_ns": 1792410646824797900,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\baseline-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "control",
+      "warm"
+    ],
+    "validation": "library=b47657e876cab84e94c5944dba32f8b2d719e3467e9368f4d06f772480a74815\nvalidated=64;sink=0"
+  },
+  {
+    "block": 2,
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "packed",
+    "pid": 75684,
+    "started_ns": 1792410652213016000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-10000-clustered.txt",
+      "packed",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=64;sink=188633216"
+  },
+  {
+    "block": 1,
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "mutable",
+    "pid": 77408,
+    "started_ns": 1792410657704797000,
+    "command": [
+      "C:\\Program Files\\dotnet\\dotnet.exe",
+      "exec",
+      "--fx-version",
+      "10.0.13",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\final-caller\\Bench.dll",
+      "D:\\Workspaces\\AI\\rtree-binary-20261019\\retained\\fixture-1000-uniform.txt",
+      "mutable",
+      "warm"
+    ],
+    "validation": "library=c5792249e982338f6047acc0474334623488ba961114bfc355e61c25057da6c3\nvalidated=128;sink=28142"
+  }
+]

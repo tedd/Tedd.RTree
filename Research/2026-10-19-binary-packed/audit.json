@@ -1,0 +1,135 @@
+{
+  "processes": 1422,
+  "phases": [
+    {
+      "phase": "construction",
+      "processes": 90,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "9ec17f30015ac526340846c9fc8e8338d4b2f586ce2039a182e41336d28ccab4"
+    },
+    {
+      "phase": "traversal",
+      "processes": 72,
+      "observations": 360,
+      "missing_pid_indices": [],
+      "protocol": "dae0ef9138ec97450ddcf13dc3279f2ffa9636d4aff67b5740091deb2618d9f0"
+    },
+    {
+      "phase": "remedies",
+      "processes": 90,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "29603247ad1e77ba05fc1e7cfc63fc4a3699e178e87ab2e4aaf38463aba00dda"
+    },
+    {
+      "phase": "query-remedies",
+      "processes": 126,
+      "observations": 630,
+      "missing_pid_indices": [
+        111
+      ],
+      "protocol": "1814d51527555006e0f5c0a8f0b03b631a3cb51e7fccbf50a79bdd5f9c6a1e88"
+    },
+    {
+      "phase": "passes",
+      "processes": 90,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "9356643d036764f7f1a75894ce9e02cec20900709f76b6339abfa2d1f6b919ee"
+    },
+    {
+      "phase": "representation",
+      "processes": 72,
+      "observations": 360,
+      "missing_pid_indices": [],
+      "protocol": "6d2685092655184e4d99dd99f150a8251e4e94da4741e34ee6c747a9529fbdfa"
+    },
+    {
+      "phase": "confirmation",
+      "processes": 90,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "90ee9f4859b8267f6a65ec1c5a5b6398307d3c63acd1de72f7c6a41879ebcf3f"
+    },
+    {
+      "phase": "tiered",
+      "processes": 72,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "d61cc95b89c317e537fc51718335a9732b145e9207778118ef1542502852b83a"
+    },
+    {
+      "phase": "fallback",
+      "processes": 36,
+      "observations": 180,
+      "missing_pid_indices": [],
+      "protocol": "57871eb066b30760f2d06ce8af5525efd04857f8e08a84bcd814337ae77ef85b"
+    },
+    {
+      "phase": "boundary",
+      "processes": 24,
+      "observations": 150,
+      "missing_pid_indices": [],
+      "protocol": "72d82242c8a6a03f94660414b545d9810f6ea70fb768a137ac1f4a3d9c468523"
+    },
+    {
+      "phase": "confirmation-2",
+      "processes": 90,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "8523f8e613f3a24553be06ca460db342702229b42af9f9593b762143490d4758"
+    },
+    {
+      "phase": "tiered-2",
+      "processes": 72,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "181c4f7b366ad7bff8d91f0070370a0f998ce5581a3793339037f74798976ad6"
+    },
+    {
+      "phase": "fallback-2",
+      "processes": 36,
+      "observations": 180,
+      "missing_pid_indices": [],
+      "protocol": "d073f0f14116af4ed76e256d999357acbf1fd5cffbe255c8b8ed09fa4e248e7f"
+    },
+    {
+      "phase": "jit-policy",
+      "processes": 30,
+      "observations": 180,
+      "missing_pid_indices": [],
+      "protocol": "4498e50ed5b3f0dfaaf04b8abd78115ca91776a2e3c7a39a7c68f10a1678f906"
+    },
+    {
+      "phase": "confirmation-3",
+      "processes": 90,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "e67b95a07020018302618e09a9fe8e1af8d3c9d8eb186d1f2d0483090cc255dd"
+    },
+    {
+      "phase": "tiered-3",
+      "processes": 72,
+      "observations": 450,
+      "missing_pid_indices": [],
+      "protocol": "9001ea594253f932103e723bd404e1cb7e4c89bd430eec27139d6a8448223a26"
+    },
+    {
+      "phase": "fallback-3",
+      "processes": 36,
+      "observations": 180,
+      "missing_pid_indices": [],
+      "protocol": "ba23bf65763a9e062224c6c584c398b9fbf39baded971b466cecb8d9b13b5f5c"
+    },
+    {
+      "phase": "comparison",
+      "processes": 234,
+      "observations": 1170,
+      "missing_pid_indices": [],
+      "protocol": "9ac4e5c3feb429f71bb944536ff27fb540b5e07f9cefaa793bd1b71c52cd86bd"
+    }
+  ],
+  "applied": false,
+  "caveat": "One exploratory raw observation lacks PID/start bookkeeping after its recorded summary-write failure. No completed observation was replaced. Process blocks do not establish independence or statistical significance."
+}

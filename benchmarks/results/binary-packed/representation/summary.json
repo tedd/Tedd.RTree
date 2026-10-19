@@ -1,0 +1,1442 @@
+[
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "build",
+    "median_us": 20.04171142578125,
+    "min_us": 19.96737060546875,
+    "max_us": 20.07430419921875,
+    "allocated": 46408.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "queries",
+    "median_us": 21.858415031433108,
+    "min_us": 21.77576026916504,
+    "max_us": 21.90117702484131,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query0",
+    "median_us": 0.2782768249511719,
+    "min_us": 0.2758230209350586,
+    "max_us": 0.2799806594848633,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query1",
+    "median_us": 0.4272563934326172,
+    "min_us": 0.42360763549804686,
+    "max_us": 0.4281665802001953,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query2",
+    "median_us": 8.5328125,
+    "min_us": 8.4856201171875,
+    "max_us": 8.5576416015625,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query3",
+    "median_us": 12.626171875,
+    "min_us": 12.58460693359375,
+    "max_us": 12.63538818359375,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "build",
+    "median_us": 20.023193359375,
+    "min_us": 19.94835205078125,
+    "max_us": 20.2093017578125,
+    "allocated": 46408.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "queries",
+    "median_us": 20.30791358947754,
+    "min_us": 20.27559814453125,
+    "max_us": 20.40585289001465,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query0",
+    "median_us": 0.24356765747070314,
+    "min_us": 0.24252777099609374,
+    "max_us": 0.2486278533935547,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query1",
+    "median_us": 0.39268646240234373,
+    "min_us": 0.3901660919189453,
+    "max_us": 0.39731369018554685,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query2",
+    "median_us": 7.86925048828125,
+    "min_us": 7.853594970703125,
+    "max_us": 7.90665283203125,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query3",
+    "median_us": 11.821624755859375,
+    "min_us": 11.76546630859375,
+    "max_us": 11.8578857421875,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 20.2340087890625,
+    "min_us": 20.14591064453125,
+    "max_us": 22.23436279296875,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 10.525129890441896,
+    "min_us": 10.502478504180909,
+    "max_us": 10.841168022155761,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query0",
+    "median_us": 0.18269500732421876,
+    "min_us": 0.1818018913269043,
+    "max_us": 0.2001108169555664,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query1",
+    "median_us": 0.27050266265869144,
+    "min_us": 0.26676959991455074,
+    "max_us": 0.2866260528564453,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query2",
+    "median_us": 2.609771728515625,
+    "min_us": 2.6062286376953128,
+    "max_us": 2.72064208984375,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query3",
+    "median_us": 7.465893554687501,
+    "min_us": 7.4439453125,
+    "max_us": 7.633789062499999,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "build",
+    "median_us": 21.1812744140625,
+    "min_us": 21.00330810546875,
+    "max_us": 21.4244384765625,
+    "allocated": 46408.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "queries",
+    "median_us": 8.98576374053955,
+    "min_us": 8.922637367248536,
+    "max_us": 8.997288703918457,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query0",
+    "median_us": 0.2535421371459961,
+    "min_us": 0.25137996673583984,
+    "max_us": 0.273924446105957,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query1",
+    "median_us": 0.3911479949951172,
+    "min_us": 0.38962745666503906,
+    "max_us": 0.4119293212890625,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query2",
+    "median_us": 3.036627197265625,
+    "min_us": 3.0218185424804687,
+    "max_us": 3.0376800537109374,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query3",
+    "median_us": 5.2737548828125,
+    "min_us": 5.2598114013671875,
+    "max_us": 5.304446411132813,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "build",
+    "median_us": 20.69962158203125,
+    "min_us": 20.15828857421875,
+    "max_us": 21.65191650390625,
+    "allocated": 46408.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "queries",
+    "median_us": 25.680963134765626,
+    "min_us": 25.573963928222653,
+    "max_us": 26.27189788818359,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query0",
+    "median_us": 1.0637649536132812,
+    "min_us": 1.0563644409179687,
+    "max_us": 1.1824760437011719,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query1",
+    "median_us": 1.1289871215820313,
+    "min_us": 1.1191650390625,
+    "max_us": 1.2252311706542969,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query2",
+    "median_us": 4.494134521484375,
+    "min_us": 4.482537841796875,
+    "max_us": 4.591021728515625,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query3",
+    "median_us": 19.01307373046875,
+    "min_us": 18.8968994140625,
+    "max_us": 19.2731689453125,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "build",
+    "median_us": 21.02843017578125,
+    "min_us": 20.29471435546875,
+    "max_us": 24.51126708984375,
+    "allocated": 46408.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "queries",
+    "median_us": 21.014197540283202,
+    "min_us": 20.899301910400393,
+    "max_us": 21.143117523193357,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query0",
+    "median_us": 0.8305473327636719,
+    "min_us": 0.8279754638671875,
+    "max_us": 0.8339393615722657,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query1",
+    "median_us": 0.8272163391113281,
+    "min_us": 0.8251907348632812,
+    "max_us": 0.8318435668945312,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query2",
+    "median_us": 3.0977264404296876,
+    "min_us": 3.0810638427734376,
+    "max_us": 3.1103546142578127,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query3",
+    "median_us": 16.261279296875,
+    "min_us": 16.1625,
+    "max_us": 16.36697998046875,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 16.81947021484375,
+    "min_us": 16.70196533203125,
+    "max_us": 22.49925537109375,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 11.651355743408203,
+    "min_us": 11.577799987792968,
+    "max_us": 11.813644790649414,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query0",
+    "median_us": 0.6556171417236328,
+    "min_us": 0.652352523803711,
+    "max_us": 0.6621562957763671,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query1",
+    "median_us": 0.6830387115478516,
+    "min_us": 0.6779178619384766,
+    "max_us": 0.6891853332519531,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query2",
+    "median_us": 2.3217514038085936,
+    "min_us": 2.311952209472656,
+    "max_us": 2.3322494506835936,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query3",
+    "median_us": 7.990948486328125,
+    "min_us": 7.935577392578125,
+    "max_us": 8.130053710937501,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "build",
+    "median_us": 21.7155517578125,
+    "min_us": 21.6052978515625,
+    "max_us": 23.884521484375,
+    "allocated": 46408.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "queries",
+    "median_us": 15.36535186767578,
+    "min_us": 15.288787841796875,
+    "max_us": 15.427405548095704,
+    "allocated": null
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query0",
+    "median_us": 0.987298583984375,
+    "min_us": 0.9861221313476562,
+    "max_us": 0.997784423828125,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query1",
+    "median_us": 1.0442245483398438,
+    "min_us": 1.0403274536132812,
+    "max_us": 1.0463447570800781,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query2",
+    "median_us": 3.91956787109375,
+    "min_us": 3.9150634765625,
+    "max_us": 3.959100341796875,
+    "allocated": 0.0
+  },
+  {
+    "size": 1000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query3",
+    "median_us": 9.422662353515625,
+    "min_us": 9.338873291015625,
+    "max_us": 9.424176025390626,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "build",
+    "median_us": 422.1677734375,
+    "min_us": 379.3169921875,
+    "max_us": 496.159375,
+    "allocated": 501773.96875
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "queries",
+    "median_us": 67.59924087524413,
+    "min_us": 67.56012878417968,
+    "max_us": 67.95413932800292,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query0",
+    "median_us": 0.5406005859375,
+    "min_us": 0.5403934478759765,
+    "max_us": 0.5447513580322265,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query1",
+    "median_us": 0.41084938049316405,
+    "min_us": 0.4086761474609375,
+    "max_us": 0.41549148559570315,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query2",
+    "median_us": 13.679736328125,
+    "min_us": 13.67227783203125,
+    "max_us": 13.846435546875,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query3",
+    "median_us": 52.96826171875,
+    "min_us": 52.93857421875,
+    "max_us": 53.1474609375,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "build",
+    "median_us": 410.36328125,
+    "min_us": 329.84453125,
+    "max_us": 477.6548828125,
+    "allocated": 501778.875
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "queries",
+    "median_us": 64.16040687561035,
+    "min_us": 64.02089080810546,
+    "max_us": 64.20844230651856,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query0",
+    "median_us": 0.4566547393798828,
+    "min_us": 0.45646018981933595,
+    "max_us": 0.46174468994140627,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query1",
+    "median_us": 0.3498676300048828,
+    "min_us": 0.34967498779296874,
+    "max_us": 0.35595054626464845,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query2",
+    "median_us": 12.5716064453125,
+    "min_us": 12.55347900390625,
+    "max_us": 12.5878173828125,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query3",
+    "median_us": 50.766259765625,
+    "min_us": 50.661083984375,
+    "max_us": 50.819140625,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 562.262890625,
+    "min_us": 559.8625,
+    "max_us": 577.529296875,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 67.18412265777587,
+    "min_us": 65.07259731292724,
+    "max_us": 68.02023296356201,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query0",
+    "median_us": 0.32155532836914064,
+    "min_us": 0.3188373565673828,
+    "max_us": 0.33190784454345706,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query1",
+    "median_us": 0.2533998489379883,
+    "min_us": 0.2522340774536133,
+    "max_us": 0.2690441131591797,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query2",
+    "median_us": 8.616101074218749,
+    "min_us": 8.252844238281249,
+    "max_us": 8.694134521484376,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query3",
+    "median_us": 57.993066406249994,
+    "min_us": 56.248681640625,
+    "max_us": 58.725146484375,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "build",
+    "median_us": 438.293359375,
+    "min_us": 368.205859375,
+    "max_us": 440.004296875,
+    "allocated": 501788.40625
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "queries",
+    "median_us": 37.913112258911134,
+    "min_us": 37.8671630859375,
+    "max_us": 37.955204010009766,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query0",
+    "median_us": 0.4847881317138672,
+    "min_us": 0.484124755859375,
+    "max_us": 0.4848167419433594,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query1",
+    "median_us": 0.3704524993896484,
+    "min_us": 0.3695636749267578,
+    "max_us": 0.3717201232910156,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query2",
+    "median_us": 6.648980712890625,
+    "min_us": 6.6408203125,
+    "max_us": 6.72174072265625,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query3",
+    "median_us": 30.37822265625,
+    "min_us": 30.3616455078125,
+    "max_us": 30.418603515625,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "build",
+    "median_us": 342.0310546875,
+    "min_us": 333.375390625,
+    "max_us": 358.2068359375,
+    "allocated": 501766.46875
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "queries",
+    "median_us": 142.1359619140625,
+    "min_us": 142.07177124023437,
+    "max_us": 142.45443267822264,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query0",
+    "median_us": 1.8370956420898437,
+    "min_us": 1.8328857421875,
+    "max_us": 1.8393600463867188,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query1",
+    "median_us": 2.4021621704101563,
+    "min_us": 2.3987548828125,
+    "max_us": 2.4544219970703125,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query2",
+    "median_us": 40.1436767578125,
+    "min_us": 40.0851318359375,
+    "max_us": 40.1805908203125,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query3",
+    "median_us": 97.76064453125,
+    "min_us": 97.7451171875,
+    "max_us": 97.98232421875,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "build",
+    "median_us": 366.5537109375,
+    "min_us": 335.95859375,
+    "max_us": 447.652734375,
+    "allocated": 501762.5625
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "queries",
+    "median_us": 128.3255157470703,
+    "min_us": 128.1228805541992,
+    "max_us": 140.69130325317383,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query0",
+    "median_us": 1.5312576293945312,
+    "min_us": 1.5236366271972657,
+    "max_us": 1.5368560791015624,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query1",
+    "median_us": 1.8590469360351562,
+    "min_us": 1.8443801879882813,
+    "max_us": 1.8605133056640626,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query2",
+    "median_us": 34.8546630859375,
+    "min_us": 34.8368896484375,
+    "max_us": 39.3257568359375,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query3",
+    "median_us": 90.09521484375,
+    "min_us": 89.890087890625,
+    "max_us": 97.981396484375,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 637.8359375,
+    "min_us": 627.21484375,
+    "max_us": 643.819140625,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 78.46108856201172,
+    "min_us": 78.41810760498046,
+    "max_us": 81.71116256713867,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query0",
+    "median_us": 1.3208877563476562,
+    "min_us": 1.3166725158691406,
+    "max_us": 1.3423217773437501,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query1",
+    "median_us": 1.6134323120117187,
+    "min_us": 1.6060089111328124,
+    "max_us": 1.6135818481445312,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query2",
+    "median_us": 15.996484375,
+    "min_us": 15.92647705078125,
+    "max_us": 17.03642578125,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query3",
+    "median_us": 59.578857421875,
+    "min_us": 59.4947265625,
+    "max_us": 61.744482421875,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "build",
+    "median_us": 401.0541015625,
+    "min_us": 394.346875,
+    "max_us": 411.0814453125,
+    "allocated": 501786.421875
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "queries",
+    "median_us": 69.39161071777343,
+    "min_us": 69.37043151855468,
+    "max_us": 69.99993286132812,
+    "allocated": null
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query0",
+    "median_us": 1.7352096557617187,
+    "min_us": 1.7334365844726562,
+    "max_us": 1.7478866577148438,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query1",
+    "median_us": 2.3265090942382813,
+    "min_us": 2.325947570800781,
+    "max_us": 2.4917648315429686,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query2",
+    "median_us": 19.978369140625,
+    "min_us": 19.8554931640625,
+    "max_us": 20.1744384765625,
+    "allocated": 0.0
+  },
+  {
+    "size": 10000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query3",
+    "median_us": 45.3532958984375,
+    "min_us": 45.2879638671875,
+    "max_us": 45.75166015625,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "build",
+    "median_us": 3148.353125,
+    "min_us": 3034.5,
+    "max_us": 3470.6125,
+    "allocated": 5014890.75
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "queries",
+    "median_us": 546.6345077514649,
+    "min_us": 545.7293666839599,
+    "max_us": 552.6390735626221,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query0",
+    "median_us": 0.4322788238525391,
+    "min_us": 0.43146209716796874,
+    "max_us": 0.43303718566894533,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query1",
+    "median_us": 0.5107009887695313,
+    "min_us": 0.506365966796875,
+    "max_us": 0.5114662170410156,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query2",
+    "median_us": 133.2724609375,
+    "min_us": 133.26337890625,
+    "max_us": 134.70546875,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-scalar",
+    "operation": "query3",
+    "median_us": 412.42421875,
+    "min_us": 411.521484375,
+    "max_us": 416.990625,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "build",
+    "median_us": 3624.090625,
+    "min_us": 2909.21875,
+    "max_us": 3628.590625,
+    "allocated": 5014905.25
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "queries",
+    "median_us": 530.6222702026367,
+    "min_us": 526.300154876709,
+    "max_us": 532.6837841033936,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query0",
+    "median_us": 0.39900856018066405,
+    "min_us": 0.3950355529785156,
+    "max_us": 0.40022125244140627,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query1",
+    "median_us": 0.43048820495605467,
+    "min_us": 0.42933807373046873,
+    "max_us": 0.4325862884521484,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query2",
+    "median_us": 123.9052734375,
+    "min_us": 123.284375,
+    "max_us": 124.8306640625,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "normalized-vector",
+    "operation": "query3",
+    "median_us": 405.8875,
+    "min_us": 402.19140625,
+    "max_us": 407.0203125,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 6686.7875,
+    "min_us": 6678.0875,
+    "max_us": 6751.3125,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 1278.7889368057251,
+    "min_us": 1277.5700687408448,
+    "max_us": 1300.3522121429444,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query0",
+    "median_us": 0.27819271087646485,
+    "min_us": 0.2721698760986328,
+    "max_us": 0.28301315307617186,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query1",
+    "median_us": 0.3099569320678711,
+    "min_us": 0.30797786712646485,
+    "max_us": 0.3167430877685547,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query2",
+    "median_us": 204.42363281250002,
+    "min_us": 203.27421875,
+    "max_us": 206.0109375,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "rust",
+    "operation": "query3",
+    "median_us": 1073.78515625,
+    "min_us": 1073.69609375,
+    "max_us": 1093.753125,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "build",
+    "median_us": 3209.840625,
+    "min_us": 3134.003125,
+    "max_us": 3230.540625,
+    "allocated": 5014908.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "queries",
+    "median_us": 475.02466621398924,
+    "min_us": 472.8434242248535,
+    "max_us": 476.5395004272461,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query0",
+    "median_us": 0.3985286712646484,
+    "min_us": 0.39847564697265625,
+    "max_us": 0.40125312805175783,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query1",
+    "median_us": 0.45328598022460936,
+    "min_us": 0.45158920288085935,
+    "max_us": 0.45445823669433594,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query2",
+    "median_us": 97.6880859375,
+    "min_us": 96.933984375,
+    "max_us": 97.845703125,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "clustered",
+    "mode": "vector",
+    "operation": "query3",
+    "median_us": 377.2388671875,
+    "min_us": 374.3052734375,
+    "max_us": 377.8380859375,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "build",
+    "median_us": 3121.125,
+    "min_us": 2962.3359375,
+    "max_us": 3829.31875,
+    "allocated": 5014890.125
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "queries",
+    "median_us": 994.2825012207031,
+    "min_us": 992.8986694335937,
+    "max_us": 1005.0418823242187,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query0",
+    "median_us": 2.522149658203125,
+    "min_us": 2.511895751953125,
+    "max_us": 2.537969970703125,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query1",
+    "median_us": 7.89609375,
+    "min_us": 7.844781494140625,
+    "max_us": 7.964654541015625,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query2",
+    "median_us": 235.1322265625,
+    "min_us": 234.1619140625,
+    "max_us": 235.7302734375,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-scalar",
+    "operation": "query3",
+    "median_us": 748.73203125,
+    "min_us": 748.380078125,
+    "max_us": 758.808984375,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "build",
+    "median_us": 3397.746875,
+    "min_us": 2986.5859375,
+    "max_us": 4122.634375,
+    "allocated": 5014743.125
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "queries",
+    "median_us": 1024.1045791625977,
+    "min_us": 982.0210861206054,
+    "max_us": 1125.1392318725586,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query0",
+    "median_us": 2.0483718872070313,
+    "min_us": 2.0104293823242188,
+    "max_us": 2.3255661010742186,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query1",
+    "median_us": 5.788958740234375,
+    "min_us": 5.77618408203125,
+    "max_us": 6.971441650390625,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query2",
+    "median_us": 210.599609375,
+    "min_us": 203.6212890625,
+    "max_us": 413.721875,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "normalized-vector",
+    "operation": "query3",
+    "median_us": 770.298046875,
+    "min_us": 703.61796875,
+    "max_us": 804.48515625,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "build",
+    "median_us": 7843.9625,
+    "min_us": 7806.60625,
+    "max_us": 7907.1375,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "queries",
+    "median_us": 1220.0931289672853,
+    "min_us": 1213.4725860595704,
+    "max_us": 1224.8285903930664,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query0",
+    "median_us": 1.8067031860351561,
+    "min_us": 1.7997283935546875,
+    "max_us": 1.8370193481445312,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query1",
+    "median_us": 4.3648437499999995,
+    "min_us": 4.348541259765625,
+    "max_us": 4.4002624511718755,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query2",
+    "median_us": 148.81943359375,
+    "min_us": 146.15869140625,
+    "max_us": 149.74658203125,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "rust",
+    "operation": "query3",
+    "median_us": 1064.1750000000002,
+    "min_us": 1061.165625,
+    "max_us": 1069.771875,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "build",
+    "median_us": 3075.940625,
+    "min_us": 3011.865625,
+    "max_us": 3080.5125,
+    "allocated": 5014862.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "queries",
+    "median_us": 613.7509216308594,
+    "min_us": 613.4693954467774,
+    "max_us": 1021.0999496459962,
+    "allocated": null
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query0",
+    "median_us": 2.3973739624023436,
+    "min_us": 2.391851806640625,
+    "max_us": 2.398234558105469,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query1",
+    "median_us": 7.148297119140625,
+    "min_us": 7.13846435546875,
+    "max_us": 7.149169921875,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query2",
+    "median_us": 119.2087890625,
+    "min_us": 118.86708984375,
+    "max_us": 119.49560546875,
+    "allocated": 0.0
+  },
+  {
+    "size": 100000,
+    "distribution": "uniform",
+    "mode": "vector",
+    "operation": "query3",
+    "median_us": 484.725,
+    "min_us": 484.7140625,
+    "max_us": 892.686328125,
+    "allocated": 0.0
+  }
+]

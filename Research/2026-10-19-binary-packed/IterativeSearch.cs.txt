@@ -1,0 +1,37 @@
+    private int SearchLevel(int level, int start, int end, in Rectangle bounds, List<T> results)
+    {
+        int initialCount = results.Count;
+        // Only a suspended parent is stored. Scratch is O(tree height), not O(fanout*height).
+        Span<int> stack = stackalloc int[_starts.Length * 3];
+        int depth = 0;
+    NextNode:
+        if (level == 0)
+        {
+            for (int i = start; i < end; i++)
+                if (_boxes[i].Intersects(bounds)) results.Add(_values[i]);
+        }
+        else
+        {
+            int lowerStart = _starts[level - 1], lowerEnd = _starts[level];
+            for (int i = start; i < end; i++)
+            {
+                ref readonly Rectangle box = ref _boxes[i];
+                if (!box.Intersects(bounds)) continue;
+                int local = i - lowerEnd;
+                // CONTAINMENT
+                stack[depth++] = i + 1;
+                stack[depth++] = end;
+                stack[depth++] = level;
+                start = lowerStart + local * _capacity;
+                end = start + Math.Min(_capacity, lowerEnd - start);
+                level--;
+                goto NextNode;
+            }
+        }
+        if (depth == 0) return results.Count - initialCount;
+        level = stack[--depth];
+        end = stack[--depth];
+        start = stack[--depth];
+        goto NextNode;
+    }
+
