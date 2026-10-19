@@ -5,7 +5,7 @@ namespace Tedd.RTree;
 
 /// <summary>A mutable two-dimensional R-tree with incremental updates and packed bulk loading.</summary>
 /// <remarks>Concurrent searches are safe while the tree is unchanged, provided each search owns its result list. Mutation during a search is not safe.</remarks>
-public sealed class RTree2D<TCoordinate, T>
+public sealed class RTree2D<TCoordinate, T> : IMutableSpatialIndex<Rectangle2D<TCoordinate>, T>
     where TCoordinate : struct, INumber<TCoordinate>
 {
     private sealed class Node(bool leaf, int capacity)

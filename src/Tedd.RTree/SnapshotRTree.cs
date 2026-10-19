@@ -8,7 +8,7 @@ namespace Tedd.RTree;
 /// The previous tree may remain alive while a search is using it. Concurrent replacements
 /// are serialized; the last completed replacement becomes current.
 /// </remarks>
-public sealed class SnapshotRTree<T>
+public sealed class SnapshotRTree<T> : IReadOnlySpatialIndex<Rectangle, T>
 {
     private readonly int _maxEntries;
     private readonly Lock _writer = new();

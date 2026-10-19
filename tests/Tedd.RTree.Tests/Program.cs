@@ -1,5 +1,6 @@
 using Tedd.RTree;
 
+PackedRTreeChecks.Run();
 MutablePackedChecks.Run();
 GenericPackedChecks.Run();
 LocalUpdateChecks.Run();

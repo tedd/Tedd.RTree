@@ -7,7 +7,7 @@ namespace Tedd.RTree;
 /// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
 /// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
 /// </remarks>
-public sealed class ConcurrentRTree<T> : IDisposable where T : notnull
+public sealed class ConcurrentRTree<T> : IDisposable, IReadOnlySpatialIndex<Rectangle, T> where T : notnull
 {
     private readonly ReaderWriterLockSlim _lock = new();
     private readonly int _maxEntries;

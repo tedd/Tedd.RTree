@@ -1,8 +1,8 @@
 # Tedd.RTree
 
-A mutable 2D and 3D R-tree library for .NET 10. It indexes axis-aligned rectangles or boxes and returns items whose bounds intersect a query. Boundary contact counts as intersection.
+A .NET 10 spatial index library with mutable 2D and 3D R-trees and an immutable packed 2D index. It indexes axis-aligned rectangles or boxes and returns items whose bounds intersect a query. Boundary contact counts as intersection.
 
-In the [published five-package comparison](benchmarks/PACKAGE-COMPARISON.md), Tedd.RTree had the fastest measured mean for both bulk construction and aggregate intersection queries in all four tested 2D `double` fixtures (1,000 and 10,000 entries, uniform and clustered). These results describe that workload, not every query size or API variant. The tree uses Sort-Tile-Recursive bulk packing, least-enlargement insertion with quadratic node splits, and bounding-box pruning during search. Caller-owned result lists and reusable bulk-load workspaces reduce repeated allocation.
+In the [published five-package comparison](benchmarks/PACKAGE-COMPARISON.md), Tedd.RTree had the fastest measured mean for both bulk construction and aggregate intersection queries in all four tested 2D `double` fixtures (1,000 and 10,000 entries, uniform and clustered). These results describe that workload, not every query size or API variant. The 2D trees use Hilbert ordering for bulk packing, least-enlargement insertion with quadratic node splits, and bounding-box pruning during search. Caller-owned result lists and reusable bulk-load workspaces reduce repeated allocation.
 
 [Documentation, examples, and benchmark comparison](https://tedd.no/Tedd.RTree/).
 
@@ -30,6 +30,22 @@ packed.BulkLoad(new[]
 ```
 
 `Search` appends to the supplied list and returns the number appended. `Search(bounds)` creates and returns a list. Result order is unspecified. Entries may have duplicate bounds or values. Coordinates must be finite and ordered. `Clear` discards the index. `BulkLoad` uses Hilbert ordering and bottom-up packing on an empty tree; later individual inserts, removals, and moves are supported. `Remove(bounds, item)` removes one matching entry; `Update(oldBounds, item, newBounds)` moves one matching entry. Concurrent searches on an unchanged tree are safe when each search uses its own result list. Mutation during a search is not safe.
+
+## Immutable indexes
+
+Use `PackedRTree<T>` for a batch of 2D `Rectangle` bounds that remains unchanged. Its constructor copies entries into owned storage. Input arrays and an optional `BulkLoadWorkspace` can be reused after construction. Concurrent searches require separate result lists.
+
+```csharp
+SpatialEntry<string>[] entries =
+[
+    new(new Rectangle(0, 0, 10, 10), "A"),
+    new(new Rectangle(20, 20, 30, 30), "B")
+];
+IReadOnlySpatialIndex<Rectangle, string> index = new PackedRTree<string>(entries);
+List<string> matches = index.Search(new Rectangle(5, 5, 25, 25));
+```
+
+`IReadOnlySpatialIndex<TBounds, T>` shares `Count`, `Search`, and `SearchBatch` across the packed, mutable, snapshot, and concurrent indexes. `IMutableSpatialIndex<TBounds, T>` adds `Insert`, `Remove`, `Update`, and `Clear` on the plain mutable trees. A read-only interface does not make a mutable implementation immutable or synchronize access. Use `RTree<T>` for individual changes; use the coordinate-generic trees for other coordinate types or 3D bounds.
 
 ## Batch searches
 

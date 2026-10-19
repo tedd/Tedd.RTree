@@ -7,7 +7,7 @@ namespace Tedd.RTree;
 /// Values serve as stable, unique keys. Their equality and hash codes must not change while indexed.
 /// Searches hold a read lock; additions, moves, removals, and bulk loading hold a write lock.
 /// </remarks>
-public sealed class ConcurrentRTree3D<TCoordinate, T> : IDisposable
+public sealed class ConcurrentRTree3D<TCoordinate, T> : IDisposable, IReadOnlySpatialIndex<Box<TCoordinate>, T>
     where TCoordinate : struct, System.Numerics.INumber<TCoordinate>
     where T : notnull
 {
