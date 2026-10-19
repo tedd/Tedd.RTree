@@ -6,6 +6,7 @@ import json
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 
 ROOT = Path(__file__).resolve().parent
 STEM = "rtree-comparison-2026-10-18-unified"
@@ -20,12 +21,35 @@ title = fig.text(.035, .89, "Tedd.", fontsize=51, weight="bold", color="#000000"
 fig.canvas.draw()
 right = title.get_window_extent(fig.canvas.get_renderer()).x1 / fig.bbox.width
 fig.text(right, .89, "RTree", fontsize=51, weight="bold", color=TEAL)
-fig.text(.035, .845, "Latest recorded results across six languages", fontsize=24, color=INK)
+fig.text(.035, .845, "Index spatial data in nested bounding rectangles", fontsize=24, color=INK)
 fig.text(.035, .807, "10,000 rectangles  ·  Uniform distribution  ·  64 mixed queries", fontsize=17, color=GRAY)
-fig.text(.72, .90, "0.077 ms", fontsize=29, color=TEAL, weight="bold")
-fig.text(.72, .87, "Tedd.RTree · 64 queries", fontsize=14, color=GRAY)
-fig.text(.875, .90, "0.422 ms", fontsize=29, color=TEAL, weight="bold")
-fig.text(.875, .87, "Tedd.RTree · Build", fontsize=14, color=GRAY)
+fig.text(.40, .918, "0.077 ms", fontsize=29, color=TEAL, weight="bold")
+fig.text(.40, .888, "Tedd.RTree · 64 queries", fontsize=14, color=GRAY)
+fig.text(.55, .918, "0.422 ms", fontsize=29, color=TEAL, weight="bold")
+fig.text(.55, .888, "Tedd.RTree · Build", fontsize=14, color=GRAY)
+
+# The corner illustration is independent of the quantitative plots below.
+diagram = fig.add_axes([.735, .817, .235, .16], facecolor=BG)
+diagram.set_xlim(0, 1); diagram.set_ylim(0, 1); diagram.axis("off")
+for coordinate in [i / 10 for i in range(11)]:
+    diagram.axvline(coordinate, color="#e5efec", linewidth=.55, zorder=0)
+    diagram.axhline(coordinate, color="#e5efec", linewidth=.55, zorder=0)
+corner_rectangles = [
+    (.04, .06, .91, .86, "#d6e3df", "solid"),
+    (.15, .25, .43, .65, TEAL, "solid"),
+    (.31, .07, .57, .53, TEAL, "solid"),
+    (.41, .35, .56, .38, TEAL, "dashed"),
+    (.25, .02, .24, .35, "#b65e28", "solid"),
+    (.63, .47, .29, .31, "#b65e28", "solid"),
+    (.49, .20, .24, .75, "#b65e28", "dashed"),
+]
+for x, y, width, rectangle_height, color, style in corner_rectangles:
+    diagram.add_patch(Rectangle((x, y), width, rectangle_height,
+        facecolor="none", edgecolor=color, linewidth=1.1,
+        linestyle=style, zorder=2))
+for x, y in [(.09,.19),(.23,.59),(.53,.31),(.76,.11),(.82,.87),(.95,.37)]:
+    diagram.add_patch(Rectangle((x, y), .016, .03,
+        facecolor="#9cd6cf", edgecolor="none", zorder=1))
 
 bottom, height = .235, .51
 ax = fig.add_axes([.035, bottom, .535, height])
